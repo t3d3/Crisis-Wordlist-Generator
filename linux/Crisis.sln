@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crisis", "Crisis\Crisis.csproj", "{813372CD-F3F4-43E1-A070-8185185E9A99}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{676E4C50-C604-4EBC-8A7F-CD14AD845433}"
+EndProject
+Project("{9344bdbb-3e7f-41fc-a0dd-8665d75ee146}") = "Packages", "Packages.mdproj", "{D8B3FA7C-FE80-4AC6-ABCE-7093AE6AF763}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{813372CD-F3F4-43E1-A070-8185185E9A99}.Debug|x86.ActiveCfg = Debug|x86
+		{813372CD-F3F4-43E1-A070-8185185E9A99}.Debug|x86.Build.0 = Debug|x86
+		{813372CD-F3F4-43E1-A070-8185185E9A99}.Release|x86.ActiveCfg = Release|x86
+		{813372CD-F3F4-43E1-A070-8185185E9A99}.Release|x86.Build.0 = Release|x86
+		{D8B3FA7C-FE80-4AC6-ABCE-7093AE6AF763}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D8B3FA7C-FE80-4AC6-ABCE-7093AE6AF763}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Crisis\Crisis.csproj
+	EndGlobalSection
+EndGlobal
