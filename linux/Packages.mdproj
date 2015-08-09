@@ -6,7 +6,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{D8B3FA7C-FE80-4AC6-ABCE-7093AE6AF763}</ProjectGuid>
     <Packages>
-      <Packages xmlns="">
+      <Packages>
         <Package name="Linux Binaires">
           <Builder targetFile="Crisis.zip" platform="Linux" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
             <ChildEntries>
