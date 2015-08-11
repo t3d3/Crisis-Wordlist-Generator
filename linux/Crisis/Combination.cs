@@ -43,10 +43,6 @@ namespace Crisis_Wordlist_Generator
                 x--; // je decremente mon x
             }
             return buffer;
-
-//            if (x == 0) return 1;
-//            if (x < 2) return 1;
-//            return x * factorial(x - 1);
         }
 
        
@@ -103,12 +99,13 @@ namespace Crisis_Wordlist_Generator
 
                     }
 
-                    if (resultCombinationNoRepeats.Count == 60100000)
+                    if (resultCombinationNoRepeats.Count == 25100000)
                     {
                         return resultCombinationNoRepeats;                         
                     }
 
                     
+
                     resultCombinationNoRepeats.Add(s);
                     h = 0;
                     j = 0;
