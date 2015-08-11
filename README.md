@@ -6,5 +6,7 @@ Installation dans linux (Tester sur Debian et Kali Linux)
 
 
 ./configure
+
 make
+
 make install
