@@ -3,4 +3,5 @@ Encoding=UTF-8
 Type=Application
 Name=Crisis
 Exec=crisis
-Terminal=false
+Terminal=true
+OnlyShowIn=GNOME;
