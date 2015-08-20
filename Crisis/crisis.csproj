@@ -48,8 +48,9 @@
     <Compile Include="Combination.cs" />
     <Compile Include="Generate.cs" />
     <Compile Include="Help.cs" />
-    <Compile Include="MainConsole.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="Command.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.desktop">

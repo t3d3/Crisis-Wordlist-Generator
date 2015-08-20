@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace Crisis_Wordlist_Generator
+namespace crisis
 {
     public class Combination : Charset   
     {
@@ -60,11 +60,7 @@ namespace Crisis_Wordlist_Generator
             List<String> resultCombinationNoRepeats = new List<String>();
             
 
-            if (charset.Count < NumberOfChar)
-            {
-                return charset;
-            }
-            else if (NumberOfChar == 1)
+            if ((charset.Count < NumberOfChar) || (NumberOfChar == 1))
             {
                 return charset;
             }
@@ -80,7 +76,7 @@ namespace Crisis_Wordlist_Generator
             else if (charset.Count > NumberOfChar)
             {
                
-                double numberCombinationNoRepeat = factorial(charset.Count - 1) / factorial(NumberOfChar - 1) * factorial((charset.Count - 1) - (NumberOfChar - 1));                
+                double numberCombinationNoRepeat = factorial(charset.Count - 1) /  ( factorial(NumberOfChar - 1) * factorial((charset.Count - 1) - (NumberOfChar - 1)) ) ;                
                 
                 while (i < numberCombinationNoRepeat)
                 {
@@ -93,16 +89,16 @@ namespace Crisis_Wordlist_Generator
                             array[j] = array[j - 1] + 1;
                         }
 
-                        s = s + charset[array[h]];
+                        s += charset[array[h]];
                         h++;
                         j++;                        
 
                     }
 
-                    if (resultCombinationNoRepeats.Count == 25100000)
-                    {
-                        return resultCombinationNoRepeats;                         
-                    }
+//                    if (resultCombinationNoRepeats.Count == 25100000)
+//                    {
+//                        return resultCombinationNoRepeats;                         
+//                    }
 
                     
 

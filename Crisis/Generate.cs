@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace Crisis_Wordlist_Generator
+namespace crisis
 {
     public class Generate : Combination
     {
@@ -118,9 +118,10 @@ namespace Crisis_Wordlist_Generator
             Console.Clear();
             Console.WriteLine("Please wait, this may take time (over 5 minutes)");
 
+            var generate = CombinationCharset(CharsetSelecting, NumberOfChar, CharsetSelecting.Count - NumberOfChar);
+
             if (SaveFile == '1')
             {
-                var generate = CombinationCharset(CharsetSelecting, NumberOfChar, CharsetSelecting.Count - NumberOfChar);
                 setting_UpFile();
 
                 foreach (var item in generate)
@@ -178,7 +179,6 @@ namespace Crisis_Wordlist_Generator
             }
             else
             {
-                var generate = CombinationCharset(CharsetSelecting, NumberOfChar, CharsetSelecting.Count - NumberOfChar);
 
                 if (TypesOfGeneration == '1')
                 {
