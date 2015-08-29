@@ -113,12 +113,12 @@ namespace crisis
 
 
 
-        public void Charset()
+        public void CharsetCrunch()
         {
             Console.Clear();
             Console.WriteLine("Please wait, this may take time (over 5 minutes)");
 
-            var generate = CombinationCharset(CharsetSelecting, NumberOfChar, CharsetSelecting.Count - NumberOfChar);
+            var generate = CombinationCharset(Charset.CharsetSelecting , NumberOfChar, Charset.CharsetSelecting.Count - NumberOfChar);
 
             if (SaveFile == '1')
             {
@@ -197,7 +197,7 @@ namespace crisis
         public void Wordlist()
         {
             int cpt = 0;
-            double numberCombination = Math.Pow(NumberOfChar, CharsetSelecting.Count);
+            double numberCombination = Math.Pow(NumberOfChar, Charset.CharsetSelecting.Count);
             if (SaveFile == '1')
             {
                 

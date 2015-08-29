@@ -39,22 +39,30 @@ namespace crisis
         public void MainMenu()
         {
 
-            Console.WriteLine(" Crisis Wordlist Generator  by Teeknofil, ver: 1.0.2");
+            Console.WriteLine(" Crisis Wordlist Generator  by Teeknofil, ver: 1.0.3");
+            Console.WriteLine(" Thanks WarLocG for the debugging et fix bug");
             Console.WriteLine(" Trouble: http://www.kali-linux.fr/forum/index.php");
 
             Console.WriteLine("\n N°\tDESCRIPTION \n");
+            int i = 0;
+            do
+            {
+                Console.WriteLine(" {0})\t HEXA", i++);
+                Console.WriteLine(" {0})\t NUMBER", i++);
+                Console.WriteLine(" {0})\t SPECIAL CHARACTER", i++);
 
+                Console.WriteLine(" {0})\t SYLLABLE   CHARACTER UPPERCASE", i++);
+                Console.WriteLine(" {0})\t SYLLABLE   CHARACTER LOWERCASE", i++);
+                Console.WriteLine(" {0})\t SYLLABLE   CHARACTER UPPERCASE & LOWERCASE", i++);
 
-            Console.WriteLine(" 1)\t HEXA");
-            Console.WriteLine(" 2)\t NUMBER");
-            Console.WriteLine(" 3)\t SPECIAL CHARACTER");
-            Console.WriteLine(" 4)\t LATIN   CHARACTER UPPERCASE");
-            Console.WriteLine(" 5)\t LATIN   CHARACTER LOWERCASE");
-            Console.WriteLine(" 6)\t LATIN   CHARACTER UPPERCASE & LOWERCASE");
-            Console.WriteLine(" 7)\t SWEDISH   CHARACTER UPPERCASE");
-            Console.WriteLine(" 8)\t SWEDISH   CHARACTER LOWERCASE");
-            Console.WriteLine(" 9)\t SWEDISH   CHARACTER UPPERCASE & LOWERCASE");
+                Console.WriteLine(" {0})\t LATIN   CHARACTER UPPERCASE", i++);
+                Console.WriteLine(" {0})\t LATIN   CHARACTER LOWERCASE", i++);
+                Console.WriteLine(" {0})\t LATIN   CHARACTER UPPERCASE & LOWERCASE", i++);
 
+                Console.WriteLine(" {0})\t SWEDISH   CHARACTER UPPERCASE", i++);
+                Console.WriteLine(" {0})\t SWEDISH   CHARACTER LOWERCASE", i++);
+                Console.WriteLine(" {0})\t SWEDISH   CHARACTER UPPERCASE & LOWERCASE", i++);
+            } while(i < 1);
 
 
             while (booleanSubMenu)
@@ -62,26 +70,33 @@ namespace crisis
                 try
                 {
 
+                    Console.Write("\n");
                     Console.Write(" \nWith what category you want to work : ");
                     dislayMainSubMain = int.Parse(Console.ReadLine());
-
                     Console.Write("\n");
+                    i = 0;
 
-                    if (dislayMainSubMain == 1) MenuHexa();
-                    if (dislayMainSubMain == 2) MenNumeric();
-                    if (dislayMainSubMain == 3) MenuSpecialCharacteres ();
-                    if (dislayMainSubMain == 4) LatinCharacteUppercase();
-                    if (dislayMainSubMain == 5) LatinCharacterLowercase();
-                    if (dislayMainSubMain == 6) LatinCharacterUppercaseLowercase();
-                    if (dislayMainSubMain == 7) SwddishCharacterUppercase();
-                    if (dislayMainSubMain == 8) SwddishCharacterLowercase();
-                    if (dislayMainSubMain == 9) SwddishCharacterLowercaseUppercase();
-                
+                    if (dislayMainSubMain == i++) MenuHexa();
+                    if (dislayMainSubMain == i++) MenNumeric();
+                    if (dislayMainSubMain == i++) MenuSpecialCharacteres ();
+
+                    if (dislayMainSubMain == i++) SyllableCharacteUppercase();
+                    if (dislayMainSubMain == i++) SyllableCharacterLowercase();
+                    if (dislayMainSubMain == i++) SyllableCharacterUppercaseLowercase();
+
+
+                    if (dislayMainSubMain == i++) LatinCharacteUppercase();
+                    if (dislayMainSubMain == i++) LatinCharacterLowercase();
+                    if (dislayMainSubMain == i++) LatinCharacterUppercaseLowercase();
+
+                    if (dislayMainSubMain == i++) SwddishCharacterUppercase();
+                    if (dislayMainSubMain == i++) SwddishCharacterLowercase();
+                    if (dislayMainSubMain == i++) SwddishCharacterLowercaseUppercase();
+
                 } catch (FormatException)
                 {
                     Console.Write("\n Enter the number corresponding to your choice !");
-                } 
-                
+                }                
             }
         }
 
@@ -89,8 +104,9 @@ namespace crisis
         {
             Console.Write(" 99\t\t\t\t Back to main menu\n\n");
 
-            if (CharsetName == "99")
+            if (Charset.CharsetName == "99")
             {
+                Charset.CharsetName =  null;
                 Console.Clear();
                 Menu obj1 = new Menu();
                 obj1.MainMenu();
@@ -141,19 +157,19 @@ namespace crisis
                     b = int.TryParse(Console.ReadLine(), out sizeCharset);
                     NumberOfChar = +sizeCharset;
 
-                    if (sizeCharset < 3 | sizeCharset > 128)
+                    if (sizeCharset < 2 | sizeCharset > 128)
                     {
                         Console.WriteLine(" Type a number between 3 and 128 please !");
                         b = false;
                     }
                     else if (typesOFProcedure == '1' | typesOFProcedure == '2')
                     {
-                        if (sizeCharset > CharsetSelecting.Count)
+                        if (sizeCharset > Charset.CharsetSelecting.Count)
                         {
                             Console.WriteLine(" The number of character is too large to generate\n a caratère chain without rehearsal");
                             b = false;
                         }
-                        else if (sizeCharset == CharsetSelecting.Count)
+                        else if (sizeCharset == Charset.CharsetSelecting.Count)
                         {
 
                             Console.WriteLine(" The number of characters must be smaller for combinations without repetition");
@@ -210,7 +226,7 @@ namespace crisis
             Parameter ();
 
             if (TypesOfGeneration == '1' || TypesOfGeneration == '2') {
-                Charset ();
+                CharsetCrunch ();
             } else {
                 Wordlist ();
                 Console.ReadKey ();
@@ -223,7 +239,7 @@ namespace crisis
         {         
             booleanSubMenu = false;
 
-            while (BooleanType)
+            while (Charset.BooleanType)
             {
                 //hexa-lower
                 Console.WriteLine("\n hex-lower\t\t\t0123456789abcdef");
@@ -233,9 +249,9 @@ namespace crisis
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
-                CharsetName = Console.ReadLine();
+                Charset.CharsetName = Console.ReadLine();
 
-                Hexa();
+                Charset.Hexa();
             }
         }
 
@@ -243,7 +259,7 @@ namespace crisis
         {
             booleanSubMenu = false;
 
-            while (BooleanType)
+            while (Charset.BooleanType)
             {
                 //numeric  
                 Console.WriteLine(" numeric\t\t\t0123456789");
@@ -253,9 +269,9 @@ namespace crisis
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
-                CharsetName = Console.ReadLine();
+                Charset.CharsetName = Console.ReadLine();
 
-                Numeric();
+                Charset.Numeric();
             }
 
         }
@@ -264,7 +280,7 @@ namespace crisis
         {
             booleanSubMenu = false;
 
-            while (BooleanType)
+            while (Charset.BooleanType)
             {
                 //symbols14              
                 Console.WriteLine(" symbols14\t\t\t!@#$%^&*()-_+=");
@@ -279,18 +295,122 @@ namespace crisis
 
                 ReturnMainMenu();
                 Console.Write(" Write the name corresponding to your choice : ");
-                CharsetName = Console.ReadLine();
+                Charset.CharsetName = Console.ReadLine();
 
-                Symbols();
+                Charset.Symbols();
 
             }
         }
+
+        private void SyllableCharacteUppercase()
+        {
+            booleanSubMenu = false;
+
+            while (Charset.BooleanType)
+            {
+                //usyllable     
+                Console.WriteLine(" usyllable\t\t\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...");
+                //usyllable-space
+                Console.WriteLine(" usyllable-space\n");
+
+                //ualpha-numeric
+                Console.WriteLine(" ualpha-numeric\t\t\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...");
+                //usyllable-numeric-space
+                Console.WriteLine(" usyllable-numeric-space\t\t0123456789\n");
+
+                //ulsyllable-numeric-symbol14
+                Console.WriteLine(" usyllable-numeric-symbol14\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...");
+                //usyllable-numeric-symbol14-space
+                Console.WriteLine(" usyllable-numeric-symbol14-space\t0123456789t@#$%^&*()-_+=\n");
+
+                //usyllable-numeric-all
+                Console.WriteLine(" usyllable-numeric-all\t\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...");
+                //usyllable-numeric-all-space
+                Console.WriteLine(" usyllable-numeric-all-space\t\t0123456789!@#$%^&*()-_+=~`[]{}|\\:\n\t\t\t\t\t;\"'<>,.?/\n");
+
+                ReturnMainMenu();
+                Console.Write(" Write the name corresponding to your choice : ");
+                Charset.CharsetName = Console.ReadLine();
+
+                Charset.Usyllable_fr();
+            }
+        }
+
+         private void SyllableCharacterLowercase()
+        {
+            booleanSubMenu = false;
+
+            while (Charset.BooleanType)
+            {
+                //lsyllable     
+                Console.WriteLine(" lsyllable\t\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+                //lsyllable-space
+                Console.WriteLine(" lsyllable-space\n");
+
+                //lalpha-numeric
+                Console.WriteLine(" lalpha-numeric\t\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+                //lsyllable-numeric-space
+                Console.WriteLine(" lsyllable-numeric-space\t\t0123456789\n");
+
+                //lsyllable-numeric-symbol14
+                Console.WriteLine(" lsyllable-numeric-symbol14\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+                //usyllable-numeric-symbol14-space
+                Console.WriteLine(" lsyllable-numeric-symbol14-space\t0123456789t@#$%^&*()-_+=\n");
+
+                //lsyllable-numeric-all
+                Console.WriteLine(" lsyllable-numeric-all\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+                //lsyllable-numeric-all-space
+                Console.WriteLine(" lsyllable-numeric-all-space\t\t0123456789!@#$%^&*()-_+=~`[]{}|\\:\n\t\t\t\t\t;\"'<>,.?/\n");
+
+                ReturnMainMenu();
+                Console.Write(" Write the name corresponding to your choice : ");
+                Charset.CharsetName = Console.ReadLine();
+
+                Charset.Lsyllable_fr();
+            }    
+        }
+
+
+        private void SyllableCharacterUppercaseLowercase()
+        {
+            booleanSubMenu = false;
+
+            while (Charset.BooleanType)
+            {
+                //mixsyllable     
+                Console.WriteLine(" mixsyllable\t\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+                //mixsyllable-space
+                Console.WriteLine(" mixsyllable-space\t\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...\n");
+
+                //mixalpha-numeric
+                Console.WriteLine(" mixalpha-numeric\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+                //mixsyllable-numeric-space
+                Console.WriteLine(" mixsyllable-numeric-space\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...\n\t\t\t\t\t0123456789\n");
+
+                //mixsyllable-numeric-symbol14
+                Console.WriteLine(" mixsyllable-numeric-symbol14\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+                //mixsyllable-numeric-symbol14-space
+                Console.WriteLine(" mixsyllable-numeric-symbol14-space\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...\n\t\t\t\t\t0123456789t@#$%^&*()-_+=\n");
+
+                //mixsyllable-numeric-all
+                Console.WriteLine(" mixsyllable-numeric-all\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+                //mixsyllable-numeric-all-space
+                Console.WriteLine(" mixsyllable-numeric-all-space\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...\n\t\t\t\t\t0123456789!@#$%^&*()-_+=~`[]{}|\\:\n\t\t\t\t\t;\"'<>,.?/\n");
+
+                ReturnMainMenu();
+                Console.Write(" Write the name corresponding to your choice : ");
+                Charset.CharsetName = Console.ReadLine();
+
+                Charset.Symbols();
+            }
+        }
+
 
         private void LatinCharacteUppercase()
         {
             booleanSubMenu = false;
 
-            while (BooleanType)
+            while (Charset.BooleanType)
             {
                 //ualpha     
                 Console.WriteLine(" ualpha\t\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -315,9 +435,9 @@ namespace crisis
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
-                CharsetName = Console.ReadLine();
+                Charset.CharsetName = Console.ReadLine();
 
-                Ualpha();
+                Charset.Ualpha();
 
             }
         }
@@ -326,7 +446,7 @@ namespace crisis
         {
             booleanSubMenu = false;
 
-            while (BooleanType)
+            while (Charset.BooleanType)
             {
                 //lalpha
                 Console.WriteLine(" lalpha\t\t\t\tabcdefghijklmnopqrstuvwxyz");
@@ -348,9 +468,9 @@ namespace crisis
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
-                CharsetName = Console.ReadLine();
+                Charset.CharsetName = Console.ReadLine();
 
-                Lalpha();
+                Charset.Lalpha();
 
             }
         }
@@ -359,7 +479,7 @@ namespace crisis
         {
             booleanSubMenu = false;
 
-            while (BooleanType)
+            while (Charset.BooleanType)
             {
                 //mixalpha
                 Console.WriteLine(" mixalpha\t\t\t  abcdefghijklmnopqrstuvwxyz");
@@ -383,9 +503,9 @@ namespace crisis
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
-                CharsetName = Console.ReadLine();
+                Charset.CharsetName = Console.ReadLine();
 
-                MixAlpha();
+                Charset.MixAlpha();
 
             }
         }
@@ -394,7 +514,7 @@ namespace crisis
         {
             booleanSubMenu = false;
 
-            while (BooleanType)
+            while (Charset.BooleanType)
             {
                 //////////////////////////////////////////////////////////////////////////////////////////
                 //                 SWEDISH CHAR  SUPPORT                                                // 
@@ -427,9 +547,9 @@ namespace crisis
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
-                CharsetName = Console.ReadLine();
+                Charset.CharsetName = Console.ReadLine();
 
-                Ualpha_sv();
+                Charset.Ualpha_sv();
             }
         }
 
@@ -437,7 +557,7 @@ namespace crisis
         {
             booleanSubMenu = false;
 
-            while (BooleanType)
+            while (Charset.BooleanType)
             {
                 /////////////////////////
                 // Lowercase           //
@@ -466,9 +586,9 @@ namespace crisis
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
-                CharsetName = Console.ReadLine();
+                Charset.CharsetName = Console.ReadLine();
 
-                Lalpha_sv();
+                Charset.Lalpha_sv();
             }
         }
 
@@ -482,7 +602,7 @@ namespace crisis
 
             booleanSubMenu = false;
 
-            while (BooleanType)
+            while (Charset.BooleanType)
             {
                 //mixalpha-sv
                 Console.WriteLine(" mixalpha-sv\t\t\t\tabcdefghijklmnopqrstuvwxyzåäö");
@@ -508,9 +628,9 @@ namespace crisis
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
-                CharsetName = Console.ReadLine();
+                Charset.CharsetName = Console.ReadLine();
 
-                MixAlpha_sv();
+                Charset.MixAlpha_sv();
             }
         }
          

@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>crisis</RootNamespace>
     <AssemblyName>crisis</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <ReleaseVersion>1.0.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
