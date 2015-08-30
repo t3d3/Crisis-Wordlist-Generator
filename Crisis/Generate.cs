@@ -64,7 +64,7 @@ namespace crisis
             System.Threading.Thread.Sleep(7);
         }
 
-        private void setting_UpFile()
+        public void Setting_UpFile()
         {
             bool b = true;
             if (TypesOfGeneration == '1')
@@ -101,7 +101,7 @@ namespace crisis
                     }
                     else
                     {
-                        file = new StreamWriter(saveCharset + @"/wordlist_" +""+ numberFile +"" +".lst");
+                        file = new StreamWriter(saveCharset + @"/wordlist_"+ numberFile +".lst");
                         b = false;
                     }
 
@@ -122,7 +122,7 @@ namespace crisis
 
             if (SaveFile == '1')
             {
-                setting_UpFile();
+                Setting_UpFile();
 
                 foreach (var item in generate)
                 {
@@ -131,7 +131,7 @@ namespace crisis
                         file.Flush();
                         file.Close();
                         locate = new string[] { "\nYour file has been saved => " + saveCharset.ToString() + @"/charset_" + numberFile + ".lst" };
-                        setting_UpFile();
+                        Setting_UpFile();
                         numberLine = 0;
                     }                   
                     else if (generate.Count == numberLine)
@@ -269,7 +269,7 @@ namespace crisis
                 {
                     if (result.Count > numberLine - 1 || result.Count + cpt >= numberCombination)
                     {
-                        setting_UpFile();
+                        Setting_UpFile();
 
                         foreach (var item in result)
                         {

@@ -1,16 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Crisis/Charset.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Crisis/Command.cs">
     <Files>
-      <File FileName="Crisis/Menu.cs" Line="1" Column="1" />
-      <File FileName="Crisis/Charset.cs" Line="185" Column="4" />
+      <File FileName="Crisis/Command.cs" Line="282" Column="21" />
+      <File FileName="Crisis/Program.cs" Line="36" Column="21" />
+      <File FileName="Crisis/Combination.cs" Line="33" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Option id="ShowAllFiles" value="True" />
           <Node name="crisis" expanded="True">
-            <Node name="Charset.cs" selected="True" />
+            <Node name="Command.cs" selected="True" />
           </Node>
         </State>
       </Pad>

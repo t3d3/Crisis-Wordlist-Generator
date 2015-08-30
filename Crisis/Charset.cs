@@ -534,7 +534,7 @@ namespace crisis
                     charsetSelecting = lalpha.Concat(lalpha_sv).Concat(space).ToList();
                     booleanType = false;
                 }
-                else if (charsetName == "lalpha-numeric-své")
+                else if (charsetName == "lalpha-numeric-sv")
                 {
                     //lalpha-numeric-sv
                     charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).ToList();
@@ -548,10 +548,10 @@ namespace crisis
                     booleanType = false;
 
                 }
-                else if (charsetName == "lalpha-numeric-symbol14")
+                else if (charsetName == "lalpha-numeric-symbol14-sv")
                 {
 
-                    //lalpha-numeric-symbol14
+                    //lalpha-numeric-symbol14-sv
                     charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).Concat(symbols14).ToList();
                     booleanType = false;
 
@@ -604,7 +604,7 @@ namespace crisis
                     charsetSelecting = lalpha.Concat(lalpha_sv).Concat(ualpha).Concat(ualpha_sv).Concat(numeric).ToList();                    
                     booleanType = false;
                 }
-                else if (charsetName == "mixalpha-numeric-space_sv")
+                else if (charsetName == "mixalpha-numeric-space-sv")
                 {
                     //mixalpha-numeric-space_sv
                     charsetSelecting = lalpha.Concat(lalpha_sv).Concat(ualpha).Concat(ualpha_sv).Concat(numeric).Concat(space).ToList();                    

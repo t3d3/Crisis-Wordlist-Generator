@@ -159,7 +159,7 @@ namespace crisis
 
                     if (sizeCharset < 2 | sizeCharset > 128)
                     {
-                        Console.WriteLine(" Type a number between 3 and 128 please !");
+                        Console.WriteLine(" Type a number between 2 and 128 please !");
                         b = false;
                     }
                     else if (typesOFProcedure == '1' | typesOFProcedure == '2')
