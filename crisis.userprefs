@@ -2,9 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Crisis/Command.cs">
     <Files>
-      <File FileName="Crisis/Command.cs" Line="282" Column="21" />
-      <File FileName="Crisis/Program.cs" Line="36" Column="21" />
-      <File FileName="Crisis/Combination.cs" Line="33" Column="14" />
+      <File FileName="Crisis/Menu.cs" Line="240" Column="15" />
+      <File FileName="Crisis/Command.cs" Line="48" Column="35" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

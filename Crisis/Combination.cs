@@ -6,7 +6,7 @@ using System.IO;
 
 namespace crisis
 {
-    public class Combination    
+    public class Combination   
     {
         private int numberOfChar;
 
@@ -26,7 +26,7 @@ namespace crisis
 
         public string CombinationRamdon()
         {
-            string randonString = "";
+            string randonString = null;
             for (int i = 0; i < numberOfChar; i++)
             {
                 randonString += Charset.CharsetSelecting[random.Next(Charset.CharsetSelecting.Count)].ToString();

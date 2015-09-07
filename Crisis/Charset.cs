@@ -60,6 +60,7 @@ namespace crisis
         {            
             if (charsetName == "hex-lower")
             {
+
                 //hex-lower
                 charsetSelecting = numeric.Concat(hex_lower).ToList();
                 booleanType = false;
@@ -94,13 +95,11 @@ namespace crisis
 
         public static List<string> Symbols()
         {
-
             if (charsetName == "symbols14")
                 {
                     //symbols14  
                     charsetSelecting = symbols14;                    
                     booleanType = false;
-
                 }
                 else if (charsetName == "symbols14-space")
                 {
@@ -128,6 +127,7 @@ namespace crisis
         {
             if (charsetName == "usyllable")
             {
+
                 //usyllable
                 charsetSelecting = syllable_fr.ConvertAll(item => item.ToUpper());                    
                 booleanType = false;
@@ -140,6 +140,7 @@ namespace crisis
             }
             else if (charsetName == "usyllable-numeric")
             {
+
                 //usyllable-numeric
                 charsetSelecting = syllable_fr.ConvertAll(item => item.ToUpper()).Concat(numeric).ToList();                    
                 booleanType = false;
@@ -265,6 +266,7 @@ namespace crisis
             }
             else if (charsetName == "mixsyllable-numeric-symbol14-space")
             {
+
                 // mixsyllable-numeric-symbol14-space
                 charsetSelecting = syllable_fr.Concat(syllable_fr.ConvertAll(item => item.ToUpper())).Concat(numeric).Concat(symbols14).Concat(space).ToList();                     
                 booleanType = false;
@@ -433,7 +435,7 @@ namespace crisis
                 }
                 else if (charsetName == "mixalpha-numeric-symbol14-space")
                 {
-                    //mixalpha-numeric-symbol14-space
+                   //mixalpha-numeric-symbol14-space
                     charsetSelecting = lalpha.Concat(ualpha).Concat(numeric).Concat(symbols14).Concat(space).ToList();
                     booleanType = false;
 
@@ -593,6 +595,7 @@ namespace crisis
                 }
                 else if (charsetName == "mixalpha-space-sv")
                 {
+                Console.WriteLine("test");
                     //mixalpha-space-sv
                     charsetSelecting = lalpha.Concat(lalpha_sv).Concat(ualpha).Concat(ualpha_sv).Concat(space).ToList();
                     booleanType = false;

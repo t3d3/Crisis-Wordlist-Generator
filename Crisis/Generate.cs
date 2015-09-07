@@ -191,7 +191,6 @@ namespace crisis
 
                 numberLine = 0;
             }//End saveFile
-
         }  //End fonction
 
         public void Wordlist()
@@ -200,6 +199,7 @@ namespace crisis
             double numberCombination = Math.Pow(NumberOfChar, Charset.CharsetSelecting.Count);
             if (SaveFile == '1')
             {
+                Console.WriteLine("Test2");
                 
                 List<string> result = new List<string> { };
                 bool b = false;

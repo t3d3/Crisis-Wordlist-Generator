@@ -39,7 +39,7 @@ namespace crisis
         public void MainMenu()
         {
 
-            Console.WriteLine(" Crisis Wordlist Generator  by Teeknofil, ver: 1.0.3");
+            Console.WriteLine(" Crisis Wordlist Generator  by Teeknofil, version : 1.0.4");
             Console.WriteLine(" Thanks WarLocG for the debugging et fix bug");
             Console.WriteLine(" Trouble: http://www.kali-linux.fr/forum/index.php");
 
@@ -69,7 +69,6 @@ namespace crisis
             {
                 try
                 {
-
                     Console.Write("\n");
                     Console.Write(" \nWith what category you want to work : ");
                     dislayMainSubMain = int.Parse(Console.ReadLine());
@@ -77,7 +76,7 @@ namespace crisis
                     i = 0;
 
                     if (dislayMainSubMain == i++) MenuHexa();
-                    if (dislayMainSubMain == i++) MenNumeric();
+                    if (dislayMainSubMain == i++) MenuNumeric();
                     if (dislayMainSubMain == i++) MenuSpecialCharacteres ();
 
                     if (dislayMainSubMain == i++) SyllableCharacteUppercase();
@@ -93,7 +92,8 @@ namespace crisis
                     if (dislayMainSubMain == i++) SwddishCharacterLowercase();
                     if (dislayMainSubMain == i++) SwddishCharacterLowercaseUppercase();
 
-                } catch (FormatException)
+                } 
+                catch (FormatException)
                 {
                     Console.Write("\n Enter the number corresponding to your choice !");
                 }                
@@ -225,27 +225,32 @@ namespace crisis
 
             Parameter ();
 
-            if (TypesOfGeneration == '1' || TypesOfGeneration == '2') {
+            if (TypesOfGeneration == '1' || TypesOfGeneration == '2') 
+            {
                 CharsetCrunch ();
-            } else {
+            } 
+            else 
+            {
                 Wordlist ();
                 Console.ReadKey ();
             }
 
         } // End Fonction
                                         
-
-        private void MenuHexa()
+        public void MenuHexaPrint()
+        {
+            //hexa-lower
+            Console.WriteLine("\n hex-lower\t\t\t0123456789abcdef");
+            //hexa-upper
+            Console.WriteLine(" hex-upper\t\t\t0123456789ABCDEF\n");
+        }
+        public void MenuHexa()
         {         
             booleanSubMenu = false;
 
             while (Charset.BooleanType)
             {
-                //hexa-lower
-                Console.WriteLine("\n hex-lower\t\t\t0123456789abcdef");
-                //hexa-upper
-                Console.WriteLine(" hex-upper\t\t\t0123456789ABCDEF\n");
-
+                MenuHexaPrint();
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
@@ -255,17 +260,21 @@ namespace crisis
             }
         }
 
-        private void MenNumeric()
+        public void MenuNumericPrint()
+        {
+            //numeric  
+            Console.WriteLine(" numeric\t\t\t0123456789");
+            //numeric-space
+            Console.WriteLine(" numeric-space\t\t\t0123456789 [space] \n");
+        }
+
+        public void MenuNumeric()
         {
             booleanSubMenu = false;
 
             while (Charset.BooleanType)
             {
-                //numeric  
-                Console.WriteLine(" numeric\t\t\t0123456789");
-                //numeric-space
-                Console.WriteLine(" numeric-space\t\t\t0123456789 [space] \n");
-
+                MenuNumericPrint();
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
@@ -276,22 +285,26 @@ namespace crisis
 
         }
 
+        public void MenuSpecialCharacteresPrint()
+        {
+            //symbols14              
+            Console.WriteLine(" symbols14\t\t\t!@#$%^&*()-_+=");
+            //symbols14-space
+            Console.WriteLine(" symbols14-space\t\t!@#$%^&*()-_+= [space]\n");
+
+            //symbols-all                
+            Console.WriteLine(" symbols-all\t\t\t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/");
+            //symbols-all-space
+            Console.WriteLine(" symbols-all-space\t\t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/ [space]\n");
+        }
+
         private void MenuSpecialCharacteres ()
         {
             booleanSubMenu = false;
 
             while (Charset.BooleanType)
             {
-                //symbols14              
-                Console.WriteLine(" symbols14\t\t\t!@#$%^&*()-_+=");
-                //symbols14-space
-                Console.WriteLine(" symbols14-space\t\t!@#$%^&*()-_+= [space]\n");
-
-                //symbols-all                
-                Console.WriteLine(" symbols-all\t\t\t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/");
-                //symbols-all-space
-
-                Console.WriteLine(" symbols-all-space\t\t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/ [space]\n");
+                MenuSpecialCharacteresPrint();
 
                 ReturnMainMenu();
                 Console.Write(" Write the name corresponding to your choice : ");
@@ -301,6 +314,28 @@ namespace crisis
 
             }
         }
+        public void SyllableCharacteUppercasePrint()
+        {
+            //usyllable     
+            Console.WriteLine(" usyllable\t\t\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...");
+            //usyllable-space
+            Console.WriteLine(" usyllable-space\n");
+
+            //ualpha-numeric
+            Console.WriteLine(" ualpha-numeric\t\t\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...");
+            //usyllable-numeric-space
+            Console.WriteLine(" usyllable-numeric-space\t\t0123456789\n");
+
+            //ulsyllable-numeric-symbol14
+            Console.WriteLine(" usyllable-numeric-symbol14\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...");
+            //usyllable-numeric-symbol14-space
+            Console.WriteLine(" usyllable-numeric-symbol14-space\t0123456789t@#$%^&*()-_+=\n");
+
+            //usyllable-numeric-all
+            Console.WriteLine(" usyllable-numeric-all\t\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...");
+            //usyllable-numeric-all-space
+            Console.WriteLine(" usyllable-numeric-all-space\t\t0123456789!@#$%^&*()-_+=~`[]{}|\\:\n\t\t\t\t\t;\"'<>,.?/\n");
+        }
 
         private void SyllableCharacteUppercase()
         {
@@ -308,25 +343,7 @@ namespace crisis
 
             while (Charset.BooleanType)
             {
-                //usyllable     
-                Console.WriteLine(" usyllable\t\t\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...");
-                //usyllable-space
-                Console.WriteLine(" usyllable-space\n");
-
-                //ualpha-numeric
-                Console.WriteLine(" ualpha-numeric\t\t\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...");
-                //usyllable-numeric-space
-                Console.WriteLine(" usyllable-numeric-space\t\t0123456789\n");
-
-                //ulsyllable-numeric-symbol14
-                Console.WriteLine(" usyllable-numeric-symbol14\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...");
-                //usyllable-numeric-symbol14-space
-                Console.WriteLine(" usyllable-numeric-symbol14-space\t0123456789t@#$%^&*()-_+=\n");
-
-                //usyllable-numeric-all
-                Console.WriteLine(" usyllable-numeric-all\t\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...");
-                //usyllable-numeric-all-space
-                Console.WriteLine(" usyllable-numeric-all-space\t\t0123456789!@#$%^&*()-_+=~`[]{}|\\:\n\t\t\t\t\t;\"'<>,.?/\n");
+                SyllableCharacteUppercasePrint();
 
                 ReturnMainMenu();
                 Console.Write(" Write the name corresponding to your choice : ");
@@ -336,31 +353,36 @@ namespace crisis
             }
         }
 
+        public void SyllableCharacterLowercasePrint()
+        {
+            //lsyllable     
+            Console.WriteLine(" lsyllable\t\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+            //lsyllable-space
+            Console.WriteLine(" lsyllable-space\n");
+
+            //lalpha-numeric
+            Console.WriteLine(" lalpha-numeric\t\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+            //lsyllable-numeric-space
+            Console.WriteLine(" lsyllable-numeric-space\t\t0123456789\n");
+
+            //lsyllable-numeric-symbol14
+            Console.WriteLine(" lsyllable-numeric-symbol14\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+            //usyllable-numeric-symbol14-space
+            Console.WriteLine(" lsyllable-numeric-symbol14-space\t0123456789t@#$%^&*()-_+=\n");
+
+            //lsyllable-numeric-all
+            Console.WriteLine(" lsyllable-numeric-all\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+            //lsyllable-numeric-all-space
+            Console.WriteLine(" lsyllable-numeric-all-space\t\t0123456789!@#$%^&*()-_+=~`[]{}|\\:\n\t\t\t\t\t;\"'<>,.?/\n");
+        }
+
          private void SyllableCharacterLowercase()
         {
             booleanSubMenu = false;
 
             while (Charset.BooleanType)
             {
-                //lsyllable     
-                Console.WriteLine(" lsyllable\t\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
-                //lsyllable-space
-                Console.WriteLine(" lsyllable-space\n");
-
-                //lalpha-numeric
-                Console.WriteLine(" lalpha-numeric\t\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
-                //lsyllable-numeric-space
-                Console.WriteLine(" lsyllable-numeric-space\t\t0123456789\n");
-
-                //lsyllable-numeric-symbol14
-                Console.WriteLine(" lsyllable-numeric-symbol14\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
-                //usyllable-numeric-symbol14-space
-                Console.WriteLine(" lsyllable-numeric-symbol14-space\t0123456789t@#$%^&*()-_+=\n");
-
-                //lsyllable-numeric-all
-                Console.WriteLine(" lsyllable-numeric-all\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
-                //lsyllable-numeric-all-space
-                Console.WriteLine(" lsyllable-numeric-all-space\t\t0123456789!@#$%^&*()-_+=~`[]{}|\\:\n\t\t\t\t\t;\"'<>,.?/\n");
+                SyllableCharacterLowercasePrint();
 
                 ReturnMainMenu();
                 Console.Write(" Write the name corresponding to your choice : ");
@@ -370,6 +392,28 @@ namespace crisis
             }    
         }
 
+        public void SyllableCharacterUppercaseLowercasePrint()
+        {
+            //mixsyllable     
+            Console.WriteLine(" mixsyllable\t\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+            //mixsyllable-space
+            Console.WriteLine(" mixsyllable-space\t\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...\n");
+
+            //mixalpha-numeric
+            Console.WriteLine(" mixalpha-numeric\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+            //mixsyllable-numeric-space
+            Console.WriteLine(" mixsyllable-numeric-space\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...\n\t\t\t\t\t0123456789\n");
+
+            //mixsyllable-numeric-symbol14
+            Console.WriteLine(" mixsyllable-numeric-symbol14\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+            //mixsyllable-numeric-symbol14-space
+            Console.WriteLine(" mixsyllable-numeric-symbol14-space\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...\n\t\t\t\t\t0123456789t@#$%^&*()-_+=\n");
+
+            //mixsyllable-numeric-all
+            Console.WriteLine(" mixsyllable-numeric-all\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
+            //mixsyllable-numeric-all-space
+            Console.WriteLine(" mixsyllable-numeric-all-space\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...\n\t\t\t\t\t0123456789!@#$%^&*()-_+=~`[]{}|\\:\n\t\t\t\t\t;\"'<>,.?/\n");
+        }
 
         private void SyllableCharacterUppercaseLowercase()
         {
@@ -377,32 +421,37 @@ namespace crisis
 
             while (Charset.BooleanType)
             {
-                //mixsyllable     
-                Console.WriteLine(" mixsyllable\t\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
-                //mixsyllable-space
-                Console.WriteLine(" mixsyllable-space\t\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...\n");
-
-                //mixalpha-numeric
-                Console.WriteLine(" mixalpha-numeric\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
-                //mixsyllable-numeric-space
-                Console.WriteLine(" mixsyllable-numeric-space\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...\n\t\t\t\t\t0123456789\n");
-
-                //mixsyllable-numeric-symbol14
-                Console.WriteLine(" mixsyllable-numeric-symbol14\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
-                //mixsyllable-numeric-symbol14-space
-                Console.WriteLine(" mixsyllable-numeric-symbol14-space\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...\n\t\t\t\t\t0123456789t@#$%^&*()-_+=\n");
-
-                //mixsyllable-numeric-all
-                Console.WriteLine(" mixsyllable-numeric-all\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
-                //mixsyllable-numeric-all-space
-                Console.WriteLine(" mixsyllable-numeric-all-space\t\tPA,ZO,KI,SA,OU,AIL,TE,ZI,BA, ...\n\t\t\t\t\t0123456789!@#$%^&*()-_+=~`[]{}|\\:\n\t\t\t\t\t;\"'<>,.?/\n");
-
+               
+                SyllableCharacterUppercaseLowercasePrint();
                 ReturnMainMenu();
                 Console.Write(" Write the name corresponding to your choice : ");
                 Charset.CharsetName = Console.ReadLine();
 
                 Charset.Symbols();
             }
+        }
+
+        public void  LatinCharacteUppercasePrint()
+        {
+            //ualpha     
+            Console.WriteLine(" ualpha\t\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZ");
+            //ualpha-space
+            Console.WriteLine(" ualpha-space\n");
+
+            //ualpha-numeric
+            Console.WriteLine(" ualpha-numeric\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZ");
+            //ualpha-numeric-space
+            Console.WriteLine(" ualpha-numeric-space\t\t0123456789\n");
+
+            //ualpha-numeric-symbol14
+            Console.WriteLine(" ualpha-numeric-symbol14\tABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
+            //ualpha-numeric-symbol14-space
+            Console.WriteLine(" ualpha-numeric-symbol14-space\t@#$%^&*()-_+=\n");
+
+            //ualpha-numeric-all
+            Console.WriteLine(" ualpha-numeric-all\t\tABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
+            //ualpha-numeric-all-space
+            Console.WriteLine(" ualpha-numeric-all-space\t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/\n");
         }
 
 
@@ -412,26 +461,8 @@ namespace crisis
 
             while (Charset.BooleanType)
             {
-                //ualpha     
-                Console.WriteLine(" ualpha\t\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZ");
-                //ualpha-space
-                Console.WriteLine(" ualpha-space\n");
-
-                //ualpha-numeric
-                Console.WriteLine(" ualpha-numeric\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZ");
-                //ualpha-numeric-space
-                Console.WriteLine(" ualpha-numeric-space\t\t0123456789\n");
-
-                //ualpha-numeric-symbol14
-                Console.WriteLine(" ualpha-numeric-symbol14\tABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
-                //ualpha-numeric-symbol14-space
-                Console.WriteLine(" ualpha-numeric-symbol14-space\t@#$%^&*()-_+=\n");
-
-                //ualpha-numeric-all
-                Console.WriteLine(" ualpha-numeric-all\t\tABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
-                //ualpha-numeric-all-space
-                Console.WriteLine(" ualpha-numeric-all-space\t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/\n");
-
+               
+                LatinCharacteUppercasePrint();
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
@@ -441,6 +472,25 @@ namespace crisis
 
             }
         }
+        public void LatinCharacterLowercasePrint()
+        {
+            //lalpha
+            Console.WriteLine(" lalpha\t\t\t\tabcdefghijklmnopqrstuvwxyz");
+            //lalpha-space
+            Console.WriteLine(" lalpha-space\n");
+            //lalpha-numeric
+            Console.WriteLine(" lalpha-numeric\t\t\tabcdefghijklmnopqrstuvwxyz");
+            //lalpha-numeric-space
+            Console.WriteLine(" lalpha-numeric-space\t\t0123456789\n");
+            //lalpha-numeric-symbol14
+            Console.WriteLine(" lalpha-numeric-symbol14\tabcdefghijklmnopqrstuvwxyz0123456789");
+            //lalpha-numeric-symbol14-space
+            Console.WriteLine(" lalpha-numeric-symbol14-space\t@#$%^&*()-_+= [space]\n");
+            //lalpha-numeric-all
+            Console.WriteLine(" lalpha-numeric-all\t\tabcdefghijklmnopqrstuvwxyz0123456789");
+            //lalpha-numeric-all-space 
+            Console.WriteLine(" lalpha-numeric-all-space \t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/\n");
+        }
 
         private void LatinCharacterLowercase()
         {
@@ -448,22 +498,7 @@ namespace crisis
 
             while (Charset.BooleanType)
             {
-                //lalpha
-                Console.WriteLine(" lalpha\t\t\t\tabcdefghijklmnopqrstuvwxyz");
-                //lalpha-space
-                Console.WriteLine(" lalpha-space\n");
-                //lalpha-numeric
-                Console.WriteLine(" lalpha-numeric\t\t\tabcdefghijklmnopqrstuvwxyz");
-                //lalpha-numeric-space
-                Console.WriteLine(" lalpha-numeric-space\t\t0123456789\n");
-                //lalpha-numeric-symbol14
-                Console.WriteLine(" lalpha-numeric-symbol14\tabcdefghijklmnopqrstuvwxyz0123456789");
-                //lalpha-numeric-symbol14-space
-                Console.WriteLine(" lalpha-numeric-symbol14-space\t@#$%^&*()-_+= [space]\n");
-                //lalpha-numeric-all
-                Console.WriteLine(" lalpha-numeric-all\t\tabcdefghijklmnopqrstuvwxyz0123456789");
-                //lalpha-numeric-all-space 
-                Console.WriteLine(" lalpha-numeric-all-space \t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/\n");
+                LatinCharacterLowercasePrint();
 
                 ReturnMainMenu();
 
@@ -475,31 +510,36 @@ namespace crisis
             }
         }
 
+        public void LatinCharacterUppercaseLowercasePrint()
+        {
+            //mixalpha
+            Console.WriteLine(" mixalpha\t\t\t  abcdefghijklmnopqrstuvwxyz");
+            //mixalpha-space
+            Console.WriteLine(" mixalpha-space\t\t\t  ABCDEFGHIJKLMNOPQRSTUVWXYZ\n");
+
+            //mixalpha-numeric
+            Console.WriteLine(" mixalpha-numeric\t\t  abcdefghijklmnopqrstuvwxyz");
+            //mixalpha-numeric-space
+            Console.WriteLine(" mixalpha-numeric-space\t\t  ABCDEFGHIJKLMNOPQRSTUVWXYZ\n\t\t\t\t  0123456789\n");
+
+            //mixalpha-numeric-symbol14
+            Console.WriteLine(" mmixalpha-numeric-symbol14\t  abcdefghijklmnopqrstuvwxyz");
+            //mixalpha-numeric-symbol14-space
+            Console.WriteLine(" mixalpha-numeric-symbol14-space  ABCDEFGHIJKLMNOPQRSTUVWXYZ\n\t\t\t\t  0123456789!@#$%^&*()-_+=\n");
+
+            //mixalpha-numeric-all
+            Console.WriteLine(" mixalpha-numeric-all\t\t  abcdefghijklmnopqrstuvwxyz");
+            //mixalpha-numeric-all-space
+            Console.WriteLine(" mixalpha-numeric-all-space\t  ABCDEFGHIJKLMNOPQRSTUVWXYZ\n\t\t\t\t  0123456789!@#$%^&*()-_+=~`\n\t\t\t\t  []{}|\\:;\"'<>,.?/\n");
+        }
+
         private void LatinCharacterUppercaseLowercase()
         {
             booleanSubMenu = false;
 
             while (Charset.BooleanType)
             {
-                //mixalpha
-                Console.WriteLine(" mixalpha\t\t\t  abcdefghijklmnopqrstuvwxyz");
-                //mixalpha-space
-                Console.WriteLine(" mixalpha-space\t\t\t  ABCDEFGHIJKLMNOPQRSTUVWXYZ\n");
-
-                //mixalpha-numeric
-                Console.WriteLine(" mixalpha-numeric\t\t  abcdefghijklmnopqrstuvwxyz");
-                //mixalpha-numeric-space
-                Console.WriteLine(" mixalpha-numeric-space\t\t  ABCDEFGHIJKLMNOPQRSTUVWXYZ\n\t\t\t\t  0123456789\n");
-
-                //mixalpha-numeric-symbol14
-                Console.WriteLine(" mmixalpha-numeric-symbol14\t  abcdefghijklmnopqrstuvwxyz");
-                //mixalpha-numeric-symbol14-space
-                Console.WriteLine(" mixalpha-numeric-symbol14-space  ABCDEFGHIJKLMNOPQRSTUVWXYZ\n\t\t\t\t  0123456789!@#$%^&*()-_+=\n");
-
-                //mixalpha-numeric-all
-                Console.WriteLine(" mixalpha-numeric-all\t\t  abcdefghijklmnopqrstuvwxyz");
-                //mixalpha-numeric-all-space
-                Console.WriteLine(" mixalpha-numeric-all-space\t  ABCDEFGHIJKLMNOPQRSTUVWXYZ\n\t\t\t\t  0123456789!@#$%^&*()-_+=~`\n\t\t\t\t  []{}|\\:;\"'<>,.?/\n");
+                LatinCharacterUppercaseLowercasePrint();
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
@@ -510,40 +550,45 @@ namespace crisis
             }
         }
 
+        public void SwddishCharacterUppercasePrint()
+        {
+            //////////////////////////////////////////////////////////////////////////////////////////
+            //                 SWEDISH CHAR  SUPPORT                                                // 
+            /////////////////////////////////////////////////////////////////////////////////////////
+
+            /////////////////////////
+            //       Uppercase     //
+            /////////////////////////
+
+            //ualpha-sv
+            Console.WriteLine(" ualpha-sv\t\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ");
+            //ualpha-space-sv
+            Console.WriteLine(" ualpha-space-sv\n");
+
+            //ualpha-numeric-sv
+            Console.WriteLine(" ualpha-numeric-sv\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789");
+            //ualpha-numeric-space-sv
+            Console.WriteLine(" ualpha-numeric-space-sv\n");
+
+            //ualpha-numeric-symbol14-sv
+            Console.WriteLine(" ualpha-numeric-symbol14-sv\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789");
+            //ualpha-numeric-symbol14-space-sv
+            Console.WriteLine(" ualpha-numeric-symbol14-space-sv\t@#$%^&*()-_+= [space]\n");
+
+            //ualpha-numeric-all-sv
+            Console.WriteLine(" ualpha-numeric-all-sv\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789");
+            //ualpha-numeric-all-space-sv
+            Console.WriteLine(" ualpha-numeric-all-space-sv\t\t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/\n");
+
+        }
+
         private void SwddishCharacterUppercase()
         {
             booleanSubMenu = false;
 
             while (Charset.BooleanType)
             {
-                //////////////////////////////////////////////////////////////////////////////////////////
-                //                 SWEDISH CHAR  SUPPORT                                                // 
-                /////////////////////////////////////////////////////////////////////////////////////////
-
-                /////////////////////////
-                //       Uppercase     //
-                /////////////////////////
-
-                //ualpha-sv
-                Console.WriteLine(" ualpha-sv\t\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ");
-                //ualpha-space-sv
-                Console.WriteLine(" ualpha-space-sv\n");
-
-                //ualpha-numeric-sv
-                Console.WriteLine(" ualpha-numeric-sv\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789");
-                //ualpha-numeric-space-sv
-                Console.WriteLine(" ualpha-numeric-space-sv\n");
-
-                //ualpha-numeric-symbol14-sv
-                Console.WriteLine(" ualpha-numeric-symbol14-sv\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789");
-                //ualpha-numeric-symbol14-space-sv
-                Console.WriteLine(" ualpha-numeric-symbol14-space-sv\t@#$%^&*()-_+= [space]\n");
-
-                //ualpha-numeric-all-sv
-                Console.WriteLine(" ualpha-numeric-all-sv\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789");
-                //ualpha-numeric-all-space-sv
-                Console.WriteLine(" ualpha-numeric-all-space-sv\t\t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/\n");
-
+                SwddishCharacterUppercasePrint();
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
@@ -553,35 +598,40 @@ namespace crisis
             }
         }
 
+        public void SwddishCharacterLowercasePrint()
+        {
+            /////////////////////////
+            // Lowercase           //
+            /////////////////////////
+
+            //lalpha-sv
+            Console.WriteLine(" lalpha-sv\t\t\t\tabcdefghijklmnopqrstuvwxyzåäö");
+            //lalpha-space-sv
+            Console.WriteLine(" lalpha-space-sv\n");
+
+            //lalpha-numeric-sv
+            Console.WriteLine(" lalpha-numeric-sv\t\t\tabcdefghijklmnopqrstuvwxyzåäö0");
+            //lalpha-numeric-space-sv
+            Console.WriteLine(" lalpha-numeric-space-sv\t\t123456789\n");
+
+            //lalpha-numeric-symbol14-sv 
+            Console.WriteLine(" lalpha-numeric-symbol14-sv\t\tabcdefghijklmnopqrstuvwxyzåäö0");
+            //lalpha-numeric-symbol14-space-sv
+            Console.WriteLine(" lalpha-numeric-symbol14-space-sv\t123456789!@#$%^&*()-_+=\n");
+
+            //lalpha-numeric-all-sv
+            Console.WriteLine(" lalpha-numeric-all-sv\t\t\tabcdefghijklmnopqrstuvwxyzåäö0");
+            //lalpha-numeric-all-space-sv
+            Console.WriteLine(" lalpha-numeric-all-space-sv\t\t123456789!@#$%^&*()-_+=~`\n\t\t\t\t\t[]{}|\\:;\"'<>,.?/ [space]\n");
+        }
+
         private void SwddishCharacterLowercase()
         {
             booleanSubMenu = false;
 
             while (Charset.BooleanType)
             {
-                /////////////////////////
-                // Lowercase           //
-                /////////////////////////
-
-                //lalpha-sv
-                Console.WriteLine(" lalpha-sv\t\t\t\tabcdefghijklmnopqrstuvwxyzåäö");
-                //lalpha-space-sv
-                Console.WriteLine(" lalpha-space-sv\n");
-
-                //lalpha-numeric-sv
-                Console.WriteLine(" lalpha-numeric-sv\t\t\tabcdefghijklmnopqrstuvwxyzåäö0");
-                //lalpha-numeric-space-sv
-                Console.WriteLine(" lalpha-numeric-space-sv\t\t123456789\n");
-
-                //lalpha-numeric-symbol14-sv 
-                Console.WriteLine(" lalpha-numeric-symbol14-sv\t\tabcdefghijklmnopqrstuvwxyzåäö0");
-                //lalpha-numeric-symbol14-space-sv
-                Console.WriteLine(" lalpha-numeric-symbol14-space-sv\t123456789!@#$%^&*()-_+=\n");
-
-                //lalpha-numeric-all-sv
-                Console.WriteLine(" lalpha-numeric-all-sv\t\t\tabcdefghijklmnopqrstuvwxyzåäö0");
-                //lalpha-numeric-all-space-sv
-                Console.WriteLine(" lalpha-numeric-all-space-sv\t\t123456789!@#$%^&*()-_+=~`\n\t\t\t\t\t[]{}|\\:;\"'<>,.?/ [space]\n");
+                SwddishCharacterLowercasePrint();
 
                 ReturnMainMenu();
 
@@ -592,39 +642,41 @@ namespace crisis
             }
         }
 
-        private void SwddishCharacterLowercaseUppercase()
+        public void SwddishCharacterLowercaseUppercasePrint()
         {
             /////////////////////////
             // Mixcase             // 
             ////////////////////////
 
+            //mixalpha-sv
+            Console.WriteLine(" mixalpha-sv\t\t\t\tabcdefghijklmnopqrstuvwxyzåäö");
+            //mixalpha-space-sv
+            Console.WriteLine(" mixalpha-space-sv\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n");
 
+            //mixalpha-numeric-sv
+            Console.WriteLine(" mixalpha-numeric-sv\t\t\tabcdefghijklmnopqrstuvwxyzåäö");
+            //mixalpha-numeric-space-sv
+            Console.WriteLine(" mixalpha-numeric-space-sv\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n\t\t\t\t\t0123456789\n");
 
+            //mixalpha-numeric-symbol14-sv
+            Console.WriteLine(" mixalpha-numeric-symbol14-sv\t\tabcdefghijklmnopqrstuvwxyzåäö");
+            //mixalpha-numeric-symbol14-space-sv
+            Console.WriteLine(" mixalpha-numeric-symbol14-space-sv\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n\t\t\t\t\t0123456789!@#$%^&*()-_+=\n");
+
+            //mixalpha-numeric-all-sv
+            Console.WriteLine(" mixalpha-numeric-all-sv\t\tabcdefghijklmnopqrstuvwxyzåäö");
+            //mixalpha-numeric-all-space-sv
+            Console.WriteLine(" mixalpha-numeric-all-space-sv\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n\t\t\t\t\t0123456789!@#$%^&*()-_+=~`\n\t\t\t\t\t[]{}|\\:;\"'<>,.?/\n");
+
+        }
+
+        private void SwddishCharacterLowercaseUppercase()
+        {
             booleanSubMenu = false;
 
             while (Charset.BooleanType)
             {
-                //mixalpha-sv
-                Console.WriteLine(" mixalpha-sv\t\t\t\tabcdefghijklmnopqrstuvwxyzåäö");
-                //mixalpha-space-sv
-                Console.WriteLine(" mixalpha-space-sv\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n");
-
-                //mixalpha-numeric-sv
-                Console.WriteLine(" mixalpha-numeric-sv\t\t\tabcdefghijklmnopqrstuvwxyzåäö");
-                //mixalpha-numeric-space-sv
-                Console.WriteLine(" mixalpha-numeric-space-sv\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n\t\t\t\t\t0123456789\n");
-
-                //mixalpha-numeric-symbol14-sv
-                Console.WriteLine(" mixalpha-numeric-symbol14-sv\t\tabcdefghijklmnopqrstuvwxyzåäö");
-                //mixalpha-numeric-symbol14-space-sv
-                Console.WriteLine(" mixalpha-numeric-symbol14-space-sv\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n\t\t\t\t\t0123456789!@#$%^&*()-_+=\n");
-
-                //mixalpha-numeric-all-sv
-                Console.WriteLine(" mixalpha-numeric-all-sv\t\tabcdefghijklmnopqrstuvwxyzåäö");
-                //mixalpha-numeric-all-space-sv
-                Console.WriteLine(" mixalpha-numeric-all-space-sv\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n\t\t\t\t\t0123456789!@#$%^&*()-_+=~`\n\t\t\t\t\t[]{}|\\:;\"'<>,.?/\n");
-
-
+                SwddishCharacterLowercaseUppercasePrint();
                 ReturnMainMenu();
 
                 Console.Write(" Write the name corresponding to your choice : ");
