@@ -176,15 +176,15 @@ namespace crisis
             Regex mixalpha = new Regex(@"^mixalpha.{0,23}$");
 
 
-            Regex ualpha_sv = new Regex(@"^ualpha.{0,23}-sv");
-            Regex lalpha_sv = new Regex(@"^lalpha.{0,23}-sv$");
-            Regex mixalpha_sv = new Regex(@"^mixalpha.{0,23}-sv$");
+            Regex ualpha_sv = new Regex(@"^sv-ualpha.{0,23}");
+            Regex lalpha_sv = new Regex(@"^sv-lalpha.{0,23}$");
+            Regex mixalpha_sv = new Regex(@"^sv-mixalpha.{0,23}$");
 
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (options.Dictionnary)
+                { 
 
-            if (options.Dictionnary)
-            { 
-                for (int i = 0; i < args.Length; i++)
-                {
                     if (hex.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
@@ -221,42 +221,62 @@ namespace crisis
                     {
                         Charset.CharsetName += args [i];
                         Charset.MixAlpha();   
-                    } else if (ualpha_sv.IsMatch(args [i]))
+                    } ///////////////////////////////
+                    else if (ualpha_sv.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
                         Charset.Ualpha_sv();
-                    } else if (lalpha_sv.IsMatch(args [i]))
+                    } 
+                    else if (lalpha_sv.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
                         Charset.Lalpha_sv();
-                    } else if (mixalpha_sv.IsMatch(args [i]))
+                    } 
+                    else if (mixalpha_sv.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
                         Charset.MixAlpha_sv();
-                    }
+                    } 
+//                    else if ( i == args.Length && hex == false )
+//                    {
+//                        Console.WriteLine("\n\n");
+//                        Environment.Exit(0);
+//                    }
+                
                 }
-            } else if (parser.HasErrors)
-            {
-                Console.WriteLine(parser.UsageInfo.ToString(78, true));
-                return -1;
-            } 
+                else if (parser.HasErrors)
+                {
+                    Console.WriteLine(parser.UsageInfo.ToString(78, true));
+                    return -1;
+                } 
 
-            if (options.Lenght)
-            {
-                for (int i = 0; i <args.Length; i++)
+                if (options.Lenght)
                 {
                     if (args [i] == "-l" | args [i] == "--lenght")
                     {
-                        int l = Convert.ToInt32(args [i + 1]);
-                        NumberOfChar += l;
-                    }
-                }
-            } else if (parser.HasErrors)
-            {
-                Console.WriteLine(parser.UsageInfo.ToString(78, true));
-                return -1;
-            }
+                        int l;
 
+                        bool b = int.TryParse(args [i + 1], out l);
+
+                        if (l.Equals(null) | b == false)
+                        {
+                            Console.WriteLine("\nThe value entered with the -l option is incorrect\n");
+                            Environment.Exit(0);
+                        } 
+                        else
+                        {
+                            NumberOfChar += l;
+                        }
+                    }
+
+                } 
+                else if (parser.HasErrors)
+                {
+                    Console.WriteLine(parser.UsageInfo.ToString(78, true));
+                    return -1;
+                }
+
+            }
             return 0;
         }
 

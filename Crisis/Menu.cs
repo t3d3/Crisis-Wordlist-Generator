@@ -561,24 +561,24 @@ namespace crisis
             /////////////////////////
 
             //ualpha-sv
-            Console.WriteLine(" ualpha-sv\t\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ");
+            Console.WriteLine(" sv-ualpha\t\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ");
             //ualpha-space-sv
-            Console.WriteLine(" ualpha-space-sv\n");
+            Console.WriteLine(" sv-ualpha-space\n");
 
             //ualpha-numeric-sv
-            Console.WriteLine(" ualpha-numeric-sv\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789");
+            Console.WriteLine(" sv-ualpha-numeric\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789");
             //ualpha-numeric-space-sv
-            Console.WriteLine(" ualpha-numeric-space-sv\n");
+            Console.WriteLine(" sv-ualpha-numeric-space\n");
 
             //ualpha-numeric-symbol14-sv
-            Console.WriteLine(" ualpha-numeric-symbol14-sv\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789");
+            Console.WriteLine(" sv-ualpha-numeric-symbol14\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789");
             //ualpha-numeric-symbol14-space-sv
-            Console.WriteLine(" ualpha-numeric-symbol14-space-sv\t@#$%^&*()-_+= [space]\n");
+            Console.WriteLine(" sv-ualpha-numeric-symbol14-space\t@#$%^&*()-_+= [space]\n");
 
             //ualpha-numeric-all-sv
-            Console.WriteLine(" ualpha-numeric-all-sv\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789");
+            Console.WriteLine(" sv-ualpha-numeric-all\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789");
             //ualpha-numeric-all-space-sv
-            Console.WriteLine(" ualpha-numeric-all-space-sv\t\t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/\n");
+            Console.WriteLine(" sv-ualpha-numeric-all-space\t\t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/\n");
 
         }
 
@@ -605,24 +605,24 @@ namespace crisis
             /////////////////////////
 
             //lalpha-sv
-            Console.WriteLine(" lalpha-sv\t\t\t\tabcdefghijklmnopqrstuvwxyzåäö");
+            Console.WriteLine(" sv-lalpha\t\t\t\tabcdefghijklmnopqrstuvwxyzåäö");
             //lalpha-space-sv
-            Console.WriteLine(" lalpha-space-sv\n");
+            Console.WriteLine(" sv-lalpha-space\n");
 
             //lalpha-numeric-sv
-            Console.WriteLine(" lalpha-numeric-sv\t\t\tabcdefghijklmnopqrstuvwxyzåäö0");
+            Console.WriteLine(" sv-lalpha-numeric\t\t\tabcdefghijklmnopqrstuvwxyzåäö0");
             //lalpha-numeric-space-sv
-            Console.WriteLine(" lalpha-numeric-space-sv\t\t123456789\n");
+            Console.WriteLine(" sv-lalpha-numeric-space\t\t123456789\n");
 
             //lalpha-numeric-symbol14-sv 
-            Console.WriteLine(" lalpha-numeric-symbol14-sv\t\tabcdefghijklmnopqrstuvwxyzåäö0");
+            Console.WriteLine(" sv-lalpha-numeric-symbol14\t\tabcdefghijklmnopqrstuvwxyzåäö0");
             //lalpha-numeric-symbol14-space-sv
-            Console.WriteLine(" lalpha-numeric-symbol14-space-sv\t123456789!@#$%^&*()-_+=\n");
+            Console.WriteLine(" sv-lalpha-numeric-symbol14-space\t123456789!@#$%^&*()-_+=\n");
 
             //lalpha-numeric-all-sv
-            Console.WriteLine(" lalpha-numeric-all-sv\t\t\tabcdefghijklmnopqrstuvwxyzåäö0");
+            Console.WriteLine(" sv-lalpha-numeric-all-sv\t\t\tabcdefghijklmnopqrstuvwxyzåäö0");
             //lalpha-numeric-all-space-sv
-            Console.WriteLine(" lalpha-numeric-all-space-sv\t\t123456789!@#$%^&*()-_+=~`\n\t\t\t\t\t[]{}|\\:;\"'<>,.?/ [space]\n");
+            Console.WriteLine(" sv-lalpha-numeric-all-space\t\t123456789!@#$%^&*()-_+=~`\n\t\t\t\t\t[]{}|\\:;\"'<>,.?/ [space]\n");
         }
 
         private void SwddishCharacterLowercase()
@@ -649,24 +649,24 @@ namespace crisis
             ////////////////////////
 
             //mixalpha-sv
-            Console.WriteLine(" mixalpha-sv\t\t\t\tabcdefghijklmnopqrstuvwxyzåäö");
+            Console.WriteLine(" sv-mixalpha-sv\t\t\t\tabcdefghijklmnopqrstuvwxyzåäö");
             //mixalpha-space-sv
-            Console.WriteLine(" mixalpha-space-sv\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n");
+            Console.WriteLine(" sv-mixalpha-space\t\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n");
 
             //mixalpha-numeric-sv
-            Console.WriteLine(" mixalpha-numeric-sv\t\t\tabcdefghijklmnopqrstuvwxyzåäö");
+            Console.WriteLine(" sv-mixalpha-numeric\t\t\tabcdefghijklmnopqrstuvwxyzåäö");
             //mixalpha-numeric-space-sv
-            Console.WriteLine(" mixalpha-numeric-space-sv\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n\t\t\t\t\t0123456789\n");
+            Console.WriteLine(" sv-mixalpha-numeric-space\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n\t\t\t\t\t0123456789\n");
 
             //mixalpha-numeric-symbol14-sv
-            Console.WriteLine(" mixalpha-numeric-symbol14-sv\t\tabcdefghijklmnopqrstuvwxyzåäö");
+            Console.WriteLine(" sv-mixalpha-numeric-symbol14\t\tabcdefghijklmnopqrstuvwxyzåäö");
             //mixalpha-numeric-symbol14-space-sv
-            Console.WriteLine(" mixalpha-numeric-symbol14-space-sv\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n\t\t\t\t\t0123456789!@#$%^&*()-_+=\n");
+            Console.WriteLine(" sv-mixalpha-numeric-symbol14-space\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n\t\t\t\t\t0123456789!@#$%^&*()-_+=\n");
 
             //mixalpha-numeric-all-sv
-            Console.WriteLine(" mixalpha-numeric-all-sv\t\tabcdefghijklmnopqrstuvwxyzåäö");
+            Console.WriteLine(" sv-mixalpha-numeric-all\t\tabcdefghijklmnopqrstuvwxyzåäö");
             //mixalpha-numeric-all-space-sv
-            Console.WriteLine(" mixalpha-numeric-all-space-sv\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n\t\t\t\t\t0123456789!@#$%^&*()-_+=~`\n\t\t\t\t\t[]{}|\\:;\"'<>,.?/\n");
+            Console.WriteLine(" sv-mixalpha-numeric-all-space\t\tABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ\n\t\t\t\t\t0123456789!@#$%^&*()-_+=~`\n\t\t\t\t\t[]{}|\\:;\"'<>,.?/\n");
 
         }
 
