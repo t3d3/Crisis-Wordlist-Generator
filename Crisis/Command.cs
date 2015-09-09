@@ -179,7 +179,7 @@ namespace crisis
             Regex ualpha_sv = new Regex(@"^sv-ualpha.{0,23}");
             Regex lalpha_sv = new Regex(@"^sv-lalpha.{0,23}$");
             Regex mixalpha_sv = new Regex(@"^sv-mixalpha.{0,23}$");
-
+            bool b = false;
             for (int i = 0; i < args.Length; i++)
             {
                 if (options.Dictionnary)
@@ -189,66 +189,83 @@ namespace crisis
                     {
                         Charset.CharsetName += args [i];
                         Charset.Hexa();
+                        b = true;
                     } else if (numeric.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
                         Charset.Numeric();
+                        b = true;
                     } else if (symbols.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
                         Charset.Symbols();
+                        b = true;
+
                     } else if (usyllable.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
                         Charset.Usyllable_fr();
+                        b = true;
+
                     } else if (lsyllable.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
                         Charset.Lsyllable_fr();
+                        b = true;
+
                     } else if (mixsyllable.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
                         Charset.mixsyllable_fr();
+                        b = true;
+
                     } else if (ualpha.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
                         Charset.Ualpha();
+                        b = true;
+
                     } else if (lalpha.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
                         Charset.Lalpha();
+                        b = true;
+
                     } else if (mixalpha.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
-                        Charset.MixAlpha();   
+                        Charset.MixAlpha();
+                        b = true;
+
                     } ///////////////////////////////
                     else if (ualpha_sv.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
-                        Charset.Ualpha_sv();
+                        b = true;
+
                     } 
                     else if (lalpha_sv.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
                         Charset.Lalpha_sv();
+                        b = true;
+
                     } 
                     else if (mixalpha_sv.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
                         Charset.MixAlpha_sv();
-                    } 
-//                    else if ( i == args.Length && hex == false )
-//                    {
-//                        Console.WriteLine("\n\n");
-//                        Environment.Exit(0);
-//                    }
-                
-                }
+                        b = true;
+                    }
+
+                } 
                 else if (parser.HasErrors)
                 {
                     Console.WriteLine(parser.UsageInfo.ToString(78, true));
                     return -1;
                 } 
+
+
 
                 if (options.Lenght)
                 {
@@ -256,9 +273,9 @@ namespace crisis
                     {
                         int l;
 
-                        bool b = int.TryParse(args [i + 1], out l);
+                        bool c = int.TryParse(args [i + 1], out l);
 
-                        if (l.Equals(null) | b == false)
+                        if (l.Equals(null) | c == false)
                         {
                             Console.WriteLine("\nThe value entered with the -l option is incorrect\n");
                             Environment.Exit(0);
@@ -269,6 +286,7 @@ namespace crisis
                         }
                     }
 
+                  
                 } 
                 else if (parser.HasErrors)
                 {
@@ -277,6 +295,12 @@ namespace crisis
                 }
 
             }
+            if ( b ==false)
+            {
+                Console.WriteLine("\nThe name entered with the -w option is incorrect\n");
+                Environment.Exit(0);
+            }
+
             return 0;
         }
 
