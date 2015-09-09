@@ -66,7 +66,7 @@ Example:		crisis --charset
 
 </pre>
 
-#USAGE
+#Usage
 
 <pre>
 ./crisis.exe -l 20 -r -w lalpha-numeric | aircrack-ng -w- -e SFR_XXXX output-01.cap 
