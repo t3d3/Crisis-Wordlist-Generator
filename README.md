@@ -1,4 +1,4 @@
-# Crisis-Wordlist-Generator
+# Crisis Wordlist Generator
 Test on Debian and Kali Linux.
 
 Crisis peut créer une liste de mots aléatoires ou une liste de charset personnalisées pour crunch wordlist generator sur la base de critères que vous spécifiez.
@@ -10,7 +10,7 @@ git clone https://github.com/teeknofil/Crisis-Wordlist-Generator.git
 </pre>
 
 # Setup in linux 
-Test on Debian and Kali Linux
+
 <pre>
 apt-get install mono-runtime
 ./configure
@@ -56,11 +56,11 @@ Options:
 
 Parameter:                                                                    
    -l, --lenght       Number of character or character group                  
-   -w, --wordlist     Character of the wordlist, type                         
-                      wordlist-help for more info                             
+   -w, --wordlist     Character of the wordlist,                              
 
 
-Example:		crisis --charset
+Example:		
+			crisis --charset
 			crisis -l 15 -e -w hex-lower -f
 			crisis -l 17 -r -w ualpha
 
