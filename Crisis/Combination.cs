@@ -95,10 +95,10 @@ namespace crisis
 
                     }
 
-//                    if (resultCombinationNoRepeats.Count == 25100000)
-//                    {
-//                        return resultCombinationNoRepeats;                         
-//                    }
+                    if (resultCombinationNoRepeats.Count == 25100000)
+                    {
+                        return resultCombinationNoRepeats;                         
+                    }
 
                     
 

@@ -1,25 +1,28 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Crisis/Command.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Crisis/Combination.cs">
     <Files>
       <File FileName="Crisis/Menu.cs" Line="1" Column="1" />
-      <File FileName="Crisis/Command.cs" Line="244" Column="24" />
+      <File FileName="Crisis/Command.cs" Line="1" Column="1" />
       <File FileName="Crisis/Charset.cs" Line="1" Column="1" />
       <File FileName="Crisis/Program.cs" Line="1" Column="1" />
+      <File FileName="Crisis/Combination.cs" Line="98" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Option id="ShowAllFiles" value="True" />
           <Node name="crisis" expanded="True">
-            <Node name="Command.cs" selected="True" />
+            <Node name="Combination.cs" selected="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/root/Documents/Developpement/Crisis-Wordlist-Generator/Crisis/Combination.cs" line="99" column="21" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <AuthorInfo Name="Teeknofil" Email="teeknofil@gmail.com" Copyright="Teeknofil" Company="" Trademark="" />
