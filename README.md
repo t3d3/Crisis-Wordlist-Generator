@@ -68,6 +68,8 @@ Example:
 
 #Usage
 
+Pipe with Aircrack-ng
+
 <pre>
 ./crisis.exe -l 20 -r -w lalpha-numeric | aircrack-ng -w- -e SFR_XXXX output-01.cap 
 Opening output-01.cap
@@ -92,4 +94,46 @@ Reading packets, please wait...
                        2B B9 CF 3B 1B B5 27 AA 75 14 D1 4E 09 70 EF F4 
 
       EAPOL HMAC     : A1 F8 50 CD C8 32 F6 6B C2 86 0B 58 40 B7 3D 24
+</pre>
+
+Pipe with genpmk
+
+<pre>
+crisis -l 20 -r -w lalpha | genpmk -f- -d wordlistSFR -s SFR_XXXX
+genpmk 1.1 - WPA-PSK precomputation attack. <jwright@hasborg.com>
+Using STDIN for words.
+File wordlistSFR does not exist, creating.
+key no. 1000: negdhirvdowoyodenjta
+key no. 2000: pggcdhupteltboqnzvac
+key no. 3000: sxtpwjrcegzmpskultzy
+key no. 4000: gwifxtqfvvsttvuowmii
+key no. 5000: xxmvqajwzjoyglotainh
+key no. 6000: xefzswiqrzcqsbqncugu
+key no. 7000: cmuxxhwtbyskclxzlbdq
+key no. 8000: fhmegcamdtbwwbvfvdsj
+key no. 9000: yeonrqsrvllbdfyvuuqc
+key no. 10000: kgrzzjqshhbangsfqezm
+^C
+10470 passphrases tested in 26.96 seconds:  388.38 passphrases/second
+</pre>
+
+Pipe with cowpatty
+
+<pre>
+crisis -l 20 -r -w lalpha | cowpatty -f- -r output-01.cap -s SFR_XXXX
+cowpatty 4.6 - WPA-PSK dictionary attack. <jwright@hasborg.com>
+
+Collected all necessary data to mount crack against WPA2/PSK passphrase.
+Starting dictionary attack.  Please be patient.
+Using STDIN for words.
+key no. 1000: dcqjjuxfzmugiubenvrw
+key no. 2000: dgcuvpaltalrtqqffpum
+key no. 3000: uvbjybtoygvezmysffbw
+key no. 4000: yeuhlbqjvjkbtfgkeogm
+key no. 5000: prubwsjmrhqsmpslcqhp
+key no. 6000: pkpracuojhawqpetsuqi
+^CUnable to identify the PSK from the dictionary file. Try expanding your
+passphrase list, and double-check the SSID.  Sorry it didn't work out.
+
+6739 passphrases tested in 16.27 seconds:  414.29 passphrases/second
 </pre>
