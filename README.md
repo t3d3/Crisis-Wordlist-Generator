@@ -46,7 +46,7 @@ Combination:
    -r, --random       generate random character                               
 
 Help:                                                                         
-   -c, --charset      Displays the list of wordlist                           
+   -c, --wordlist-help      Displays the list of wordlist                           
    -h, --help         Shows this help text                                    
 
 Options:                                                                      
