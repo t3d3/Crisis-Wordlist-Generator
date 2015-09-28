@@ -39,7 +39,7 @@ namespace crisis
         public void MainMenu()
         {
 
-            Console.WriteLine(" Crisis Wordlist Generator  by Teeknofil, version : 1.0.4");
+            Console.WriteLine(" Crisis Wordlist Generator  by Teeknofil, version : 1.0.5");
             Console.WriteLine(" Thanks WarLocG for the debugging et fix bug");
             Console.WriteLine(" Trouble: http://www.kali-linux.fr/forum/index.php");
 
@@ -236,6 +236,20 @@ namespace crisis
             }
 
         } // End Fonction
+
+        public void MenuSfrNeufBoxPrint()
+        {
+            Console.WriteLine("\n sfr0\t\t\t\tabcdefghijklmnopqrs0");
+            Console.WriteLine(" sfr1\t\t\t\tabcdefghijklmnopqrs1");
+            Console.WriteLine(" sfr2\t\t\t\tabcdefghijklmnopqrs2");
+            Console.WriteLine(" sfr3\t\t\t\tabcdefghijklmnopqrs3");
+            Console.WriteLine(" sfr4\t\t\t\tabcdefghijklmnopqrs4");
+            Console.WriteLine(" sfr5\t\t\t\tabcdefghijklmnopqrs5");
+            Console.WriteLine(" sfr6\t\t\t\tabcdefghijklmnopqrs6");
+            Console.WriteLine(" sfr7\t\t\t\tabcdefghijklmnopqrs7");
+            Console.WriteLine(" sfr8\t\t\t\tabcdefghijklmnopqrs8");
+            Console.WriteLine(" sfr9\t\t\t\tabcdefghijklmnopqrs9\n");
+        }
                                         
         public void MenuHexaPrint()
         {

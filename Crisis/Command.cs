@@ -26,7 +26,7 @@ using Plossum.CommandLine;
 
 namespace crisis 
 {
-    [CommandLineManager(ApplicationName=" Crisis Wordlist Generator, by Teeknofil", Version= ": 1.0.4", Copyright=" Thanks WarLocG for the debugging et fix bug \n Trouble : http://www.kali-linux.fr/forum/index.php",EnabledOptionStyles=OptionStyles.Group | OptionStyles.LongUnix)]
+    [CommandLineManager(ApplicationName=" Crisis Wordlist Generator, by Teeknofil", Version= ": 1.0.5", Copyright=" Thanks WarLocG for the debugging et fix bug \n Trouble : http://www.kali-linux.fr/forum/index.php",EnabledOptionStyles=OptionStyles.Group | OptionStyles.LongUnix)]
 
     [CommandLineOptionGroup("combination", Name="Combination", Require=OptionGroupRequirement.None)]
 
@@ -46,7 +46,7 @@ namespace crisis
             set { mHelp = value; }
         }
 
-        [CommandLineOption(Name="c", Aliases="charset", 
+        [CommandLineOption(Name="c", Aliases="wordlist-help", 
                            Description="Displays the list of wordlist", GroupId="help")]
         public bool WordlistHelp
         {
@@ -86,6 +86,16 @@ namespace crisis
             set { mEnumeration = value;}
         }
 
+
+        [CommandLineOption(Name = "a", Aliases = "crunch",
+            Description = "charset list customized to crunch wordlist generator", GroupId = "combination")]
+
+        public bool Crunch
+        {
+            get { return mCrunch;}
+            set { mCrunch = value;}
+        }
+
         [CommandLineOption(Name="i", Aliases="interactive",
                            Description="Interactive command in the terminal with question and answer", GroupId="options")]
         public bool Interactive
@@ -103,7 +113,10 @@ namespace crisis
         private bool mHelp;
         private bool mWordlistHelp;
 
+
         private bool mEnumeration;
+        private bool mCrunch;
+
         private bool mLenght;
         private bool mFileName;
         private bool mInteractive;
@@ -124,14 +137,19 @@ namespace crisis
             if (options.Help)
             {
                 Console.Write(parser.UsageInfo.ToString(78, false)+"Example:");
-                Console.WriteLine("\t\tcrisis --charset");
-                Console.WriteLine("\t\t\tcrisis -l 15 -e -w hex-lower -f");
-                Console.WriteLine("\t\t\tcrisis -l 17 -r -w ualpha");               
+                Console.WriteLine("\t\tcrisis --wordlist-help");
+                Console.WriteLine("\t\t\tcrisis -l 27 -r -w hex-upper");
+                Console.WriteLine("\t\t\tcrisis -l 10 -e -w ualpha -f "); 
+                Console.WriteLine("\t\t\tcrisis -a -w sfr5 > charset.lst ");
+
+
                 return 0;
             }
              else if (options.WordlistHelp )
             {
                 Menu printf = new Menu();
+
+                printf.MenuSfrNeufBoxPrint();
                 printf.MenuHexaPrint();
                 printf.MenuNumericPrint();
                 printf.MenuSpecialCharacteresPrint();
@@ -157,11 +175,14 @@ namespace crisis
             // Do work according to arguments
             return 0;
         }
+
         public int ParameterArgs(string[] args)
         {
             Command options = new Command();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
+
+            Regex sfr = new Regex(@"^sfr.{1}$");
 
             Regex hex = new Regex(@"^hex.{6,6}$");
             Regex numeric = new Regex(@"^numeric.{0,6}$");
@@ -180,12 +201,19 @@ namespace crisis
             Regex lalpha_sv = new Regex(@"^sv-lalpha.{0,23}$");
             Regex mixalpha_sv = new Regex(@"^sv-mixalpha.{0,23}$");
             bool b = false;
+
             for (int i = 0; i < args.Length; i++)
             {
                 if (options.Dictionnary)
                 { 
-
-                    if (hex.IsMatch(args [i]))
+                    if (sfr.IsMatch(args [i]))
+                    {
+                        Charset.CharsetName += args [i];
+                        Charset.SfrNeufBox();
+                        NumberOfChar = 20;
+                        b = true;
+                    }
+                    else if (hex.IsMatch(args [i]))
                     {
                         Charset.CharsetName += args [i];
                         Charset.Hexa();
@@ -263,12 +291,12 @@ namespace crisis
                 {
                     Console.WriteLine(parser.UsageInfo.ToString(78, true));
                     return -1;
-                } 
-
-
+                }
 
                 if (options.Lenght)
                 {
+
+
                     if (args [i] == "-l" | args [i] == "--lenght")
                     {
                         int l;
@@ -281,12 +309,17 @@ namespace crisis
                             Environment.Exit(0);
                         } 
                         else
-                        {
-                            NumberOfChar += l;
+                        {                                
+                            if (sfr.IsMatch(args [i]))
+                            {   
+                                l = 20;                                    
+                            }
+
+                            NumberOfChar = l;
+
                         }
                     }
 
-                  
                 } 
                 else if (parser.HasErrors)
                 {
@@ -295,7 +328,7 @@ namespace crisis
                 }
 
             }
-            if ( b ==false)
+            if ( b ==false & options.WordlistHelp == false)
             {
                 Console.WriteLine("\nThe name entered with the -w option is incorrect\n");
                 Environment.Exit(0);
@@ -313,6 +346,11 @@ namespace crisis
             if (options.Random)
             {
                 Wordlist();
+            }
+            else if (options.Crunch)
+            {                
+                TypesOfGeneration = '1';
+                CharsetCrunch ();
             }
             else if (options.Enumeration )
             {                
@@ -349,8 +387,7 @@ namespace crisis
             }
 
             if (options.FileName)
-            {
-                Console.WriteLine("test_1");
+            {                
                 SaveFile += '1';
             }
             else if (parser.HasErrors)

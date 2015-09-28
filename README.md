@@ -35,11 +35,12 @@ chmod +x crisis.exe
 <pre>
 
 crisis -h
-Crisis Wordlist Generator, by Teeknofil  version : 1.0.4
+Crisis Wordlist Generator, by Teeknofil  version : 1.0.5
 Thanks WarLocG for the debugging et fix bug
 Trouble : http://www.kali-linux.fr/forum/index.php
 
 Combination:                                                                  
+   -a, --crunch       charset list customized to crunch wordlist generator
    -e,                                                                        
    --enumeration      generates a character list without repetition           
    -r, --random       generate random character                               
@@ -71,7 +72,7 @@ Example:
 Pipe with Aircrack-ng
 
 <pre>
-./crisis.exe -l 20 -r -w lalpha-numeric | aircrack-ng -w- -e SFR_XXXX output-01.cap 
+./crisis.exe -l 20 -r -w lalpha-numeric | aircrack-ng -w- -e BOX__XXXX output-01.cap 
 Opening output-01.cap
 Opening output-01.cap
 Reading packets, please wait...
@@ -99,7 +100,7 @@ Reading packets, please wait...
 Pipe with genpmk
 
 <pre>
-crisis -l 20 -r -w lalpha | genpmk -f- -d wordlistSFR -s SFR_XXXX
+crisis -l 20 -r -w lalpha | genpmk -f- -d wordlistBOX -s BOX_XXXX
 genpmk 1.1 - WPA-PSK precomputation attack. <jwright@hasborg.com>
 Using STDIN for words.
 File wordlistSFR does not exist, creating.
@@ -120,7 +121,7 @@ key no. 10000: kgrzzjqshhbangsfqezm
 Pipe with cowpatty
 
 <pre>
-crisis -l 20 -r -w lalpha | cowpatty -f- -r output-01.cap -s SFR_XXXX
+crisis -l 20 -r -w lalpha | cowpatty -f- -r output-01.cap -s BOX_XXXX
 cowpatty 4.6 - WPA-PSK dictionary attack. <jwright@hasborg.com>
 
 Collected all necessary data to mount crack against WPA2/PSK passphrase.
@@ -136,4 +137,13 @@ key no. 6000: pkpracuojhawqpetsuqi
 passphrase list, and double-check the SSID.  Sorry it didn't work out.
 
 6739 passphrases tested in 16.27 seconds:  414.29 passphrases/second
+</pre>
+
+
+Charset list for crunch
+
+<pre>
+crisis -a -w sfr7 > charset.lst
+crunch 20 20 -f charset.lst charset1 -i -s abcdefghijklmnopqrs7
+
 </pre>
