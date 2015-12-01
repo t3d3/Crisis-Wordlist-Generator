@@ -215,6 +215,19 @@ Global
 		$36.MessageStyle = $37
 		$37.LineAlign = 0
 		$36.inheritsSet = Mono
-		version = 1.0.1
+		$0.TextStylePolicy = $38
+		$38.inheritsSet = null
+		$38.scope = application/config+xml
+		$0.XmlFormattingPolicy = $39
+		$39.inheritsSet = null
+		$39.scope = application/config+xml
+		$0.TextStylePolicy = $40
+		$40.inheritsSet = null
+		$40.scope = application/xml
+		$0.XmlFormattingPolicy = $41
+		$41.inheritsSet = Mono
+		$41.inheritsScope = application/xml
+		$41.scope = application/xml
+		version = 1.0.5
 	EndGlobalSection
 EndGlobal

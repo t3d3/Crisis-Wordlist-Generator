@@ -1,0 +1,9 @@
+prefix=/usr/local
+libdir=/usr/local/lib
+bindir=/usr/local/bin
+datadir=/usr/local/share
+RUNTIME=mono
+ASSEMBLY_VERSION=1.0.5.0.0
+VERSION=1.0.5
+PACKAGE=crisis
+CONFIG=RELEASE_X86

@@ -1,24 +1,10 @@
 ﻿<Properties StartupItem="Crisis/crisis.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Crisis/Charset.cs">
-    <Files>
-      <File FileName="Crisis/Menu.cs" Line="1" Column="1" />
-      <File FileName="Crisis/Command.cs" Line="1" Column="1" />
-      <File FileName="Crisis/Charset.cs" Line="135" Column="10" />
-      <File FileName="Crisis/Program.cs" Line="1" Column="1" />
-      <File FileName="Crisis/Combination.cs" Line="98" Column="28" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Option id="ShowAllFiles" value="True" />
-          <Node name="crisis" expanded="True">
-            <Node name="crisis" expanded="True">
-              <Node name="References" expanded="True">
-                <Node name="Microsoft.Build.Tasks.v12.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" selected="True" />
-              </Node>
-            </Node>
-          </Node>
+        <State expanded="True" selected="True">
+          <Node name="crisis" expanded="True" />
         </State>
       </Pad>
     </Pads>

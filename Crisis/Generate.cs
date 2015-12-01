@@ -173,7 +173,7 @@ namespace crisis
                 
                 if (TypesOfGeneration == '1')
                 {
-                    Console.WriteLine("\nCrunch commande example :\ncrunch " + NumberOfChar + " " + NumberOfChar + " -f charset_" + numberFile + ".lst charset1 -s " + generate[0]);
+                    Console.WriteLine("\nCrunch commande example :\ncrunch " + NumberOfChar + " " + NumberOfChar + " -f charset_" + numberFile + ".lst charset1 -i -s " + generate[0]);
                 }
 
             }
