@@ -1,19 +1,13 @@
-﻿<Properties StartupItem="Crisis/crisis.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
-          <Node name="crisis" expanded="True" />
-        </State>
-      </Pad>
-    </Pads>
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Crisis/Command.cs">
+    <Files>
+      <File FileName="Crisis/Menu.cs" Line="65" Column="89" />
+      <File FileName="Crisis/Command.cs" Line="29" Column="102" />
+    </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/root/Documents/Developpement/Crisis-Wordlist-Generator/Crisis/Combination.cs" line="99" column="21" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <AuthorInfo Name="Teeknofil" Email="teeknofil@gmail.com" Copyright="Teeknofil" Company="" Trademark="" />
 </Properties>

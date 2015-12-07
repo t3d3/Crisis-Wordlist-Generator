@@ -170,6 +170,17 @@ namespace crisis
             return charsetSelecting;
         }
 
+        public static List<string> ReadFileTxt()
+        {
+            if (File.Exists(charsetName.ToString()))
+            {
+                charsetSelecting.Add(System.IO.File.ReadAllText(CharsetName.ToString()));
+                booleanType = false;
+            }
+
+            return charsetSelecting;
+        }
+
         public static List<string> Symbols()
         {
             if (charsetName == "symbols14")

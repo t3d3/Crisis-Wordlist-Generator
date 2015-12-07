@@ -26,7 +26,7 @@ using Plossum.CommandLine;
 
 namespace crisis 
 {
-    [CommandLineManager(ApplicationName=" Crisis Wordlist Generator, by Teeknofil", Version= ": 1.0.5", Copyright=" Thanks WarLocG for the debugging et fix bug \n Trouble : http://www.kali-linux.fr/forum/index.php",EnabledOptionStyles=OptionStyles.Group | OptionStyles.LongUnix)]
+    [CommandLineManager(ApplicationName=" Crisis Wordlist Generator, by Teeknofil", Version= ": 1.0.6", Copyright=" Thanks WarLocG for the debugging et fix bug \n Trouble : http://www.kali-linux.fr/forum/index.php",EnabledOptionStyles=OptionStyles.Group | OptionStyles.LongUnix)]
 
     [CommandLineOptionGroup("combination", Name="Combination", Require=OptionGroupRequirement.None)]
 

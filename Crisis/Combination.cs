@@ -24,6 +24,58 @@ namespace crisis
             
         }
 
+        public string ConverterInLeetSpeak(string _word)
+        {
+            string wordLeet = null;
+
+            for (int i = 0; i < _word.Length; i++) 
+            {
+                wordLeet += FoundLetterLeet(_word[i]);
+            }
+            return wordLeet;
+        }
+
+        public char FoundLetterLeet(char _letter)
+        {
+            char letterLeet = _letter;
+
+            switch(Char.ToLower(letterLeet))
+            {
+                case 'a':
+                    letterLeet = '4';
+                    break;
+                case 'b':
+                    letterLeet = '8';
+                    break;
+                case 'e':
+                    letterLeet = '3';
+                    break;
+                case 'l':
+                    letterLeet = '1';
+                    break;
+                case 'o':
+                    letterLeet = '0';
+                    break;
+                case 's':
+                    letterLeet = '5';
+                    break;
+                case 't':
+                    letterLeet = '7';
+                    break;
+                case 'i':
+                    letterLeet = '!';
+                    break;
+                case 'g':
+                    letterLeet = '6';
+                    break;
+                case 'z':
+                    letterLeet = '2';
+                    break;                
+            }
+
+            return letterLeet;
+        }
+
         public string CombinationRamdon()
         {
             string randonString = null;

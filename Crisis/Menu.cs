@@ -34,12 +34,35 @@ namespace crisis
         {
         }
 
+        public void Navigation ()
+        {
+            MainMenu();
+            TypesOfFileAtGenerate();
 
+            if (TypesOfGeneration == '1' || TypesOfGeneration == '2')
+            {
+                SizeOfWorld();
+                SaveCharsetInFilesTxt();
+                CharsetCrunch();
+            } else if (TypesOfGeneration == '3')
+            {
+                SizeOfWorld();
+                SaveCharsetInFilesTxt();
+                Wordlist();
+                Console.ReadKey();
+            } 
+            else
+            {
+                SaveCharsetInFilesTxt();
+                L33tSpeek();
+            }
+
+        } // End Fonction
 
         public void MainMenu()
         {
 
-            Console.WriteLine(" Crisis Wordlist Generator  by Teeknofil, version : 1.0.5");
+            Console.WriteLine(" Crisis Wordlist Generator  by Teeknofil, version : 1.0.6");
             Console.WriteLine(" Thanks WarLocG for the debugging et fix bug");
             Console.WriteLine(" Trouble: http://www.kali-linux.fr/forum/index.php");
 
@@ -49,7 +72,9 @@ namespace crisis
             {
                 Console.WriteLine(" {0})\t HEXA", i++);
                 Console.WriteLine(" {0})\t NUMBER", i++);
+                Console.WriteLine(" {0})\t LEET SPEAK", i++);
                 Console.WriteLine(" {0})\t SPECIAL CHARACTER", i++);
+
 
                 Console.WriteLine(" {0})\t SYLLABLE   CHARACTER UPPERCASE", i++);
                 Console.WriteLine(" {0})\t SYLLABLE   CHARACTER LOWERCASE", i++);
@@ -77,6 +102,7 @@ namespace crisis
 
                     if (dislayMainSubMain == i++) MenuHexa();
                     if (dislayMainSubMain == i++) MenuNumeric();
+                    if (dislayMainSubMain == i++) MenuLeetSpeak();
                     if (dislayMainSubMain == i++) MenuSpecialCharacteres ();
 
                     if (dislayMainSubMain == i++) SyllableCharacteUppercase();
@@ -100,53 +126,52 @@ namespace crisis
             }
         }
 
-        private void ReturnMainMenu()
+        public void TypesOfFileAtGenerate()
         {
-            Console.Write(" 99\t\t\t\t Back to main menu\n\n");
-
-            if (Charset.CharsetName == "99")
+            if (typesOFProcedure == '4')
             {
-                Charset.CharsetName =  null;
-                Console.Clear();
-                Menu obj1 = new Menu();
-                obj1.MainMenu();
-            }
-        }
-
-        public void Parameter()
-        {
-            bool b = false;
-
-            Console.WriteLine("\n 1)\t Charset Generator for Crunch without repetition");
-            Console.WriteLine(" 2)\t Combination without repetition");
-            Console.WriteLine(" 3)\t Random with repetition\n\n ");
-
-
-            while (b == false)
+                TypesOfGeneration += typesOFProcedure;
+            } 
+            else
             {
-                try
+                bool b = false;
+
+                Console.WriteLine("\n 1)\t Charset Generator for Crunch without repetition");
+                Console.WriteLine(" 2)\t Combination without repetition");
+                Console.WriteLine(" 3)\t Random with repetition\n\n ");
+
+
+                while (b == false)
                 {
-                    Console.Write(" Type the number corresponding to the menu : ");
-                    b = char.TryParse(Console.ReadLine(), out typesOFProcedure);
-
-                    if (typesOFProcedure == '1' | typesOFProcedure == '2' | typesOFProcedure == '3')
+                    try
                     {
-                        b = true;
-                        TypesOfGeneration += typesOFProcedure;
+                        Console.Write(" Type the number corresponding to the menu : ");
+                        b = char.TryParse(Console.ReadLine(), out typesOFProcedure);
+
+                        if (typesOFProcedure == '1' | typesOFProcedure == '2' | typesOFProcedure == '3')
+                        {
+                            b = true;
+                            TypesOfGeneration += typesOFProcedure;
+                        }
+                        else
+                        {
+                            b = false;
+                        }
+
                     }
-                    else
+                    catch (FormatException)
                     {
                         b = false;
                     }
-
-                }
-                catch (FormatException)
-                {
-                    b = false;
                 }
             }
+           
 
-            b = false;
+        } //End Fonction
+       
+        public void SizeOfWorld ()
+        {
+            bool b = false;
 
             while (b == false)
             {
@@ -186,11 +211,15 @@ namespace crisis
                     b = false;
                 }
             }
+        }
+
+        public void SaveCharsetInFilesTxt()
+        {          
 
             Console.WriteLine("\n 1) Yes");
             Console.WriteLine(" 2) No\n");
 
-            b = false;
+            bool b = false;
 
             while (b == false)
             {
@@ -219,23 +248,18 @@ namespace crisis
 
         }// End Fonction
 
-        public void Navigation ()
+        private void ReturnMainMenu()
         {
-            MainMenu();
+            Console.Write(" 99\t\t\t\t Back to main menu\n\n");
 
-            Parameter ();
-
-            if (TypesOfGeneration == '1' || TypesOfGeneration == '2') 
+            if (Charset.CharsetName == "99")
             {
-                CharsetCrunch ();
-            } 
-            else 
-            {
-                Wordlist ();
-                Console.ReadKey ();
+                Charset.CharsetName =  null;
+                Console.Clear();
+                Menu obj1 = new Menu();
+                obj1.MainMenu();
             }
-
-        } // End Fonction
+        }
 
         public void MenuSfrNeufBoxPrint()
         {
@@ -299,6 +323,29 @@ namespace crisis
 
         }
 
+        private void MenuLeetSpeak()
+        {
+            booleanSubMenu = false;
+
+            while (Charset.BooleanType)
+            {
+                MenuLeetSpeakPrint();
+
+                ReturnMainMenu();
+                Console.Write(" Enter the path to the txt file : ");
+                Charset.CharsetName = Console.ReadLine();
+
+                Charset.ReadFileTxt();
+                typesOFProcedure = '4';
+
+            }
+        }
+
+        private void MenuLeetSpeakPrint()
+        {
+            Console.WriteLine(" leet speak\t\t\t1337 5p34k");
+        }
+
         public void MenuSpecialCharacteresPrint()
         {
             //symbols14              
@@ -311,6 +358,9 @@ namespace crisis
             //symbols-all-space
             Console.WriteLine(" symbols-all-space\t\t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/ [space]\n");
         }
+
+
+
 
         private void MenuSpecialCharacteres ()
         {

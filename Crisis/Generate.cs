@@ -34,10 +34,10 @@ namespace crisis
 
 
         private string saveCharset = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/output-dico/charset";
-        private string saveWordlist= Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/output-dico/wordlist";
+        private string saveWordlist = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/output-dico/wordlist";
+        private string saveLeetSpeak = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/output-dico/Leet_Speak";
 
         internal int numberFile = 1;       
-       
         
         public Generate()
         {
@@ -74,44 +74,54 @@ namespace crisis
                     if (!Directory.Exists(saveCharset))
                     {
                         System.IO.Directory.CreateDirectory(saveCharset);
-                    }
-                    else if (File.Exists(saveCharset + @"/charset_" + numberFile + ".lst"))
+                    } else if (File.Exists(saveCharset + @"/charset_" + numberFile + ".lst"))
                     {
                         numberFile++;
-                    }
-                    else if (!Directory.Exists(saveCharset + @"/charset_" + numberFile + ".lst"))
+                    } else if (!Directory.Exists(saveCharset + @"/charset_" + numberFile + ".lst"))
                     {
                         file = new StreamWriter(saveCharset + @"/charset_" + numberFile + ".lst");                        
                         b = false;
                     }
                    
                 } //End while
-            }
-            else
+            } else if (TypesOfGeneration == '2' || TypesOfGeneration == '3')
             {
                 while (b)
                 {
-                    if (!Directory.Exists(saveCharset))
+                    if (!Directory.Exists(saveWordlist))
                     {
-                        System.IO.Directory.CreateDirectory(saveCharset);
-                    }
-                    else if (File.Exists(saveCharset + @"/wordlist_" + numberFile + ".lst"))
+                        System.IO.Directory.CreateDirectory(saveWordlist);
+                    } else if (File.Exists(saveWordlist + @"/wordlist_" + numberFile + ".lst"))
                     {
                         numberFile++;
-                    }
-                    else
+                    } else
                     {
-                        file = new StreamWriter(saveCharset + @"/wordlist_"+ numberFile +".lst");
+                        file = new StreamWriter(saveWordlist + @"/wordlist_" + numberFile + ".lst");
                         b = false;
                     }
 
                 }//End while
+            } 
+            else
+            {
+                while (b)
+                {
+                    if (!Directory.Exists(saveLeetSpeak))
+                    {
+                        System.IO.Directory.CreateDirectory(saveLeetSpeak);
+                    } 
+                    else if (File.Exists(saveLeetSpeak + @"/dico1337_" + numberFile + ".lst"))
+                    {
+                        numberFile++;
+                    } else
+                    {
+                        file = new StreamWriter(saveLeetSpeak + @"/dico1337_" + numberFile + ".lst");
+                        b = false;
+                    }
+                }
             }
 
         }//End Fonction
-
-
-
 
         public void CharsetCrunch()
         {
@@ -225,7 +235,7 @@ namespace crisis
                     {
                         if (numberLineAsk == 'y')
                         {
-                            Console.Write("\nHow do you line : ");
+                            Console.Write("\n How do you line : ");
                             b1 = int.TryParse(Console.ReadLine(), out numberLine);
 
                             if (numberLine < 128)
@@ -302,7 +312,28 @@ namespace crisis
             }
                 
         } // End Fonction
+       
+        public void L33tSpeek()
+        {
+            if (SaveFile == '1')
+            {
+                Setting_UpFile();
+                locate = new string[] { "\nYour file has been saved => " + saveLeetSpeak.ToString() + @"/charset_" + numberFile + ".lst" };
 
+                foreach (var item in Charset.CharsetSelecting)
+                {
+                    PleaseWait();
+                    file.WriteLine(ConverterInLeetSpeak(item.ToString()));
+                }
+
+                PleaseWait();
+                file.Close();
+            } 
+            else
+            {
+                Charset.CharsetSelecting.ForEach(x => Console.WriteLine(ConverterInLeetSpeak(x.ToString())));
+            }
+        } // End Fonction      
 
     } //End Class
 } // End Namespace

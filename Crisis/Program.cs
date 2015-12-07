@@ -23,11 +23,8 @@ namespace crisis
                 run.OptionsArg(args);
                 run.ParameterArgs(args);
                 run.CombinationArg(args);
-                                   
-                }
+            }
 
-
-			
         }
     }
 }
