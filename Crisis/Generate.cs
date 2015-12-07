@@ -318,7 +318,7 @@ namespace crisis
             if (SaveFile == '1')
             {
                 Setting_UpFile();
-                locate = new string[] { "\nYour file has been saved => " + saveLeetSpeak.ToString() + @"/charset_" + numberFile + ".lst" };
+                locate = new string[] { "\nYour file has been saved => " + saveLeetSpeak.ToString() + @"/dico1337_" + numberFile + ".lst" };
 
                 foreach (var item in Charset.CharsetSelecting)
                 {
