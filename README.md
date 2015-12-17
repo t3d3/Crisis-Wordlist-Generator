@@ -1,5 +1,5 @@
 # Crisis Wordlist Generator
-Test on Debian and Kali Linux.
+Tested on Windows, Debian and Kali Linux.
 
 Crisis peut créer une liste de mots aléatoires ou une liste de charset personnalisées pour crunch wordlist generator sur la base de critères que vous spécifiez.
 
@@ -69,7 +69,7 @@ Example:
 
 #Usage
 
-Pipe with Aircrack-ng
+<h2>Pipe with Aircrack-ng</h2>
 
 <pre>
 ./crisis.exe -l 20 -r -w lalpha-numeric | aircrack-ng -w- -e BOX__XXXX output-01.cap 
@@ -97,7 +97,7 @@ Reading packets, please wait...
       EAPOL HMAC     : A1 F8 50 CD C8 32 F6 6B C2 86 0B 58 40 B7 3D 24
 </pre>
 
-Pipe with genpmk
+<h2>Pipe with genpmk</h2>
 
 <pre>
 crisis -l 20 -r -w lalpha | genpmk -f- -d wordlistBOX -s BOX_XXXX
@@ -118,7 +118,7 @@ key no. 10000: kgrzzjqshhbangsfqezm
 10470 passphrases tested in 26.96 seconds:  388.38 passphrases/second
 </pre>
 
-Pipe with cowpatty
+<h2>Pipe with cowpatty</h2>
 
 <pre>
 crisis -l 20 -r -w lalpha | cowpatty -f- -r output-01.cap -s BOX_XXXX
@@ -140,7 +140,7 @@ passphrase list, and double-check the SSID.  Sorry it didn't work out.
 </pre>
 
 
-Charset list for crunch
+<h2>Charset list for crunch</h2>
 
 <pre>
 crisis -a -w sfr7 > charset.lst
