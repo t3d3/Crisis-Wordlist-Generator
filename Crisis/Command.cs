@@ -26,7 +26,7 @@ using Plossum.CommandLine;
 
 namespace crisis 
 {
-    [CommandLineManager(ApplicationName=" Crisis Wordlist Generator, by Teeknofil", Version= ": 1.0.6", Copyright=" Thanks WarLocG for the debugging et fix bug \n Trouble : http://www.kali-linux.fr/forum/index.php",EnabledOptionStyles=OptionStyles.Group | OptionStyles.LongUnix)]
+    [CommandLineManager(ApplicationName=" Crisis Wordlist Generator, by Teeknofil", Version= ": 1.0.7", Copyright=" Thanks WarLocG for the debugging et fix bug \n Trouble : http://www.kali-linux.fr/forum/index.php\n FAQ:  www.crack-wifi.com/forum/index.php",EnabledOptionStyles=OptionStyles.Group | OptionStyles.LongUnix)]
 
     [CommandLineOptionGroup("combination", Name="Combination", Require=OptionGroupRequirement.None)]
 
@@ -146,24 +146,23 @@ namespace crisis
                 return 0;
             }
              else if (options.WordlistHelp )
-            {
-                Menu printf = new Menu();
+            {                
 
-                printf.MenuSfrNeufBoxPrint();
-                printf.MenuHexaPrint();
-                printf.MenuNumericPrint();
-                printf.MenuSpecialCharacteresPrint();
+                MenuDisplayCharset.MenuSfrNeufBoxPrint();
+                MenuDisplayCharset.MenuHexaPrint();
+                MenuDisplayCharset.MenuNumericPrint();
+                MenuDisplayCharset.MenuSpecialCharacteresPrint();
 
-                printf.LatinCharacteUppercasePrint();
-                printf.LatinCharacterLowercasePrint();
-                printf.LatinCharacterUppercaseLowercasePrint();
-                printf.SwddishCharacterUppercasePrint();
-                printf.SwddishCharacterLowercasePrint();
-                printf.SwddishCharacterLowercaseUppercasePrint();
+                MenuDisplayCharset.LatinCharacteUppercasePrint();
+                MenuDisplayCharset.LatinCharacterLowercasePrint();
+                MenuDisplayCharset.LatinCharacterUppercaseLowercasePrint();
+                MenuDisplayCharset.SwddishCharacterUppercasePrint();
+                MenuDisplayCharset.SwddishCharacterLowercasePrint();
+                MenuDisplayCharset.SwddishCharacterLowercaseUppercasePrint();
 
-                printf.SyllableCharacteUppercasePrint();
-                printf.SyllableCharacterLowercasePrint();
-                printf.SyllableCharacterUppercaseLowercasePrint();
+                MenuDisplayCharset.SyllableCharacteUppercasePrint();
+                MenuDisplayCharset.SyllableCharacterLowercasePrint();
+                MenuDisplayCharset.SyllableCharacterUppercaseLowercasePrint();
             }
             else if (parser.HasErrors)
             {
@@ -295,8 +294,6 @@ namespace crisis
 
                 if (options.Lenght)
                 {
-
-
                     if (args [i] == "-l" | args [i] == "--lenght")
                     {
                         int l;
@@ -349,12 +346,12 @@ namespace crisis
             }
             else if (options.Crunch)
             {                
-                TypesOfGeneration = '1';
+                typesOfGeneration = '0';
                 CharsetCrunch ();
             }
             else if (options.Enumeration )
             {                
-                TypesOfGeneration = '2';
+                typesOfGeneration = '1';
                 CharsetCrunch ();
             }
             else if (parser.HasErrors)
@@ -388,7 +385,7 @@ namespace crisis
 
             if (options.FileName)
             {                
-                SaveFile += '1';
+                SaveFile += 1;
             }
             else if (parser.HasErrors)
             {

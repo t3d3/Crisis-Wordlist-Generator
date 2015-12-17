@@ -1,215 +1,129 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
-
+using System.Diagnostics;
+using System.Collections.Generic;
 namespace crisis
 {
     public class Generate : Combination
     {
-
-        StreamWriter file;
         internal int numberLine = 1;
         private char numberLineAsk;
-       
         private string infoOnNumber;
         private string[] locate;
+        internal int typesOfGeneration;
+        private FilesNameDirectory make = null;
+        
+        private int saveFile;
 
-        private char typesOfGeneration;
-
-        public char TypesOfGeneration
-        {
-            get { return typesOfGeneration; }
-            set { typesOfGeneration = value; }
-        }
-
-        private char saveFile;
-
-        public char SaveFile
+        public int SaveFile
         {
             get { return saveFile; }
             set { saveFile = value; }
         }
 
-
-        private string saveCharset = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/output-dico/charset";
-        private string saveWordlist = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/output-dico/wordlist";
-        private string saveLeetSpeak = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/output-dico/Leet_Speak";
-
-        internal int numberFile = 1;       
-        
-        public Generate()
+        public Generate(int _saveFile)
         {
-			
-		}
-		
+            this.SaveFile += _saveFile;              
+        }
+        
+        public Generate( )
+        {
+              
+        }
+        
         public void PleaseWait()
         {
-            Console.Clear();
-            Console.WriteLine("\nPlease wait [|]" + "\n" + infoOnNumber);
-            if (locate != null) Console.WriteLine(locate[0].ToString());
-            System.Threading.Thread.Sleep(7);
-            Console.Clear();
-            Console.WriteLine("\nPlease wait [/]" + "\n" + infoOnNumber);
-            if (locate != null) Console.WriteLine(locate[0].ToString());
-            System.Threading.Thread.Sleep(7);
-            Console.Clear();
-            Console.WriteLine("\nPlease wait [+]" + "\n" + infoOnNumber);
-            if (locate != null) Console.WriteLine(locate[0].ToString());
-            System.Threading.Thread.Sleep(7);
-            Console.Clear();
-            Console.WriteLine("\nPlease wait [\\]" + "\n" + infoOnNumber);
-            if (locate != null) Console.WriteLine(locate[0].ToString());
-            System.Threading.Thread.Sleep(7);
+            Console.WriteLine(infoOnNumber);
+            if (locate != null)
+                Console.WriteLine(locate [0].ToString());
         }
-
-        public void Setting_UpFile()
-        {
-            bool b = true;
-            if (TypesOfGeneration == '1')
-            {
-                while (b)
-                {
-                    if (!Directory.Exists(saveCharset))
-                    {
-                        System.IO.Directory.CreateDirectory(saveCharset);
-                    } else if (File.Exists(saveCharset + @"/charset_" + numberFile + ".lst"))
-                    {
-                        numberFile++;
-                    } else if (!Directory.Exists(saveCharset + @"/charset_" + numberFile + ".lst"))
-                    {
-                        file = new StreamWriter(saveCharset + @"/charset_" + numberFile + ".lst");                        
-                        b = false;
-                    }
-                   
-                } //End while
-            } else if (TypesOfGeneration == '2' || TypesOfGeneration == '3')
-            {
-                while (b)
-                {
-                    if (!Directory.Exists(saveWordlist))
-                    {
-                        System.IO.Directory.CreateDirectory(saveWordlist);
-                    } else if (File.Exists(saveWordlist + @"/wordlist_" + numberFile + ".lst"))
-                    {
-                        numberFile++;
-                    } else
-                    {
-                        file = new StreamWriter(saveWordlist + @"/wordlist_" + numberFile + ".lst");
-                        b = false;
-                    }
-
-                }//End while
-            } 
-            else
-            {
-                while (b)
-                {
-                    if (!Directory.Exists(saveLeetSpeak))
-                    {
-                        System.IO.Directory.CreateDirectory(saveLeetSpeak);
-                    } 
-                    else if (File.Exists(saveLeetSpeak + @"/dico1337_" + numberFile + ".lst"))
-                    {
-                        numberFile++;
-                    } else
-                    {
-                        file = new StreamWriter(saveLeetSpeak + @"/dico1337_" + numberFile + ".lst");
-                        b = false;
-                    }
-                }
-            }
-
-        }//End Fonction
 
         public void CharsetCrunch()
         {
             Console.Clear();
             Console.WriteLine("Please wait, this may take time (over 5 minutes)");
-
-            var generate = CombinationCharset(Charset.CharsetSelecting , NumberOfChar, Charset.CharsetSelecting.Count - NumberOfChar);
-
-            if (SaveFile == '1')
+            make = new FilesNameDirectory(typesOfGeneration);            
+            var generate = CombinationCharset(Charset.CharsetSelecting, NumberOfChar, Charset.CharsetSelecting.Count - NumberOfChar);
+            int i = 0;
+            
+            if (saveFile == 1)
             {
-                Setting_UpFile();
+                make.Setting_UpFile();
 
                 foreach (var item in generate)
                 {
                     if (numberLine > 1000)
-                    {
-                        file.Flush();
-                        file.Close();
-                        locate = new string[] { "\nYour file has been saved => " + saveCharset.ToString() + @"/charset_" + numberFile + ".lst" };
-                        Setting_UpFile();
+                    { 
+                        locate = new string[] { "\nYour file has been saved => " + make.FilePath.ToString() + @"/charset_" + make.NumberFile + ".txt" };
+                        make.Setting_UpFile();
                         numberLine = 0;
-                    }                   
-                    else if (generate.Count == numberLine)
+                    } else if (generate.Count == numberLine)
                     {
                         infoOnNumber = generate.Count + " combination will be generated with " + numberLine + " line in a file";
-                        if (TypesOfGeneration == '1')
+                        if (typesOfGeneration == 0)
                         {
-                            file.WriteLine("charset" +  numberLine++ +  " = [" + item.ToString() + "]");
-                        }
-                        else
+                            make.WorkFile.WriteLine("charset" + numberLine++ + " = [" + item.ToString() + "]");
+                        } else
                         {
-                            file.WriteLine(item.ToString());
+                            make.WorkFile.WriteLine(item.ToString());
                         }
 
-                        locate = new string[] { "\nYour file has been saved => " + saveCharset.ToString() + @"/charset_" + numberFile + ".lst" };
-                        PleaseWait();
-                        file.Close();
-                    }
-                    else if (generate.Count > numberLine)
+                       locate = new string[] { "\nYour file has been saved => " + make.FilePath[typesOfGeneration].ToString() + @"/charset_" + make.NumberFile + ".txt" };
+                        PleaseWait();                        
+                        ProgressBar.drawTextProgressBar(i++, generate.Count);
+                        Console.Clear();
+                        make.WorkFile.Close();
+                    } else if (generate.Count > numberLine)
                     {
                         infoOnNumber = generate.Count + " combination will be generated with " + numberLine + " line in a file";
-                        if (TypesOfGeneration == '1')
+                        if (typesOfGeneration == 0)
                         {
-                            file.WriteLine("charset" +  numberLine++ +  " = [" + item.ToString() + "]");
-                        }
-                        else
+                            make.WorkFile.WriteLine("charset" + numberLine++ + " = [" + item.ToString() + "]");
+                        } else
                         {
-                            file.WriteLine(item.ToString());
+                            make.WorkFile.WriteLine(item.ToString());
                             numberLine++;
                         }
-                        PleaseWait();
-                    }
+                         Console.Clear();
+                        ProgressBar.drawTextProgressBar(i++, generate.Count);
+                    } 
                     else
                     {
-                        file.Close();
+                        make.WorkFile.Close();
                     }
 
                 } // End foreach
-                
-                if (TypesOfGeneration == '1')
+
+                if (typesOfGeneration == 0)
                 {
-                    Console.WriteLine("\nCrunch commande example :\ncrunch " + NumberOfChar + " " + NumberOfChar + " -f charset_" + numberFile + ".lst charset1 -i -s " + generate[0]);
+                    Console.WriteLine("\nCrunch commande example :\ncrunch " + NumberOfChar + " " + NumberOfChar + " -f charset_" + make.NumberFile + ".lst charset1 -i -s " + generate [0]);
                 }
 
-            }
-            else
+            } else 
             {
 
-                if (TypesOfGeneration == '1')
+                if (typesOfGeneration == 0)
                 {
                     generate.ForEach(x => Console.WriteLine("charset" + numberLine++ + " = [" + x.ToString() + "]"));
-                }
-                else if (TypesOfGeneration == '2')
+                } else if (typesOfGeneration == 1)
                 {
                     generate.ForEach(x => Console.WriteLine(x.ToString()));
                 }
 
                 numberLine = 0;
             }//End saveFile
-        }  //End fonction
-
+        }
+        //End fonction
         public void Wordlist()
         {
             int cpt = 0;
             double numberCombination = Math.Pow(NumberOfChar, Charset.CharsetSelecting.Count);
-            if (SaveFile == '1')
-            {
-                                
+
+            make = new FilesNameDirectory(typesOfGeneration);
+
+            if (saveFile == 1)
+            {                                
                 List<string> result = new List<string> { };
                 bool b = false;
                 bool b1 = false;
@@ -249,7 +163,6 @@ namespace crisis
                             numberLine = 10000;
                             b1 = true;
                         }
-
                     }
                     catch (Exception)
                     {
@@ -257,7 +170,6 @@ namespace crisis
                         b = false;
                     }
                 }
-
 
                 while (b)
                 {
@@ -273,34 +185,35 @@ namespace crisis
                 }
 
                 infoOnNumber = numberCombination + " combination will be generated with " + numberLine + " line in a file\n";
-
+                int cptProgressBar = 0;
+                
                 while (cpt < numberCombination)
-                {
+                {                  
+                    
                     if (result.Count > numberLine - 1 || result.Count + cpt >= numberCombination)
                     {
-                        Setting_UpFile();
-
+                        make.Setting_UpFile();                       
+                        cptProgressBar = 0;
                         foreach (var item in result)
                         {
-
-                            file.WriteLine(item);
-                            locate = new string[] { "\nYour file has been saved => " + saveWordlist.ToString() + "/wordlist_" + numberFile + ".lst" };
+                            make.WorkFile.WriteLine(item);
+                            locate = new string[] { "\nYour file has been saved => " + make.FilePath[typesOfGeneration].ToString() + "/wordlist_" + make.NumberFile + ".txt\n" };                          
+                                                                                        
                         }
 
-                        file.Flush();
-                        file.Close();
-
+                        make.WorkFile.Flush();
+                        make.WorkFile.Close();
                         result.Clear();
                     }
                     else
-                    {
-                        PleaseWait();
-                        result.Add(CombinationRamdon());
+                    {   
+                        PleaseWait(); 
+                        ProgressBar.drawTextProgressBar(cptProgressBar,numberLine);                                           
+                        result.Add(CombinationRamdon());                         
                         cpt++;
-
+                        cptProgressBar++;                      
                     }
                 }
-
             }
             else
             {
@@ -309,25 +222,24 @@ namespace crisis
                     Console.WriteLine(CombinationRamdon());
                     cpt++;
                 }
-            }
-                
+            }                
         } // End Fonction
        
         public void L33tSpeek()
         {
-            if (SaveFile == '1')
+            if (saveFile == 1)
             {
-                Setting_UpFile();
-                locate = new string[] { "\nYour file has been saved => " + saveLeetSpeak.ToString() + @"/dico1337_" + numberFile + ".lst" };
+                make.Setting_UpFile();
+                locate = new string[] { "\nYour file has been saved => " + make.FilePath.ToString() + @"/dico1337_" + make.NumberFile + ".lst" };
 
                 foreach (var item in Charset.CharsetSelecting)
                 {
                     PleaseWait();
-                    file.WriteLine(ConverterInLeetSpeak(item.ToString()));
+                    make.WorkFile.WriteLine(ConverterInLeetSpeak(item.ToString()));
                 }
 
                 PleaseWait();
-                file.Close();
+                make.WorkFile.Close();
             } 
             else
             {

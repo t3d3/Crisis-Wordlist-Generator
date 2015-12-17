@@ -1,14 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Crisis/Generate.cs">
-    <Files>
-      <File FileName="Crisis/Menu.cs" Line="1" Column="1" />
-      <File FileName="Crisis/Command.cs" Line="29" Column="102" />
-      <File FileName="Crisis/Generate.cs" Line="321" Column="114" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/root/Crisis-Wordlist-Generator/Crisis/ProgressBar.cs" line="55" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

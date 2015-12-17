@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>crisis</RootNamespace>
     <AssemblyName>crisis</AssemblyName>
-    <ReleaseVersion>1.0.5</ReleaseVersion>
+    <ReleaseVersion>1.0.7</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,10 +46,12 @@
     <Compile Include="Charset.cs" />
     <Compile Include="Combination.cs" />
     <Compile Include="Generate.cs" />
-    <Compile Include="Help.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Menu.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="FilesNameDirectory.cs" />
+    <Compile Include="MenuCMD\MenuDisplayCharset.cs" />
+    <Compile Include="MenuCMD\Menu.cs" />
+    <Compile Include="ProgressBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.desktop">
@@ -57,9 +59,6 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
@@ -75,4 +74,7 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <Folder Include="MenuCMD\" />
+  </ItemGroup>
 </Project>

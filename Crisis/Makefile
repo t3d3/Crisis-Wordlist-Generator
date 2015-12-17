@@ -64,8 +64,11 @@ FILES = \
 	Generate.cs \
 	Help.cs \
 	Program.cs \
-	Menu.cs \
-	Command.cs 
+	Command.cs \
+	FilesNameDirectory.cs \
+	MenuCMD/MenuDisplayCharset.cs \
+	MenuCMD/Menu.cs \
+	ProgressBar.cs 
 
 DATA_FILES = 
 
@@ -73,7 +76,7 @@ RESOURCES =
 
 EXTRAS = \
 	app.desktop \
-	packages.config \
+	MenuCMD \
 	crisis.in 
 
 REFERENCES =  \

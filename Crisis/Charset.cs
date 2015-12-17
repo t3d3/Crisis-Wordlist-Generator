@@ -68,68 +68,63 @@ namespace crisis
             }
         }
 
-        public static List<string> SfrNeufBox ()
+        public static List<string> SfrNeufBox()
+    {
+        if (charsetName == "sfr0")
         {
-            if (charsetName == "sfr0")
-            {
-                //syllable
-                charsetSelecting = lalpha.Concat(zero).ToList();
-                booleanType = false;
-            }
-            else if (charsetName == "sfr1")
-            {
-                // lsyllable_space
-                charsetSelecting = lalpha.Concat(one).ToList(); 
-                booleanType = false;
-            }
-            else if (charsetName == "sfr2")
-            {
-                // lsyllable-numeric
-                charsetSelecting = lalpha.Concat(two).ToList();                   
-                booleanType = false;
-            }
-            else if (charsetName == "sfr3")
-            {
-                // lsyllable-numeric-space
-                charsetSelecting = lalpha.Concat(three).ToList();                    
-                booleanType = false;
-            }
-            else if (charsetName == "sfr4")
-            {
-                //lsyllable-numeric-symbol14
-                charsetSelecting = lalpha.Concat(four).ToList(); 
-                booleanType = false;
-            }
-            else if (charsetName == "sfr5")
-            {
-                // lsyllable-numeric-symbol14-space
-                charsetSelecting = lalpha.Concat(five).ToList();                    
-                booleanType = false;
-            }
-            else if (charsetName == "sfr6")
-            {
-                //lsyllable-numeric-all
-                charsetSelecting = lalpha.Concat(six).ToList();
-                booleanType = false;
-            }
-            else if (charsetName == "sfr7")
-            {
-                //lsyllable-numeric-all-space
-                charsetSelecting = lalpha.Concat(seven).ToList();                    
-                booleanType = false;
-            }
-            else if (charsetName == "sfr8")
-            {
-                //lsyllable-numeric-all-space
-                charsetSelecting = lalpha.Concat(eight).ToList();                    
-                booleanType = false;
-            }
-            else if (charsetName == "sfr9")
-            {
-                //lsyllable-numeric-all-space
-                charsetSelecting = lalpha.Concat(nine).ToList();                   
-                booleanType = false;
-            }
+            //syllable
+            charsetSelecting = lalpha.Concat(zero).ToList();
+            booleanType = false;
+        } else if (charsetName == "sfr1")
+        {
+            // lsyllable_space
+            charsetSelecting = lalpha.Concat(one).ToList(); 
+            booleanType = false;
+        } else if (charsetName == "sfr2")
+        {
+            // lsyllable-numeric
+            charsetSelecting = lalpha.Concat(two).ToList();                   
+            booleanType = false;
+        } else if (charsetName == "sfr3")
+        {
+            // lsyllable-numeric-space
+            charsetSelecting = lalpha.Concat(three).ToList();                    
+            booleanType = false;
+        } else if (charsetName == "sfr4")
+        {
+            //lsyllable-numeric-symbol14
+            charsetSelecting = lalpha.Concat(four).ToList(); 
+            booleanType = false;
+        } else if (charsetName == "sfr5")
+        {
+            // lsyllable-numeric-symbol14-space
+            charsetSelecting = lalpha.Concat(five).ToList();                    
+            booleanType = false;
+        } else if (charsetName == "sfr6")
+        {
+            //lsyllable-numeric-all
+            charsetSelecting = lalpha.Concat(six).ToList();
+            booleanType = false;
+        } else if (charsetName == "sfr7")
+        {
+            //lsyllable-numeric-all-space
+            charsetSelecting = lalpha.Concat(seven).ToList();                    
+            booleanType = false;
+        } else if (charsetName == "sfr8")
+        {
+            //lsyllable-numeric-all-space
+            charsetSelecting = lalpha.Concat(eight).ToList();                    
+            booleanType = false;
+        } else if (charsetName == "sfr9")
+        {
+            //lsyllable-numeric-all-space
+            charsetSelecting = lalpha.Concat(nine).ToList();                   
+            booleanType = false;
+        } 
+        else
+        {
+            booleanType = true;
+        }   
 
             return charsetSelecting;
         }
@@ -147,6 +142,10 @@ namespace crisis
                 //hex-upper 
                 charsetSelecting = numeric.Concat(hex_upper).ToList();                    
                 booleanType = false;
+            } 
+            else
+            {
+                booleanType = true;
             }
 
             return charsetSelecting;
@@ -165,6 +164,10 @@ namespace crisis
                 //numeric-space
                 CharsetSelecting = numeric.Concat(space).ToList();                    
                 booleanType = false;
+            } 
+            else
+            {
+                booleanType = true;
             }           
 
             return charsetSelecting;
@@ -206,6 +209,10 @@ namespace crisis
                     //symbols-all-space
                     charsetSelecting = symbols14.Concat(symbols_all).Concat(space).ToList();                    
                     booleanType = false;
+                } 
+                else
+                {
+                    booleanType = true;       
                 }
 
             return charsetSelecting;
@@ -262,6 +269,10 @@ namespace crisis
                 //usyllable-numeric-all-space
                 charsetSelecting = syllable_fr.ConvertAll(item => item.ToUpper()).Concat(numeric).Concat(symbols14).Concat(symbols_all).Concat(space).ToList(); 
                 booleanType = false;
+            } 
+            else
+            {
+                booleanType = true;
             }
 
             return charsetSelecting;
@@ -317,6 +328,10 @@ namespace crisis
                 charsetSelecting = syllable_fr.Concat(numeric).Concat(symbols14).Concat(symbols_all).Concat(space).ToList();                    
                 booleanType = false;
             }
+            else
+            {
+                booleanType = true;
+            }
 
             return charsetSelecting;
         }
@@ -370,6 +385,10 @@ namespace crisis
                 //mixsyllable-numeric-all-space
                 charsetSelecting = syllable_fr.Concat(syllable_fr.ConvertAll(item => item.ToUpper())).Concat(numeric).Concat(symbols14).Concat(symbols_all).Concat(space).ToList();                    
                 booleanType = false;
+            } 
+            else
+            {
+                booleanType = true;
             }
 
             return charsetSelecting;
@@ -424,124 +443,121 @@ namespace crisis
                 //ualpha-numeric-all-space
                 charsetSelecting = ualpha.Concat(numeric).Concat(symbols14).Concat(symbols_all).Concat(space).ToList(); 
                 booleanType = false;
+            } 
+            else
+            {
+                booleanType = true;    
             }
 
             return charsetSelecting;
         }
 
         public static List<string> Lalpha()
+    {
+        if (charsetName == "lalpha")
         {
-            if (charsetName == "lalpha")
-            {
-                //lalpha
-                charsetSelecting = lalpha;
-                booleanType = false;
-            }
-            else if (charsetName == "lalpha-space")
-            {
-                // lalpha_space
-                charsetSelecting = lalpha.Concat(space).ToList(); 
-                booleanType = false;
-            }
-            else if (charsetName == "lalpha-numeric")
-            {
-                // lalpha-numeric
-                charsetSelecting = lalpha.Concat(numeric).ToList();                    
-                booleanType = false;
-            }
-            else if (charsetName == "lalpha-numeric-space")
-            {
-                // lalpha-numeric-space
-                charsetSelecting = lalpha.Concat(numeric).Concat(space).ToList();                    
-                booleanType = false;
-            }
-            else if (charsetName == "lalpha-numeric-symbol14")
-            {
-                //lalpha-numeric-symbol14
-                charsetSelecting = lalpha.Concat(numeric).Concat(symbols14).ToList(); 
-                booleanType = false;
-            }
-            else if (charsetName == "lalpha-numeric-symbol14-space")
-            {
-                // lalpha-numeric-symbol14-space
-                charsetSelecting = lalpha.Concat(numeric).Concat(symbols14).Concat(space).ToList();                     
-                booleanType = false;
-            }
-            else if (charsetName == "lalpha-numeric-all")
-            {
-                //lalpha-numeric-all
-                charsetSelecting = lalpha.Concat(numeric).Concat(symbols14).Concat(symbols_all).ToList();
-                booleanType = false;
-            }
-            else if (charsetName == "lalpha-numeric-all-space")
-            {
-                //lalpha-numeric-all-space
-                charsetSelecting = lalpha.Concat(numeric).Concat(symbols14).Concat(symbols_all).Concat(space).ToList();                    
-                booleanType = false;
-            }
+            //lalpha
+            charsetSelecting = lalpha;
+            booleanType = false;
+        } else if (charsetName == "lalpha-space")
+        {
+            // lalpha_space
+            charsetSelecting = lalpha.Concat(space).ToList(); 
+            booleanType = false;
+        } else if (charsetName == "lalpha-numeric")
+        {
+            // lalpha-numeric
+            charsetSelecting = lalpha.Concat(numeric).ToList();                    
+            booleanType = false;
+        } else if (charsetName == "lalpha-numeric-space")
+        {
+            // lalpha-numeric-space
+            charsetSelecting = lalpha.Concat(numeric).Concat(space).ToList();                    
+            booleanType = false;
+        } else if (charsetName == "lalpha-numeric-symbol14")
+        {
+            //lalpha-numeric-symbol14
+            charsetSelecting = lalpha.Concat(numeric).Concat(symbols14).ToList(); 
+            booleanType = false;
+        } else if (charsetName == "lalpha-numeric-symbol14-space")
+        {
+            // lalpha-numeric-symbol14-space
+            charsetSelecting = lalpha.Concat(numeric).Concat(symbols14).Concat(space).ToList();                     
+            booleanType = false;
+        } else if (charsetName == "lalpha-numeric-all")
+        {
+            //lalpha-numeric-all
+            charsetSelecting = lalpha.Concat(numeric).Concat(symbols14).Concat(symbols_all).ToList();
+            booleanType = false;
+        } else if (charsetName == "lalpha-numeric-all-space")
+        {
+            //lalpha-numeric-all-space
+            charsetSelecting = lalpha.Concat(numeric).Concat(symbols14).Concat(symbols_all).Concat(space).ToList();                    
+            booleanType = false;
+        } else
+        {
+            booleanType = true;
+        }
 
             return charsetSelecting;
         }
 
         public static List<string> MixAlpha()
+    {
+
+
+        if (charsetName == "mixalpha")
         {
+            //mixalpha
+            charsetSelecting = lalpha.Concat(ualpha).ToList();
+            booleanType = false;
+        } else if (charsetName == "mixalpha-space")
+        {
+            //mixalpha-space
+            charsetSelecting = lalpha.Concat(ualpha).Concat(space).ToList();
+            booleanType = false;
 
+        } else if (charsetName == "mixalpha-numeric")
+        {
+            //mixalpha-numeric
+            charsetSelecting = lalpha.Concat(ualpha).Concat(numeric).ToList();
+            booleanType = false;
 
-            if (charsetName == "mixalpha")
-                {
-                    //mixalpha
-                    charsetSelecting = lalpha.Concat(ualpha).ToList();
-                    booleanType = false;
-                }
-                else if (charsetName == "mixalpha-space")
-                {
-                    //mixalpha-space
-                    charsetSelecting = lalpha.Concat(ualpha).Concat(space).ToList();
-                    booleanType = false;
+        } else if (charsetName == "mixalpha_numeric_space")
+        {
+            //mixalpha-numeric-space
+            charsetSelecting = lalpha.Concat(ualpha).Concat(numeric).Concat(space).ToList();
+            booleanType = false;
 
-                }
-                else if (charsetName == "mixalpha-numeric")
-                {
-                    //mixalpha-numeric
-                    charsetSelecting = lalpha.Concat(ualpha).Concat(numeric).ToList();
-                    booleanType = false;
+        } else if (charsetName == "mixalpha-numeric-symbol14")
+        {
+            //mixalpha-numeric-symbol14
+            charsetSelecting = lalpha.Concat(ualpha).Concat(numeric).Concat(symbols14).ToList();
+            booleanType = false;
 
-                }
-                else if (charsetName == "mixalpha_numeric_space")
-                {
-                    //mixalpha-numeric-space
-                    charsetSelecting = lalpha.Concat(ualpha).Concat(numeric).Concat(space).ToList();
-                    booleanType = false;
+        } else if (charsetName == "mixalpha-numeric-symbol14-space")
+        {
+            //mixalpha-numeric-symbol14-space
+            charsetSelecting = lalpha.Concat(ualpha).Concat(numeric).Concat(symbols14).Concat(space).ToList();
+            booleanType = false;
 
-                }
-                else if (charsetName == "mixalpha-numeric-symbol14")
-                {
-                    //mixalpha-numeric-symbol14
-                    charsetSelecting = lalpha.Concat(ualpha).Concat(numeric).Concat(symbols14).ToList();
-                    booleanType = false;
+        } else if (charsetName == "mixalpha-numeric-all")
+        {
+            // mixalpha-numeric-all
+            charsetSelecting = lalpha.Concat(ualpha).Concat(numeric).Concat(symbols14).Concat(symbols_all).ToList();                    
+            booleanType = false;
 
-                }
-                else if (charsetName == "mixalpha-numeric-symbol14-space")
-                {
-                   //mixalpha-numeric-symbol14-space
-                    charsetSelecting = lalpha.Concat(ualpha).Concat(numeric).Concat(symbols14).Concat(space).ToList();
-                    booleanType = false;
+        } else if (charsetName == "mixalpha-numeric-all-space")
+        {
+            // mixalpha-numeric-all-space
+            charsetSelecting = lalpha.Concat(ualpha).Concat(numeric).Concat(symbols14).Concat(symbols_all).Concat(space).ToList();
+            booleanType = false;
 
-                }
-                else if (charsetName == "mixalpha-numeric-all")
-                {
-                    // mixalpha-numeric-all
-                    charsetSelecting = lalpha.Concat(ualpha).Concat(numeric).Concat(symbols14).Concat(symbols_all).ToList();                    
-                    booleanType = false;
-
-                }
-                else if (charsetName == "mixalpha-numeric-all-space")
-                {
-                    // mixalpha-numeric-all-space
-                    charsetSelecting = lalpha.Concat(ualpha).Concat(numeric).Concat(symbols14).Concat(symbols_all).Concat(space).ToList();
-                    booleanType = false;
-
-                }
+        } 
+        else
+        {
+            booleanType = true;
+        }
 
 
             return charsetSelecting;
@@ -604,71 +620,73 @@ namespace crisis
                     charsetSelecting = ualpha.Concat(ualpha_sv).Concat(numeric).Concat(symbols14).Concat(symbols_all).Concat(space).ToList();
                     booleanType = false;
 
+                } 
+                else
+                {
+                    booleanType = true;       
                 }
-            return charsetSelecting;
+               
+                
+                return charsetSelecting;
         }
 
         public static List<string> Lalpha_sv()
         {
 
             if (charsetName == "sv-lalpha")
-                {
-                    //lalpha-sv
-                    charsetSelecting = lalpha.Concat(lalpha_sv).ToList();                    
-                    booleanType = false;
+            {
+                //lalpha-sv
+                charsetSelecting = lalpha.Concat(lalpha_sv).ToList();                    
+                booleanType = false;
 
-                }
-            else if (charsetName == "sv-lalpha-space")
-                {
-                    //lalpha-space-sv
-                    charsetSelecting = lalpha.Concat(lalpha_sv).Concat(space).ToList();
-                    booleanType = false;
-                }
-                else if (charsetName == "sv-lalpha-numeric")
-                {
-                    //lalpha-numeric-sv
-                    charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).ToList();
-                    booleanType = false;
+            } else if (charsetName == "sv-lalpha-space")
+            {
+                //lalpha-space-sv
+                charsetSelecting = lalpha.Concat(lalpha_sv).Concat(space).ToList();
+                booleanType = false;
+            } else if (charsetName == "sv-lalpha-numeric")
+            {
+                //lalpha-numeric-sv
+                charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).ToList();
+                booleanType = false;
 
-                }
-                else if (charsetName == "sv-lalpha-numeric-space")
-                {
-                    //lalpha-numeric-space-sv
-                    charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).Concat(space).ToList();
-                    booleanType = false;
+            } else if (charsetName == "sv-lalpha-numeric-space")
+            {
+                //lalpha-numeric-space-sv
+                charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).Concat(space).ToList();
+                booleanType = false;
 
-                }
-                else if (charsetName == "sv-lalpha-numeric-symbol14")
-                {
+            } else if (charsetName == "sv-lalpha-numeric-symbol14")
+            {
 
-                    //lalpha-numeric-symbol14-sv
-                    charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).Concat(symbols14).ToList();
-                    booleanType = false;
+                //lalpha-numeric-symbol14-sv
+                charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).Concat(symbols14).ToList();
+                booleanType = false;
 
-                }
-                else if (charsetName == "sv-lalpha-numeric-symbol14-space")
-                {
+            } else if (charsetName == "sv-lalpha-numeric-symbol14-space")
+            {
 
-                    // lalpha-numeric-symbol14-space-sv
-                    charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).Concat(symbols14).Concat(space).ToList();
-                    booleanType = false;
+                // lalpha-numeric-symbol14-space-sv
+                charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).Concat(symbols14).Concat(space).ToList();
+                booleanType = false;
 
-                }
-                else if (charsetName == "sv-lalpha-numeric-all")
-                {
-                    // lalpha-numeric-all-sv
-                    charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).Concat(symbols14).Concat(symbols_all).ToList();
-                    booleanType = false;
+            } else if (charsetName == "sv-lalpha-numeric-all")
+            {
+                // lalpha-numeric-all-sv
+                charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).Concat(symbols14).Concat(symbols_all).ToList();
+                booleanType = false;
 
-                }
-                else if (charsetName == "sv-lalpha-numeric-all-space")
-                {
-                    //lalpha-numeric-all-space-sv
-                    charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).Concat(symbols14).Concat(symbols_all).Concat(space).ToList();                    //charsetSelecting.Add("a"); charsetSelecting.Add("b"); charsetSelecting.Add("c"); charsetSelecting.Add("d"); charsetSelecting.Add("e"); charsetSelecting.Add("f"); charsetSelecting.Add("g"); charsetSelecting.Add("h"); charsetSelecting.Add("i"); charsetSelecting.Add("j"); charsetSelecting.Add("k"); charsetSelecting.Add("l"); charsetSelecting.Add("m"); charsetSelecting.Add("n"); charsetSelecting.Add("o"); charsetSelecting.Add("p"); charsetSelecting.Add("q"); charsetSelecting.Add("r"); charsetSelecting.Add("s"); charsetSelecting.Add("t"); charsetSelecting.Add("u"); charsetSelecting.Add("v"); charsetSelecting.Add("w"); charsetSelecting.Add("x"); charsetSelecting.Add("y"); charsetSelecting.Add("z"); charsetSelecting.Add("å"); charsetSelecting.Add("ä"); charsetSelecting.Add("ö"); charsetSelecting.Add("0"); charsetSelecting.Add("1"); charsetSelecting.Add("2"); charsetSelecting.Add("3"); charsetSelecting.Add("4"); charsetSelecting.Add("5"); charsetSelecting.Add("6"); charsetSelecting.Add("7"); charsetSelecting.Add("8"); charsetSelecting.Add("9"); charsetSelecting.Add("!"); charsetSelecting.Add("@"); charsetSelecting.Add("#"); charsetSelecting.Add("$"); charsetSelecting.Add("%"); charsetSelecting.Add("^"); charsetSelecting.Add("&"); charsetSelecting.Add("*"); charsetSelecting.Add("("); charsetSelecting.Add(")"); charsetSelecting.Add("-"); charsetSelecting.Add("_"); charsetSelecting.Add("+"); charsetSelecting.Add("="); charsetSelecting.Add("!"); charsetSelecting.Add("@"); charsetSelecting.Add("#"); charsetSelecting.Add("$"); charsetSelecting.Add("%"); charsetSelecting.Add("^"); charsetSelecting.Add("&"); charsetSelecting.Add("*"); charsetSelecting.Add("("); charsetSelecting.Add(")"); charsetSelecting.Add("-"); charsetSelecting.Add("_"); charsetSelecting.Add("+"); charsetSelecting.Add("="); charsetSelecting.Add("~"); charsetSelecting.Add("`"); charsetSelecting.Add("["); charsetSelecting.Add("]"); charsetSelecting.Add("{"); charsetSelecting.Add("}"); charsetSelecting.Add("|"); charsetSelecting.Add("\\"); charsetSelecting.Add(":"); charsetSelecting.Add(";"); charsetSelecting.Add("\""); charsetSelecting.Add("'"); charsetSelecting.Add("<"); charsetSelecting.Add(">"); charsetSelecting.Add(","); charsetSelecting.Add("."); charsetSelecting.Add("?"); charsetSelecting.Add("/"); charsetSelecting.Add(" ");
-                    booleanType = false;
+            } else if (charsetName == "sv-lalpha-numeric-all-space")
+            {
+                //lalpha-numeric-all-space-sv
+                charsetSelecting = lalpha.Concat(lalpha_sv).Concat(numeric).Concat(symbols14).Concat(symbols_all).Concat(space).ToList();                    //charsetSelecting.Add("a"); charsetSelecting.Add("b"); charsetSelecting.Add("c"); charsetSelecting.Add("d"); charsetSelecting.Add("e"); charsetSelecting.Add("f"); charsetSelecting.Add("g"); charsetSelecting.Add("h"); charsetSelecting.Add("i"); charsetSelecting.Add("j"); charsetSelecting.Add("k"); charsetSelecting.Add("l"); charsetSelecting.Add("m"); charsetSelecting.Add("n"); charsetSelecting.Add("o"); charsetSelecting.Add("p"); charsetSelecting.Add("q"); charsetSelecting.Add("r"); charsetSelecting.Add("s"); charsetSelecting.Add("t"); charsetSelecting.Add("u"); charsetSelecting.Add("v"); charsetSelecting.Add("w"); charsetSelecting.Add("x"); charsetSelecting.Add("y"); charsetSelecting.Add("z"); charsetSelecting.Add("å"); charsetSelecting.Add("ä"); charsetSelecting.Add("ö"); charsetSelecting.Add("0"); charsetSelecting.Add("1"); charsetSelecting.Add("2"); charsetSelecting.Add("3"); charsetSelecting.Add("4"); charsetSelecting.Add("5"); charsetSelecting.Add("6"); charsetSelecting.Add("7"); charsetSelecting.Add("8"); charsetSelecting.Add("9"); charsetSelecting.Add("!"); charsetSelecting.Add("@"); charsetSelecting.Add("#"); charsetSelecting.Add("$"); charsetSelecting.Add("%"); charsetSelecting.Add("^"); charsetSelecting.Add("&"); charsetSelecting.Add("*"); charsetSelecting.Add("("); charsetSelecting.Add(")"); charsetSelecting.Add("-"); charsetSelecting.Add("_"); charsetSelecting.Add("+"); charsetSelecting.Add("="); charsetSelecting.Add("!"); charsetSelecting.Add("@"); charsetSelecting.Add("#"); charsetSelecting.Add("$"); charsetSelecting.Add("%"); charsetSelecting.Add("^"); charsetSelecting.Add("&"); charsetSelecting.Add("*"); charsetSelecting.Add("("); charsetSelecting.Add(")"); charsetSelecting.Add("-"); charsetSelecting.Add("_"); charsetSelecting.Add("+"); charsetSelecting.Add("="); charsetSelecting.Add("~"); charsetSelecting.Add("`"); charsetSelecting.Add("["); charsetSelecting.Add("]"); charsetSelecting.Add("{"); charsetSelecting.Add("}"); charsetSelecting.Add("|"); charsetSelecting.Add("\\"); charsetSelecting.Add(":"); charsetSelecting.Add(";"); charsetSelecting.Add("\""); charsetSelecting.Add("'"); charsetSelecting.Add("<"); charsetSelecting.Add(">"); charsetSelecting.Add(","); charsetSelecting.Add("."); charsetSelecting.Add("?"); charsetSelecting.Add("/"); charsetSelecting.Add(" ");
+                booleanType = false;
 
-                }
-
+            } 
+            else
+            {
+                booleanType = true;
+            }
             return charsetSelecting;
         }
 
@@ -729,6 +747,10 @@ namespace crisis
                     charsetSelecting = lalpha.Concat(lalpha_sv).Concat(ualpha).Concat(ualpha_sv).Concat(numeric).Concat(symbols14).Concat(symbols_all).Concat(space).ToList();
                     booleanType = false;
 
+                } 
+                else
+                {
+                    booleanType = true;    
                 }
             return charsetSelecting;
 

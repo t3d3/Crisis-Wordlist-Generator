@@ -1,7 +1,0 @@
-/root/Crisis-Wordlist-Generator/Crisis/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/root/Crisis-Wordlist-Generator/Crisis/bin/Debug/crisis.exe.mdb
-/root/Crisis-Wordlist-Generator/Crisis/bin/Debug/crisis.exe
-/root/Crisis-Wordlist-Generator/Crisis/obj/x86/Debug/crisis.exe
-/root/Crisis-Wordlist-Generator/Crisis/obj/x86/Debug/crisis.exe.mdb
-/root/Crisis-Wordlist-Generator/Crisis/bin/Debug/C5.dll
-/root/Crisis-Wordlist-Generator/Crisis/bin/Debug/Plossum CommandLine.dll
