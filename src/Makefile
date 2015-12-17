@@ -10,7 +10,7 @@ include $(top_srcdir)/config.make
 
 ifeq ($(CONFIG),DEBUG_X86)
 ASSEMBLY_COMPILER_COMMAND = dmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize- -debug "-define:DEBUG;"
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug "-define:DEBUG;"
 ASSEMBLY = bin/Debug/crisis.exe
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = exe
@@ -59,24 +59,22 @@ CRISIS = $(BUILD_DIR)/crisis
 
 FILES = \
 	AssemblyInfo.cs \
-	Charset.cs \
-	Combination.cs \
-	Generate.cs \
-	Help.cs \
+	charset/Charset.cs \
+	algo/Algorithme.cs \
+	algo/Generate.cs \
 	Program.cs \
-	Command.cs \
-	FilesNameDirectory.cs \
-	MenuCMD/MenuDisplayCharset.cs \
-	MenuCMD/Menu.cs \
-	ProgressBar.cs 
+	cmd/Command.cs \
+	cmd/FilesNameDirectory.cs \
+	charset/MenuDisplayCharset.cs \
+	cmd/Parameter.cs \
+	cmd/ProgressBar.cs 
 
 DATA_FILES = 
 
 RESOURCES = 
 
 EXTRAS = \
-	app.desktop \
-	MenuCMD \
+	Properties \
 	crisis.in 
 
 REFERENCES =  \

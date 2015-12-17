@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crisis", "Crisis\crisis.csproj", "{813372CD-F3F4-43E1-A070-8185185E9A99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crisis", "src\crisis.csproj", "{813372CD-F3F4-43E1-A070-8185185E9A99}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{676E4C50-C604-4EBC-8A7F-CD14AD845433}"
 EndProject
@@ -19,7 +19,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Crisis\crisis.csproj
+		StartupItem = src\crisis.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None

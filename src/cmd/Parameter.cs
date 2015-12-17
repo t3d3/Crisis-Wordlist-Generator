@@ -1,5 +1,5 @@
 //
-//  Menu.cs
+//  Parameter.cs
 //
 //  Author:
 //       Teeknofil <teeknofil@gmail.com>
@@ -22,39 +22,89 @@ using System;
 
 namespace crisis
 {
-    public class Menu : Generate 
+    public class Parameter  
     {
         private int dislayMainSubMain;
         private bool booleanSubMenu = true;
         private int sizeCharset;
-        private int typesOFProcedure;
-        private  int saveFileAsk;
 
-        public Menu()
+        private static int saveFile;
+        public static int SaveFile
         {
+            get { return Parameter.saveFile; }
+            set { Parameter.saveFile = value; }
         }
+
+        
+        private static int typesOfGeneration;
+        public static int TypesOfGeneration
+        {
+            get { return Parameter.typesOfGeneration; }
+            set { Parameter.typesOfGeneration = value; }
+        }
+
+        private static int numberOfChar;
+        public static int NumberOfChar
+        {
+            get { return Parameter.numberOfChar; }
+            set { Parameter.numberOfChar = value; }
+        }
+
+        private static char numberLineAsk;
+
+        public static char NumberLineAsk
+        {
+            get { return Parameter.numberLineAsk; }
+            set { Parameter.numberLineAsk = value; }
+        }
+
+        private static int numberLine = 1;
+
+        public static int NumberLine
+        {
+            get { return Parameter.numberLine; }
+            set { Parameter.numberLine = value; }
+        }
+
+        private static double numberCombination;
+
+        public static double NumberCombination
+        {
+            get { return Parameter.numberCombination; }
+            set { Parameter.numberCombination = value; }
+        }
+
+        public Parameter()
+        {
+            
+        }
+
 
         public void Navigation ()
         {
+            Generate Function = new Generate();
+
             MainMenu();
             TypesOfFileAtGenerate();
 
-            if (typesOFProcedure == 0 || typesOFProcedure == 1)
+            if (typesOfGeneration == 0 || typesOfGeneration == 1)
             {
                 SizeOfWorld();
                 SaveCharsetInFilesTxt();
-                CharsetCrunch();
-            } else if (typesOFProcedure == 2)
+                Function.CharsetCrunch();
+            } else if (typesOfGeneration == 2)
             {
                 SizeOfWorld();
                 SaveCharsetInFilesTxt();
-                Wordlist();
+                Function.Wordlist();
                 Console.ReadKey();
-            } 
-            else if (typesOFProcedure == 3)
+            
+            }
+ 
+            else if (typesOfGeneration == 3)
             {
                 SaveCharsetInFilesTxt();
-                L33tSpeek();
+                Function.L33tSpeek();
             }
 
         } // End Fonction
@@ -62,8 +112,8 @@ namespace crisis
         public void MainMenu()
         {
 
-            Console.WriteLine(" Crisis Wordlist Generator  by Teeknofil, version : 1.0.7");
-            Console.WriteLine(" Thanks WarLocG for the debugging et fix bug");
+            Console.WriteLine(" Crisis Wordlist Generator  by Teeknofil, version : 1.0.8");
+            Console.WriteLine(" Thanks WarLocG for the debugging and fix bug");
             Console.WriteLine(" FAQ:  www.crack-wifi.com/forum/index.php");
             Console.WriteLine(" Trouble: http://www.kali-linux.fr/forum/index.php");
 
@@ -138,12 +188,7 @@ namespace crisis
 
         public void TypesOfFileAtGenerate()
         {
-            if (typesOfGeneration == 3)
-            {
-                typesOfGeneration += typesOFProcedure;
-            } 
-            else
-            {
+                           
                 bool b = false;
 
                 Console.WriteLine("\n 0)\t Charset Generator for Crunch without repetition");
@@ -155,12 +200,12 @@ namespace crisis
                     try
                     {
                         Console.Write(" Type the number corresponding to the menu : ");
-                        b = int.TryParse(Console.ReadLine(), out typesOFProcedure);
+                        b = int.TryParse(Console.ReadLine(), out typesOfGeneration);
 
-                        if (typesOFProcedure == 0 | typesOFProcedure == 1 | typesOFProcedure == 2)
+                        if (typesOfGeneration == 0 | typesOfGeneration == 1 | typesOfGeneration == 2)
                         {
                             b = true;
-                            typesOfGeneration += typesOFProcedure;
+                            
                         }
                         else
                         {
@@ -173,11 +218,12 @@ namespace crisis
                         b = false;
                     }
                 }
-            }
+            
         } //End Fonction
        
         public void SizeOfWorld ()
-        {
+        {           
+            
             bool b = false;
 
             while (b == false)
@@ -187,14 +233,14 @@ namespace crisis
                 try
                 {
                     b = int.TryParse(Console.ReadLine(), out sizeCharset);
-                    NumberOfChar = +sizeCharset;
+                    numberOfChar = +sizeCharset;
 
                     if (sizeCharset < 2 | sizeCharset > 128)
                     {
                         Console.WriteLine(" Type a number between 2 and 128 please !");
                         b = false;
                     }
-                    else if (typesOFProcedure == '1' | typesOFProcedure == '2')
+                    else if (typesOfGeneration == '1' | typesOfGeneration == '2')
                     {
                         if (sizeCharset > Charset.CharsetSelecting.Count)
                         {
@@ -218,11 +264,9 @@ namespace crisis
         }
 
         public void SaveCharsetInFilesTxt()
-        {          
-            
+        {
             Console.WriteLine("\n 1) Yes");
-            Console.WriteLine(" 2) No\n");
-            
+            Console.WriteLine(" 2) No\n");            
 
             bool b = true;
             while (b)
@@ -230,13 +274,11 @@ namespace crisis
                 try
                 {
                     Console.Write(" Do you want to save the output to a file : ");
-                    int.TryParse(Console.ReadLine(), out saveFileAsk); 
+                    int.TryParse(Console.ReadLine(), out saveFile); 
                     
-                    if (saveFileAsk == 1 | saveFileAsk == 2)
+                    if (saveFile == 1 | saveFile == 2)
                     {
                         b = false;
-                        SaveFile += saveFileAsk;                 
-                        
                     }                    
                      else
                     {
@@ -247,6 +289,72 @@ namespace crisis
                 catch (FormatException)
                 {
                     b = true;
+                }
+            }
+
+            if (typesOfGeneration == 2)
+            {
+                bool b1 = false;
+                bool b2 = false;
+                
+
+                numberCombination = Math.Pow(Parameter.NumberOfChar, Charset.CharsetSelecting.Count);
+
+
+                while (b == false)
+                {
+                    Console.Write(" Want to choose the number of line in a file (Default 10000) ?  [ y / n ] : ");
+                    try
+                    {
+                        b = char.TryParse(Console.ReadLine(), out numberLineAsk);
+
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine(" Error in saissis of information ");
+                        b = false;
+                    }
+                }
+
+                while (b1 == false)
+                {
+                    try
+                    {
+                        if (numberLineAsk == 'y')
+                        {
+                            Console.Write("\n How do you line : ");
+                            b1 = int.TryParse(Console.ReadLine(), out numberLine);
+
+                            if (numberLine < 128)
+                            {
+                                Console.WriteLine(" Type a number greater than 128 please !");
+                                b1 = false;
+                            }
+                        }
+                        else
+                        {
+                            numberLine = 10000;
+                            b1 = true;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine(" Error in saissis of information ");
+                        b = false;
+                    }
+                }
+
+                while (b2)
+                {
+                    if (numberLine > numberCombination)
+                    {
+                        numberLine /= 2;
+                        b = true;
+                    }
+                    else
+                    {
+                        b = false;
+                    }
                 }
             }
         }
@@ -260,7 +368,7 @@ namespace crisis
             if (Charset.CharsetName == "99")
             {
                 Charset.CharsetName =  null;                
-                Menu obj1 = new Menu();
+                Parameter obj1 = new Parameter();
                 obj1.MainMenu();
             }
         }
@@ -305,7 +413,7 @@ namespace crisis
                 Charset.CharsetName = Console.ReadLine();
 
                 Charset.ReadFileTxt();
-                typesOFProcedure = '4';
+                typesOfGeneration = '4';
             }
         }
 

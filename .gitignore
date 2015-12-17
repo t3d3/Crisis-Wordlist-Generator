@@ -12,6 +12,7 @@
 *.userprefs
 config.log
 config.make
+*.userprefs
 
 # Build results
 [Dd]ebug/

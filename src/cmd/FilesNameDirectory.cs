@@ -74,7 +74,7 @@ namespace crisis
         {                   
         }
 
-        public FilesNameDirectory(int? _indice)
+        public FilesNameDirectory(int _indice)
         {
             this.indiceOfProcess = _indice;
         }

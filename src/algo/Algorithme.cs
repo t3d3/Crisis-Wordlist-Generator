@@ -1,28 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
 
 namespace crisis
 {
-    public class Combination   
+    public class Algorithme   
     {
-        private int numberOfChar;
-
-        public int NumberOfChar
-        {
-            get { return numberOfChar; }
-            set { numberOfChar = value; }
-        }
-
         private Random random = new Random();
-        
 
-        public Combination()
+             
+
+        public Algorithme()
         {
             
         }
+       
 
         public string ConverterInLeetSpeak(string _word)
         {
@@ -79,7 +70,7 @@ namespace crisis
         public string CombinationRamdon()
         {
             string randonString = null;
-            for (int i = 0; i < numberOfChar; i++)
+            for (int i = 0; i < Parameter.NumberOfChar; i++)
             {
                 randonString += Charset.CharsetSelecting[random.Next(Charset.CharsetSelecting.Count)].ToString();
             }
@@ -101,9 +92,10 @@ namespace crisis
 
         public List<String> CombinationCharset(List<String> charset, int NumberOfChar, int k)
         {
+            
             int h = 0, i = 0, j = 0;
-            int[] array = new int[NumberOfChar - 1];
-            for (int tmp = 0; tmp < NumberOfChar - 1; tmp++)
+            int[] array = new int[Parameter.NumberOfChar - 1];
+            for (int tmp = 0; tmp < Parameter.NumberOfChar - 1; tmp++)
             {
                 array[tmp] = 0;
             }
@@ -116,7 +108,7 @@ namespace crisis
             {
                 return charset;
             }
-            else if (charset.Count == NumberOfChar)
+            else if (charset.Count == Parameter.NumberOfChar)
             {
                 while (i < charset.Count)
                 {
@@ -125,10 +117,10 @@ namespace crisis
                 }
                 resultCombinationNoRepeats.Add(s);
             }
-            else if (charset.Count > NumberOfChar)
+            else if (charset.Count > Parameter.NumberOfChar)
             {
-               
-                double numberCombinationNoRepeat = factorial(charset.Count - 1) /  ( factorial(NumberOfChar - 1) * factorial((charset.Count - 1) - (NumberOfChar - 1)) ) ;                
+
+                double numberCombinationNoRepeat = factorial(charset.Count - 1) / (factorial(Parameter.NumberOfChar - 1) * factorial((charset.Count - 1) - (Parameter.NumberOfChar - 1)));                
                 
                 while (i < numberCombinationNoRepeat)
                 {
