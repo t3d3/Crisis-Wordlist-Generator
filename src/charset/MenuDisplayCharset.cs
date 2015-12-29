@@ -27,7 +27,13 @@ namespace crisis
         public MenuDisplayCharset()
         {
         }
-        
+
+
+        public static void MenuLeetSpeakPrint()
+        {
+            Console.WriteLine(" leet speak\t\t\t 1337 5p34k\n");
+        }
+
         public static void MenuHexaPrint()
         {
             //hexa-lower
@@ -44,24 +50,8 @@ namespace crisis
             Console.WriteLine(" numeric-space\t\t\t0123456789 [space] \n");
         }
         
-        public static void MenuSfrNeufBoxPrint()
-        {
-            Console.WriteLine("\n sfr0\t\t\t\tabcdefghijklmnopqrs0");
-            Console.WriteLine(" sfr1\t\t\t\tabcdefghijklmnopqrs1");
-            Console.WriteLine(" sfr2\t\t\t\tabcdefghijklmnopqrs2");
-            Console.WriteLine(" sfr3\t\t\t\tabcdefghijklmnopqrs3");
-            Console.WriteLine(" sfr4\t\t\t\tabcdefghijklmnopqrs4");
-            Console.WriteLine(" sfr5\t\t\t\tabcdefghijklmnopqrs5");
-            Console.WriteLine(" sfr6\t\t\t\tabcdefghijklmnopqrs6");
-            Console.WriteLine(" sfr7\t\t\t\tabcdefghijklmnopqrs7");
-            Console.WriteLine(" sfr8\t\t\t\tabcdefghijklmnopqrs8");
-            Console.WriteLine(" sfr9\t\t\t\tabcdefghijklmnopqrs9\n");
-        }
         
-        public static void MenuLeetSpeakPrint()
-        {
-            Console.WriteLine(" leet speak\t\t\t1337 5p34k");
-        }
+       
 
         public static void MenuSpecialCharacteresPrint()
         {
@@ -198,7 +188,7 @@ namespace crisis
             Console.WriteLine(" sv-lalpha-numeric-symbol14-space\t123456789!@#$%^&*()-_+=\n");
 
             //lalpha-numeric-all-sv
-            Console.WriteLine(" sv-lalpha-numeric-all-sv\t\t\tabcdefghijklmnopqrstuvwxyzåäö0");
+            Console.WriteLine(" sv-lalpha-numeric-all\t\t\tabcdefghijklmnopqrstuvwxyzåäö0");
             //lalpha-numeric-all-space-sv
             Console.WriteLine(" sv-lalpha-numeric-all-space\t\t123456789!@#$%^&*()-_+=~`\n\t\t\t\t\t[]{}|\\:;\"'<>,.?/ [space]\n");
         }

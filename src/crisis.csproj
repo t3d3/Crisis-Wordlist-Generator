@@ -55,18 +55,25 @@
     <Reference Include="Plossum CommandLine">
       <HintPath>..\packages\Plossum.CommandLine.0.3.0.14\lib\net35\Plossum CommandLine.dll</HintPath>
     </Reference>
+    <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cmd\CommandFunctionCommon.cs" />
+    <Compile Include="cmd\CommandFunctionPattern.cs" />
+    <Compile Include="Tools\Tools.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="charset\Charset.cs" />
+    <Compile Include="algo\AlgorithmeFunction.cs" />
     <Compile Include="algo\Algorithme.cs" />
-    <Compile Include="algo\Generate.cs" />
+    <Compile Include="cmd\CommandFunctionHelp.cs" />
+    <Compile Include="Menu\MainMenu.cs" />
+    <Compile Include="Menu\SubMenu.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="cmd\Command.cs" />
-    <Compile Include="cmd\FilesNameDirectory.cs" />
+    <Compile Include="cmd\CommandProperty.cs" />
+    <Compile Include="Tools\FilesNameDirectory.cs" />
     <Compile Include="charset\MenuDisplayCharset.cs" />
-    <Compile Include="cmd\Parameter.cs" />
-    <Compile Include="cmd\ProgressBar.cs" />
+    <Compile Include="Menu\Parameter.cs" />
+    <Compile Include="Tools\Statistical.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -92,6 +99,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

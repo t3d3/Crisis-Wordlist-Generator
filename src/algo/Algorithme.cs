@@ -1,171 +1,158 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace crisis
 {
-    public class Algorithme   
-    {
-        private Random random = new Random();
-
-             
-
-        public Algorithme()
+    public partial class Algorithme  
+    { 
+        private string[] locate;
+        public string[] Locate
         {
-            
+            get { return locate; }
+            set { locate = value; }
         }
-       
+                
+        
+        
 
-        public string ConverterInLeetSpeak(string _word)
-        {
-            string wordLeet = null;
+        public void EnumerationPrint()
+        {   
+            BigInteger cpt = 0;
+            Algorithme algoEnume = new Algorithme();
+            make = new FilesNameDirectory(Parameter.TypesOfGeneration);
 
-            for (int i = 0; i < _word.Length; i++) 
-            {
-                wordLeet += FoundLetterLeet(_word[i]);
-            }
-            return wordLeet;
-        }
-
-        public char FoundLetterLeet(char _letter)
-        {
-            char letterLeet = _letter;
-
-            switch(Char.ToLower(letterLeet))
-            {
-                case 'a':
-                    letterLeet = '4';
-                    break;
-                case 'b':
-                    letterLeet = '8';
-                    break;
-                case 'e':
-                    letterLeet = '3';
-                    break;
-                case 'l':
-                    letterLeet = '1';
-                    break;
-                case 'o':
-                    letterLeet = '0';
-                    break;
-                case 's':
-                    letterLeet = '5';
-                    break;
-                case 't':
-                    letterLeet = '7';
-                    break;
-                case 'i':
-                    letterLeet = '!';
-                    break;
-                case 'g':
-                    letterLeet = '6';
-                    break;
-                case 'z':
-                    letterLeet = '2';
-                    break;                
-            }
-
-            return letterLeet;
-        }
-
-        public string CombinationRamdon()
-        {
-            string randonString = null;
-            for (int i = 0; i < Parameter.NumberOfChar; i++)
-            {
-                randonString += Charset.CharsetSelecting[random.Next(Charset.CharsetSelecting.Count)].ToString();
-            }
-            return randonString;
-        }
-
-        private double factorial(int x)
-        {
-            double buffer = 1;
-            while(x > 1) //tant que x est supérieur a 1
-            {
-                buffer = buffer * x; // je multiple
-                x--; // je decremente mon x
-            }
-            return buffer;
-        }
-
-       
-
-        public List<String> CombinationCharset(List<String> charset, int NumberOfChar, int k)
-        {
-            
-            int h = 0, i = 0, j = 0;
             int[] array = new int[Parameter.NumberOfChar - 1];
             for (int tmp = 0; tmp < Parameter.NumberOfChar - 1; tmp++)
             {
                 array[tmp] = 0;
             }
-            
-            string s = "";
-            List<String> resultCombinationNoRepeats = new List<String>();
-            
 
-            if ((charset.Count < NumberOfChar) || (NumberOfChar == 1))
+            if (Parameter.SaveFile == 1)
             {
-                return charset;
-            }
-            else if (charset.Count == Parameter.NumberOfChar)
-            {
-                while (i < charset.Count)
-                {
-                    s += charset[i];
-                    i++;
-                }
-                resultCombinationNoRepeats.Add(s);
-            }
-            else if (charset.Count > Parameter.NumberOfChar)
-            {
+                make.Setting_UpFile();
+                locate = new string[] { " Completed generating output : " + make.FilePath[Parameter.TypesOfGeneration].ToString() + make.FileName[Parameter.TypesOfGeneration] + make.NumberFile + ".txt" };
+                Console.WriteLine(locate[0].ToString());
+                BigInteger i =0;
 
-                double numberCombinationNoRepeat = factorial(charset.Count - 1) / (factorial(Parameter.NumberOfChar - 1) * factorial((charset.Count - 1) - (Parameter.NumberOfChar - 1)));                
-                
-                while (i < numberCombinationNoRepeat)
+                while (cpt + 20 < Statistical.NumberOfAllCombination)
                 {
 
-                    s = charset[charset.Count - 1];
-                    while (h < array.Length)
+                    if (i > Parameter.NumberLine - 1 || cpt + 25 == Statistical.NumberOfAllCombination)
                     {
-                        if (j > 0 && j < array.Length)
+                        i = 0;
+                        make.WorkFile.Close();
+                        make.Setting_UpFile();                        
+                        locate = new string[] { " Completed generating output : " + make.FilePath[Parameter.TypesOfGeneration].ToString() + make.FileName[Parameter.TypesOfGeneration] + make.NumberFile + ".txt" };
+                        Console.WriteLine(locate[0].ToString());                        
+                    }
+                    else
+                    {
+                        if (Parameter.TypesOfGeneration == 1)
                         {
-                            array[j] = array[j - 1] + 1;
+                            make.WorkFile.WriteLine("charset" + " = [" + algoEnume.Enumeration(array).ToString() + "]");
+                        }
+                        else
+                        {
+                            make.WorkFile.WriteLine(algoEnume.Enumeration(array).ToString());
                         }
 
-                        s += charset[array[h]];
-                        h++;
-                        j++;                        
-
+                        i++;                                                                     
                     }
 
-                    if (resultCombinationNoRepeats.Count == 25100000)
-                    {
-                        return resultCombinationNoRepeats;                         
-                    }
+                    ++cpt; 
+                }
 
-                    
-
-                    resultCombinationNoRepeats.Add(s);
-                    h = 0;
-                    j = 0;
-
-
-                    while (j < array.Length && array[j] != j + k)
-                    {
-                        j++;
-                    }
-
-                    if (j > 0)
-                    {
-                        array[j - 1] = array[j - 1] + 1;
-                    }
-
-                    i++ ;
-                }               
+                if (Parameter.TypesOfGeneration == 1)
+                {
+                    Console.WriteLine("\nCrunch commande example :\ncrunch " + Parameter.NumberOfChar + " " + Parameter.NumberOfChar + " -f charset_" + make.NumberFile + ".lst charset1 -i -s " + "abcdefgei");
+                }
             }
-            return resultCombinationNoRepeats;
-        }
+            else
+            {
+                while (cpt < Statistical.NumberOfAllCombination)
+                {
+                    if (Parameter.TypesOfGeneration == 1)
+                    {
+                        Console.WriteLine("charset" + Parameter.NumberLine++ + " = [" + algoEnume.Enumeration(array).ToString() + "]");
+                    }
+                    else if (Parameter.TypesOfGeneration == 2)
+                    {
+                        Console.WriteLine(algoEnume.Enumeration(array));
+                    }                    
+                    cpt++;
+                }
+            }
+        } // End Fonction
 
-    } // End Class
+        public void RamdonPrint()
+        {
+            BigInteger cpt = 0;                     
+            Algorithme algoRamdom = new Algorithme();
+            make = new FilesNameDirectory(Parameter.TypesOfGeneration);
+
+            if (Parameter.SaveFile == 1)
+            {
+                make.Setting_UpFile();
+                locate = new string[] { " Completed generating output : " + make.FilePath[Parameter.TypesOfGeneration].ToString() + make.FileName[Parameter.TypesOfGeneration] + make.NumberFile + ".txt" };
+                Console.WriteLine(locate[0].ToString());
+                BigInteger i = 0;
+
+                while (cpt + 20 < Statistical.NumberOfAllCombination)
+                {
+
+                    if (i > Parameter.NumberLine - 1 || cpt + 25 == Statistical.NumberOfAllCombination)
+                    {
+                        i = 0;
+                        make.WorkFile.Close();
+                        make.Setting_UpFile();                       
+                        locate = new string[] { " Completed generating output : " + make.FilePath[Parameter.TypesOfGeneration].ToString() + make.FileName[Parameter.TypesOfGeneration] + make.NumberFile + ".txt" };
+                        Console.WriteLine(locate[0].ToString());                       
+                        
+                    }
+                    else
+                    {
+                        make.WorkFile.WriteLine(algoRamdom.CombinationRamdon());
+                        ++i;                      
+                    }
+
+                    ++cpt;
+                }
+            }
+            else
+            {
+                while (cpt < Statistical.NumberOfAllCombination)
+                {
+                    Console.WriteLine(algoRamdom.CombinationRamdon());
+                    cpt++;
+                }
+            }                
+        } // End Fonction
+       
+        public void L33tSpeek()
+        {
+            Algorithme algoLeetSpeak = new Algorithme();
+            make = new FilesNameDirectory(Parameter.TypesOfGeneration);
+
+            if (Parameter.SaveFile == 1)
+            {
+                make.Setting_UpFile();                
+
+                foreach (var item in Charset.CharsetSelecting)
+                {                   
+                    make.WorkFile.WriteLine(algoLeetSpeak.ConverterInLeetSpeak(item.ToString()));
+                }
+
+                locate = new string[] { " Completed generating output : " + make.FilePath[Parameter.TypesOfGeneration].ToString() + make.FileName[Parameter.TypesOfGeneration] + make.NumberFile + ".txt" };
+                Console.WriteLine(locate[0].ToString());
+                make.WorkFile.Close();
+            } 
+            else
+            {
+                Charset.CharsetSelecting.ForEach(x => Console.WriteLine(algoLeetSpeak.ConverterInLeetSpeak(x.ToString())));
+            }
+        } // End Fonction 
+     
+
+    } //End Class
 } // End Namespace

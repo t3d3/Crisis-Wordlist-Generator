@@ -58,16 +58,22 @@ PLOSSUM_COMMANDLINE_DLL = $(BUILD_DIR)/Plossum\ CommandLine.dll
 CRISIS = $(BUILD_DIR)/crisis
 
 FILES = \
+	cmd/CommandFunctionCommon.cs \
+	cmd/CommandFunctionPattern.cs \
+	Tools/Tools.cs \
 	AssemblyInfo.cs \
 	charset/Charset.cs \
+	algo/AlgorithmeFunction.cs \
 	algo/Algorithme.cs \
-	algo/Generate.cs \
+	cmd/CommandFunctionHelp.cs \
+	Menu/MainMenu.cs \
+	Menu/SubMenu.cs \
 	Program.cs \
-	cmd/Command.cs \
-	cmd/FilesNameDirectory.cs \
+	cmd/CommandProperty.cs \
+	Tools/FilesNameDirectory.cs \
 	charset/MenuDisplayCharset.cs \
-	cmd/Parameter.cs \
-	cmd/ProgressBar.cs 
+	Menu/Parameter.cs \
+	Tools/Statistical.cs 
 
 DATA_FILES = 
 
@@ -75,11 +81,13 @@ RESOURCES =
 
 EXTRAS = \
 	Properties \
+	ClassDiagram1.cd \
 	crisis.in 
 
 REFERENCES =  \
 	System \
-	System.Core
+	System.Core \
+	System.Numerics
 
 DLL_REFERENCES =  \
 	../packages/C5.1.0.2.0/lib/net35/C5.dll \
