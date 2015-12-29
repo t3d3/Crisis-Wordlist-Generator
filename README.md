@@ -35,36 +35,56 @@ chmod +x crisis.exe
 <pre>
 
 crisis -h
-Crisis Wordlist Generator, by Teeknofil  version : 1.0.5
-Thanks WarLocG for the debugging et fix bug
-Trouble : http://www.kali-linux.fr/forum/index.php
-
-Combination:                                                                  
-   -a, --crunch       charset list customized to crunch wordlist generator
-   -e,                                                                        
-   --enumeration      generates a character list without repetition           
-   -r, --random       generate random character                               
-
-Help:                                                                         
-   -c, --wordlist-help      Displays the list of wordlist                           
-   -h, --help         Shows this help text                                    
-
-Options:                                                                      
-   -f, --file         Specify the save file in the                            
-                      output-dico folder on the desktop                       
-   -i,                Interactive command in the                              
-   --interactive      terminal with question and answer                       
-
-Parameter:                                                                    
-   -l, --lenght       Number of character or character group                  
-   -w, --wordlist     Character of the wordlist,                              
+Crisis Wordlist Generator by Teeknofil,  version : 1.0.9
 
 
-Example:		
-			crisis --charset
-			crisis -l 15 -e -w hex-lower -f
-			crisis -l 17 -r -w ualpha
+SYNOPSIS
 
+crisis <method> -l [len] -f [charset string] [options]
+
+DESCRIPTION
+
+Crisis can create a wordlist based on criteria you specify.
+The output  from crisis can be sent to the screen, file,
+or  to  another  program.  The required parameters are:
+
+Help:                                                                           
+   -h, --help           Shows this help text                                    
+   -w,                                                                          
+   --help-wordlist      Displays the list of wordlist                           
+
+Method:                                                                         
+   -1, --crunch         Charset list customized to crunch wordlist generator    
+   -2, --enumeration    Generate a character list without repetition            
+   -3, --random         Generate random character                               
+   -4, --leetspeak      Convert a list of words in language Leet Speak          
+                        Example : crisis  -4 ..\crisis\dico.txt -o              
+                                             
+
+Options:                                                                        
+   -b, --byte           Specifies the size of the output file,                  
+                        only works if -o is used,  i.e.:  60 mib.               
+                        For example  is 500 mib correct 500mb  is NOT correct.  
+                        The three types are based on 1024.                      
+                        Example :   crisis -3 -l 10 -b 50 mib -o will generate 1
+                        files  valid values for type  are   kib, mib, and gib.  
+                        NOTE  There is  space between the number and type.      
+   -c, --line           Specifies the number of lines to  write  to  output     
+                        file,  only works if -o is used.                        
+   -e, --end            Specifies a ending string, eg: god77xD                  
+   -i, --invert         Inverts  the  output  so  instead  of  aaa,aab,aac,aad, 
+                        etc you get aaa,baa,caa,daa,aba,bba, etc                
+   -o, --output         Specify the save file in the                            
+                        crisis folder on the desktop                            
+   -s, --startblock     Specifies a starting string, eg: qwerty                 
+   -u, --disables       The -u option disables the print size .                 
+                        This should be the last option.                         
+   -z, --zip            Not available                                           
+
+Parameter:                                                                      
+   -f, --charset-name   Specifies a character set from crisis,                  
+                        type --help-wordlist for more info                      
+   -l, --lenght         Number of character or character group 
 </pre>
 
 #Usage
@@ -72,7 +92,7 @@ Example:
 <h2>Pipe with Aircrack-ng</h2>
 
 <pre>
-./crisis.exe -l 20 -r -w lalpha-numeric | aircrack-ng -w- -e BOX__XXXX output-01.cap 
+./crisis.exe -3 -l 20  -f lalpha-numeric | aircrack-ng -w- -e BOX__XXXX output-01.cap 
 Opening output-01.cap
 Opening output-01.cap
 Reading packets, please wait...
@@ -100,7 +120,7 @@ Reading packets, please wait...
 <h2>Pipe with genpmk</h2>
 
 <pre>
-crisis -l 20 -r -w lalpha | genpmk -f- -d wordlistBOX -s BOX_XXXX
+crisis -3 -l 20 -f lalpha | genpmk -f- -d wordlistBOX -s BOX_XXXX
 genpmk 1.1 - WPA-PSK precomputation attack. <jwright@hasborg.com>
 Using STDIN for words.
 File wordlistSFR does not exist, creating.
@@ -121,7 +141,7 @@ key no. 10000: kgrzzjqshhbangsfqezm
 <h2>Pipe with cowpatty</h2>
 
 <pre>
-crisis -l 20 -r -w lalpha | cowpatty -f- -r output-01.cap -s BOX_XXXX
+crisis -3 -l 20 -f lalpha | cowpatty -f- -r output-01.cap -s BOX_XXXX
 cowpatty 4.6 - WPA-PSK dictionary attack. <jwright@hasborg.com>
 
 Collected all necessary data to mount crack against WPA2/PSK passphrase.
@@ -143,7 +163,7 @@ passphrase list, and double-check the SSID.  Sorry it didn't work out.
 <h2>Charset list for crunch</h2>
 
 <pre>
-crisis -a -w sfr7 > charset.lst
+crisis -1 -f lalpha > charset.lst
 crunch 20 20 -f charset.lst charset1 -i -s abcdefghijklmnopqrs7
 
 </pre>
