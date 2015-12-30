@@ -19,8 +19,6 @@ BUILD_DIR = bin/Debug
 
 CRISIS_EXE_MDB_SOURCE=bin/Debug/crisis.exe.mdb
 CRISIS_EXE_MDB=$(BUILD_DIR)/crisis.exe.mdb
-C5_DLL_SOURCE=../packages/C5.1.0.2.0/lib/net35/C5.dll
-PLOSSUM_COMMANDLINE_DLL_SOURCE=../packages/Plossum.CommandLine.0.3.0.14/lib/net35/Plossum\ CommandLine.dll
 
 endif
 
@@ -34,8 +32,6 @@ PROJECT_REFERENCES =
 BUILD_DIR = bin/Release
 
 CRISIS_EXE_MDB=
-C5_DLL_SOURCE=../packages/C5.1.0.2.0/lib/net35/C5.dll
-PLOSSUM_COMMANDLINE_DLL_SOURCE=../packages/Plossum.CommandLine.0.3.0.14/lib/net35/Plossum\ CommandLine.dll
 
 endif
 
@@ -43,9 +39,7 @@ AL=al
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
-	$(CRISIS_EXE_MDB) \
-	$(C5_DLL) \
-	$(PLOSSUM_COMMANDLINE_DLL)  
+	$(CRISIS_EXE_MDB)  
 
 BINARIES = \
 	$(CRISIS)  
@@ -53,8 +47,6 @@ BINARIES = \
 
 RESGEN=resgen2
 
-C5_DLL = $(BUILD_DIR)/C5.dll
-PLOSSUM_COMMANDLINE_DLL = $(BUILD_DIR)/Plossum\ CommandLine.dll
 CRISIS = $(BUILD_DIR)/crisis
 
 FILES = \
@@ -87,11 +79,11 @@ EXTRAS = \
 REFERENCES =  \
 	System \
 	System.Core \
+	C5 \
+	Plossum CommandLine \
 	System.Numerics
 
-DLL_REFERENCES =  \
-	../packages/C5.1.0.2.0/lib/net35/C5.dll \
-	../packages/Plossum.CommandLine.0.3.0.14/lib/net35/Plossum\ CommandLine.dll
+DLL_REFERENCES = 
 
 CLEANFILES = $(PROGRAMFILES) $(BINARIES) 
 
@@ -103,8 +95,6 @@ include $(top_srcdir)/Makefile.include
 
 
 
-$(eval $(call emit-deploy-target,C5_DLL))
-$(eval $(call emit-deploy-target,PLOSSUM_COMMANDLINE_DLL))
 $(eval $(call emit-deploy-wrapper,CRISIS,crisis,x))
 
 
@@ -129,8 +119,6 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(CRISIS_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(C5_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(PLOSSUM_COMMANDLINE_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	mkdir -p '$(DESTDIR)$(bindir)'
 	$(call cp,$(CRISIS),$(DESTDIR)$(bindir))
 	make post-install-local-hook prefix=$(prefix)
@@ -141,8 +129,6 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(CRISIS_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(C5_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(PLOSSUM_COMMANDLINE_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(CRISIS),$(DESTDIR)$(bindir))
 	make post-uninstall-local-hook prefix=$(prefix)
 
