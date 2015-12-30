@@ -1,17 +1,17 @@
 # Crisis Wordlist Generator
+
 Tested on Windows, Debian and Kali Linux.
 
-Crisis peut créer une liste de mots aléatoires ou une liste de charset personnalisées pour crunch wordlist generator sur la base de critères que vous spécifiez.
 
 #Download 
 Version for linux.
-<pre>
+<pre style=" border: 1px solid black; padding:10px">
 git clone https://github.com/teeknofil/Crisis-Wordlist-Generator.git
 </pre>
 
 # Setup in linux 
 
-<pre>
+<pre style=" border: 1px solid black; padding:10px">
 apt-get install mono-runtime
 ./configure
 make
@@ -19,11 +19,11 @@ make install
 </pre>
 
 # Run
-<pre>
+<pre style=" border: 1px solid black; padding:10px">
 crisis
 </pre>
 # Run without setup
-<pre>
+<pre style=" border: 1px solid black; padding:10px">
 apt-get install mono-runtime
 cd Crisis-Wordlist-Generator/Crisis/bin/Release/
 chmod +x crisis.exe
@@ -32,7 +32,7 @@ chmod +x crisis.exe
 
 # Manual
 
-<pre>
+<pre style=" border: 1px solid black; padding:10px">
 
 crisis -h
 Crisis Wordlist Generator by Teeknofil,  version : 1.0.9
@@ -40,7 +40,7 @@ Crisis Wordlist Generator by Teeknofil,  version : 1.0.9
 
 SYNOPSIS
 
-crisis <method> -l [len] -f [charset string] [options]
+crisis [method] -l [len] -f [charset string] [options]
 
 DESCRIPTION
 
@@ -91,7 +91,7 @@ Parameter:
 
 <h2>Pipe with Aircrack-ng</h2>
 
-<pre>
+<pre style=" border: 1px solid black; padding:10px">
 ./crisis.exe -3 -l 20  -f lalpha-numeric | aircrack-ng -w- -e BOX__XXXX output-01.cap 
 Opening output-01.cap
 Opening output-01.cap
@@ -119,7 +119,7 @@ Reading packets, please wait...
 
 <h2>Pipe with genpmk</h2>
 
-<pre>
+<pre style=" border: 1px solid black; padding:10px">
 crisis -3 -l 20 -f lalpha | genpmk -f- -d wordlistBOX -s BOX_XXXX
 genpmk 1.1 - WPA-PSK precomputation attack. <jwright@hasborg.com>
 Using STDIN for words.
@@ -140,7 +140,7 @@ key no. 10000: kgrzzjqshhbangsfqezm
 
 <h2>Pipe with cowpatty</h2>
 
-<pre>
+<pre style=" border: 1px solid black; padding:10px">
 crisis -3 -l 20 -f lalpha | cowpatty -f- -r output-01.cap -s BOX_XXXX
 cowpatty 4.6 - WPA-PSK dictionary attack. <jwright@hasborg.com>
 
@@ -162,7 +162,7 @@ passphrase list, and double-check the SSID.  Sorry it didn't work out.
 
 <h2>Charset list for crunch</h2>
 
-<pre>
+<pre style=" border: 1px solid black; padding:10px">
 crisis -1 -f lalpha > charset.lst
 crunch 20 20 -f charset.lst charset1 -i -s abcdefghijklmnopqrs7
 

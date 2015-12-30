@@ -50,10 +50,10 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="C5">
-      <HintPath>..\packages\C5.1.0.2.0\lib\net35\C5.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\plossum-commandline.bin\C5.dll</HintPath>
     </Reference>
     <Reference Include="Plossum CommandLine">
-      <HintPath>..\packages\Plossum.CommandLine.0.3.0.14\lib\net35\Plossum CommandLine.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\plossum-commandline.bin\Plossum CommandLine.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
   </ItemGroup>
