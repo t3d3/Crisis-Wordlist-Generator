@@ -49,13 +49,13 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="C5">
-      <HintPath>..\..\..\..\..\Desktop\plossum-commandline.bin\C5.dll</HintPath>
-    </Reference>
-    <Reference Include="Plossum CommandLine">
-      <HintPath>..\..\..\..\..\Desktop\plossum-commandline.bin\Plossum CommandLine.dll</HintPath>
-    </Reference>
     <Reference Include="System.Numerics" />
+    <Reference Include="Plossum CommandLine">
+      <HintPath>lib\Plossum CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="C5">
+      <HintPath>lib\C5.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cmd\CommandFunctionCommon.cs" />
@@ -99,9 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
