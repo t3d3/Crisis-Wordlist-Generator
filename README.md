@@ -1,14 +1,9 @@
 # Crisis Wordlist Generator
 
-Tested on Windows, Debian and Kali Linux.
+Work on Windows, Debian and Kali Linux.
 
 
-#Download 
-<pre style=" border: 1px solid black; padding:10px">
-git clone https://github.com/teeknofil/Crisis-Wordlist-Generator.git
-</pre>
-
-# Setup in linux 
+# Setup in Linux 
 
 <pre style=" border: 1px solid black; padding:10px">
 apt-get install mono-runtime
@@ -21,7 +16,7 @@ make install
 
 # Run
 <pre style=" border: 1px solid black; padding:10px">
-crisis 
+root@kali:~# crisis 
  Hack Wifi  : http://www.crack-wifi.com/forum/index.php
  Hacking FR : http://hackademics.fr/
  Trouble FR : http://www.kali-linux.fr/forum/index.php
