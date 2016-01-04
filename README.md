@@ -4,7 +4,6 @@ Tested on Windows, Debian and Kali Linux.
 
 
 #Download 
-Version for linux.
 <pre style=" border: 1px solid black; padding:10px">
 git clone https://github.com/teeknofil/Crisis-Wordlist-Generator.git
 </pre>
@@ -13,6 +12,8 @@ git clone https://github.com/teeknofil/Crisis-Wordlist-Generator.git
 
 <pre style=" border: 1px solid black; padding:10px">
 apt-get install mono-runtime
+cd Crisis-Wordlist-Generator/
+ chmod +x *
 ./configure
 make
 make install
@@ -20,13 +21,41 @@ make install
 
 # Run
 <pre style=" border: 1px solid black; padding:10px">
-crisis
+crisis 
+ Hack Wifi  : http://www.crack-wifi.com/forum/index.php
+ Hacking FR : http://hackademics.fr/
+ Trouble FR : http://www.kali-linux.fr/forum/index.php
+ Trouble US : http://http://forums.kali.org/
+ Hacking US : http://hackforums.net/index.php
+
+ Crisis Wordlist Generator  by Teeknofil, version : 1.0.9
+
+
+ N°	DESCRIPTION 
+
+ 0)	 1337
+ 1)	 LATIN	
+ 2)	 SPECIAL
+ 3)	 SWEDISH
+ 4)	 SYLLABLE FR
+
+ 5)	 EXIT 
+
+[+]  With what category you want to work : 
 </pre>
 # Run without setup
 <pre style=" border: 1px solid black; padding:10px">
 apt-get install mono-runtime
-cd Crisis-Wordlist-Generator/Crisis/bin/Release/
-chmod +x crisis.exe
+cd Crisis-Wordlist-Generator/Linux/
+ls 
+   crisis.zip
+unzip crisis.zip 
+Archive:  crisis.zip
+  inflating: crisis/C5.dll           
+  inflating: crisis/Plossum CommandLine.dll  
+  inflating: crisis/crisis           
+  inflating: crisis/crisis.exe 
+chmod +x *
 ./crisis.exe
 </pre>
 
