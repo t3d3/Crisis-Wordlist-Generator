@@ -10,6 +10,7 @@
     <RootNamespace>crisis</RootNamespace>
     <AssemblyName>crisis</AssemblyName>
     <ReleaseVersion>1.0.7</ReleaseVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publier\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -21,8 +22,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.8.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -49,30 +49,110 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
-    <Reference Include="Plossum CommandLine">
-      <HintPath>lib\Plossum CommandLine.dll</HintPath>
-    </Reference>
-    <Reference Include="C5">
-      <HintPath>lib\C5.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cmd\CommandFunctionCommon.cs" />
-    <Compile Include="cmd\CommandFunctionPattern.cs" />
+    <Compile Include="C5\arrays\ArrayList.cs" />
+    <Compile Include="C5\arrays\CircularQueue.cs" />
+    <Compile Include="C5\arrays\HashedArrayList.cs" />
+    <Compile Include="C5\arrays\SortedArray.cs" />
+    <Compile Include="C5\Attributes.cs" />
+    <Compile Include="C5\Builtin.cs" />
+    <Compile Include="C5\Collections.cs" />
+    <Compile Include="C5\Comparer.cs" />
+    <Compile Include="C5\Delegates.cs" />
+    <Compile Include="C5\Dictionaries.cs" />
+    <Compile Include="C5\Enums.cs" />
+    <Compile Include="C5\Events.cs" />
+    <Compile Include="C5\Exceptions.cs" />
+    <Compile Include="C5\Formatting.cs" />
+    <Compile Include="C5\Hashers.cs" />
+    <Compile Include="C5\hashing\HashBag.cs" />
+    <Compile Include="C5\hashing\HashDictionary.cs" />
+    <Compile Include="C5\hashing\HashTable.cs" />
+    <Compile Include="C5\heaps\IntervalHeap.cs" />
+    <Compile Include="C5\Interfaces.cs" />
+    <Compile Include="C5\linkedlists\HashedLinkedList.cs" />
+    <Compile Include="C5\linkedlists\LinkedList.cs" />
+    <Compile Include="C5\MappedEnumerators.cs" />
+    <Compile Include="C5\Random.cs" />
+    <Compile Include="C5\Records.cs" />
+    <Compile Include="C5\Sorting.cs" />
+    <Compile Include="C5\trees\RedBlackTreeBag.cs" />
+    <Compile Include="C5\trees\RedBlackTreeDictionary.cs" />
+    <Compile Include="C5\trees\RedBlackTreeSet.cs" />
+    <Compile Include="C5\ViewSupport.cs" />
+    <Compile Include="C5\WrappedArray.cs" />
+    <Compile Include="C5\Wrappers.cs" />
+    <Compile Include="Combinatorics\Combinations.cs" />
+    <Compile Include="Combinatorics\GenerateOption.cs" />
+    <Compile Include="Combinatorics\IMetaCollection.cs" />
+    <Compile Include="Combinatorics\LeetSpeak.cs" />
+    <Compile Include="Combinatorics\Permutations.cs" />
+    <Compile Include="Combinatorics\Randomizer.cs" />
+    <Compile Include="Combinatorics\SmallPrimeUtility.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Combinatorics\Variations.cs" />
+    <Compile Include="Plossum\Alignment.cs" />
+    <Compile Include="Plossum\ColumnInfo.cs" />
+    <Compile Include="Plossum\CommandLine\AssignmentToken.cs" />
+    <Compile Include="Plossum\CommandLine\AttributeException.cs" />
+    <Compile Include="Plossum\CommandLine\BoolFunction.cs" />
+    <Compile Include="Plossum\CommandLine\CommandLineManagerAttribute.cs" />
+    <Compile Include="Plossum\CommandLine\CommandLineOptionAttribute.cs" />
+    <Compile Include="Plossum\CommandLine\CommandLineOptionGroupAttribute.cs" />
+    <Compile Include="Plossum\CommandLine\CommandLineParser.cs" />
+    <Compile Include="Plossum\CommandLine\EndToken.cs" />
+    <Compile Include="Plossum\CommandLine\ErrorInfo.cs" />
+    <Compile Include="Plossum\CommandLine\InvalidEnumerationValueException.cs" />
+    <Compile Include="Plossum\CommandLine\InvalidOptionValueException.cs" />
+    <Compile Include="Plossum\CommandLine\IOption.cs" />
+    <Compile Include="Plossum\CommandLine\Lexer.cs" />
+    <Compile Include="Plossum\CommandLine\LogicException.cs" />
+    <Compile Include="Plossum\CommandLine\MissingClosingQuoteException.cs" />
+    <Compile Include="Plossum\CommandLine\MissingOptionNameException.cs" />
+    <Compile Include="Plossum\CommandLine\Option.cs" />
+    <Compile Include="Plossum\CommandLine\OptionAlias.cs" />
+    <Compile Include="Plossum\CommandLine\OptionFileToken.cs" />
+    <Compile Include="Plossum\CommandLine\OptionGroup.cs" />
+    <Compile Include="Plossum\CommandLine\OptionGroupInfo.cs" />
+    <Compile Include="Plossum\CommandLine\OptionGroupRequirement.cs" />
+    <Compile Include="Plossum\CommandLine\OptionInfo.cs" />
+    <Compile Include="Plossum\CommandLine\OptionNameToken.cs" />
+    <Compile Include="Plossum\CommandLine\OptionStyleManager.cs" />
+    <Compile Include="Plossum\CommandLine\OptionStyles.cs" />
+    <Compile Include="Plossum\CommandLine\ParseErrorCodes.cs" />
+    <Compile Include="Plossum\CommandLine\ParseException.cs" />
+    <Compile Include="Plossum\CommandLine\QuotationInfo.cs" />
+    <Compile Include="Plossum\CommandLine\Token.cs" />
+    <Compile Include="Plossum\CommandLine\UsageInfo.cs" />
+    <Compile Include="Plossum\CommandLine\ValueToken.cs" />
+    <Compile Include="Plossum\Cropping.cs" />
+    <Compile Include="Plossum\GlobalSuppressions.cs" />
+    <Compile Include="Plossum\StringFormatter.cs" />
+    <Compile Include="Plossum\VerticalAlignment.cs" />
+    <Compile Include="Plossum\WordWrappingMethod.cs" />
+    <Compile Include="Resources\CommandLineStrings.Designer.cs" />
+    <Compile Include="Resources\PlossumStrings.Designer.cs" />
+    <Compile Include="Terminal\CommandFunctionOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Terminal\CommandFunctionPattern.cs" />
     <Compile Include="Tools\Tools.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="charset\Charset.cs" />
-    <Compile Include="algo\AlgorithmeFunction.cs" />
-    <Compile Include="algo\Algorithme.cs" />
-    <Compile Include="cmd\CommandFunctionHelp.cs" />
+    <Compile Include="Charset\Charset.cs" />
+    <Compile Include="Terminal\CommandFunctionHelp.cs" />
     <Compile Include="Menu\MainMenu.cs" />
     <Compile Include="Menu\SubMenu.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="cmd\CommandProperty.cs" />
+    <Compile Include="Terminal\CommandProperty.cs" />
     <Compile Include="Tools\FilesNameDirectory.cs" />
-    <Compile Include="charset\MenuDisplayCharset.cs" />
-    <Compile Include="Menu\Parameter.cs" />
+    <Compile Include="Charset\DisplayCharset.cs" />
+    <Compile Include="Parameter.cs" />
     <Compile Include="Tools\Statistical.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -98,7 +178,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Plossum\Properties\" />
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\CommandLineStrings.resx" />
+    <EmbeddedResource Include="Resources\PlossumStrings.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C5\trees\RedBlackTreeBag.cs.bak" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

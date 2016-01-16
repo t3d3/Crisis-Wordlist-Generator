@@ -1,10 +1,7 @@
-//
-//  FilesNameDirectory.cs
-//
 //  Author:
-//       root <${AuthorEmail}>
+//       Teeknofil <teeknofil@gmail.com>
 //
-//  Copyright (c) 2015 root
+//  Copyright (c) 2015 Teeknofil
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -18,6 +15,7 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 using System;
 using System.IO;
 
@@ -25,35 +23,22 @@ namespace crisis
 {
     public class FilesNameDirectory
     {
-        private string[] filePath = new string[10];
+        private static string[] filePath = new string[10];
 
-        public string[] FilePath
+        public static string[] FilePath
         {
-            get
-            {
-                return filePath;
-            }
-            set
-            {
-                filePath = value;
-            }
-        }
-
-        private string[] fileName = new string[10];
-
-        public string[] FileName
-        {
-            get
-            {
-                return fileName;
-            }
-            set
-            {
-                fileName = value;
-            }
+            get { return FilesNameDirectory.filePath; }
+            set { FilesNameDirectory.filePath = value; }
         }        
+        
 
-        private int? indiceOfProcess;
+        private static string[] fileName = new string[10];
+
+        public static string[] FileName
+        {
+            get { return FilesNameDirectory.fileName; }
+            set { FilesNameDirectory.fileName = value; }
+        }                 
         
         StreamWriter workFile;
         public StreamWriter WorkFile
@@ -62,22 +47,28 @@ namespace crisis
             set { workFile = value; }
         }
 
-        internal int numberFile = 1;
-
+        private int numberFile = 1;
         public int NumberFile
         {
             get { return numberFile; }
             set { numberFile = value; }
         }
 
-        public FilesNameDirectory()
-        {                   
+        private string[] locate;
+
+        public string[] Locate
+        {
+            get { return locate; }
+            set { locate = value; }
         }
 
-        public FilesNameDirectory(int _indice)
+
+        public FilesNameDirectory()
         {
-            this.indiceOfProcess = _indice;
+                   
         }
+
+       
 
          //A function that determines whether it is a Windows(false) or Linux (true) system
         public bool OsDetect() 
@@ -111,60 +102,83 @@ namespace crisis
         {
             if (OsDetect() == true)
             {
-                filePath[0] = null;
-                filePath[1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/crunch";
-                filePath [2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/enumeration";
+                filePath[0] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/default";
+                filePath [1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/crunch";
+                filePath [2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/combination";
                 filePath [3] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/random";
-                filePath [4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/leet_Speak";
-                fileName [0] = null;
+                filePath [4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/variation";
+                filePath [5] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/permutation";
+                filePath [6] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/wifi";
+                filePath [7] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/birthdate";                
+                filePath [8] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/leet_speak";
+                
+                fileName [0] = @"/default_";
                 fileName [1] = @"/charset_";
                 fileName [2] = @"/wordlist_";
                 fileName [3] = @"/wordlist_";
-                fileName [4] = @"/dico1337_";
+                fileName [4] = @"/wordlist_";
+                fileName [5] = @"/wordlist_";
+                fileName [6] = @"/dico_wifi_"+Charset.CharsetName+"_";
+                fileName [7] = @"/birthdate_";
+                fileName [8] = @"/dico1337_";
             } 
             else
             {
-                filePath [0] = null;
+                filePath [0] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\default";
                 filePath [1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\charset";
-                filePath[2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\enumeration";
-                filePath[3] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\random";
-                filePath [4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\leet_Speak";
-                fileName [0] = null;
+                filePath [2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\combination";
+                filePath [3] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\random";
+                filePath [4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\variation";
+                filePath [5] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\permutation";                
+                filePath [6] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\wifi";
+                filePath [7] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\birthdate";
+                filePath [8] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\leet_speak";
+
+                fileName [0] = @"\default_"; ;
                 fileName [1] = @"\charset_";
                 fileName [2] = @"\wordlist_";
                 fileName [3] = @"\wordlist_";
-                fileName [4] = @"\dico1337_";
+                fileName [4] = @"\wordlist_";
+                fileName [5] = @"\wordlist_";
+                fileName [6] = @"\dico_wifi_" + Charset.CharsetName + "_";
+                fileName [7] = @"\birthdate_";                
+                fileName [8] = @"\dico1337_";                
             }
         }
 
         public void Setting_UpFile()
         {
-            FilesPathDirectory();
             bool b = true;
+            Tools obj = new Tools();
+
             while (b)
             {
                 try
                 {
-                    if (!Directory.Exists(filePath[(int)indiceOfProcess]))
+                    if (!Directory.Exists(filePath[Parameter.TypesOfGeneration]))
                     {
-                        System.IO.Directory.CreateDirectory(filePath[(int)indiceOfProcess]);
+                        System.IO.Directory.CreateDirectory(filePath[Parameter.TypesOfGeneration]);
                     }
-                    else if (File.Exists(filePath[(int)indiceOfProcess] + fileName[(int)indiceOfProcess] + numberFile + ".txt"))
+                    else if (File.Exists(filePath[Parameter.TypesOfGeneration] + fileName[Parameter.TypesOfGeneration] + numberFile + ".txt"))
                     {
                         numberFile++;
                     }
-                    else if (!Directory.Exists(filePath[(int)indiceOfProcess] + fileName[(int)indiceOfProcess] + numberFile + ".txt"))
+                    else if (!Directory.Exists(filePath[Parameter.TypesOfGeneration] + fileName[Parameter.TypesOfGeneration] + numberFile + ".txt"))
                     {
-                        workFile = new StreamWriter(filePath[(int)indiceOfProcess] + fileName[(int)indiceOfProcess] + numberFile + ".txt");
-                        b = false;
+                        workFile = new StreamWriter(filePath[Parameter.TypesOfGeneration] + fileName[Parameter.TypesOfGeneration] + numberFile + ".txt");
+                        
+                        locate = new string[] { " Generating output at" + obj.Hour() + " : " + FilesNameDirectory.FilePath[Parameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[Parameter.TypesOfGeneration] + numberFile + ".txt" };
+                        Console.WriteLine(locate[0].ToString());                         
+                        
+                        b = false;                      
                     }
                 }
                 catch (Exception e)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;                    
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(" {0} \n", e.Message);
                     Console.ResetColor();
-                }                
+                }
 
             } //End while
         }  //End Fonction

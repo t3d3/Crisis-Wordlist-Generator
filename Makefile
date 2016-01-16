@@ -1,5 +1,5 @@
 
-EXTRA_DIST =  rules.make configure Makefile.include src/lib/Plossum\ CommandLine.dll src/lib/C5.dll
+EXTRA_DIST =  rules.make configure Makefile.include
 
 all: all-recursive
 

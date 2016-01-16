@@ -1,88 +1,110 @@
+//  Author:
+//       Teeknofil <teeknofil@gmail.com>
+//
+//  Copyright (c) 2015 Teeknofil
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 
 namespace crisis
 {
-    /// <summary>
-    /// An ASCII progress bar
-    /// </summary>
     
+
     public class Statistical
-    {  
-        private BigInteger dataSizeOctet = 0;
-        
+    {
+        private BigInteger dataSizeOctet;
 
-        private static BigInteger numberOfAllCombination = 0;
-
+        private static BigInteger numberOfAllCombination;
         public static BigInteger NumberOfAllCombination
         {
             get { return Statistical.numberOfAllCombination; }
             set { Statistical.numberOfAllCombination = value; }
-        }
+        }       
 
-        
-
-        public Statistical()
-        {
-            
-        }
-
-        private static int defaultSizeFileInOctet = 524288000;
+        private static int sizeFileInOctet;
 
         public static int DefaultSizeFileInOctet
         {
             get
             {
-                return defaultSizeFileInOctet;
+                return sizeFileInOctet;
             }
             set
             {
-                defaultSizeFileInOctet = value;
+                sizeFileInOctet = value;
             }
         }
-
-        private BigInteger Factorial(int x)
+                
+        public Statistical()
         {
-            BigInteger buffer = 1;
-            while (x > 1) //tant que x est supérieur a 1
-            {
-                buffer = buffer * x; // je multiple
-                x--; // je decremente mon x
-            }
-            return buffer;
+            dataSizeOctet = 0;
+            sizeFileInOctet = 104857600;
         }
 
+       
         internal BigInteger CalculOfAllCombinaison()
         {
-            try
+           try
             {
+                numberOfAllCombination = new BigInteger();
+
                 if (Parameter.TypesOfGeneration == 1 | Parameter.TypesOfGeneration == 2)
                 {
-                    numberOfAllCombination = Factorial(Charset.CharsetSelecting.Count - 1) / (Factorial(Parameter.NumberOfChar - 1) * Factorial((Charset.CharsetSelecting.Count - 1) - (Parameter.NumberOfChar - 1)));
+                    numberOfAllCombination = CombinationPattern.CaclulCombination().Count; 
                 }
-                else if (Parameter.TypesOfGeneration == 3)
+                else if (Parameter.TypesOfGeneration == 3 | Parameter.TypesOfGeneration == 6)
                 {
-                    numberOfAllCombination = new BigInteger();
                     numberOfAllCombination = (BigInteger)Math.Pow((double)Parameter.NumberOfChar, (double)Charset.CharsetSelecting.Count);
                 }
+                else if (Parameter.TypesOfGeneration == 4)
+                {
+                    numberOfAllCombination = VariationnPattern.CalculVariation().Count;
+                }
+                else if (Parameter.TypesOfGeneration == 5)
+                {
+                    numberOfAllCombination = PermutationPattern.CaclulPermut();
+                }
+
             }
-            catch (Exception)
+            catch (Exception) 
             {
                 numberOfAllCombination = 9999999999999999999;
             }
-            
 
-            return numberOfAllCombination;                       
+            return numberOfAllCombination;
         }
 
-        internal int CalculSizeFile()
+        internal BigInteger CalculSizeFile()
         {
-            // 524288000 octet = 500 Mo
+            // 104857600 octet = 100 Mo
             // Not to change
             // Ne pas modifier
 
-            Parameter.NumberLine = DefaultSizeFileInOctet / (Parameter.NumberOfChar + 2);
+            BigInteger nbLine = DefaultSizeFileInOctet / (Parameter.NumberOfChar + 2);
+
+            if ( nbLine - 1 > Parameter.NumberLine  )
+            {
+                return Parameter.NumberLine;                        
+            }
+            else
+            {
+                Parameter.NumberLine = nbLine;
+            }
+            
             return Parameter.NumberLine;
         }
 
@@ -91,12 +113,8 @@ namespace crisis
             if (Parameter.TypesOfGeneration == 1)
             {
                 dataSizeOctet = (BigInteger)(Parameter.NumberOfChar + 14) * NumberOfAllCombination;
-            }
-            else if ( Parameter.TypesOfGeneration == 2)
-            {                
-                dataSizeOctet = (Parameter.NumberOfChar + 2) * NumberOfAllCombination;
-            }
-            else if (Parameter.TypesOfGeneration == 3)
+            }            
+            else if (Parameter.TypesOfGeneration == 2 | Parameter.TypesOfGeneration == 3 | Parameter.TypesOfGeneration == 4 | Parameter.TypesOfGeneration == 5 |Parameter.TypesOfGeneration == 6)
             {
                 dataSizeOctet = (Parameter.NumberOfChar + 2) * NumberOfAllCombination;
             }
@@ -117,15 +135,15 @@ namespace crisis
             BigInteger dataSizePo = dataSizeTo / 1024;
 
             Console.WriteLine("\n Crisis will now generate the following amount of data: {0} ", dataSizeOctet);
-            Console.WriteLine("\n {0} Ko", dataSizeKo);
-            Console.WriteLine(" {0} Mo", dataSizeMo);
-            Console.WriteLine(" {0} Go", dataSizeGo);
-            Console.WriteLine(" {0} To", dataSizeTo);
-            Console.WriteLine(" {0} Po", dataSizePo);
+            Console.WriteLine("\n {0} KB", dataSizeKo);
+            Console.WriteLine(" {0} MB", dataSizeMo);
+            Console.WriteLine(" {0} GB", dataSizeGo);
+            Console.WriteLine(" {0} TB", dataSizeTo);
+            Console.WriteLine(" {0} PB", dataSizePo);
             Console.WriteLine("\n Crisis will now generate the following number of lines: {0}\n ", NumberOfAllCombination);
 
-            System.Threading.Thread.Sleep(10000);
+            System.Threading.Thread.Sleep(5000);
         }
-        
+
     }
 }

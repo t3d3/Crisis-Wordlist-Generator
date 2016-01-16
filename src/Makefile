@@ -19,8 +19,6 @@ BUILD_DIR = bin/Debug
 
 CRISIS_EXE_MDB_SOURCE=bin/Debug/crisis.exe.mdb
 CRISIS_EXE_MDB=$(BUILD_DIR)/crisis.exe.mdb
-PLOSSUM_COMMANDLINE_DLL_SOURCE=lib/Plossum\ CommandLine.dll
-C5_DLL_SOURCE=lib/C5.dll
 
 endif
 
@@ -34,8 +32,6 @@ PROJECT_REFERENCES =
 BUILD_DIR = bin/Release
 
 CRISIS_EXE_MDB=
-PLOSSUM_COMMANDLINE_DLL_SOURCE=lib/Plossum\ CommandLine.dll
-C5_DLL_SOURCE=lib/C5.dll
 
 endif
 
@@ -43,9 +39,7 @@ AL=al
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
-	$(CRISIS_EXE_MDB) \
-	$(PLOSSUM_COMMANDLINE_DLL) \
-	$(C5_DLL)  
+	$(CRISIS_EXE_MDB)  
 
 BINARIES = \
 	$(CRISIS)  
@@ -53,44 +47,126 @@ BINARIES = \
 
 RESGEN=resgen2
 
-PLOSSUM_COMMANDLINE_DLL = $(BUILD_DIR)/Plossum\ CommandLine.dll
-C5_DLL = $(BUILD_DIR)/C5.dll
 CRISIS = $(BUILD_DIR)/crisis
 
 FILES = \
-	cmd/CommandFunctionCommon.cs \
-	cmd/CommandFunctionPattern.cs \
+	C5/arrays/ArrayList.cs \
+	C5/arrays/CircularQueue.cs \
+	C5/arrays/HashedArrayList.cs \
+	C5/arrays/SortedArray.cs \
+	C5/Attributes.cs \
+	C5/Builtin.cs \
+	C5/Collections.cs \
+	C5/Comparer.cs \
+	C5/Delegates.cs \
+	C5/Dictionaries.cs \
+	C5/Enums.cs \
+	C5/Events.cs \
+	C5/Exceptions.cs \
+	C5/Formatting.cs \
+	C5/Hashers.cs \
+	C5/hashing/HashBag.cs \
+	C5/hashing/HashDictionary.cs \
+	C5/hashing/HashTable.cs \
+	C5/heaps/IntervalHeap.cs \
+	C5/Interfaces.cs \
+	C5/linkedlists/HashedLinkedList.cs \
+	C5/linkedlists/LinkedList.cs \
+	C5/MappedEnumerators.cs \
+	C5/Random.cs \
+	C5/Records.cs \
+	C5/Sorting.cs \
+	C5/trees/RedBlackTreeBag.cs \
+	C5/trees/RedBlackTreeDictionary.cs \
+	C5/trees/RedBlackTreeSet.cs \
+	C5/ViewSupport.cs \
+	C5/WrappedArray.cs \
+	C5/Wrappers.cs \
+	Combinatorics/Combinations.cs \
+	Combinatorics/GenerateOption.cs \
+	Combinatorics/IMetaCollection.cs \
+	Combinatorics/LeetSpeak.cs \
+	Combinatorics/Permutations.cs \
+	Combinatorics/Randomizer.cs \
+	Combinatorics/SmallPrimeUtility.cs \
+	Combinatorics/Variations.cs \
+	Plossum/Alignment.cs \
+	Plossum/ColumnInfo.cs \
+	Plossum/CommandLine/AssignmentToken.cs \
+	Plossum/CommandLine/AttributeException.cs \
+	Plossum/CommandLine/BoolFunction.cs \
+	Plossum/CommandLine/CommandLineManagerAttribute.cs \
+	Plossum/CommandLine/CommandLineOptionAttribute.cs \
+	Plossum/CommandLine/CommandLineOptionGroupAttribute.cs \
+	Plossum/CommandLine/CommandLineParser.cs \
+	Plossum/CommandLine/EndToken.cs \
+	Plossum/CommandLine/ErrorInfo.cs \
+	Plossum/CommandLine/InvalidEnumerationValueException.cs \
+	Plossum/CommandLine/InvalidOptionValueException.cs \
+	Plossum/CommandLine/IOption.cs \
+	Plossum/CommandLine/Lexer.cs \
+	Plossum/CommandLine/LogicException.cs \
+	Plossum/CommandLine/MissingClosingQuoteException.cs \
+	Plossum/CommandLine/MissingOptionNameException.cs \
+	Plossum/CommandLine/Option.cs \
+	Plossum/CommandLine/OptionAlias.cs \
+	Plossum/CommandLine/OptionFileToken.cs \
+	Plossum/CommandLine/OptionGroup.cs \
+	Plossum/CommandLine/OptionGroupInfo.cs \
+	Plossum/CommandLine/OptionGroupRequirement.cs \
+	Plossum/CommandLine/OptionInfo.cs \
+	Plossum/CommandLine/OptionNameToken.cs \
+	Plossum/CommandLine/OptionStyleManager.cs \
+	Plossum/CommandLine/OptionStyles.cs \
+	Plossum/CommandLine/ParseErrorCodes.cs \
+	Plossum/CommandLine/ParseException.cs \
+	Plossum/CommandLine/QuotationInfo.cs \
+	Plossum/CommandLine/Token.cs \
+	Plossum/CommandLine/UsageInfo.cs \
+	Plossum/CommandLine/ValueToken.cs \
+	Plossum/Cropping.cs \
+	Plossum/GlobalSuppressions.cs \
+	Plossum/StringFormatter.cs \
+	Plossum/VerticalAlignment.cs \
+	Plossum/WordWrappingMethod.cs \
+	Resources/CommandLineStrings.Designer.cs \
+	Resources/PlossumStrings.Designer.cs \
+	Terminal/CommandFunctionOptions.cs \
+	Terminal/CommandFunctionPattern.cs \
 	Tools/Tools.cs \
 	AssemblyInfo.cs \
-	charset/Charset.cs \
-	algo/AlgorithmeFunction.cs \
-	algo/Algorithme.cs \
-	cmd/CommandFunctionHelp.cs \
+	Charset/Charset.cs \
+	Terminal/CommandFunctionHelp.cs \
 	Menu/MainMenu.cs \
 	Menu/SubMenu.cs \
 	Program.cs \
-	cmd/CommandProperty.cs \
+	Terminal/CommandProperty.cs \
 	Tools/FilesNameDirectory.cs \
-	charset/MenuDisplayCharset.cs \
-	Menu/Parameter.cs \
+	Charset/DisplayCharset.cs \
+	Parameter.cs \
 	Tools/Statistical.cs 
 
 DATA_FILES = 
 
-RESOURCES = 
+RESOURCES = \
+	Resources/CommandLineStrings.resx,crisis.Resources.CommandLineStrings.resources \
+	Resources/PlossumStrings.resx,crisis.Resources.PlossumStrings.resources 
 
 EXTRAS = \
+	Plossum/Properties \
 	Properties \
+	C5/trees/RedBlackTreeBag.cs.bak \
 	crisis.in 
 
 REFERENCES =  \
 	System \
 	System.Core \
-	System.Numerics
+	System.Data \
+	System.Drawing \
+	System.Numerics \
+	System.Xml
 
-DLL_REFERENCES =  \
-	lib/Plossum\ CommandLine.dll \
-	lib/C5.dll
+DLL_REFERENCES = 
 
 CLEANFILES = $(PROGRAMFILES) $(BINARIES) 
 
@@ -102,8 +178,6 @@ include $(top_srcdir)/Makefile.include
 
 
 
-$(eval $(call emit-deploy-target,PLOSSUM_COMMANDLINE_DLL))
-$(eval $(call emit-deploy-target,C5_DLL))
 $(eval $(call emit-deploy-wrapper,CRISIS,crisis,x))
 
 
@@ -128,8 +202,6 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(CRISIS_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(PLOSSUM_COMMANDLINE_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(C5_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	mkdir -p '$(DESTDIR)$(bindir)'
 	$(call cp,$(CRISIS),$(DESTDIR)$(bindir))
 	make post-install-local-hook prefix=$(prefix)
@@ -140,8 +212,6 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(CRISIS_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(PLOSSUM_COMMANDLINE_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(C5_DLL),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(CRISIS),$(DESTDIR)$(bindir))
 	make post-uninstall-local-hook prefix=$(prefix)
 

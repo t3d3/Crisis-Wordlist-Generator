@@ -1,114 +1,289 @@
-﻿using System;
+﻿//  Author:
+//       Teeknofil <teeknofil@gmail.com>
+//
+//  Copyright (c) 2015 Teeknofil
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+  
+
 
 namespace crisis
 {
     public class MainMenu
     {
-        private static bool booleanCategoryMenu = true;
+
+        private static bool booleanCategoryMenu;
+        public static bool BooleanCategoryMenu
+        {
+            get { return MainMenu.booleanCategoryMenu; }
+            set { MainMenu.booleanCategoryMenu = value; }
+        }
         
 
         public MainMenu()
         {
+            booleanCategoryMenu = true;
 
-        }
+            Start();
+            this.Menu();
 
-        public static void Navigation()
-        {
-
-            Algorithme Function = new Algorithme();
-            MainMenu menu = new MainMenu();
+            Statistical info = new Statistical();            
             Parameter config = new Parameter();
-            Statistical info = new Statistical();
 
-            menu.start();
-            menu.Menu();
 
-            if (Parameter.TypesOfGeneration == 1 || Parameter.TypesOfGeneration == 2)
+            if (Parameter.TypesOfGeneration == 1)
             {
+                CombinationPattern obj = new CombinationPattern();
+                
+                
+                config.SizeOfWorld();                
+                config.ChangeStartblockPattern();
+                config.ChangeEndblockPattern();
                 config.ReversePaterne();
-                config.SizeOfWorld();
+                Parameter.NumberLine = CombinationPattern.CaclulCombination().Count;
                 config.SaveCharsetInFilesTxt();
+                
+                
+                info.CalculOfAllCombinaison();
                 info.StatiscalInfoSize();
-                Function.EnumerationPrint();
+
+                obj.CombinationPrintF();
+
                 Parameter.TypesOfGeneration = 0;
             }
-            else if (Parameter.TypesOfGeneration == 3)
+            if ( Parameter.TypesOfGeneration == 2)
             {
+                CombinationPattern obj = new CombinationPattern();
+
+
                 config.SizeOfWorld();
+                config.Repetition();
+                config.ChangeStartblockPattern();
+                config.ChangeEndblockPattern();
+                config.ReversePaterne();
+                Parameter.NumberLine = CombinationPattern.CaclulCombination().Count;
                 config.SaveCharsetInFilesTxt();
+
+
+                info.CalculOfAllCombinaison();
                 info.StatiscalInfoSize();
-                Function.RamdonPrint();
+
+                obj.CombinationPrintF();
+
+                Parameter.TypesOfGeneration = 0;
+            }
+            else if (Parameter.TypesOfGeneration == 3 | Parameter.TypesOfGeneration == 6)
+            {
+                Randomizer obj = new Randomizer();               
+
+                if (Parameter.TypesOfGeneration == 3)
+                {
+                    config.SizeOfWorld();
+                }
+                
+                Parameter.NumberLine = info.CalculOfAllCombinaison();
+                config.SaveCharsetInFilesTxt();
+                
+                info.CalculOfAllCombinaison();
+                info.StatiscalInfoSize();
+
+                obj.RamdonPrintF();
+
                 Parameter.TypesOfGeneration = 0;
             }
             else if (Parameter.TypesOfGeneration == 4)
             {
+                VariationnPattern obj = new VariationnPattern();
+
+                config.SizeOfWorld();
+                config.Repetition();
+                config.ChangeStartblockPattern();
+                config.ChangeEndblockPattern();
+                config.ReversePaterne();
+
+                Parameter.NumberLine = VariationnPattern.CalculVariation().Count;
                 config.SaveCharsetInFilesTxt();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\n This work, please wait\n");
-                Console.ResetColor();
-                Function.L33tSpeek();
+                
+
+                info.CalculOfAllCombinaison();
+                info.StatiscalInfoSize();
+                
+                obj.VariationPrintF();
+
                 Parameter.TypesOfGeneration = 0;
             }
+            else if (Parameter.TypesOfGeneration == 5)
+            {
+                PermutationPattern obj = new PermutationPattern();
 
-        } // End Fonction
+                config.SizeOfWorld();
+                config.Repetition();
+                config.ChangeStartblockPattern();
+                config.ChangeEndblockPattern();
+                config.ReversePaterne();
+                
+                info.CalculOfAllCombinaison();
+                config.SaveCharsetInFilesTxt();                
+                info.StatiscalInfoSize();
+                
+                obj.PermutationPrintF();
 
-        internal void start()
-        {                        
-            Console.WriteLine(" Hack Wifi  : http://www.crack-wifi.com/forum/index.php");           
-            Console.WriteLine(" Hacking FR : http://hackademics.fr/");            
-            Console.WriteLine(" Trouble FR : http://www.kali-linux.fr/forum/index.php");                       
-            Console.WriteLine(" Trouble US : http://http://forums.kali.org/");                       
-            Console.WriteLine(" Hacking US : http://hackforums.net/index.php");            
+                Parameter.TypesOfGeneration = 0;
+            }
+            else if (Parameter.TypesOfGeneration == 8)
+            {
+                LeetSpeak obj = new LeetSpeak();
+                config.SaveCharsetInFilesTxt();
+
+                obj.L33tSpeekPrintF();
+
+                Parameter.TypesOfGeneration = 0;
+            }
+        }
+        
+
+        internal static void Start()
+        {           
+            Console.WriteLine("\n Hacking US   : hackforums.net ");
+            Console.WriteLine(" Trouble US   : forums.kali.org"); 
+            Console.WriteLine(" Hacking FR   : hackademics.fr");
+            Console.WriteLine(" Trouble FR   : kali-linux.fr/forum");
+            Console.WriteLine(" Hacking Wifi : crack-wifi.com/forum\n");        
         }
 
         public void Menu()
         {
+            Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.0.9\n");
+            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.1.0 \n");
             Console.ResetColor();
             
-            Console.WriteLine("\n N°\tDESCRIPTION \n");
+            
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n N°");
+            Console.ResetColor();
+            
+            Console.WriteLine(" \tDESCRIPTION \n");
             int i = 0;
-            Console.WriteLine(" {0})\t 1337", i++);
-            Console.WriteLine(" {0})\t LATIN\t", i++);
-            Console.WriteLine(" {0})\t SPECIAL", i++);            
-            Console.WriteLine(" {0})\t SWEDISH", i++);
-            Console.WriteLine(" {0})\t SYLLABLE FR", i++);
-            Console.WriteLine("\n {0})\t EXIT ", i++);
 
-            SubMenu obj1 = new SubMenu();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine("\t 1337");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+           
+            Console.WriteLine(" \t LATIN\t");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+           
+            Console.WriteLine(" \t CUSTOM");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            
+            Console.WriteLine(" \t SPECIAL");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();            
+            
+            Console.WriteLine(" \t SWEDISH");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            
+            Console.WriteLine(" \t CYRILLIC");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            
+            Console.WriteLine(" \t SYLLABLE FR");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            
+            Console.WriteLine(" \t ROUTER\\BOX WIFI");
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            
+            Console.WriteLine("\t EXIT ", i++);
+
+            Console.ResetColor();
 
             booleanCategoryMenu = true;
             while (booleanCategoryMenu)
             {
                 try
                 {
-                    Charset.BooleanType = true;
+                    //Charset.BooleanType = true;
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("\n[+] ");                    
                     Console.ResetColor();
                     Console.Write(" With what category you want to work : ");
-                    int dislayMainSubMain = int.Parse(Console.ReadLine().ToLower());
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    int dislayMainSubMain = int.Parse(Console.ReadLine());
+                    Console.ResetColor();
                     Console.Write("\n");
                     i = 0;
 
                     if (dislayMainSubMain == i++)
-                        obj1.MenuLeetSpeak();                   
+                    {
+                        SubMenu objSubMenu = new SubMenu();
+                        objSubMenu.MenuLeetSpeak();                        
+                    }
                     //LATIN    CHARACTER
                     if (dislayMainSubMain == i++)
                         LatinMenu();
+                    //CUSTOM    CHARACTER
+                    if (dislayMainSubMain == i++)
+                    {
+                        SubMenu objSubMenu = new SubMenu();
+                        objSubMenu.MenuCustom();
+                        Parameter config = new Parameter();
+                        config.TypesOfFileAtGenerate();
+                    }
                     //SPECIAL
                     if (dislayMainSubMain == i++)
                         SpecialMenu();
                     // SWEDISH    CHARACTER    
                     if (dislayMainSubMain == i++)
                         SwedishMenu();
+                    // CYRILLIC    CHARACTER    
+                    if (dislayMainSubMain == i++)
+                        CyrillicMenu();
                     // SYLLABLE  CHARACTER
                     if (dislayMainSubMain == i++)
-                        SyllableMenu();                    
+                        SyllableMenu();
+                    if (dislayMainSubMain == i++)
+                        WifiMenu();   
                     // EXIT
                     if (dislayMainSubMain == i++)                    
                         Environment.Exit(0);
@@ -124,21 +299,39 @@ namespace crisis
             }
         }
 
+        
+
         internal static void LatinMenu()
         {
-            SubMenu obj2 = new SubMenu();
+            SubMenu objSubMenu = new SubMenu();
+
             booleanCategoryMenu = false;
             Parameter config = new Parameter();
-
-            Console.WriteLine("\n N°\tDESCRIPTION \n");
+            
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n N°");
+            Console.ResetColor();
+            Console.WriteLine(" \tDESCRIPTION \n");
             int i = 0;
 
-            Console.WriteLine(" {0})\t LATIN\t    CHARACTER LOWERCASE", i++);
-            Console.WriteLine(" {0})\t LATIN\t    CHARACTER UPPERCASE", i++);
-            Console.WriteLine(" {0})\t LATIN\t    CHARACTER UPPERCASE & LOWERCASE", i++);
-            Console.WriteLine("\n {0})\t RETURN\t    MAIN MENU", i++);
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t LATIN\t    CHARACTER LOWERCASE");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t LATIN\t    CHARACTER UPPERCASE");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t LATIN\t    CHARACTER UPPERCASE & LOWERCASE");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t RETURN\t    MAIN MENU");
             
-            SubMenu.BooleanSubMenu = true;
+            
             while (SubMenu.BooleanSubMenu)
             {
                 try
@@ -154,23 +347,23 @@ namespace crisis
                     //LATIN    CHARACTER
                     if (dislayMainSubMain == i++)
                     {
-                        obj2.LatinCharacterLowercase();
+                        objSubMenu.LatinCharacterLowercase();
                         config.TypesOfFileAtGenerate();
                     } 
                     else if (dislayMainSubMain == i++)
                     {
-                        obj2.LatinCharacteUppercase();
+                        objSubMenu.LatinCharacteUppercase();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        obj2.LatinCharacterUppercaseLowercase();
+                        objSubMenu.LatinCharacterUppercaseLowercase();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
-                    {
-                        SubMenu.BooleanSubMenu = true;
-                        MainMenu.Navigation();
+                    {                        
+                        Console.Clear();
+                        MainMenu obj = new MainMenu();
                     }
                 }
                 catch (FormatException e)
@@ -180,24 +373,40 @@ namespace crisis
                     Console.WriteLine(" {0} \n", e.Message);
                     Console.ResetColor();
                 }
-            }            
-            
+            } 
         }
 
         internal static void SpecialMenu()
         {
-            SubMenu obj1 = new SubMenu();
+            SubMenu objSubMenu = new SubMenu();
+
             booleanCategoryMenu = false;
             Parameter config = new Parameter();
-            Console.WriteLine("\n N°\tDESCRIPTION \n");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n N°");
+            Console.ResetColor();
+            Console.WriteLine(" \tDESCRIPTION \n");
             int i = 0;
 
-            Console.WriteLine(" {0})\t HEXA", i++);            
-            Console.WriteLine(" {0})\t NUMBER", i++);
-            Console.WriteLine(" {0})\t SPECIAL CHARACTER", i++);            
-            Console.WriteLine("\n {0})\t RETURN  MAIN MENU", i++);
 
-            SubMenu.BooleanSubMenu = true;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t HEXA");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t NUMBER");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t SPECIAL CHARACTER");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine("\t RETURN  MAIN MENU");
+
+            
             while (SubMenu.BooleanSubMenu)
             {
                 try
@@ -206,28 +415,31 @@ namespace crisis
                     Console.Write("\n[+] ");
                     Console.ResetColor();
                     Console.Write(" With what category you want to work : ");
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     int dislayMainSubMain = int.Parse(Console.ReadLine().ToLower());
+                    Console.ResetColor();
                     Console.Write("\n");
                     i = 0;
 
                     if (dislayMainSubMain == i++)
                     {
-                        obj1.MenuHexa();
+                        objSubMenu.MenuHexa();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        obj1.MenuNumeric();
+                        objSubMenu.MenuNumeric();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        obj1.MenuSpecialCharacteres();
+                        objSubMenu.MenuSpecialCharacteres();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        MainMenu.Navigation(); 
+                        Console.Clear();
+                        MainMenu obj = new MainMenu();
                     }
 
                 }
@@ -238,25 +450,42 @@ namespace crisis
                     Console.WriteLine(" {0} \n", e.Message);
                     Console.ResetColor();
                 }
-            }            
-            
+            }
         }
         
 
         public static void SwedishMenu()
         {
-            SubMenu obj3 = new SubMenu();
+            SubMenu objSubMenu = new SubMenu();
+
             booleanCategoryMenu = false;
             Parameter config = new Parameter();
-            Console.WriteLine("\n N°\tDESCRIPTION \n");
-            int i = 0;
             
-            Console.WriteLine(" {0})\t SWEDISH    CHARACTER LOWERCASE", i++);
-            Console.WriteLine(" {0})\t SWEDISH    CHARACTER UPPERCASE", i++);
-            Console.WriteLine(" {0})\t SWEDISH    CHARACTER UPPERCASE & LOWERCASE", i++);
-            Console.WriteLine("\n {0})\t RETURN\t    MAIN MENU", i++);
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n N°");
+            Console.ResetColor();
+            Console.WriteLine(" \tDESCRIPTION \n");
+            
+            int i = 0;
 
-            SubMenu.BooleanSubMenu = true;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t SWEDISH    CHARACTER LOWERCASE");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t SWEDISH    CHARACTER UPPERCASE");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t SWEDISH    CHARACTER UPPERCASE & LOWERCASE");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t RETURN\t    MAIN MENU");
+
+           
             while (SubMenu.BooleanSubMenu)
             {
                 try
@@ -273,22 +502,23 @@ namespace crisis
                     // SWEDISH    CHARACTER
                     if (dislayMainSubMain == i++)
                     {
-                        obj3.SwddishCharacterLowercase();
+                        objSubMenu.SwddishCharacterLowercase();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        obj3.SwddishCharacterUppercase();
+                        objSubMenu.SwddishCharacterUppercase();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        obj3.SwddishCharacterLowercaseUppercase();
+                        objSubMenu.SwddishCharacterLowercaseUppercase();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        MainMenu.Navigation(); 
+                        Console.Clear();
+                        MainMenu obj = new MainMenu();
                     }
 
                 }
@@ -300,26 +530,126 @@ namespace crisis
                     Console.ResetColor();
                 }
             }
-            
-            
         }
 
-        public static void SyllableMenu()
+        private void CyrillicMenu()
         {
-            SubMenu obj4 = new  SubMenu();
+            SubMenu objSubMenu = new SubMenu();
+
             booleanCategoryMenu = false;
             Parameter config = new Parameter();
-            
-            Console.WriteLine("\n N°\tDESCRIPTION \n");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n N°");
+            Console.ResetColor();
+            Console.WriteLine(" \tDESCRIPTION \n");
+
             int i = 0;
 
-            Console.WriteLine(" {0})\t SYLLABLE   CHARACTER LOWERCASE", i++);
-            Console.WriteLine(" {0})\t SYLLABLE   CHARACTER UPPERCASE", i++);            
-            Console.WriteLine(" {0})\t SYLLABLE   CHARACTER UPPERCASE & LOWERCASE", i++);
-            Console.WriteLine("\n {0})\t RETURN     MAIN MENU", i++);
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
             Console.ResetColor();
 
-            SubMenu.BooleanSubMenu = true;
+            Console.WriteLine(" \t CYRILLIC    CHARACTER LOWERCASE");
+            
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t CYRILLIC    CHARACTER UPPERCASE");
+
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t CYRILLIC    CHARACTER UPPERCASE & LOWERCASE");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            
+            Console.WriteLine(" \t RETURN\t    MAIN MENU");
+
+
+            while (SubMenu.BooleanSubMenu)
+            {
+                try
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("\n[+] ");
+                    Console.ResetColor();
+                    Console.Write(" With what category you want to work : ");
+                    int dislayMainSubMain = int.Parse(Console.ReadLine().ToLower());
+                    Console.Write("\n");
+                    i = 0;
+
+
+                    // CYRILLIC    CHARACTER
+                    if (dislayMainSubMain == i++)
+                    {
+                        objSubMenu.CyrillicCharacterLowercase();
+                        config.TypesOfFileAtGenerate();
+                    }
+                    else if (dislayMainSubMain == i++)
+                    {
+                        objSubMenu.CyrillicCharacteUppercase();
+                        config.TypesOfFileAtGenerate();
+                    }
+                    else if (dislayMainSubMain == i++)
+                    {
+                        objSubMenu.CyrillicCharacterUppercaseLowercase();
+                        config.TypesOfFileAtGenerate();
+                    }
+                    else if (dislayMainSubMain == i++)
+                    {
+                        Console.Clear();
+                        MainMenu obj = new MainMenu();
+                    }
+
+                }
+                catch (FormatException e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n Enter the number corresponding !");
+                    Console.WriteLine(" {0} \n", e.Message);
+                    Console.ResetColor();
+                }
+            }
+        }
+
+        internal static void SyllableMenu()
+        {
+            SubMenu objSubMenu = new  SubMenu();           
+
+            booleanCategoryMenu = false;
+            Parameter config = new Parameter();
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n N°");
+            Console.ResetColor();
+            Console.WriteLine(" \tDESCRIPTION \n");
+            int i = 0;
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t SYLLABLE   CHARACTER LOWERCASE");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t SYLLABLE   CHARACTER UPPERCASE");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t SYLLABLE   CHARACTER UPPERCASE & LOWERCASE");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \t RETURN     MAIN MENU");
+            Console.ResetColor();
+
+            
             while (SubMenu.BooleanSubMenu)
             {
                 try
@@ -335,22 +665,23 @@ namespace crisis
                     //        SYLLABLE   CHARACTER
                     if (dislayMainSubMain == i++)
                     {
-                        obj4.SyllableCharacterLowercase();
+                        objSubMenu.SyllableCharacterLowercase();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        obj4.SyllableCharacteUppercase();
+                        objSubMenu.SyllableCharacteUppercase();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        obj4.SyllableCharacterUppercaseLowercase();
+                        objSubMenu.SyllableCharacterUppercaseLowercase();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        MainMenu.Navigation(); 
+                        Console.Clear();
+                        MainMenu obj = new MainMenu();
                     }
                 }
                 catch (FormatException e)
@@ -361,8 +692,74 @@ namespace crisis
                     Console.ResetColor();
                 }
             }
-
         }
 
-    }
-}
+        public static void WifiMenu()
+        {
+            SubMenu objSubMenu = new SubMenu();
+
+            Parameter.TypesOfGeneration = 6;
+            
+            booleanCategoryMenu = false;
+            Parameter config = new Parameter();
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n N°");
+            Console.ResetColor();
+            Console.WriteLine(" \tDESCRIPTION \n");
+            int i = 0;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \tBOX ADSL SFR ");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \tBOX ADSL LIVEBOX ");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n  {0}) ", i++);
+            Console.ResetColor();
+            Console.WriteLine(" \tRETURN     MAIN MENU");
+            Console.ResetColor();
+
+           
+            while (SubMenu.BooleanSubMenu)
+            {
+                try
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("\n[+] ");
+                    Console.ResetColor();
+                    Console.Write(" With what category you want to work : ");
+                    int dislayMainSubMain = int.Parse(Console.ReadLine().ToLower());
+                    Console.Write("\n");
+                    i = 0;
+                    
+                    if (dislayMainSubMain == i++)
+                    {
+                        objSubMenu.BoxAdslSfr();
+                    }
+                    if (dislayMainSubMain == i++)
+                    {
+                        objSubMenu.BoxAdslLivebox();
+                    } 
+                    else if (dislayMainSubMain == i++)
+                    {
+                        Console.Clear();
+                        MainMenu obj1 = new MainMenu();
+                    }
+                }
+                catch (FormatException e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n Enter the number corresponding !");
+                    Console.WriteLine(" {0} \n", e.Message);
+                    Console.ResetColor();
+                }
+            }
+        }
+
+
+
+    } // End class
+}// End class namespace
