@@ -16,25 +16,27 @@ make install
 
 # Run
 <pre style=" border: 1px solid black; padding:10px">
-root@kali:~# crisis 
- Hack Wifi  : http://www.crack-wifi.com/forum/index.php
- Hacking FR : http://hackademics.fr/
- Trouble FR : http://www.kali-linux.fr/forum/index.php
- Trouble US : http://http://forums.kali.org/
- Hacking US : http://hackforums.net/index.php
-
- Crisis Wordlist Generator  by Teeknofil, version : 1.0.9
+Hacking US   : hackforums.net 
+ Trouble US   : forums.kali.org
+ Hacking FR   : hackademics.fr
+ Trouble FR   : kali-linux.fr/forum
+ Hacking Wifi : crack-wifi.com/forum
 
 
- N°	DESCRIPTION 
+ Crisis Wordlist Generator  by Teeknofil, version : 1.1.0 
 
- 0)	 1337
- 1)	 LATIN	
- 2)	 SPECIAL
- 3)	 SWEDISH
- 4)	 SYLLABLE FR
 
- 5)	 EXIT 
+ N° 	DESCRIPTION 
+
+ 0) 	 1337
+ 1)  	 LATIN	
+ 2)  	 CUSTOM
+ 3)  	 SPECIAL
+ 4)  	 SWEDISH
+ 5)  	 CYRILLIC
+ 6)  	 SYLLABLE FR
+ 7)  	 ROUTER\BOX WIFI
+ 8) 	 EXIT 
 
 [+]  With what category you want to work : 
 </pre>
@@ -46,9 +48,6 @@ ls
    crisis.zip
 unzip crisis.zip 
 Archive:  crisis.zip
-  inflating: crisis/C5.dll           
-  inflating: crisis/Plossum CommandLine.dll  
-  inflating: crisis/crisis           
   inflating: crisis/crisis.exe 
 chmod +x *
 ./crisis.exe
@@ -59,12 +58,14 @@ chmod +x *
 <pre style=" border: 1px solid black; padding:10px">
 
 crisis -h
-Crisis Wordlist Generator by Teeknofil,  version : 1.0.9
+
+
+Crisis Wordlist Generator by Teeknofil,  version : 1.1.0
 
 
 SYNOPSIS
 
-crisis [method] -l [len] -f [charset string] [options]
+crisis <method> -l <len> -f [<charset string>] [options]
 
 DESCRIPTION
 
@@ -79,27 +80,33 @@ Help:
 
 Method:                                                                         
    -1, --crunch         Charset list customized to crunch wordlist generator    
-   -2, --enumeration    Generate a character list without repetition            
+                        example : crisis -1 -l 10 -f ualpha -u                  
+   -2, --combination    Generate a character list combination                   
+                        example : crisis -2 -l 10 -f lalpha -u                  
    -3, --random         Generate random character                               
-   -4, --leetspeak      Convert a list of words in language Leet Speak          
-                        Example : crisis  -4 ..\crisis\dico.txt -o              
-                                             
+                        example : crisis -3 -l 15 -f mixalpha -u                
+   -4, --variation      Generate a character list variation                     
+                        example : crisis -4 -l 10 -f lalpha                     
+   -5, --permutation    Generate a character list permutation                   
+                        example : crisis -5 -l 10 -f lalpha                     
+   -6, --wifi           Generer des caractere specialement                      
+                        pour un routeur ou une box                              
+                        Exemple :                                               
+                        crisis -6 -f livebox-sagem  -o                          
+                        crisis -6 -f sfr -u | aircrack-ng                       
+                        -e SFR_???? -w- out-01.cap                              
+   -7, --birthdate      Not available                                           
+   -8, --leetspeak      Convert a list of words in language Leet Speak          
+                        Example : crisis  -4 crisis\dico.txt -o                 
 
 Options:                                                                        
-   -b, --byte           Specifies the size of the output file,                  
-                        only works if -o is used,  i.e.:  60 mib.               
-                        For example  is 500 mib correct 500mb  is NOT correct.  
-                        The three types are based on 1024.                      
-                        Example :   crisis -3 -l 10 -b 50 mib -o will generate 1
-                        files  valid values for type  are   kib, mib, and gib.  
-                        NOTE  There is  space between the number and type.      
-   -c, --line           Specifies the number of lines to  write  to  output     
-                        file,  only works if -o is used.                        
    -e, --end            Specifies a ending string, eg: god77xD                  
    -i, --invert         Inverts  the  output  so  instead  of  aaa,aab,aac,aad, 
                         etc you get aaa,baa,caa,daa,aba,bba, etc                
    -o, --output         Specify the save file in the                            
                         crisis folder on the desktop                            
+   -r, --repeat         Specify if you want a repetition of                     
+                        characters with "true" or "false", eg: -r true          
    -s, --startblock     Specifies a starting string, eg: qwerty                 
    -u, --disables       The -u option disables the print size .                 
                         This should be the last option.                         
@@ -108,7 +115,7 @@ Options:
 Parameter:                                                                      
    -f, --charset-name   Specifies a character set from crisis,                  
                         type --help-wordlist for more info                      
-   -l, --lenght         Number of character or character group 
+   -l, --lenght         Number of character or character group    
 </pre>
 
 #Usage
