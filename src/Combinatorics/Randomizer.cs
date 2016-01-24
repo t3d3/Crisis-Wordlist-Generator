@@ -33,7 +33,11 @@ namespace crisis
             random = new Random();
         }
 
-
+        /// <summary>
+        /// Return At string Ramdom
+        /// </summary>
+        /// <returns>string</returns>
+         
         public string Aleatory()
         {
             string randonString = null;
@@ -62,23 +66,24 @@ namespace crisis
 
             if (Parameter.SaveFile == true)
             {
-                make.Setting_UpFile();
-
-                BigInteger i = 0;
+                BigInteger iMakeFile = 0;
 
                 while ( Statistical.NumberOfAllCombination >= cpt )
                 {
-                    
+                    if (iMakeFile == 0)
+                    {
+                        make.Setting_UpFile();
+                    }
+
                     make.WorkFile.WriteLine(this.Aleatory());
-                    ++i;
+                    ++iMakeFile;
                     ++cpt;
                     
-                    if (i >= Parameter.NumberLine - 1 || cpt >= Statistical.NumberOfAllCombination)
+                    if (iMakeFile >= Parameter.NumberLine - 1 || cpt >= Statistical.NumberOfAllCombination)
                     {
-                        i = 0;
+                        iMakeFile = 0;
                         make.WorkFile.Flush();
-                        make.WorkFile.Close();
-                        make.Setting_UpFile();
+                        make.WorkFile.Close();                        
                     }           
                 }
             }

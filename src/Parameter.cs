@@ -335,8 +335,6 @@ namespace crisis
         internal void SaveCharsetInFilesTxt()
         {
             char askSaveFile = 'n';
-            
-
             b = true;
 
             while (b)
@@ -383,32 +381,34 @@ namespace crisis
             }
 
 
-            if (saveFile == true)
+            if (saveFile)
             {
                 Statistical info = new Statistical();                
-                bool b1 = true;
+                b = true;
                 string sizeFiles = null;
 
-                while (b1)
+                while (b)
                 {
                     try
                     {
-                        Console.Write("\n What size should a save file in MB (Empty for default: 100 MB) : ");
-                        sizeFiles = Console.ReadLine().ToLower();
+                        Console.Write("\n What size should a save file in MB : ");
+                        sizeFiles = Console.ReadLine();
+                        int sizFilesInMB = 0;
 
-                        if (sizeFiles != null)
+                        if (Int32.TryParse(sizeFiles, out sizFilesInMB))
                         {
-                            Statistical.DefaultSizeFileInOctet = Int32.Parse(sizeFiles) * 1048576;
+                            sizFilesInMB *= 1048576;
+                            Statistical.DefaultSizeFileInOctet = sizFilesInMB;
                             info.CalculSizeFile();
-                            b1 = false;
+                            b = false;
                         }
 
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
-                        Console.WriteLine("\n Number  of lines by default\n");
-                        info.CalculSizeFile();
-                        b1 = false;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n {0} \n", e.Message);
+                        Console.ResetColor();
                     }
                 }
             }

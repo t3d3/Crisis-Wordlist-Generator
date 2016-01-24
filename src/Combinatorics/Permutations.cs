@@ -531,9 +531,15 @@ namespace crisis
     public class PermutationPattern
     {
         private static string s = null;
-        private static List<string> permutCharset = new List<string>() { };
+        private static List<string> permutCharset = new List<string>() { };        
         private static Combinations<string> obj = null;
-        private static Permutations<string> obj1 = null;
+
+        private static Permutations<string> permut = null;
+        public static Permutations<string> Permut
+        {
+            get { return PermutationPattern.permut; }
+            set { PermutationPattern.permut = value; }
+        }
 
         public PermutationPattern()
         {
@@ -543,6 +549,7 @@ namespace crisis
         public static BigInteger CaclulPermut()
         {
             obj = new Combinations<string>(Charset.CharsetSelecting, Parameter.NumberOfChar);
+             
             foreach (IList<string> charset in obj)
             {
                 for (int c = 0; c < charset.Count; c++)
@@ -559,16 +566,14 @@ namespace crisis
 
             if (Parameter.WithoutOrWithRepetition == false)
             {
-                obj1 = new Permutations<string>(permutCharset, GenerateOption.WithoutRepetition);
+                permut = new Permutations<string>(permutCharset, GenerateOption.WithoutRepetition);
             }
             else if (Parameter.WithoutOrWithRepetition == true)
             {
-                obj1 = new Permutations<string>(permutCharset, GenerateOption.WithRepetition);
+                permut = new Permutations<string>(permutCharset, GenerateOption.WithRepetition);
             }
 
-            Parameter.NumberLine = obj.Count * obj1.Count;
-
-            return Parameter.NumberLine;            
+            return (permut.Count * obj.Count);            
         }
 
 
@@ -594,20 +599,23 @@ namespace crisis
 
                 if (Parameter.WithoutOrWithRepetition == false)
                 {
-                    obj1 = new Permutations<string>(permutCharset, GenerateOption.WithoutRepetition);
+                    permut = new Permutations<string>(permutCharset, GenerateOption.WithoutRepetition);
                 }
                 else if (Parameter.WithoutOrWithRepetition == true)
                 {
-                    obj1 = new Permutations<string>(permutCharset, GenerateOption.WithRepetition);
+                    permut = new Permutations<string>(permutCharset, GenerateOption.WithRepetition);
                 }
 
                 if (Parameter.SaveFile == true)
                 {
-                    make.Setting_UpFile();
-                    BigInteger y = 0;
+                    BigInteger makeFile = 0;
 
-                    foreach (IList<string> str in obj1)
-                    {
+                    foreach (IList<string> str in permut)
+                    {                  
+                        if (makeFile == 0)
+                        {
+                            make.Setting_UpFile();
+                        }
 
                         for (int c = 0; c < Parameter.NumberOfChar; c++)
                         {
@@ -617,29 +625,27 @@ namespace crisis
                         make.WorkFile.WriteLine(s);
                         s = null;
 
-                        y++;
+                        makeFile++;
                         cpt++;
 
-                        if (y >= Parameter.NumberLine | cpt >= Statistical.NumberOfAllCombination)
-                        {
-                            y = 0;
+                        if (makeFile >= Parameter.NumberLine | cpt >= Statistical.NumberOfAllCombination)
+                        {                            
                             make.WorkFile.Flush();
                             make.WorkFile.Close();
-
-                            make.Setting_UpFile();
+                            makeFile = 0;
                         }
                     }
-
                 }
                 else
                 {
-                    foreach (IList<string> str in obj1)
+                    foreach (IList<string> str in permut)
                     {
                         s = null;
                         for (int c = 0; c < str.Count; c++)
                         {
                             s += str[c];
                         }
+
                         Console.WriteLine(s);
                     }
                 }            

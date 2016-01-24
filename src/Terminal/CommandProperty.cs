@@ -101,7 +101,7 @@ namespace crisis
         }
 
         [CommandLineOption(Name = "6", Aliases = "wifi",
-                           Description = "Générer des caractére spécialement pour un routeur ou une box \n Exemple :\n crisis -6 -f livebox-sagem  -o \n crisis -6 -f sfr -u | aircrack-ng -e SFR_???? -w- out-01.cap", GroupId = "method")]
+                           Description = "Generer des caractere specialement pour un routeur ou une box \n Exemple :\n crisis -6 -f livebox-sagem  -o \n crisis -6 -f sfr -u | aircrack-ng -e SFR_???? -w- out-01.cap", GroupId = "method")]
         public bool Wifi
         {
             get { return mWifi; }
@@ -136,22 +136,22 @@ namespace crisis
         /////// Options
         */
 
-        //[CommandLineOption(Name = "b", Aliases = "byte",
-        //                   Description = "Specifies the size of the output file, \n only works if -o is used,  i.e.:  60 mib. \n For example  is 500 mib correct 500mb  is NOT correct. \n The three types are based on 1024. \n Example :   crisis -3 -l 10 -b 50 mib -o will generate 1 \n files  valid values for type  are   kib, mib, and gib. \n NOTE  There is  space between the number and type.", GroupId = "options")]
-        //public bool Byte
-        //{
-        //    get { return mByte; }
-        //    set { mByte = value; }
-        //}
+        [CommandLineOption(Name = "b", Aliases = "byte",
+                           Description = "Specifies the size of the output file, \n only works if -o is used,  i.e.:  60 mib. \n For example  is 500 mib correct 500mb  is NOT correct. \n The three types are based on 1024. \n Example :   crisis -3 -l 10 -b 50 mib -o will generate 1 \n files  valid values for type  are   kib, mib, and gib. \n NOTE  There is  space between the number and type.", GroupId = "options")]
+        public bool Byte
+        {
+            get { return mByte; }
+            set { mByte = value; }
+        }
 
 
-        //[CommandLineOption(Name = "c", Aliases = "line",
-        //                   Description = "Specifies the number of lines to  write  to  output \n file,  only works if -o is used.", GroupId = "options")]
-        //public bool Line
-        //{
-        //    get { return mLine; }
-        //    set { mLine = value; }
-        //}
+        [CommandLineOption(Name = "c", Aliases = "line",
+                           Description = "Specifies the number of lines to  write  to  output \n file,  only works if -o is used.", GroupId = "options")]
+        public bool Line
+        {
+            get { return mLine; }
+            set { mLine = value; }
+        }
 
         [CommandLineOption(Name = "e", Aliases = "end", Description = "Specifies a ending string, eg: god77xD", GroupId = "options")]
 

@@ -49,12 +49,12 @@ namespace crisis
         {
             Console.WriteLine("\n #### Livebox BOX ADSL FR");
             Console.WriteLine("\n Algorithme à partir de crack-wifi.com/forum/topic-5559-retravailler-des-cle-livebox.html\n qui permet de générer des clés WPA pour une Livebox Sagem\n");
-            Console.WriteLine(" Construteur\t\t\t\t\t: SAGEM COMMUNICATION");
-            Console.WriteLine(" Octet de l'adresse MAC\t\t\t\t: 00:19:70:??:??:??\n");
+            Console.WriteLine(" Construteur\t\t\t\t: SAGEM COMMUNICATION");
+            Console.WriteLine(" Octet de l'adresse MAC\t\t\t: 00:19:70:??:??:??\n");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" livebox-sagem");
             Console.ResetColor();
-            Console.WriteLine("\t\t\t\t\t1234679ACDEF\n");
+            Console.WriteLine("\t\t\t\t1234679ACDEF\n");
         }
 
         public static void MenuHexaPrint()
@@ -64,12 +64,12 @@ namespace crisis
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n hex-lower");
             Console.ResetColor();
-            Console.WriteLine("\n  \t\t\t\t0123456789abcdef");
+            Console.WriteLine("\n  \t\t\t\t\t0123456789abcdef");
             //hexa-upper
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(" hex-upper");
             Console.ResetColor();
-            Console.WriteLine(" \t\t\t\t0123456789ABCDEF\n");
+            Console.WriteLine(" \t\t\t\t\t0123456789ABCDEF\n");
         }
         
         public static void MenuNumericPrint()
@@ -120,11 +120,12 @@ namespace crisis
 
         public static void LatinCharacterLowercasePrint()
         {
+            Console.WriteLine("\n #### Latin Lowercase \n");
             //lalpha
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" lalpha");
             Console.ResetColor();
-            Console.WriteLine("\t\t\t\tabcdefghijklmnopqrstuvwxyz");
+            Console.WriteLine("\t\t\t\t\tabcdefghijklmnopqrstuvwxyz");
             //lalpha-space
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(" lalpha-space\n");
@@ -133,32 +134,32 @@ namespace crisis
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" lalpha-numeric");
             Console.ResetColor();
-            Console.WriteLine("\t\t\tabcdefghijklmnopqrstuvwxyz");
+            Console.WriteLine("\t\t\t\tabcdefghijklmnopqrstuvwxyz");
             //lalpha-numeric-space
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" lalpha-numeric-space");
             Console.ResetColor();
-            Console.WriteLine("\t\t0123456789\n");
+            Console.WriteLine("\t\t\t0123456789\n");
             //lalpha-numeric-symbol14
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" lalpha-numeric-symbol14");
             Console.ResetColor();
-            Console.WriteLine("\tabcdefghijklmnopqrstuvwxyz0123456789");
+            Console.WriteLine("\t\tabcdefghijklmnopqrstuvwxyz0123456789");
             //lalpha-numeric-symbol14-space
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" lalpha-numeric-symbol14-space");
             Console.ResetColor();
-            Console.WriteLine(" \t@#$%^&*()-_+= [space]\n");
+            Console.WriteLine(" \t\t@#$%^&*()-_+= [space]\n");
             //lalpha-numeric-all
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" lalpha-numeric-all");
             Console.ResetColor();
-            Console.WriteLine("\t\tabcdefghijklmnopqrstuvwxyz0123456789");
+            Console.WriteLine("\t\t\tabcdefghijklmnopqrstuvwxyz0123456789");
             //lalpha-numeric-all-space
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" lalpha-numeric-all-space ");
             Console.ResetColor();
-            Console.WriteLine("\t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/\n");
+            Console.WriteLine("\t\t!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/\n");
         }
 
         public static void LatinCharacteUppercasePrint()

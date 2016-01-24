@@ -502,30 +502,32 @@ namespace crisis {
 
             if (Parameter.SaveFile == true)
             {                
-                BigInteger i = 0;
-                make.Setting_UpFile();
-
+                BigInteger iMakeFile = 0;
+                
                 foreach (IList<string> c in obj)
                 {
-                    for (int y = 0; y < Parameter.NumberOfChar; y++)
+                    if (iMakeFile == 0)
                     {
-                        s += c[y];
+                       make.Setting_UpFile(); 
+                    }
+
+                    for (int i = 0; i < Parameter.NumberOfChar; i++)
+                    {
+                        s += c[i];
                     }
 
                     make.WorkFile.WriteLine(s);
                     s = null;
 
-                    i++;
+                    iMakeFile++;
                     cpt++;
 
-                    if (i >= Parameter.NumberLine | cpt >= Statistical.NumberOfAllCombination)
+                    if (iMakeFile >= Parameter.NumberLine | cpt >= Statistical.NumberOfAllCombination)
                     {
-                        i = 0;
+                        iMakeFile = 0;
                        
                         make.WorkFile.Flush();
                         make.WorkFile.Close();
-
-                        make.Setting_UpFile();
                     }
                 }
             }

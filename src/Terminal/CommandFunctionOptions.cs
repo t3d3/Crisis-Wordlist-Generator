@@ -87,61 +87,60 @@ namespace crisis
         }
 
 
-        //public int FunctionByte(string[] args)
-        //{
-            
-        //    Command options = new Command();
-        //    CommandLineParser parser = new CommandLineParser(options);
-        //    parser.Parse();
+        public int FunctionByte(string[] args)
+        {
+            Command options = new Command();
+            CommandLineParser parser = new CommandLineParser(options);
+            parser.Parse();            
 
-        //    for (int i = 0; i < args.Length; i++)
-        //        {
-        //            if (options.Byte)
-        //            {
-        //                if (args[i].ToLower() == "-b" | args[i].ToLower() == "--byte")
-        //                {
-        //                    int b;
+            if (options.Byte)
+            {
+                for (int i = 0; i < args.Length; i++)
+                {
+                    if (args[i].ToLower() == "-b" | args[i].ToLower() == "--byte")
+                    {
+                        int iByte = 0;
 
-        //                    bool booleanByte = int.TryParse(args[i + 1], out b);
+                        bool booleanByte = int.TryParse(args[i + 1], out iByte);
 
-        //                    if (booleanByte == false)
-        //                    {
-        //                        Console.WriteLine("\nThe value entered with the -b option is incorrect\n");
-        //                        Environment.Exit(0);
-        //                    }
-        //                    else
-        //                    {
-        //                        if (args[i + 2].ToLower() == "kib")
-        //                        {
-        //                            b *= 1024;
-        //                        }
-        //                        else if (args[i + 2].ToLower() == "mib")
-        //                        {
-        //                            b *= 1048576;
-                                    
-        //                        }
-        //                        else if (args[i + 2].ToLower() == "gib")
-        //                        {
-        //                            b *= 1073741824;
-        //                        }
-                                
-        //                        Statistical.DefaultSizeFileInOctet = b;
-        //                        Console.WriteLine("\n\n\n" + Statistical.DefaultSizeFileInOctet);
-        //                    }
-        //                }
-        //            }
-        //            else if (parser.HasErrors)
-        //            {
-        //                Console.WriteLine(parser.UsageInfo.ToString(78, true));
-        //                return -1;
-        //            }
-        //        }
-            
+                        if (booleanByte == false)
+                        {
+                            Console.WriteLine("\nThe value entered with the -b option is incorrect\n");
+                            Environment.Exit(0);
+                        }
+                        else
+                        {
+                            if (args[i + 2].ToLower() == "kib")
+                            {
+                                iByte *= 1024;
+                            }
+                            else if (args[i + 2].ToLower() == "mib")
+                            {
+                                iByte *= 1048576;
 
-        //    // No errors present and all arguments correct
-        //    // Do work according to arguments
-        //    return 0;
-        //}
+                            }
+                            else if (args[i + 2].ToLower() == "gib")
+                            {
+                                iByte *= 1073741824;
+                            }
+
+                            Statistical.DefaultSizeFileInOctet = iByte ;
+                            Statistical obj = new Statistical();
+                            obj.CalculSizeFile();
+                        }
+                    }
+
+                }
+            }
+            else if (parser.HasErrors)
+            {
+                Console.WriteLine(parser.UsageInfo.ToString(78, true));
+                return -1;
+            }
+            // No errors present and all arguments correct
+            // Do work according to arguments
+            return 0;
+        }
 
         public int FunctionSaveFiles(string[] args)
         {
@@ -152,11 +151,7 @@ namespace crisis
 
             if (options.FileName)
             {
-                Parameter.SaveFile = true;
-                //if (options.Line == false)
-                //{
-                //    obj1.CalculSizeFile();
-                //}
+                Parameter.SaveFile = true;                
             }
             else if (parser.HasErrors)
             {
@@ -169,44 +164,44 @@ namespace crisis
             return 0;
         }
 
-        //public int FunctionLine(string[] args)
-        //{            
-        //    Command options = new Command();
-        //    CommandLineParser parser = new CommandLineParser(options);
-        //    parser.Parse();
-                
-        //    if (options.Line)
-        //    {
-        //        for (int i = 0; i < args.Length; i++)
-        //        {
-        //            if (args[i].ToLower() == "-c" | args[i].ToLower() == "--line")
-        //            {
-        //                int c;
+        public int FunctionLine(string[] args)
+        {
+            Command options = new Command();
+            CommandLineParser parser = new CommandLineParser(options);
+            parser.Parse();
 
-        //                bool booleanLine = int.TryParse(args[i + 1], out c);
+            if (options.Line)
+            {
+                for (int i = 0; i < args.Length; i++)
+                {
+                    if (args[i].ToLower() == "-c" | args[i].ToLower() == "--line")
+                    {
+                        int c;
 
-        //                if (booleanLine == false)
-        //                {
-        //                    Console.WriteLine("\nThe value entered with the -c option is incorrect\n");
-        //                    Environment.Exit(0);
-        //                }
-        //                else
-        //                {
-        //                    Parameter.NumberLine = c;
-        //                }
-        //            }
-        //        }
-        //    }
-        //    else if (parser.HasErrors)
-        //    {
-        //        Console.WriteLine(parser.UsageInfo.ToString(78, true));
-        //        return -1;
-        //    }                            
+                        bool booleanLine = int.TryParse(args[i + 1], out c);
 
-        //    // No errors present and all arguments correct
-        //    // Do work according to arguments
-        //    return 0;
-        //}
+                        if (booleanLine == false)
+                        {
+                            Console.WriteLine("\nThe value entered with the -c option is incorrect\n");
+                            Environment.Exit(0);
+                        }
+                        else
+                        {
+                            Parameter.NumberLine = c;
+                        }
+                    }
+                }
+            }
+            else if (parser.HasErrors)
+            {
+                Console.WriteLine(parser.UsageInfo.ToString(78, true));
+                return -1;
+            }
+
+            // No errors present and all arguments correct
+            // Do work according to arguments
+            return 0;
+        }
 
         public int FunctionRepeat(string[] args)
         {

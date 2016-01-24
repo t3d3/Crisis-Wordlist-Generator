@@ -17,8 +17,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Collections.Generic;
 using System.Numerics;
+using crisis.CommandLine;
+using System.Collections.Generic;
 
 namespace crisis
 {
@@ -33,26 +34,25 @@ namespace crisis
         {
             get { return Statistical.numberOfAllCombination; }
             set { Statistical.numberOfAllCombination = value; }
-        }       
+        }
 
-        private static int sizeFileInOctet;
+        private static double defaultSizeFileInOctet;
 
-        public static int DefaultSizeFileInOctet
+        public static double DefaultSizeFileInOctet
         {
             get
             {
-                return sizeFileInOctet;
+                return defaultSizeFileInOctet;
             }
             set
             {
-                sizeFileInOctet = value;
+                defaultSizeFileInOctet = value;
             }
         }
                 
         public Statistical()
         {
-            dataSizeOctet = 0;
-            sizeFileInOctet = 104857600;
+            
         }
 
        
@@ -88,25 +88,74 @@ namespace crisis
             return numberOfAllCombination;
         }
 
+        /// <summary>
+        /// Calculating the number of line to create the file. If the size is too large the function returns a number by default.
+        /// </summary>
+        /// <returns>BigInteger NumberLine</returns>
+
         internal BigInteger CalculSizeFile()
         {
-            // 104857600 octet = 100 Mo
-            // Not to change
-            // Ne pas modifier
+            Command options = new Command();
+            CommandLineParser parser = new CommandLineParser(options);
+            parser.Parse();
 
-            BigInteger nbLine = DefaultSizeFileInOctet / (Parameter.NumberOfChar + 2);
+            if (options.Line == false)
+            {
+                double nbLine =0;
 
-            if ( nbLine - 1 > Parameter.NumberLine  )
-            {
-                return Parameter.NumberLine;                        
+                nbLine = (defaultSizeFileInOctet / 1.4) / (Parameter.NumberOfChar * 0.9);
+
+                if (Parameter.TypesOfGeneration == 1 )
+                {
+                    nbLine = (defaultSizeFileInOctet / 1.4) / (Parameter.NumberOfChar + 12);
+                    if (numberOfAllCombination - 1 < (BigInteger)nbLine)
+                    {
+                        Parameter.NumberLine = numberOfAllCombination;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n File size too large, the number of line by default.\n");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Parameter.NumberLine = (BigInteger)nbLine;
+                    }
+                }
+                else if (Parameter.TypesOfGeneration == 5)
+                {
+                    if (PermutationPattern.Permut.Count < nbLine)
+                    {
+                        Parameter.NumberLine = PermutationPattern.Permut.Count;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n File size too large, the number of line by default.\n");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Parameter.NumberLine = (BigInteger)nbLine;
+                    }
+                }
+                else 
+                {
+                    if (numberOfAllCombination - 1 < (BigInteger)nbLine)
+                    {
+                        Parameter.NumberLine = numberOfAllCombination;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n File size too large, the number of line by default.\n");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Parameter.NumberLine = (BigInteger)nbLine;
+                    } 
+                }
             }
-            else
-            {
-                Parameter.NumberLine = nbLine;
-            }
-            
+
             return Parameter.NumberLine;
         }
+        
+        /// <summary>
+        /// Calcul the size total of data in the terminal
+        /// </summary>
 
         internal void StatiscalInfoSize()
         {

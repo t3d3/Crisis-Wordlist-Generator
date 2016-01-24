@@ -48,6 +48,10 @@ namespace crisis
                 DisplayCharset.LatinCharacterLowercasePrint();
                 DisplayCharset.LatinCharacterUppercaseLowercasePrint();
 
+                DisplayCharset.CyrillicCharacterLowercasePrint();
+                DisplayCharset.CyrillicCharacterUppercasePrint();
+                DisplayCharset.CyrillicCharacterUppercaseLowercasePrint();
+
                 DisplayCharset.SwddishCharacterUppercasePrint();
                 DisplayCharset.SwddishCharacterLowercasePrint();
                 DisplayCharset.SwddishCharacterLowercaseUppercasePrint();
@@ -55,6 +59,7 @@ namespace crisis
                 DisplayCharset.SyllableCharacteUppercasePrint();
                 DisplayCharset.SyllableCharacterLowercasePrint();
                 DisplayCharset.SyllableCharacterUppercaseLowercasePrint();
+                
             }
 
             else if (parser.HasErrors)

@@ -49,39 +49,34 @@ namespace crisis
 
             if (Parameter.TypesOfGeneration == 1)
             {
-                CombinationPattern obj = new CombinationPattern();
-                
+                CombinationPattern obj = new CombinationPattern();                
                 
                 config.SizeOfWorld();                
                 config.ChangeStartblockPattern();
                 config.ChangeEndblockPattern();
-                config.ReversePaterne();
-                Parameter.NumberLine = CombinationPattern.CaclulCombination().Count;
+                config.ReversePaterne();                
+                
+                info.CalculOfAllCombinaison();                
                 config.SaveCharsetInFilesTxt();
-                
-                
-                info.CalculOfAllCombinaison();
+
                 info.StatiscalInfoSize();
 
                 obj.CombinationPrintF();
-
                 Parameter.TypesOfGeneration = 0;
             }
             if ( Parameter.TypesOfGeneration == 2)
             {
                 CombinationPattern obj = new CombinationPattern();
 
-
                 config.SizeOfWorld();
                 config.Repetition();
                 config.ChangeStartblockPattern();
                 config.ChangeEndblockPattern();
                 config.ReversePaterne();
-                Parameter.NumberLine = CombinationPattern.CaclulCombination().Count;
-                config.SaveCharsetInFilesTxt();
-
 
                 info.CalculOfAllCombinaison();
+                config.SaveCharsetInFilesTxt();
+                
                 info.StatiscalInfoSize();
 
                 obj.CombinationPrintF();
@@ -97,10 +92,9 @@ namespace crisis
                     config.SizeOfWorld();
                 }
                 
-                Parameter.NumberLine = info.CalculOfAllCombinaison();
-                config.SaveCharsetInFilesTxt();
-                
                 info.CalculOfAllCombinaison();
+                config.SaveCharsetInFilesTxt();                
+                
                 info.StatiscalInfoSize();
 
                 obj.RamdonPrintF();
@@ -116,12 +110,10 @@ namespace crisis
                 config.ChangeStartblockPattern();
                 config.ChangeEndblockPattern();
                 config.ReversePaterne();
-
-                Parameter.NumberLine = VariationnPattern.CalculVariation().Count;
+                
+                info.CalculOfAllCombinaison();
                 config.SaveCharsetInFilesTxt();
                 
-
-                info.CalculOfAllCombinaison();
                 info.StatiscalInfoSize();
                 
                 obj.VariationPrintF();
@@ -137,7 +129,8 @@ namespace crisis
                 config.ChangeStartblockPattern();
                 config.ChangeEndblockPattern();
                 config.ReversePaterne();
-                
+
+                //PermutationPattern.test();
                 info.CalculOfAllCombinaison();
                 config.SaveCharsetInFilesTxt();                
                 info.StatiscalInfoSize();
@@ -717,7 +710,7 @@ namespace crisis
             Console.ResetColor();
             Console.WriteLine(" \tBOX ADSL LIVEBOX ");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write("\n  {0}) ", i++);
+            Console.Write("\n {0}) ", i++);
             Console.ResetColor();
             Console.WriteLine(" \tRETURN     MAIN MENU");
             Console.ResetColor();

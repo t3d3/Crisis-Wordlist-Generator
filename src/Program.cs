@@ -36,9 +36,7 @@ namespace crisis
 
             if (args.Length == 0)
             {
-
                 MainMenu obj = new MainMenu();
-
             }
             else
             {
@@ -63,19 +61,23 @@ namespace crisis
 
                     run.FunctionStartblock(args);
                     run.FunctionEndblock(args);
-                    //run.FunctionByte(args);
-                    //run.FunctionLine(args);
+                    run.FunctionByte(args);
+                    
+                    info.CalculOfAllCombinaison();
 
-                    Parameter.NumberLine = info.CalculOfAllCombinaison();
+                    run.FunctionLine(args);
+                    if (options.Line == false)
+                    {
+                        run.FunctionByte(args);
+                    }
+                                        
                     run.FunctionSaveFiles(args);
 
-                    info.CalculOfAllCombinaison();
                     if (options.Disables == false)
                     {
                         MainMenu.Start();
                         info.StatiscalInfoSize();
                     }
-
 
                     obj.CombinationPrintF();
                 }
@@ -90,13 +92,16 @@ namespace crisis
                     
                     run.FunctionStartblock(args);
                     run.FunctionEndblock(args);
-                    //run.FunctionByte(args);
-                    //run.FunctionLine(args);
+                    
+                    info.CalculOfAllCombinaison();                    
+                    run.FunctionLine(args);
+                    if (options.Line == false)
+                    {
+                        run.FunctionByte(args);
+                    }
+                    
+                    run.FunctionSaveFiles(args);                    
 
-                    Parameter.NumberLine = info.CalculOfAllCombinaison();
-                    run.FunctionSaveFiles(args);
-
-                    info.CalculOfAllCombinaison();
                     if (options.Disables == false)
                     {
                         MainMenu.Start();
@@ -117,20 +122,20 @@ namespace crisis
                         run.FunctionLenght(args);
                     }
                     
-                    //run.FunctionByte(args);
-                    //run.FunctionLine(args);
-                    
-                    Parameter.NumberLine = info.CalculOfAllCombinaison();
-                    run.FunctionSaveFiles(args);                    
-
                     info.CalculOfAllCombinaison();
+                    run.FunctionLine(args);
+                    if (options.Line == false)
+                    {
+                        run.FunctionByte(args);
+                    }
+                                        
+                    run.FunctionSaveFiles(args);             
 
                     if (options.Disables == false)
                     {
                         MainMenu.Start();
                         info.StatiscalInfoSize();
                     }
-
                     
                     obj.RamdonPrintF();
                 }
@@ -145,13 +150,17 @@ namespace crisis
                     
                     run.FunctionStartblock(args);
                     run.FunctionEndblock(args);
-                    //run.FunctionByte(args);
-                    //run.FunctionLine(args);
+                    
+                    info.CalculOfAllCombinaison();
+                    run.FunctionLine(args);
+                    if (options.Line == false)
+                    {
+                        run.FunctionByte(args);
+                    }
+                    
+                    
+                    run.FunctionSaveFiles(args);                    
 
-                    Parameter.NumberLine = info.CalculOfAllCombinaison();
-                    run.FunctionSaveFiles(args);
-
-                   info.CalculOfAllCombinaison();
                     if (options.Disables == false)
                     {
                         MainMenu.Start();
@@ -171,10 +180,14 @@ namespace crisis
 
                     run.FunctionStartblock(args);
                     run.FunctionEndblock(args);
-                    //run.FunctionByte(args);
-                    //run.FunctionLine(args);
-                              
+
                     info.CalculOfAllCombinaison();
+                    run.FunctionLine(args);
+                    if (options.Line == false)
+                    {
+                        run.FunctionByte(args);
+                    }
+                                
                     run.FunctionSaveFiles(args);
 
                     if (options.Disables == false)
@@ -202,6 +215,7 @@ namespace crisis
                     {
                         MainMenu.Start();
                     }
+
                     Charset.ReadFileTxt();
 
                     Console.ForegroundColor = ConsoleColor.Red;

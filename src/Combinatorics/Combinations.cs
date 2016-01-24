@@ -402,38 +402,41 @@ namespace crisis {
 
             if (Parameter.SaveFile == true)
             {
-                BigInteger i = 0;
-                make.Setting_UpFile();
+                BigInteger makeFile = 0;
+                
                 foreach (IList<string> c in obj)
                 {
+                    if (makeFile == 0)
+                    {
+                        make.Setting_UpFile();
+                    }
+
                     for (int y = 0; y < Parameter.NumberOfChar; y++)
                     {
                         s += c[y];
                     }
-                                        
-                    
+
+
                     if (Parameter.TypesOfGeneration == 1)
                     {
-                        make.WorkFile.WriteLine("charset" + " = [" + s.ToString() + "]");
+                        make.WorkFile.WriteLine("charset" + cpt + " = [" + s.ToString() + "]");
+                        
                     }
                     else
                     {
                         make.WorkFile.WriteLine(s);
                     }
+                    s = null; 
                     
-                    s = null;
+                    makeFile++;
+                    cpt++; 
 
-                    i++;
-                    cpt++;
-
-                    if (i >= Parameter.NumberLine | cpt >= Statistical.NumberOfAllCombination)
+                    if (makeFile >= Parameter.NumberLine | cpt >= Statistical.NumberOfAllCombination)
                     {
-                        i = 0;
-                        make.WorkFile.Flush();
-                        make.WorkFile.Close();
-
-                        make.Setting_UpFile();
-                    }
+                       make.WorkFile.Flush();
+                       make.WorkFile.Close();
+                       makeFile = 0;
+                    }                                                  
                 }
             }
             else
@@ -447,7 +450,7 @@ namespace crisis {
 
                     if (Parameter.TypesOfGeneration == 1)
                     {                        
-                        Console.WriteLine("charset" + " = [" + s.ToString() + "]");
+                        Console.WriteLine("charset"+ obj.Count + " = [" + s.ToString() + "]");
                     }
                     else
                     {
