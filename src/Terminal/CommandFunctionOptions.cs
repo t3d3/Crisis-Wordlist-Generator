@@ -24,8 +24,7 @@ namespace crisis
     public partial class Command
     {
         public int FunctionInverts(string[] args)
-        {
-           
+        {           
             Command options = new Command();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
@@ -47,7 +46,6 @@ namespace crisis
 
         public int FunctionLenght(string[] args)
         {
-
             Command options = new Command();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();

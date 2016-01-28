@@ -32,7 +32,7 @@ namespace crisis
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
 
-            Regex wifi = new Regex(@"^sfr|livebox$");
+            Regex wifi = new Regex(@"sfr|livebox-sagem");
             Regex hex = new Regex(@"^hex.{6,6}$");
             Regex numeric = new Regex(@"^numeric.{0,6}$");
             Regex symbols = new Regex(@"^symbols.{0,10}$");
