@@ -10,7 +10,7 @@ include $(top_srcdir)/config.make
 
 ifeq ($(CONFIG),DEBUG_X86)
 ASSEMBLY_COMPILER_COMMAND = dmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug "-define:DEBUG;"
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:1 -optimize+ -debug "-define:DEBUG;" "-main:crisis.Program"
 ASSEMBLY = bin/Debug/crisis.exe
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = exe
@@ -19,12 +19,13 @@ BUILD_DIR = bin/Debug
 
 CRISIS_EXE_MDB_SOURCE=bin/Debug/crisis.exe.mdb
 CRISIS_EXE_MDB=$(BUILD_DIR)/crisis.exe.mdb
+CRISIS_EXE_CONFIG_SOURCE=app.config
 
 endif
 
 ifeq ($(CONFIG),RELEASE_X86)
 ASSEMBLY_COMPILER_COMMAND = dmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ "-main:crisis.Program"
 ASSEMBLY = bin/Release/crisis.exe
 ASSEMBLY_MDB = 
 COMPILE_TARGET = exe
@@ -32,6 +33,7 @@ PROJECT_REFERENCES =
 BUILD_DIR = bin/Release
 
 CRISIS_EXE_MDB=
+CRISIS_EXE_CONFIG_SOURCE=app.config
 
 endif
 
@@ -39,7 +41,8 @@ AL=al
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
-	$(CRISIS_EXE_MDB)  
+	$(CRISIS_EXE_MDB) \
+	$(CRISIS_EXE_CONFIG)  
 
 BINARIES = \
 	$(CRISIS)  
@@ -47,6 +50,7 @@ BINARIES = \
 
 RESGEN=resgen2
 
+CRISIS_EXE_CONFIG = $(BUILD_DIR)/crisis.exe.config
 CRISIS = $(BUILD_DIR)/crisis
 
 FILES = \
@@ -129,6 +133,7 @@ FILES = \
 	Plossum/StringFormatter.cs \
 	Plossum/VerticalAlignment.cs \
 	Plossum/WordWrappingMethod.cs \
+	Properties/Settings.Designer.cs \
 	Resources/CommandLineStrings.Designer.cs \
 	Resources/PlossumStrings.Designer.cs \
 	Terminal/CommandFunctionOptions.cs \
@@ -154,8 +159,10 @@ RESOURCES = \
 
 EXTRAS = \
 	Plossum/Properties \
-	Properties \
+	app.config \
 	C5/trees/RedBlackTreeBag.cs.bak \
+	ClassDiagram1.cd \
+	Properties/Settings.settings \
 	crisis.in 
 
 REFERENCES =  \
@@ -178,6 +185,7 @@ include $(top_srcdir)/Makefile.include
 
 
 
+$(eval $(call emit-deploy-target,CRISIS_EXE_CONFIG))
 $(eval $(call emit-deploy-wrapper,CRISIS,crisis,x))
 
 
@@ -202,6 +210,7 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(CRISIS_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call cp,$(CRISIS_EXE_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	mkdir -p '$(DESTDIR)$(bindir)'
 	$(call cp,$(CRISIS),$(DESTDIR)$(bindir))
 	make post-install-local-hook prefix=$(prefix)
@@ -212,6 +221,7 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(CRISIS_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
+	$(call rm,$(CRISIS_EXE_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(CRISIS),$(DESTDIR)$(bindir))
 	make post-uninstall-local-hook prefix=$(prefix)
 
