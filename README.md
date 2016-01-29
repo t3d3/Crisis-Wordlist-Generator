@@ -1,18 +1,6 @@
 # Crisis Wordlist Generator
 
-Work on Windows, Debian and Kali Linux.
-
-
-# Setup in Linux 
-
-<pre style=" border: 1px solid black; padding:10px">
-apt-get install mono-runtime
-cd Crisis-Wordlist-Generator/
- chmod +x *
-./configure
-make
-make install
-</pre>
+Work on Windows, Debian and Kali Linux. Please reading  <a href="https://github.com/teeknofil/Crisis-Wordlist-Generator/wiki"> Wiki</a>
 
 # Run
 <pre style=" border: 1px solid black; padding:10px">
@@ -41,18 +29,6 @@ Hacking US   : hackforums.net
  8) 	 EXIT 
 
 [+]  With what category you want to work : 
-</pre>
-# Run without setup
-<pre style=" border: 1px solid black; padding:10px">
-apt-get install mono-runtime
-cd Crisis-Wordlist-Generator/Linux/
-ls 
-   crisis.zip
-unzip crisis.zip 
-Archive:  crisis.zip
-  inflating: crisis/crisis.exe 
-chmod +x *
-./crisis.exe
 </pre>
 
 # Manual
