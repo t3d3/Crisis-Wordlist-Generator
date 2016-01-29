@@ -167,12 +167,3 @@ passphrase list, and double-check the SSID.  Sorry it didn't work out.
 
 6739 passphrases tested in 16.27 seconds:  414.29 passphrases/second
 </pre>
-
-
-<h2>Charset list for crunch</h2>
-
-<pre style=" border: 1px solid black; padding:10px">
-crisis -1 -f lalpha > charset.lst
-crunch 20 20 -f charset.lst charset1 -i -s abcdefghijklmnopqrs7
-
-</pre>
