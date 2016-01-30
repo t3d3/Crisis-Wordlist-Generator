@@ -17,6 +17,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using crisis.Ionic.Zip;
+
 
 namespace crisis
 {
@@ -24,6 +26,7 @@ namespace crisis
     {
         public Tools()
         {
+
         }
         
         internal void StartblockPattern(string _s)
@@ -70,7 +73,30 @@ namespace crisis
 
             return input;
         }
-        
-    }
-}
+
+        internal void Zipper()
+        {
+            if (Parameter.BooleanZip)
+            {
+                string[] compress = new string[] { FilesNameDirectory.FilePath[Parameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[Parameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + ".txt" };
+
+                using (ZipFile zip = new ZipFile())
+                {
+                    zip.AddFiles(compress, FilesNameDirectory.FileName[Parameter.TypesOfGeneration] + FilesNameDirectory.NumberFile);
+                    zip.Save(FilesNameDirectory.FilePath[Parameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[Parameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + ".zip");
+                }
+
+                System.IO.File.Delete(FilesNameDirectory.FilePath[Parameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[Parameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + ".txt");
+            }
+        }
+
+        internal void GenerateOut()
+        {
+            string[] locate = new string[] { " Generating output at" + Hour() + " : " + FilesNameDirectory.FilePath[Parameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[Parameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + FilesNameDirectory.Extension[Parameter.IExtension] };
+            Console.WriteLine(locate[0].ToString());
+        }
+
+
+    } //End class
+}// End namespace
 

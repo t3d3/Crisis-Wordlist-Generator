@@ -496,6 +496,7 @@ namespace crisis {
             var obj = CalculVariation();
 
             FilesNameDirectory make = new FilesNameDirectory();
+            Tools tool = new Tools();
             BigInteger cpt = 0;
 
             string s = null;
@@ -523,11 +524,12 @@ namespace crisis {
                     cpt++;
 
                     if (iMakeFile >= Parameter.NumberLine | cpt >= Statistical.NumberOfAllCombination)
-                    {
-                        iMakeFile = 0;
-                       
+                    {  
                         make.WorkFile.Flush();
                         make.WorkFile.Close();
+                        tool.Zipper();
+                        tool.GenerateOut();
+                        iMakeFile = 0;
                     }
                 }
             }

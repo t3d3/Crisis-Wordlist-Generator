@@ -580,7 +580,8 @@ namespace crisis
         public void PermutationPrintF()
         {
             FilesNameDirectory make = new FilesNameDirectory();
-            BigInteger cpt = 0;            
+            BigInteger cpt = 0;
+            Tools tool = new Tools();
 
             foreach (IList<string> charset in obj)
             {
@@ -632,6 +633,8 @@ namespace crisis
                         {                            
                             make.WorkFile.Flush();
                             make.WorkFile.Close();
+                            tool.Zipper();
+                            tool.GenerateOut();
                             makeFile = 0;
                         }
                     }

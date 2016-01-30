@@ -17,10 +17,12 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Numerics;
+using System.IO.Compression;
+using System.Collections.Generic;
+using crisis.Ionic.Zip;
 
 namespace crisis
 {
@@ -61,6 +63,7 @@ namespace crisis
         public void RamdonPrintF()
         {
             FilesNameDirectory make = new FilesNameDirectory();
+            Tools tool = new Tools();
             BigInteger cpt = 0;
 
 
@@ -80,10 +83,12 @@ namespace crisis
                     ++cpt;
                     
                     if (iMakeFile >= Parameter.NumberLine - 1 || cpt >= Statistical.NumberOfAllCombination)
-                    {
-                        iMakeFile = 0;
+                    {                        
                         make.WorkFile.Flush();
-                        make.WorkFile.Close();                        
+                        make.WorkFile.Close();
+                        tool.Zipper();
+                        tool.GenerateOut();
+                        iMakeFile = 0;
                     }           
                 }
             }

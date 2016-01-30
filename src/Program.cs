@@ -36,7 +36,8 @@ namespace crisis
 
             if (args.Length == 0)
             {
-                MainMenu obj = new MainMenu();
+                new MainMenu();
+                Console.ReadKey();
             }
             else
             {
@@ -73,6 +74,11 @@ namespace crisis
                                         
                     run.FunctionSaveFiles(args);
 
+                    if (options.FileName)
+                    {
+                         run.FunctionZip(args);
+                    }                              
+
                     if (options.Disables == false)
                     {
                         MainMenu.Start();
@@ -100,7 +106,12 @@ namespace crisis
                         run.FunctionByte(args);
                     }
                     
-                    run.FunctionSaveFiles(args);                    
+                    run.FunctionSaveFiles(args);
+
+                    if (options.FileName)
+                    {
+                        run.FunctionZip(args);
+                    } 
 
                     if (options.Disables == false)
                     {
@@ -129,7 +140,12 @@ namespace crisis
                         run.FunctionByte(args);
                     }
                                         
-                    run.FunctionSaveFiles(args);             
+                    run.FunctionSaveFiles(args);
+
+                    if (options.FileName)
+                    {
+                        run.FunctionZip(args);
+                    } 
 
                     if (options.Disables == false)
                     {
@@ -159,7 +175,12 @@ namespace crisis
                     }
                     
                     
-                    run.FunctionSaveFiles(args);                    
+                    run.FunctionSaveFiles(args);
+
+                    if (options.FileName)
+                    {
+                        run.FunctionZip(args);
+                    } 
 
                     if (options.Disables == false)
                     {
@@ -189,6 +210,11 @@ namespace crisis
                     }
                                 
                     run.FunctionSaveFiles(args);
+
+                    if (options.FileName)
+                    {
+                        run.FunctionZip(args);
+                    } 
 
                     if (options.Disables == false)
                     {
@@ -229,9 +255,7 @@ namespace crisis
                     Console.WriteLine(parser.UsageInfo.ToString(78, true));
                 }                        
 
-            }
-
-            Console.ReadKey();
+            }           
         }
 
 

@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>crisis</RootNamespace>
     <AssemblyName>crisis</AssemblyName>
-    <ReleaseVersion>1.0.7</ReleaseVersion>
+    <ReleaseVersion>1.1.1</ReleaseVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publier\</PublishUrl>
     <Install>true</Install>
@@ -21,10 +21,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <Description>Crisis can create a wordlist based on criteria you specify. 
+The output from crisis can be sent to the screen, file, or to another program. </Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,6 +61,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +107,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Combinatorics\Variations.cs" />
+    <Compile Include="CommonSrc\CRC32.cs" />
+    <Compile Include="CommonSrc\Iso8859Dash1Encoding.cs" />
     <Compile Include="Plossum\Alignment.cs" />
     <Compile Include="Plossum\ColumnInfo.cs" />
     <Compile Include="Plossum\CommandLine\AssignmentToken.cs" />
@@ -154,7 +160,7 @@
     </Compile>
     <Compile Include="Terminal\CommandFunctionPattern.cs" />
     <Compile Include="Tools\Tools.cs" />
-    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Charset\Charset.cs" />
     <Compile Include="Terminal\CommandFunctionHelp.cs" />
     <Compile Include="Menu\MainMenu.cs" />
@@ -165,6 +171,49 @@
     <Compile Include="Charset\DisplayCharset.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="Tools\Statistical.cs" />
+    <Compile Include="Zip\ComHelper.cs" />
+    <Compile Include="Zip\EncryptionAlgorithm.cs" />
+    <Compile Include="Zip\Events.cs" />
+    <Compile Include="Zip\Exceptions.cs" />
+    <Compile Include="Zip\ExtractExistingFileAction.cs" />
+    <Compile Include="Zip\FileSelector.cs" />
+    <Compile Include="Zip\OffsetStream.cs" />
+    <Compile Include="Zip\Shared.cs" />
+    <Compile Include="Zip\WinZipAes.cs" />
+    <Compile Include="Zip\ZipConstants.cs" />
+    <Compile Include="Zip\ZipCrypto.cs" />
+    <Compile Include="Zip\ZipDirEntry.cs" />
+    <Compile Include="Zip\ZipEntry.cs" />
+    <Compile Include="Zip\ZipEntry.Extract.cs" />
+    <Compile Include="Zip\ZipEntry.Read.cs" />
+    <Compile Include="Zip\ZipEntry.Write.cs" />
+    <Compile Include="Zip\ZipEntrySource.cs" />
+    <Compile Include="Zip\ZipErrorAction.cs" />
+    <Compile Include="Zip\ZipFile.AddUpdate.cs" />
+    <Compile Include="Zip\ZipFile.Check.cs" />
+    <Compile Include="Zip\ZipFile.cs" />
+    <Compile Include="Zip\ZipFile.Events.cs" />
+    <Compile Include="Zip\ZipFile.Extract.cs" />
+    <Compile Include="Zip\ZipFile.Read.cs" />
+    <Compile Include="Zip\ZipFile.Save.cs" />
+    <Compile Include="Zip\ZipFile.SaveSelfExtractor.cs" />
+    <Compile Include="Zip\ZipFile.Selector.cs" />
+    <Compile Include="Zip\ZipFile.x-IEnumerable.cs" />
+    <Compile Include="Zip\ZipInputStream.cs" />
+    <Compile Include="Zip\ZipOutputStream.cs" />
+    <Compile Include="Zip\ZipSegmentedStream.cs" />
+    <Compile Include="Zlib\Deflate.cs" />
+    <Compile Include="Zlib\DeflateStream.cs" />
+    <Compile Include="Zlib\GZipStream.cs" />
+    <Compile Include="Zlib\Inflate.cs" />
+    <Compile Include="Zlib\InfTree.cs" />
+    <Compile Include="Zlib\ParallelDeflateOutputStream.cs" />
+    <Compile Include="Zlib\Tree.cs" />
+    <Compile Include="Zlib\Zlib.cs" />
+    <Compile Include="Zlib\ZlibBaseStream.cs" />
+    <Compile Include="Zlib\ZlibCodec.cs" />
+    <Compile Include="Zlib\ZlibConstants.cs" />
+    <Compile Include="Zlib\ZlibStream.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -196,13 +245,13 @@
     <EmbeddedResource Include="Resources\PlossumStrings.resx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="C5\trees\RedBlackTreeBag.cs.bak" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\CommandLineStrings.resources" />
+    <None Include="Resources\PlossumStrings.resources" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

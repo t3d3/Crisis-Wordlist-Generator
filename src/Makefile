@@ -19,7 +19,6 @@ BUILD_DIR = bin/Debug
 
 CRISIS_EXE_MDB_SOURCE=bin/Debug/crisis.exe.mdb
 CRISIS_EXE_MDB=$(BUILD_DIR)/crisis.exe.mdb
-CRISIS_EXE_CONFIG_SOURCE=app.config
 
 endif
 
@@ -33,7 +32,6 @@ PROJECT_REFERENCES =
 BUILD_DIR = bin/Release
 
 CRISIS_EXE_MDB=
-CRISIS_EXE_CONFIG_SOURCE=app.config
 
 endif
 
@@ -41,8 +39,7 @@ AL=al
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
-	$(CRISIS_EXE_MDB) \
-	$(CRISIS_EXE_CONFIG)  
+	$(CRISIS_EXE_MDB)  
 
 BINARIES = \
 	$(CRISIS)  
@@ -50,7 +47,6 @@ BINARIES = \
 
 RESGEN=resgen2
 
-CRISIS_EXE_CONFIG = $(BUILD_DIR)/crisis.exe.config
 CRISIS = $(BUILD_DIR)/crisis
 
 FILES = \
@@ -94,6 +90,8 @@ FILES = \
 	Combinatorics/Randomizer.cs \
 	Combinatorics/SmallPrimeUtility.cs \
 	Combinatorics/Variations.cs \
+	CommonSrc/CRC32.cs \
+	CommonSrc/Iso8859Dash1Encoding.cs \
 	Plossum/Alignment.cs \
 	Plossum/ColumnInfo.cs \
 	Plossum/CommandLine/AssignmentToken.cs \
@@ -139,7 +137,7 @@ FILES = \
 	Terminal/CommandFunctionOptions.cs \
 	Terminal/CommandFunctionPattern.cs \
 	Tools/Tools.cs \
-	AssemblyInfo.cs \
+	Properties/AssemblyInfo.cs \
 	Charset/Charset.cs \
 	Terminal/CommandFunctionHelp.cs \
 	Menu/MainMenu.cs \
@@ -149,7 +147,50 @@ FILES = \
 	Tools/FilesNameDirectory.cs \
 	Charset/DisplayCharset.cs \
 	Parameter.cs \
-	Tools/Statistical.cs 
+	Tools/Statistical.cs \
+	Zip/ComHelper.cs \
+	Zip/EncryptionAlgorithm.cs \
+	Zip/Events.cs \
+	Zip/Exceptions.cs \
+	Zip/ExtractExistingFileAction.cs \
+	Zip/FileSelector.cs \
+	Zip/OffsetStream.cs \
+	Zip/Shared.cs \
+	Zip/WinZipAes.cs \
+	Zip/ZipConstants.cs \
+	Zip/ZipCrypto.cs \
+	Zip/ZipDirEntry.cs \
+	Zip/ZipEntry.cs \
+	Zip/ZipEntry.Extract.cs \
+	Zip/ZipEntry.Read.cs \
+	Zip/ZipEntry.Write.cs \
+	Zip/ZipEntrySource.cs \
+	Zip/ZipErrorAction.cs \
+	Zip/ZipFile.AddUpdate.cs \
+	Zip/ZipFile.Check.cs \
+	Zip/ZipFile.cs \
+	Zip/ZipFile.Events.cs \
+	Zip/ZipFile.Extract.cs \
+	Zip/ZipFile.Read.cs \
+	Zip/ZipFile.Save.cs \
+	Zip/ZipFile.SaveSelfExtractor.cs \
+	Zip/ZipFile.Selector.cs \
+	Zip/ZipFile.x-IEnumerable.cs \
+	Zip/ZipInputStream.cs \
+	Zip/ZipOutputStream.cs \
+	Zip/ZipSegmentedStream.cs \
+	Zlib/Deflate.cs \
+	Zlib/DeflateStream.cs \
+	Zlib/GZipStream.cs \
+	Zlib/Inflate.cs \
+	Zlib/InfTree.cs \
+	Zlib/ParallelDeflateOutputStream.cs \
+	Zlib/Tree.cs \
+	Zlib/Zlib.cs \
+	Zlib/ZlibBaseStream.cs \
+	Zlib/ZlibCodec.cs \
+	Zlib/ZlibConstants.cs \
+	Zlib/ZlibStream.cs 
 
 DATA_FILES = 
 
@@ -159,10 +200,10 @@ RESOURCES = \
 
 EXTRAS = \
 	Plossum/Properties \
-	app.config \
 	C5/trees/RedBlackTreeBag.cs.bak \
-	ClassDiagram1.cd \
 	Properties/Settings.settings \
+	Resources/CommandLineStrings.resources \
+	Resources/PlossumStrings.resources \
 	crisis.in 
 
 REFERENCES =  \
@@ -171,6 +212,7 @@ REFERENCES =  \
 	System.Data \
 	System.Drawing \
 	System.Numerics \
+	System.Windows.Forms \
 	System.Xml
 
 DLL_REFERENCES = 
@@ -185,7 +227,6 @@ include $(top_srcdir)/Makefile.include
 
 
 
-$(eval $(call emit-deploy-target,CRISIS_EXE_CONFIG))
 $(eval $(call emit-deploy-wrapper,CRISIS,crisis,x))
 
 
@@ -210,7 +251,6 @@ install-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call cp,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call cp,$(CRISIS_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call cp,$(CRISIS_EXE_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	mkdir -p '$(DESTDIR)$(bindir)'
 	$(call cp,$(CRISIS),$(DESTDIR)$(bindir))
 	make post-install-local-hook prefix=$(prefix)
@@ -221,7 +261,6 @@ uninstall-local: $(ASSEMBLY) $(ASSEMBLY_MDB)
 	$(call rm,$(ASSEMBLY),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(ASSEMBLY_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(CRISIS_EXE_MDB),$(DESTDIR)$(libdir)/$(PACKAGE))
-	$(call rm,$(CRISIS_EXE_CONFIG),$(DESTDIR)$(libdir)/$(PACKAGE))
 	$(call rm,$(CRISIS),$(DESTDIR)$(bindir))
 	make post-uninstall-local-hook prefix=$(prefix)
 

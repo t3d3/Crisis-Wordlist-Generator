@@ -26,8 +26,7 @@ namespace crisis
     {
 
         public int FunctionPattern(string[] args)
-        {
-            Tools obj1 = new Tools();
+        {            
             Command options = new Command();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();

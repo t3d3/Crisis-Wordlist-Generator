@@ -356,7 +356,7 @@ namespace crisis
                     else if (dislayMainSubMain == i++)
                     {                        
                         Console.Clear();
-                        MainMenu obj = new MainMenu();
+                        new MainMenu();
                     }
                 }
                 catch (FormatException e)
@@ -432,7 +432,7 @@ namespace crisis
                     else if (dislayMainSubMain == i++)
                     {
                         Console.Clear();
-                        MainMenu obj = new MainMenu();
+                        new MainMenu();
                     }
 
                 }
@@ -511,7 +511,7 @@ namespace crisis
                     else if (dislayMainSubMain == i++)
                     {
                         Console.Clear();
-                        MainMenu obj = new MainMenu();
+                        new MainMenu();
                     }
 
                 }
@@ -597,7 +597,7 @@ namespace crisis
                     else if (dislayMainSubMain == i++)
                     {
                         Console.Clear();
-                        MainMenu obj = new MainMenu();
+                        new MainMenu();
                     }
 
                 }
@@ -674,7 +674,7 @@ namespace crisis
                     else if (dislayMainSubMain == i++)
                     {
                         Console.Clear();
-                        MainMenu obj = new MainMenu();
+                        new MainMenu();
                     }
                 }
                 catch (FormatException e)
@@ -693,8 +693,7 @@ namespace crisis
 
             Parameter.TypesOfGeneration = 6;
             
-            booleanCategoryMenu = false;
-            Parameter config = new Parameter();
+            booleanCategoryMenu = false;          
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n N°");
@@ -739,7 +738,7 @@ namespace crisis
                     else if (dislayMainSubMain == i++)
                     {
                         Console.Clear();
-                        MainMenu obj1 = new MainMenu();
+                        new MainMenu();
                     }
                 }
                 catch (FormatException e)

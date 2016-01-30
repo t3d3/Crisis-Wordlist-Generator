@@ -16,7 +16,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-//// Manuel Librairy http://www.codeproject.com/Articles/19869/Powerful-and-simple-command-line-parsing-in-C#x1-40001.1
+
 
 using System;
 using System.Text.RegularExpressions;
@@ -24,7 +24,7 @@ using crisis.CommandLine;
 
 namespace crisis
 {
-    [CommandLineManager(ApplicationName = "\n\n Crisis Wordlist Generator by Teeknofil,", Version = ": 1.1.0\n\n", Copyright = "SYNOPSIS\n\n crisis <method> -l <len> -f [<charset string>] [options] \n\nDESCRIPTION \n\n  Crisis can create a wordlist based on criteria you specify. The output  from crisis can be sent to the screen, file, or  to  another  program.  The required parameters are: ", EnabledOptionStyles = OptionStyles.Group | OptionStyles.LongUnix)]
+    [CommandLineManager(ApplicationName = "\n\n Crisis Wordlist Generator by Teeknofil,", Version = ": 1.1.0\n\n", Copyright = "SYNOPSIS\n\n crisis [method] -l [len] -f [charset string] [options] \n\nDESCRIPTION \n\n  Crisis can create a wordlist based on criteria you specify. The output  from crisis can be sent to the screen, file, or  to  another  program.  The required parameters are: ", EnabledOptionStyles = OptionStyles.Group | OptionStyles.LongUnix)]
 
     [CommandLineOptionGroup("method", Name = "Method", Require = OptionGroupRequirement.None)]
 
@@ -201,7 +201,7 @@ namespace crisis
             set { mDisables = value; }
         }
 
-        [CommandLineOption(Name = "z", Aliases = "zip", Description = "Not available", GroupId = "options")]
+        [CommandLineOption(Name = "z", Aliases = "zip", Description = "Compresses  the output from the -o option", GroupId = "options")]
 
         public bool Zip
         {

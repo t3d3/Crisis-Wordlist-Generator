@@ -141,8 +141,7 @@ namespace crisis
         }
 
         public int FunctionSaveFiles(string[] args)
-        {
-            Statistical obj1 = new Statistical();
+        {            
             Command options = new Command();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
@@ -150,6 +149,28 @@ namespace crisis
             if (options.FileName)
             {
                 Parameter.SaveFile = true;                
+            }
+            else if (parser.HasErrors)
+            {
+                Console.WriteLine(parser.UsageInfo.ToString(78, true));
+                return -1;
+            }
+
+            // No errors present and all arguments correct
+            // Do work according to arguments
+            return 0;
+        }
+
+        public int FunctionZip(string[] args)
+        {            
+            Command options = new Command();
+            CommandLineParser parser = new CommandLineParser(options);
+            parser.Parse();
+
+            if (options.Zip)
+            {
+                Parameter.IExtension = 1;
+                Parameter.BooleanZip = true;
             }
             else if (parser.HasErrors)
             {

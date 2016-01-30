@@ -18,6 +18,7 @@
 
 using System;
 using System.IO;
+using System.Numerics;
 
 namespace crisis
 {
@@ -33,13 +34,20 @@ namespace crisis
         
 
         private static string[] fileName = new string[10];
-
         public static string[] FileName
         {
             get { return FilesNameDirectory.fileName; }
             set { FilesNameDirectory.fileName = value; }
-        }                 
+        }
         
+        private static string[] extension = new string [3];
+        public static string[] Extension
+        {
+            get { return FilesNameDirectory.extension; }
+            set { FilesNameDirectory.extension = value; }
+        }
+
+
         StreamWriter workFile;
         public StreamWriter WorkFile
         {
@@ -47,30 +55,23 @@ namespace crisis
             set { workFile = value; }
         }
 
-        private int numberFile = 1;
-        public int NumberFile
+        private static BigInteger numberFile;
+        public static BigInteger NumberFile
         {
-            get { return numberFile; }
-            set { numberFile = value; }
-        }
-
-        private string[] locate;
-
-        public string[] Locate
-        {
-            get { return locate; }
-            set { locate = value; }
-        }
-
+            get { return FilesNameDirectory.numberFile; }
+            set { FilesNameDirectory.numberFile = value; }
+        }    
+          
 
         public FilesNameDirectory()
         {
-                   
+            numberFile = 1;
+            extension[0] = ".txt";
+            extension[1] = ".zip";
         }
 
-       
-
-         //A function that determines whether it is a Windows(false) or Linux (true) system
+        
+        //A function that determines whether it is a Windows(false) or Linux (true) system
         public bool OsDetect() 
         {
             bool system = true;
@@ -118,7 +119,7 @@ namespace crisis
                 fileName [3] = @"/wordlist_";
                 fileName [4] = @"/wordlist_";
                 fileName [5] = @"/wordlist_";
-                fileName [6] = @"/dico_wifi_"+Charset.CharsetName+"_";
+                fileName [6] = @"/dico_wifi_"+ Charset.CharsetName + "_";
                 fileName [7] = @"/birthdate_";
                 fileName [8] = @"/dico1337_";
             } 
@@ -148,8 +149,8 @@ namespace crisis
 
         public void Setting_UpFile()
         {
-            bool b = true;
-            Tools obj = new Tools();
+
+            bool b = true;            
 
             while (b)
             {
@@ -159,17 +160,13 @@ namespace crisis
                     {
                         System.IO.Directory.CreateDirectory(filePath[Parameter.TypesOfGeneration]);
                     }
-                    else if (File.Exists(filePath[Parameter.TypesOfGeneration] + fileName[Parameter.TypesOfGeneration] + numberFile + ".txt"))
+                    else if (File.Exists(filePath[Parameter.TypesOfGeneration] + fileName[Parameter.TypesOfGeneration] + numberFile + extension[Parameter.IExtension]))
                     {
                         numberFile++;
                     }
                     else if (!Directory.Exists(filePath[Parameter.TypesOfGeneration] + fileName[Parameter.TypesOfGeneration] + numberFile + ".txt"))
                     {
                         workFile = new StreamWriter(filePath[Parameter.TypesOfGeneration] + fileName[Parameter.TypesOfGeneration] + numberFile + ".txt");
-                        
-                        locate = new string[] { " Generating output at" + obj.Hour() + " : " + FilesNameDirectory.FilePath[Parameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[Parameter.TypesOfGeneration] + numberFile + ".txt" };
-                        Console.WriteLine(locate[0].ToString());                         
-                        
                         b = false;                      
                     }
                 }

@@ -48,7 +48,6 @@ namespace crisis
         }
 
         private static BigInteger numberLine;
-
         public static BigInteger NumberLine
         {
             get { return Parameter.numberLine; }
@@ -56,19 +55,35 @@ namespace crisis
         }
 
         private static bool withoutOrWithRepetition;
-
         public static bool WithoutOrWithRepetition
         {
             get { return Parameter.withoutOrWithRepetition; }
             set { Parameter.withoutOrWithRepetition = value; }
-        }  
+        }
+
+        private static bool booleanZip;
+        public static bool BooleanZip
+        {
+            get { return Parameter.booleanZip; }
+            set { Parameter.booleanZip = value; }
+        }
+
+        private static byte iExtension;
+
+        public static byte IExtension
+        {
+            get { return Parameter.iExtension; }
+            set { Parameter.iExtension = value; }
+        }
 
         public Parameter()
         {
             numberLine = 1;
+            iExtension = 0;
             b = true;
             withoutOrWithRepetition = false;
             saveFile = false;
+            booleanZip = false;
         }
 
 
@@ -383,7 +398,7 @@ namespace crisis
 
             if (saveFile)
             {
-                Statistical info = new Statistical();                
+                Statistical info = new Statistical();
                 b = true;
                 string sizeFiles = null;
 
@@ -411,6 +426,48 @@ namespace crisis
                         Console.ResetColor();
                     }
                 }
+
+                b = true;
+
+                while (b)
+                {
+                    try
+                    {
+                        Console.Write("\n You want to compress them into zip file [ ");
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.Write(" y ");
+                        Console.ResetColor();
+                        Console.Write("/");
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.Write(" n ");
+                        Console.ResetColor();
+                        Console.Write("] : ");
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        char zip = char.Parse(Console.ReadLine());
+                        Console.ResetColor();
+
+                        if (zip == 'y')
+                        {
+                            iExtension = 1;
+                            booleanZip = true;
+                            b = false;
+                        }
+                        else if (zip == 'n')
+                        {
+                            iExtension = 0;
+                            b = false;
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n {0} \n", e.Message);
+                        Console.ResetColor();
+                    }
+                }
+
+
             }
         }
         // End Fonction

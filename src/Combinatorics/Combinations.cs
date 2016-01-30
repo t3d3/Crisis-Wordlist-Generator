@@ -396,17 +396,18 @@ namespace crisis {
             var obj = CaclulCombination();
 
             FilesNameDirectory make = new FilesNameDirectory();
+            Tools tool = new Tools();
             BigInteger cpt = 0;
 
             string s = null;
 
             if (Parameter.SaveFile == true)
             {
-                BigInteger makeFile = 0;
+                BigInteger iMakeFile = 0;
                 
                 foreach (IList<string> c in obj)
                 {
-                    if (makeFile == 0)
+                    if (iMakeFile == 0)
                     {
                         make.Setting_UpFile();
                     }
@@ -428,14 +429,16 @@ namespace crisis {
                     }
                     s = null; 
                     
-                    makeFile++;
+                    iMakeFile++;
                     cpt++; 
 
-                    if (makeFile >= Parameter.NumberLine | cpt >= Statistical.NumberOfAllCombination)
+                    if (iMakeFile >= Parameter.NumberLine | cpt >= Statistical.NumberOfAllCombination)
                     {
                        make.WorkFile.Flush();
                        make.WorkFile.Close();
-                       makeFile = 0;
+                       tool.Zipper();
+                       tool.GenerateOut();
+                       iMakeFile = 0;
                     }                                                  
                 }
             }
