@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
   
 
 
@@ -27,6 +28,12 @@ namespace crisis
 {
     public class MainMenu
     {
+        private static bool booleanCategorySubMainMenu;
+        public static bool BooleanCategorySubMenu
+        {
+            get { return MainMenu.booleanCategorySubMainMenu; }
+            set { MainMenu.booleanCategorySubMainMenu = value; }
+        }
 
         private static bool booleanCategoryMenu;
         public static bool BooleanCategoryMenu
@@ -54,6 +61,170 @@ namespace crisis
         {
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.1.1 \n");
+            Console.ResetColor();
+            int i = 0;
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", ++i);
+            Console.ResetColor();
+            Console.WriteLine("\t CRISIS CLIENT\\SERVER BRUTE FORCER");            
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n {0}) ", ++i);
+            Console.ResetColor();
+            Console.WriteLine("\t CREATE WORDLIST BRUTE FORCER ");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n {0}) ", ++i);
+            Console.ResetColor();
+            Console.WriteLine("\t TRANSFORMING WORDLIST NO JUTSU");
+        
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n {0}) ", ++i);
+            Console.ResetColor();
+
+            Console.WriteLine("\t DOWNLOAD WORDLIST NO JUTSU \t");
+
+            
+
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n 99)");
+            Console.ResetColor();
+
+            Console.WriteLine("\t EXIT ");
+
+            booleanCategorySubMainMenu = true;
+
+            while (booleanCategorySubMainMenu)
+            {
+                try
+                {
+                    //Charset.BooleanType = true;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("\n[+] ");
+                    Console.ResetColor();
+                    Console.Write(" With what category you want to work : ");
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    int dislayMainSubMain = int.Parse(Console.ReadLine());
+                    Console.ResetColor();
+                    Console.Write("\n");
+                    i = 0;
+
+                    if (dislayMainSubMain == ++i)
+                        booleanCategorySubMainMenu = false; // tmp variable
+                    Property.TypesOfGeneration = 9;
+                    if (dislayMainSubMain == ++i)
+                    {
+                        LocalBruteForcerWordlistMenu();
+                        booleanCategorySubMainMenu = false;
+                    }
+                    //TRANSFORMING WORDLIST NO JUTSU
+                    if (dislayMainSubMain == ++i)
+                    {
+                        TransformWordlistMenu();
+                    } 
+                    if (dislayMainSubMain == ++i)
+                    {
+                        SubMenu obj = new SubMenu();
+                        obj.DonwloadMenu();
+                    }                        
+                    // EXIT
+                    if (dislayMainSubMain == 99)
+                        Environment.Exit(0);
+
+                }
+                catch (FormatException e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n Enter the number corresponding !");
+                    Console.WriteLine(" {0} \n", e.Message);
+                    Console.ResetColor();
+                }
+            }
+        }
+
+        internal static void CrisisMenuNetwork()
+        {
+            int i = 0;
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", ++i);
+            Console.ResetColor();
+
+            Console.WriteLine("\t CRISIS SERVER BRUTE FORCER");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", ++i);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t CRISIS CLIENT BRUTE FORCER\t");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", ++i);
+            Console.ResetColor();           
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n 88 ");
+            Console.ResetColor();
+
+            Console.WriteLine("\t RETURN");
+
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" 99)");
+            Console.ResetColor();
+
+            Console.WriteLine("\t EXIT ");
+
+
+            booleanCategoryMenu = true;
+            while (booleanCategoryMenu)
+            {
+                try
+                {
+                    //Charset.BooleanType = true;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("\n[+] ");
+                    Console.ResetColor();
+                    Console.Write(" With what category you want to work : ");
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    int dislayMainSubMain = int.Parse(Console.ReadLine());
+                    Console.ResetColor();
+                    Console.Write("\n");
+                    i = 0;
+
+                    if (dislayMainSubMain == ++i)
+                        booleanCategoryMenu = false; // tmp variable
+                    Property.TypesOfGeneration = 9;
+                    if (dislayMainSubMain == ++i)
+
+                        // EXIT
+                        if (dislayMainSubMain == 88)
+                        {
+                            MainMenu obj = new MainMenu();
+                            new Thread(obj.Menu).Start();
+                            break;
+                        }
+                    if (dislayMainSubMain == 99)
+                        Environment.Exit(0);
+
+                }
+                catch (FormatException e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n Enter the number corresponding !");
+                    Console.WriteLine(" {0} \n", e.Message);
+                    Console.ResetColor();
+                }
+            }
+        }
+
+        internal static void LocalBruteForcerWordlistMenu()
+        {
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.1.2 \n");
             Console.ResetColor();
             
@@ -64,12 +235,6 @@ namespace crisis
             
             Console.WriteLine(" \tDESCRIPTION \n");
             int i = 0;
-
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", i++);
-            Console.ResetColor();
-
-            Console.WriteLine("\t 1337");
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", i++);
@@ -112,12 +277,18 @@ namespace crisis
             Console.ResetColor();
             
             Console.WriteLine(" \t ROUTER\\BOX WIFI");
-            Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", i++);
+            Console.Write("\n 88) ");
             Console.ResetColor();
-            
-            Console.WriteLine("\t EXIT ", i++);
+
+            Console.WriteLine("\t RETURN");
+
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" 99)");
+            Console.ResetColor();
+
+            Console.WriteLine("\t EXIT ");
 
             Console.ResetColor();
 
@@ -136,12 +307,7 @@ namespace crisis
                     Console.ResetColor();
                     Console.Write("\n");
                     i = 0;
-
-                    if (dislayMainSubMain == i++)
-                    {
-                        SubMenu objSubMenu = new SubMenu();
-                        objSubMenu.MenuLeetSpeak();                        
-                    }
+                                        
                     //LATIN    CHARACTER
                     if (dislayMainSubMain == i++)
                         LatinMenu();
@@ -170,6 +336,14 @@ namespace crisis
                     // EXIT
                     if (dislayMainSubMain == i++)                    
                         Environment.Exit(0);
+                    if (dislayMainSubMain == 88)
+                    {
+                        MainMenu obj = new MainMenu();
+                        new Thread(obj.Menu).Start();
+                        break;
+                    }
+                    if (dislayMainSubMain == 99)
+                        Environment.Exit(0);
                     
                 }
                 catch (FormatException e)
@@ -182,7 +356,130 @@ namespace crisis
             }
         }
 
-        
+        internal static void TransformWordlistMenu()
+        {
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.1.2 \n");
+            Console.ResetColor();
+
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n N°");
+            Console.ResetColor();
+
+            Console.WriteLine(" \tDESCRIPTION \n");
+            int i = 0;
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine("\t LEET SPEAK");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t LOWERCASE TO UPPERCASE\t");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t UPPERCASE TO LOWERCASE");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t CHARACTER LOWERCASE TO CHARACTER UPPERCASE ");
+            
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t CHARACTER UPPERCASE TO CHARACTER LOWERCASE");            
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t AUTOMATIC CHARACTER  LOWERCASE <=> UPPERCASE");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n 88) ");
+            Console.ResetColor();
+
+            Console.WriteLine("\t RETURN");
+
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" 99)");
+            Console.ResetColor();
+
+            Console.WriteLine("\t EXIT ");
+
+            Console.ResetColor();
+
+            booleanCategoryMenu = true;
+            while (booleanCategoryMenu)
+            {
+                try
+                {
+                    //Charset.BooleanType = true;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("\n[+] ");
+                    Console.ResetColor();
+                    Console.Write(" With what category you want to work : ");
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    int dislayMainSubMain = int.Parse(Console.ReadLine());
+                    Console.ResetColor();
+                    Console.Write("\n");
+                    i = 0;
+
+                    //LEET SPEAK
+                    if (dislayMainSubMain == i++)
+                    {
+                        SubMenu objSubMenu = new SubMenu();
+                        objSubMenu.MenuLeetSpeak();
+                    }
+                    // LOWERCASE TO UPPERCASE
+                    if (dislayMainSubMain == i++)
+
+                    // UPPERCASE TO LOWERCASE
+                    if (dislayMainSubMain == i++)
+                    {
+                        
+                    }
+                    // CHARACTER UPPERCASE TO CHARACTER LOWERCASE
+                    if (dislayMainSubMain == i++)
+
+                    //CHARACTER LOWERCASE TO CHARACTER UPPERCASE
+                    if (dislayMainSubMain == i++)
+
+                    // AUTOMATIC CHARACTER  LOWERCASE <=> UPPERCASE
+                    if (dislayMainSubMain == i++)
+                                   
+                    if (dislayMainSubMain == 88)
+                    {
+                        MainMenu obj = new MainMenu();
+                        new Thread(obj.Menu).Start();
+                        break;
+                    }
+                    if (dislayMainSubMain == 99)
+                        Environment.Exit(0);
+
+                }
+                catch (FormatException e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n Enter the number corresponding !");
+                    Console.WriteLine(" {0} \n", e.Message);
+                    Console.ResetColor();
+                }
+            }
+        }
 
         internal static void LatinMenu()
         {
@@ -428,7 +725,7 @@ namespace crisis
             }
         }
 
-        private void CyrillicMenu()
+        private static void CyrillicMenu()
         {
             SubMenu objSubMenu = new SubMenu();
 
