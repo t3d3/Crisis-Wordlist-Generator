@@ -22,13 +22,23 @@ namespace crisis
     {  
 
         private static int typesOfGeneration;
+
         public static int TypesOfGeneration
         {
             get { return Property.typesOfGeneration; }
             set { Property.typesOfGeneration = value; }
-        }       
+        }
+
+        private static byte typeOfProcess;
+
+        public static byte TypeOfProcess
+        {
+            get { return Property.typeOfProcess; }
+            set { Property.typeOfProcess = value; }
+        }
 
         private static BigInteger numberLine;
+
         public static BigInteger NumberLine
         {
             get { return Property.numberLine; }
@@ -38,6 +48,7 @@ namespace crisis
         
 
         private static byte iExtension;
+
         public static byte IExtension
         {
             get { return Property.iExtension; }
@@ -51,9 +62,28 @@ namespace crisis
             set { Property.numberOfChar = value; }
         }
 
+        private static string lhost;
+
+        public static string Lhost
+        {
+            get { return Property.lhost; }
+            set { Property.lhost = value; }
+        }
+
+        private static int lport;
+
+        public static int Lport
+        {
+            get { return Property.lport; }
+            set { Property.lport = value; }
+        }
+
         /*
         /////// Help
         */
+
+        private bool mHelp;
+        private bool mWordlistHelp;
 
         [CommandLineOption(Name = "h", Aliases = "help",
                            Description = "Shows this help text", GroupId = "help")]
@@ -71,12 +101,21 @@ namespace crisis
             set { mWordlistHelp = value; }
         }
 
-        private bool mHelp;
-        private bool mWordlistHelp;
+        
 
         /*
         /////// Method
         */
+
+        private bool mCrunch;
+        private bool mCombination;
+        private bool mVariation;
+        private bool mPermutation;
+        private bool m1337;
+        private bool mRandom;
+        private bool mBirthDate;
+        private bool mWifi;
+
 
         [CommandLineOption(Name = "1", Aliases = "crunch", Description = "Charset list customized to crunch wordlist generator.\n Example : crisis -1 -l 10 -f ualpha -u", GroupId = "method")]
         public bool Crunch
@@ -139,15 +178,7 @@ namespace crisis
             set { m1337 = value; }
         }
 
-        private bool mCrunch;
-        private bool mCombination;
-        private bool mVariation;
-        private bool mPermutation;
-        private bool m1337;
-        private bool mRandom;
-        private bool mBirthDate;
-        private bool mWifi;
-
+       
        
         /*
         /////// Options
@@ -243,6 +274,10 @@ namespace crisis
         /*
         /////// Parameter
         */
+
+        private bool lenght;
+        private bool mDictionnary;
+
         [CommandLineOption(Name = "f", Aliases = "charset-name", Description = "Specifies a character set from crisis, \n type --help-wordlist for more info", GroupId = "parameter")]
 
         public bool Dictionnary
@@ -260,11 +295,6 @@ namespace crisis
             get { return lenght; }
             set { lenght = value; }
         }    
-        
 
-        private bool lenght;        
-        private bool mDictionnary;
-        
-        
     }
 }
