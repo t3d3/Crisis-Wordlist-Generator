@@ -22,9 +22,9 @@ using crisis.Ionic.Zip;
 
 namespace crisis
 {
-    public class Tools : Property
+    public class Utility : Property
     {
-        public Tools()
+        public Utility()
         {
 
         }
