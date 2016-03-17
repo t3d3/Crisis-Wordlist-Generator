@@ -117,8 +117,6 @@ namespace crisis
             else if (Property.TypesOfGeneration == 8)
             {
                 LeetSpeak obj = new LeetSpeak();
-                config.SaveCharsetInFilesTxt(ref saveFile, ref zip);
-
                 obj.L33tSpeekPrintF();
 
                 MenuParameter.TypesOfGeneration = 0;
@@ -391,20 +389,13 @@ namespace crisis
                     runMenu.Start();
                 }
 
-                Charset.ReadFileTxt();
-
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\n This work, please wait\n");
-                Console.ResetColor();
-
+                Charset.ReadFileTxt();               
                 obj.L33tSpeekPrintF();
             }
             else if (parser.HasErrors)
             {
                 Console.WriteLine(parser.UsageInfo.ToString(78, true));
-            }
-
-            Console.ReadKey();
+            }           
         }
 
 

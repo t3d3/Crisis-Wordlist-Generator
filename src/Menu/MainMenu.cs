@@ -54,7 +54,7 @@ namespace crisis
         {
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.1.1 \n");
+            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.1.2 \n");
             Console.ResetColor();
             
             

@@ -8,7 +8,7 @@ using crisis.CommandLine;
 namespace crisis
 {
 
-    [CommandLineManager(ApplicationName = "\n\n Crisis Wordlist Generator by Teeknofil,", Version = ": 1.1.1\n\n", Copyright = "SYNOPSIS\n\n crisis [method] -l [len] -f [charset string] [options] \n\nDESCRIPTION \n\n  Crisis can create a wordlist based on criteria you specify. The output  from crisis can be sent to the screen, file, or  to  another  program.  The required parameters are: ", EnabledOptionStyles = OptionStyles.Group | OptionStyles.LongUnix)]
+    [CommandLineManager(ApplicationName = "\n\n Crisis Wordlist Generator by Teeknofil,", Version = ": 1.1.2\n\n", Copyright = "SYNOPSIS\n\n crisis [method] -l [len] -f [charset string] [options] \n\nDESCRIPTION \n\n  Crisis can create a wordlist based on criteria you specify. The output  from crisis can be sent to the screen, file, or  to  another  program.  The required parameters are: ", EnabledOptionStyles = OptionStyles.Group | OptionStyles.LongUnix)]
 
     [CommandLineOptionGroup("method", Name = "Method", Require = OptionGroupRequirement.None)]
 
@@ -132,7 +132,7 @@ namespace crisis
             set { mBirthDate = value; }
         }
 
-        [CommandLineOption(Name = "8", Aliases = "leetspeak", Description = "Convert a list of words in language Leet Speak \n Example : crisis  -4 crisis\\dico.txt -o ", GroupId = "method")]
+        [CommandLineOption(Name = "8", Aliases = "leetspeak", Description = "Convert a list of words in language Leet Speak \n Example : crisis  -8 crisis\\dico.txt -o ", GroupId = "method")]
         public bool LeetSpeak
         {
             get { return m1337; }

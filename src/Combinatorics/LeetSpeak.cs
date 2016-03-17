@@ -95,8 +95,8 @@ namespace crisis
             Console.WriteLine("This work, please wait !\n");
             Console.ResetColor();
 
-            if ( SaveFile == true)
-            {
+            //if ( SaveFile == true)
+            //{
                 make.Setting_UpFile();
 
                 foreach (var item in Charset.CharsetSelecting)
@@ -105,11 +105,11 @@ namespace crisis
                 }
 
                 make.WorkFile.Close();
-            }
-            else
-            {
-                Charset.CharsetSelecting.ForEach(x => Console.WriteLine(ConverterInLeetSpeak(x.ToString())));
-            }           
+            //}
+            //else
+            //{
+            //    Charset.CharsetSelecting.ForEach(x => Console.WriteLine(ConverterInLeetSpeak(x.ToString())));
+            //}           
         
         } // End Function 
 

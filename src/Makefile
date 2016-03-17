@@ -82,6 +82,15 @@ FILES = \
 	C5/ViewSupport.cs \
 	C5/WrappedArray.cs \
 	C5/Wrappers.cs \
+	Charset/CharsetAlpha.cs \
+	Charset/CharsetCyrillic.cs \
+	Charset/CharsetAlpha_sv.cs \
+	Charset/CharsetSyllable.cs \
+	Charset/CharsetSpecial.cs \
+	Charset/DisplayCharsetSyllable.cs \
+	Charset/DisplayCharsetSwddish.cs \
+	Charset/DisplayCharsetCyrillic.cs \
+	Charset/DisplayCharsetLatin.cs \
 	Combinatorics/Combinations.cs \
 	Combinatorics/GenerateOption.cs \
 	Combinatorics/IMetaCollection.cs \
@@ -132,8 +141,10 @@ FILES = \
 	Plossum/VerticalAlignment.cs \
 	Plossum/WordWrappingMethod.cs \
 	Properties/Settings.Designer.cs \
+	Property.cs \
 	Resources/CommandLineStrings.Designer.cs \
 	Resources/PlossumStrings.Designer.cs \
+	Run.cs \
 	Terminal/CommandFunctionOptions.cs \
 	Terminal/CommandFunctionPattern.cs \
 	Tools/Tools.cs \
@@ -143,10 +154,9 @@ FILES = \
 	Menu/MainMenu.cs \
 	Menu/SubMenu.cs \
 	Program.cs \
-	Terminal/CommandProperty.cs \
 	Tools/FilesNameDirectory.cs \
-	Charset/DisplayCharset.cs \
-	Parameter.cs \
+	Charset/DisplayCharsetSpecial.cs \
+	Menu/MenuParameter.cs \
 	Tools/Statistical.cs \
 	Zip/ComHelper.cs \
 	Zip/EncryptionAlgorithm.cs \
