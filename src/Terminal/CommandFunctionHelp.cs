@@ -22,12 +22,22 @@ using crisis.CommandLine;
 
 namespace crisis
 {
-    public partial class Command
+    public partial class Command 
     {
+        private bool booleanneTmp; 
+
+        public Command()
+        { 
+        }
+
+        public Command(bool _bool)
+        {
+            booleanneTmp = _bool;
+        }
 
         public int HelpPrint(string[] args)
         {
-            Command options = new Command();
+            Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
 

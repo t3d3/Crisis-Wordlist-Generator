@@ -38,120 +38,10 @@ namespace crisis
 
         public MainMenu()
         {
-            booleanCategoryMenu = true;
-
-            Start();
-            this.Menu();
-
-            Statistical info = new Statistical();            
-            Parameter config = new Parameter();
-
-
-            if (Parameter.TypesOfGeneration == 1)
-            {
-                CombinationPattern obj = new CombinationPattern();                
-                
-                config.SizeOfWorld();                
-                config.ChangeStartblockPattern();
-                config.ChangeEndblockPattern();
-                config.ReversePaterne();                
-                
-                info.CalculOfAllCombinaison();                
-                config.SaveCharsetInFilesTxt();
-
-                info.StatiscalInfoSize();
-
-                obj.CombinationPrintF();
-                Parameter.TypesOfGeneration = 0;
-            }
-            if ( Parameter.TypesOfGeneration == 2)
-            {
-                CombinationPattern obj = new CombinationPattern();
-
-                config.SizeOfWorld();
-                config.Repetition();
-                config.ChangeStartblockPattern();
-                config.ChangeEndblockPattern();
-                config.ReversePaterne();
-
-                info.CalculOfAllCombinaison();
-                config.SaveCharsetInFilesTxt();
-                
-                info.StatiscalInfoSize();
-
-                obj.CombinationPrintF();
-
-                Parameter.TypesOfGeneration = 0;
-            }
-            else if (Parameter.TypesOfGeneration == 3 | Parameter.TypesOfGeneration == 6)
-            {
-                Randomizer obj = new Randomizer();               
-
-                if (Parameter.TypesOfGeneration == 3)
-                {
-                    config.SizeOfWorld();
-                }
-                
-                info.CalculOfAllCombinaison();
-                config.SaveCharsetInFilesTxt();                
-                
-                info.StatiscalInfoSize();
-
-                obj.RamdonPrintF();
-
-                Parameter.TypesOfGeneration = 0;
-            }
-            else if (Parameter.TypesOfGeneration == 4)
-            {
-                VariationnPattern obj = new VariationnPattern();
-
-                config.SizeOfWorld();
-                config.Repetition();
-                config.ChangeStartblockPattern();
-                config.ChangeEndblockPattern();
-                config.ReversePaterne();
-                
-                info.CalculOfAllCombinaison();
-                config.SaveCharsetInFilesTxt();
-                
-                info.StatiscalInfoSize();
-                
-                obj.VariationPrintF();
-
-                Parameter.TypesOfGeneration = 0;
-            }
-            else if (Parameter.TypesOfGeneration == 5)
-            {
-                PermutationPattern obj = new PermutationPattern();
-
-                config.SizeOfWorld();
-                config.Repetition();
-                config.ChangeStartblockPattern();
-                config.ChangeEndblockPattern();
-                config.ReversePaterne();
-
-                //PermutationPattern.test();
-                info.CalculOfAllCombinaison();
-                config.SaveCharsetInFilesTxt();                
-                info.StatiscalInfoSize();
-                
-                obj.PermutationPrintF();
-
-                Parameter.TypesOfGeneration = 0;
-            }
-            else if (Parameter.TypesOfGeneration == 8)
-            {
-                LeetSpeak obj = new LeetSpeak();
-                config.SaveCharsetInFilesTxt();
-
-                obj.L33tSpeekPrintF();
-
-                Parameter.TypesOfGeneration = 0;
-            }
         }
         
 
-        internal static void Start()
+        internal  void Start()
         {           
             Console.WriteLine("\n Hacking US   : hackforums.net ");
             Console.WriteLine(" Trouble US   : forums.kali.org"); 
@@ -260,7 +150,7 @@ namespace crisis
                     {
                         SubMenu objSubMenu = new SubMenu();
                         objSubMenu.MenuCustom();
-                        Parameter config = new Parameter();
+                        MenuParameter config = new MenuParameter();
                         config.TypesOfFileAtGenerate();
                     }
                     //SPECIAL
@@ -296,10 +186,10 @@ namespace crisis
 
         internal static void LatinMenu()
         {
-            SubMenu objSubMenu = new SubMenu();
+            SubMenu objSubMenu = new SubMenu();            
 
             booleanCategoryMenu = false;
-            Parameter config = new Parameter();
+            MenuParameter config = new MenuParameter();
             
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n N°");
@@ -333,30 +223,35 @@ namespace crisis
                     Console.Write("\n[+] ");
                     Console.ResetColor();
                     Console.Write(" With what category you want to work : ");
-                    int dislayMainSubMain = int.Parse(Console.ReadLine().ToLower());
+                    Console.ForegroundColor = ConsoleColor.DarkGreen; 
+                    byte dislayMainSubMain = byte.Parse(Console.ReadLine().ToLower());
+                    Console.ResetColor();
                     Console.Write("\n");
                     i = 0;
 
                     //LATIN    CHARACTER
                     if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.LatinCharacterLowercase();
+                        DisplayCharset.LatinCharacterLowercasePrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     } 
                     else if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.LatinCharacteUppercase();
+                        DisplayCharset.LatinCharacteUppercasePrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.LatinCharacterUppercaseLowercase();
+                        DisplayCharset.LatinCharacterUppercaseLowercasePrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {                        
                         Console.Clear();
-                        new MainMenu();
+                        new Run();
                     }
                 }
                 catch (FormatException e)
@@ -374,7 +269,7 @@ namespace crisis
             SubMenu objSubMenu = new SubMenu();
 
             booleanCategoryMenu = false;
-            Parameter config = new Parameter();
+            MenuParameter config = new MenuParameter();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n N°");
             Console.ResetColor();
@@ -416,23 +311,26 @@ namespace crisis
 
                     if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.MenuHexa();
+                        DisplayCharset.MenuHexaPrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.MenuNumeric();
+                        DisplayCharset.MenuNumericPrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.MenuSpecialCharacteres();
+                        DisplayCharset.MenuSpecialCharacteresPrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
                         Console.Clear();
-                        new MainMenu();
+                        new Run();
                     }
 
                 }
@@ -452,7 +350,7 @@ namespace crisis
             SubMenu objSubMenu = new SubMenu();
 
             booleanCategoryMenu = false;
-            Parameter config = new Parameter();
+            MenuParameter config = new MenuParameter();
             
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n N°");
@@ -487,7 +385,9 @@ namespace crisis
                     Console.Write("\n[+] ");
                     Console.ResetColor();
                     Console.Write(" With what category you want to work : ");
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     int dislayMainSubMain = int.Parse(Console.ReadLine().ToLower());
+                    Console.ResetColor();
                     Console.Write("\n");
                     i = 0;
 
@@ -495,23 +395,26 @@ namespace crisis
                     // SWEDISH    CHARACTER
                     if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.SwddishCharacterLowercase();
+                        DisplayCharset.SwddishCharacterLowercasePrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.SwddishCharacterUppercase();
+                        DisplayCharset.SwddishCharacterUppercasePrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.SwddishCharacterLowercaseUppercase();
+                        DisplayCharset.SwddishCharacterLowercaseUppercasePrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
                         Console.Clear();
-                        new MainMenu();
+                        new Run();
                     }
 
                 }
@@ -530,7 +433,7 @@ namespace crisis
             SubMenu objSubMenu = new SubMenu();
 
             booleanCategoryMenu = false;
-            Parameter config = new Parameter();
+            MenuParameter config = new MenuParameter();
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n N°");
@@ -581,17 +484,20 @@ namespace crisis
                     // CYRILLIC    CHARACTER
                     if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.CyrillicCharacterLowercase();
+                        DisplayCharset.CyrillicCharacterLowercasePrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.CyrillicCharacteUppercase();
+                        DisplayCharset.CyrillicCharacterUppercasePrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.CyrillicCharacterUppercaseLowercase();
+                        DisplayCharset.CyrillicCharacterUppercaseLowercasePrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
@@ -616,7 +522,7 @@ namespace crisis
             SubMenu objSubMenu = new  SubMenu();           
 
             booleanCategoryMenu = false;
-            Parameter config = new Parameter();
+            MenuParameter config = new MenuParameter();
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n N°");
@@ -658,17 +564,20 @@ namespace crisis
                     //        SYLLABLE   CHARACTER
                     if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.SyllableCharacterLowercase();
+                        DisplayCharset.SyllableCharacterLowercasePrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.SyllableCharacteUppercase();
+                        DisplayCharset.SyllableCharacteUppercasePrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.SyllableCharacterUppercaseLowercase();
+                        DisplayCharset.SyllableCharacterUppercaseLowercasePrint();
+                        objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
                     }
                     else if (dislayMainSubMain == i++)
@@ -691,7 +600,7 @@ namespace crisis
         {
             SubMenu objSubMenu = new SubMenu();
 
-            Parameter.TypesOfGeneration = 6;
+            MenuParameter.TypesOfGeneration = 6;
             
             booleanCategoryMenu = false;          
 
@@ -723,17 +632,21 @@ namespace crisis
                     Console.Write("\n[+] ");
                     Console.ResetColor();
                     Console.Write(" With what category you want to work : ");
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     int dislayMainSubMain = int.Parse(Console.ReadLine().ToLower());
+                    Console.ResetColor();
                     Console.Write("\n");
                     i = 0;
                     
                     if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.BoxAdslSfr();
+                        DisplayCharset.SfrPrint();
+                        objSubMenu.GenericMenuSelectCharset();
                     }
                     if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.BoxAdslLivebox();
+                        DisplayCharset.LiveboxPrint();
+                        objSubMenu.GenericMenuSelectCharset();
                     } 
                     else if (dislayMainSubMain == i++)
                     {

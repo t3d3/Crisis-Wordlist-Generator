@@ -469,31 +469,33 @@ namespace crisis {
         #endregion
     }
 
-    public class VariationnPattern
+    public class VariationnPattern : Property
     {
+        
         public VariationnPattern()
         {
         }
 
-        public static Variations<string> CalculVariation()
+        public static Variations<string> CalculVariation(bool _repeat)
         {
-            Variations<string> obj  = null;
+            Variations<string> obj = null;
 
-            if (Parameter.WithoutOrWithRepetition == false)
+            if (_repeat == false)
             {
-                obj = new Variations<string>(Charset.CharsetSelecting, Parameter.NumberOfChar, GenerateOption.WithoutRepetition);
+                obj = new Variations<string>(Charset.CharsetSelecting, Property.NumberOfChar, GenerateOption.WithoutRepetition);
             }
-            else if (Parameter.WithoutOrWithRepetition == true)
+            else if (_repeat == true)
             {
-                obj = new Variations<string>(Charset.CharsetSelecting, Parameter.NumberOfChar, GenerateOption.WithRepetition);
+                obj = new Variations<string>(Charset.CharsetSelecting, Property.NumberOfChar, GenerateOption.WithRepetition);
             }
 
-            return obj;           
+            return obj;
         }
 
-        public void VariationPrintF()
+        public void VariationPrintF(bool _saveFile, bool _zip, bool _repeat)
         {
-            var obj = CalculVariation();
+            var obj = CalculVariation(_repeat);
+            SaveFile = _saveFile;
 
             FilesNameDirectory make = new FilesNameDirectory();
             Tools tool = new Tools();
@@ -501,7 +503,7 @@ namespace crisis {
 
             string s = null;
 
-            if (Parameter.SaveFile == true)
+            if (SaveFile)
             {                
                 BigInteger iMakeFile = 0;
                 
@@ -512,7 +514,7 @@ namespace crisis {
                        make.Setting_UpFile(); 
                     }
 
-                    for (int i = 0; i < Parameter.NumberOfChar; i++)
+                    for (int i = 0; i < NumberOfChar; i++)
                     {
                         s += c[i];
                     }
@@ -523,11 +525,11 @@ namespace crisis {
                     iMakeFile++;
                     cpt++;
 
-                    if (iMakeFile >= Parameter.NumberLine | cpt >= Statistical.NumberOfAllCombination)
+                    if (iMakeFile >= NumberLine | cpt >= Statistical.NumberOfAllCombination)
                     {  
                         make.WorkFile.Flush();
                         make.WorkFile.Close();
-                        tool.Zipper();
+                        tool.Zipper(_zip);
                         tool.GenerateOut();
                         iMakeFile = 0;
                     }
@@ -537,7 +539,7 @@ namespace crisis {
             {
                 foreach (IList<string> c in obj)
                 {
-                    for (int i = 0; i < Parameter.NumberOfChar; i++)
+                    for (int i = 0; i < NumberOfChar; i++)
                     {
                         s += c[i];
                     }

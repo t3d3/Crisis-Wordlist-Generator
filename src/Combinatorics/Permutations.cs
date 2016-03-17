@@ -528,10 +528,10 @@ namespace crisis
 
     }
 
-    public class PermutationPattern
+    public class PermutationPattern : Property
     {
         private static string s = null;
-        private static List<string> permutCharset = new List<string>() { };        
+        private static List<string> permutCharset = new List<string>() { };
         private static Combinations<string> obj = null;
 
         private static Permutations<string> permut = null;
@@ -546,10 +546,10 @@ namespace crisis
             
         }
 
-        public static BigInteger CaclulPermut()
+        public static BigInteger CaclulPermut(bool _repeat)
         {
-            obj = new Combinations<string>(Charset.CharsetSelecting, Parameter.NumberOfChar);
-             
+            obj = new Combinations<string>(Charset.CharsetSelecting, Property.NumberOfChar);
+
             foreach (IList<string> charset in obj)
             {
                 for (int c = 0; c < charset.Count; c++)
@@ -564,25 +564,25 @@ namespace crisis
                 permutCharset.Add(s[c].ToString());
             }
 
-            if (Parameter.WithoutOrWithRepetition == false)
+            if (_repeat == false)
             {
                 permut = new Permutations<string>(permutCharset, GenerateOption.WithoutRepetition);
             }
-            else if (Parameter.WithoutOrWithRepetition == true)
+            else if (_repeat == true)
             {
                 permut = new Permutations<string>(permutCharset, GenerateOption.WithRepetition);
             }
 
-            return (permut.Count * obj.Count);            
+            return (permut.Count * obj.Count);
         }
 
 
-        public void PermutationPrintF()
+        public void PermutationPrintF(bool _saveFile, bool _zip, bool _repeat)
         {
             FilesNameDirectory make = new FilesNameDirectory();
             BigInteger cpt = 0;
             Tools tool = new Tools();
-
+                        
             foreach (IList<string> charset in obj)
             {
                 s = null;
@@ -598,16 +598,16 @@ namespace crisis
                     permutCharset.Add(s[c].ToString());
                 }
 
-                if (Parameter.WithoutOrWithRepetition == false)
+                if (_repeat == false)
                 {
                     permut = new Permutations<string>(permutCharset, GenerateOption.WithoutRepetition);
                 }
-                else if (Parameter.WithoutOrWithRepetition == true)
+                else if (_repeat == true)
                 {
                     permut = new Permutations<string>(permutCharset, GenerateOption.WithRepetition);
                 }
 
-                if (Parameter.SaveFile == true)
+                if (_saveFile)
                 {
                     BigInteger makeFile = 0;
 
@@ -618,7 +618,7 @@ namespace crisis
                             make.Setting_UpFile();
                         }
 
-                        for (int c = 0; c < Parameter.NumberOfChar; c++)
+                        for (int c = 0; c < Property.NumberOfChar; c++)
                         {
                             s += str[c];
                         }
@@ -629,11 +629,11 @@ namespace crisis
                         makeFile++;
                         cpt++;
 
-                        if (makeFile >= Parameter.NumberLine | cpt >= Statistical.NumberOfAllCombination)
+                        if (makeFile >= Property.NumberLine | cpt >= Statistical.NumberOfAllCombination)
                         {                            
                             make.WorkFile.Flush();
                             make.WorkFile.Close();
-                            tool.Zipper();
+                            tool.Zipper(_zip);
                             tool.GenerateOut();
                             makeFile = 0;
                         }

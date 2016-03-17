@@ -26,7 +26,7 @@ using crisis.Ionic.Zip;
 
 namespace crisis
 {
-    public class Randomizer 
+    public class Randomizer : Property
     {
         private Random random = null;
         
@@ -46,7 +46,7 @@ namespace crisis
 
             try
             {
-                for (int i = 0; i < Parameter.NumberOfChar; i++)
+                for (int i = 0; i < NumberOfChar; i++)
                 {
                     randonString += Charset.CharsetSelecting[random.Next(Charset.CharsetSelecting.Count)].ToString();
                 }
@@ -60,14 +60,17 @@ namespace crisis
         }
 
 
-        public void RamdonPrintF()
+        public void RamdonPrintF(bool _saveFile, bool _zip)
         {
+            SaveFile = _saveFile;
+
+
             FilesNameDirectory make = new FilesNameDirectory();
             Tools tool = new Tools();
             BigInteger cpt = 0;
 
-
-            if (Parameter.SaveFile == true)
+            
+            if (SaveFile)
             {
                 BigInteger iMakeFile = 0;
 
@@ -82,11 +85,11 @@ namespace crisis
                     ++iMakeFile;
                     ++cpt;
                     
-                    if (iMakeFile >= Parameter.NumberLine - 1 || cpt >= Statistical.NumberOfAllCombination)
+                    if (iMakeFile >= MenuParameter.NumberLine - 1 || cpt >= Statistical.NumberOfAllCombination)
                     {                        
                         make.WorkFile.Flush();
                         make.WorkFile.Close();
-                        tool.Zipper();
+                        tool.Zipper(_zip);
                         tool.GenerateOut();
                         iMakeFile = 0;
                     }           

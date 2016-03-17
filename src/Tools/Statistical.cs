@@ -25,7 +25,7 @@ namespace crisis
 {
     
 
-    public class Statistical
+    public class Statistical : Property
     {
         private BigInteger dataSizeOctet;
 
@@ -37,7 +37,6 @@ namespace crisis
         }
 
         private static double defaultSizeFileInOctet;
-
         public static double DefaultSizeFileInOctet
         {
             get
@@ -56,27 +55,27 @@ namespace crisis
         }
 
        
-        internal BigInteger CalculOfAllCombinaison()
+        internal BigInteger CalculOfAllCombinaison(bool _repeat)
         {
            try
             {
                 numberOfAllCombination = new BigInteger();
 
-                if (Parameter.TypesOfGeneration == 1 | Parameter.TypesOfGeneration == 2)
+                if (MenuParameter.TypesOfGeneration == 1 | MenuParameter.TypesOfGeneration == 2)
                 {
-                    numberOfAllCombination = CombinationPattern.CaclulCombination().Count; 
+                    numberOfAllCombination = CombinationPattern.CaclulCombination(_repeat).Count; 
                 }
-                else if (Parameter.TypesOfGeneration == 3 | Parameter.TypesOfGeneration == 6)
+                else if (MenuParameter.TypesOfGeneration == 3 | MenuParameter.TypesOfGeneration == 6)
                 {
-                    numberOfAllCombination = (BigInteger)Math.Pow((double)Parameter.NumberOfChar, (double)Charset.CharsetSelecting.Count);
+                    numberOfAllCombination = (BigInteger)Math.Pow((double)NumberOfChar, (double)Charset.CharsetSelecting.Count);
                 }
-                else if (Parameter.TypesOfGeneration == 4)
+                else if (MenuParameter.TypesOfGeneration == 4)
                 {
-                    numberOfAllCombination = VariationnPattern.CalculVariation().Count;
+                    numberOfAllCombination = VariationnPattern.CalculVariation(_repeat).Count;
                 }
-                else if (Parameter.TypesOfGeneration == 5)
+                else if (MenuParameter.TypesOfGeneration == 5)
                 {
-                    numberOfAllCombination = PermutationPattern.CaclulPermut();
+                    numberOfAllCombination = PermutationPattern.CaclulPermut(_repeat);
                 }
 
             }
@@ -95,62 +94,62 @@ namespace crisis
 
         internal BigInteger CalculSizeFile()
         {
-            Command options = new Command();
+            Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
 
             if (options.Line == false)
             {
-                double nbLine =0;
+                double nbLine = 0;
 
-                nbLine = (defaultSizeFileInOctet / 1.4) / (Parameter.NumberOfChar * 0.9);
+                nbLine = (defaultSizeFileInOctet / 1.4) / (MenuParameter.NumberOfChar * 0.9);
 
-                if (Parameter.TypesOfGeneration == 1 )
+                if (MenuParameter.TypesOfGeneration == 1)
                 {
-                    nbLine = (defaultSizeFileInOctet / 1.4) / (Parameter.NumberOfChar + 12);
+                    nbLine = (defaultSizeFileInOctet / 1.4) / (MenuParameter.NumberOfChar + 12);
                     if (numberOfAllCombination - 1 < (BigInteger)nbLine)
                     {
-                        Parameter.NumberLine = numberOfAllCombination;
+                        MenuParameter.NumberLine = numberOfAllCombination;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\n File size too large, the number of line by default.\n");
                         Console.ResetColor();
                     }
                     else
                     {
-                        Parameter.NumberLine = (BigInteger)nbLine;
+                        MenuParameter.NumberLine = (BigInteger)nbLine;
                     }
                 }
-                else if (Parameter.TypesOfGeneration == 5)
+                else if (MenuParameter.TypesOfGeneration == 5)
                 {
                     if (PermutationPattern.Permut.Count < nbLine)
                     {
-                        Parameter.NumberLine = PermutationPattern.Permut.Count;
+                        MenuParameter.NumberLine = PermutationPattern.Permut.Count;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\n File size too large, the number of line by default.\n");
                         Console.ResetColor();
                     }
                     else
                     {
-                        Parameter.NumberLine = (BigInteger)nbLine;
+                        MenuParameter.NumberLine = (BigInteger)nbLine;
                     }
                 }
-                else 
+                else
                 {
                     if (numberOfAllCombination - 1 < (BigInteger)nbLine)
                     {
-                        Parameter.NumberLine = numberOfAllCombination;
+                        MenuParameter.NumberLine = numberOfAllCombination;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\n File size too large, the number of line by default.\n");
                         Console.ResetColor();
                     }
                     else
                     {
-                        Parameter.NumberLine = (BigInteger)nbLine;
-                    } 
+                        MenuParameter.NumberLine = (BigInteger)nbLine;
+                    }
                 }
             }
 
-            return Parameter.NumberLine;
+            return MenuParameter.NumberLine;
         }
         
         /// <summary>
@@ -159,13 +158,13 @@ namespace crisis
 
         internal void StatiscalInfoSize()
         {
-            if (Parameter.TypesOfGeneration == 1)
+            if (MenuParameter.TypesOfGeneration == 1)
             {
-                dataSizeOctet = (BigInteger)(Parameter.NumberOfChar + 14) * NumberOfAllCombination;
+                dataSizeOctet = (BigInteger)(NumberOfChar + 14) * NumberOfAllCombination;
             }            
-            else if (Parameter.TypesOfGeneration == 2 | Parameter.TypesOfGeneration == 3 | Parameter.TypesOfGeneration == 4 | Parameter.TypesOfGeneration == 5 |Parameter.TypesOfGeneration == 6)
+            else if (MenuParameter.TypesOfGeneration == 2 | MenuParameter.TypesOfGeneration == 3 | MenuParameter.TypesOfGeneration == 4 | MenuParameter.TypesOfGeneration == 5 |MenuParameter.TypesOfGeneration == 6)
             {
-                dataSizeOctet = (Parameter.NumberOfChar + 2) * NumberOfAllCombination;
+                dataSizeOctet = (NumberOfChar + 2) * NumberOfAllCombination;
             }
 
             BigInteger dataSizeKo = 4096;

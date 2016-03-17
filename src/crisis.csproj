@@ -97,6 +97,15 @@ The output from crisis can be sent to the screen, file, or to another program. <
     <Compile Include="C5\ViewSupport.cs" />
     <Compile Include="C5\WrappedArray.cs" />
     <Compile Include="C5\Wrappers.cs" />
+    <Compile Include="Charset\CharsetAlpha.cs" />
+    <Compile Include="Charset\CharsetCyrillic.cs" />
+    <Compile Include="Charset\CharsetAlpha_sv.cs" />
+    <Compile Include="Charset\CharsetSyllable.cs" />
+    <Compile Include="Charset\CharsetSpecial.cs" />
+    <Compile Include="Charset\DisplayCharsetSyllable.cs" />
+    <Compile Include="Charset\DisplayCharsetSwddish.cs" />
+    <Compile Include="Charset\DisplayCharsetCyrillic.cs" />
+    <Compile Include="Charset\DisplayCharsetLatin.cs" />
     <Compile Include="Combinatorics\Combinations.cs" />
     <Compile Include="Combinatorics\GenerateOption.cs" />
     <Compile Include="Combinatorics\IMetaCollection.cs" />
@@ -153,8 +162,10 @@ The output from crisis can be sent to the screen, file, or to another program. <
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Property.cs" />
     <Compile Include="Resources\CommandLineStrings.Designer.cs" />
     <Compile Include="Resources\PlossumStrings.Designer.cs" />
+    <Compile Include="Run.cs" />
     <Compile Include="Terminal\CommandFunctionOptions.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -166,10 +177,9 @@ The output from crisis can be sent to the screen, file, or to another program. <
     <Compile Include="Menu\MainMenu.cs" />
     <Compile Include="Menu\SubMenu.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Terminal\CommandProperty.cs" />
     <Compile Include="Tools\FilesNameDirectory.cs" />
-    <Compile Include="Charset\DisplayCharset.cs" />
-    <Compile Include="Parameter.cs" />
+    <Compile Include="Charset\DisplayCharsetSpecial.cs" />
+    <Compile Include="Menu\MenuParameter.cs" />
     <Compile Include="Tools\Statistical.cs" />
     <Compile Include="Zip\ComHelper.cs" />
     <Compile Include="Zip\EncryptionAlgorithm.cs" />

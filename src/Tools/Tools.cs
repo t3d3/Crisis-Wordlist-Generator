@@ -22,7 +22,7 @@ using crisis.Ionic.Zip;
 
 namespace crisis
 {
-    public class Tools
+    public class Tools : Property
     {
         public Tools()
         {
@@ -53,7 +53,7 @@ namespace crisis
             {
                 for (int i = 0; i < _e.Length; i++)
                 {
-                    Charset.CharsetSelecting.Insert((Parameter.NumberOfChar - _e.Length) + i, _e[i].ToString());
+                    Charset.CharsetSelecting.Insert((NumberOfChar - _e.Length) + i, _e[i].ToString());
                 } 
 
             }
@@ -74,25 +74,26 @@ namespace crisis
             return input;
         }
 
-        internal void Zipper()
+        internal void Zipper(bool _Zip)
         {
-            if (Parameter.BooleanZip)
-            {
-                string[] compress = new string[] { FilesNameDirectory.FilePath[Parameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[Parameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + ".txt" };
 
-                using (ZipFile zip = new ZipFile())
+            if (_Zip)
+            {
+                string[] compress = new string[] { FilesNameDirectory.FilePath[MenuParameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[MenuParameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + ".txt" };
+
+                using (ZipFile zipFile = new ZipFile())
                 {
-                    zip.AddFiles(compress, FilesNameDirectory.FileName[Parameter.TypesOfGeneration] + FilesNameDirectory.NumberFile);
-                    zip.Save(FilesNameDirectory.FilePath[Parameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[Parameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + ".zip");
+                    zipFile.AddFiles(compress, FilesNameDirectory.FileName[MenuParameter.TypesOfGeneration] + FilesNameDirectory.NumberFile);
+                    zipFile.Save(FilesNameDirectory.FilePath[MenuParameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[MenuParameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + ".zip");
                 }
 
-                System.IO.File.Delete(FilesNameDirectory.FilePath[Parameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[Parameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + ".txt");
+                System.IO.File.Delete(FilesNameDirectory.FilePath[MenuParameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[MenuParameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + ".txt");
             }
         }
 
         internal void GenerateOut()
         {
-            string[] locate = new string[] { " Generating output at" + Hour() + " : " + FilesNameDirectory.FilePath[Parameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[Parameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + FilesNameDirectory.Extension[Parameter.IExtension] };
+            string[] locate = new string[] { " Generating output at" + Hour() + " : " + FilesNameDirectory.FilePath[MenuParameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[MenuParameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + FilesNameDirectory.Extension[MenuParameter.IExtension] };
             Console.WriteLine(locate[0].ToString());
         }
 

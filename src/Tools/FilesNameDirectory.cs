@@ -156,17 +156,17 @@ namespace crisis
             {
                 try
                 {
-                    if (!Directory.Exists(filePath[Parameter.TypesOfGeneration]))
+                    if (!Directory.Exists(filePath[MenuParameter.TypesOfGeneration]))
                     {
-                        System.IO.Directory.CreateDirectory(filePath[Parameter.TypesOfGeneration]);
+                        System.IO.Directory.CreateDirectory(filePath[MenuParameter.TypesOfGeneration]);
                     }
-                    else if (File.Exists(filePath[Parameter.TypesOfGeneration] + fileName[Parameter.TypesOfGeneration] + numberFile + extension[Parameter.IExtension]))
+                    else if (File.Exists(filePath[MenuParameter.TypesOfGeneration] + fileName[MenuParameter.TypesOfGeneration] + numberFile + extension[MenuParameter.IExtension]))
                     {
                         numberFile++;
                     }
-                    else if (!Directory.Exists(filePath[Parameter.TypesOfGeneration] + fileName[Parameter.TypesOfGeneration] + numberFile + ".txt"))
+                    else if (!Directory.Exists(filePath[MenuParameter.TypesOfGeneration] + fileName[MenuParameter.TypesOfGeneration] + numberFile + ".txt"))
                     {
-                        workFile = new StreamWriter(filePath[Parameter.TypesOfGeneration] + fileName[Parameter.TypesOfGeneration] + numberFile + ".txt");
+                        workFile = new StreamWriter(filePath[MenuParameter.TypesOfGeneration] + fileName[MenuParameter.TypesOfGeneration] + numberFile + ".txt");
                         b = false;                      
                     }
                 }

@@ -24,10 +24,11 @@ namespace crisis
 {
     public partial class Command
     {
+               
 
         public int FunctionPattern(string[] args)
         {            
-            Command options = new Command();
+            Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
 
@@ -49,76 +50,101 @@ namespace crisis
             Regex lalpha_sv = new Regex(@"^sv-lalpha.{0,23}$");
             Regex mixalpha_sv = new Regex(@"^sv-mixalpha.{0,23}$");
 
+            Regex lcyrillic = new Regex(@"^lcyrillic.{0,23}");
+            Regex ucyrillic = new Regex(@"^ucyrillic.{0,23}");
+            Regex mixcyrillic = new Regex(@"^mixcyrillic.{0,23}");
+
+            if (booleanneTmp == true)
+            {
+               options.Dictionnary = booleanneTmp; 
+            }            
+
             if (options.Dictionnary)
             {
                 for (int i = 0; i < args.Length; i++)
                 {
                     if (hex.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Charset.CharsetName += args[i].ToString().ToLower();
+                        Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.Hexa();
                     }
                     else if (numeric.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Charset.CharsetName += args[i].ToString().ToLower();
+                        Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.Numeric();
                     }
                     else if (symbols.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Charset.CharsetName += args[i].ToString().ToLower();
+                        Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.Symbols();
                     }
                     else if (usyllable.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Charset.CharsetName += args[i].ToString().ToLower();
+                        Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.Usyllable_fr();
                     }
                     else if (lsyllable.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Charset.CharsetName += args[i].ToString().ToLower();
+                        Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.Lsyllable_fr();
                     }
                     else if (mixsyllable.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Charset.CharsetName += args[i].ToString().ToLower();
+                        Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.mixsyllable_fr();
                     }
                     else if (ualpha.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Charset.CharsetName += args[i].ToString().ToLower();
+                        Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.Ualpha();
                     }
                     else if (lalpha.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Charset.CharsetName += args[i].ToString().ToLower();
+                        Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.Lalpha();
                     }
                     else if (mixalpha.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Charset.CharsetName += args[i].ToString().ToLower();
+                        Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.MixAlpha();
 
                     }
                     else if (ualpha_sv.IsMatch(args[i].ToString()))
                     {
-                        Charset.CharsetName += args[i].ToString().ToLower();
+                        Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.Ualpha_sv();
                     }
                     else if (lalpha_sv.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Charset.CharsetName += args[i].ToString().ToLower();
+                        Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.Lalpha_sv();
                     }
                     else if (mixalpha_sv.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Charset.CharsetName += args[i].ToString().ToLower();
+                        Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.MixAlpha_sv();
                     }
                     else if (wifi.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Charset.CharsetName += args[i].ToString().ToLower();
+                        Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.WifiCharset();
                     }
+                    else if (lcyrillic.IsMatch(args[i].ToString().ToLower()))
+                    {
+                        Charset.CharsetName = args[i].ToString().ToLower();
+                        Charset.Lcyrillic();
+                    }
+                    else if (ucyrillic.IsMatch(args[i].ToString().ToLower()))
+                    {
+                        Charset.CharsetName = args[i].ToString().ToLower();
+                        Charset.Ucyrillic();
+                    }
+                    else if (mixcyrillic.IsMatch(args[i].ToString().ToLower()))
+                    {
+                        Charset.CharsetName = args[i].ToString().ToLower();
+                        Charset.MixCyrillic();
+                    }
+
                 }
 
 

@@ -23,7 +23,7 @@ using System.Text;
 
 namespace crisis
 {
-    public class SubMenu
+    public class SubMenu : Property
     {
 
         private static bool booleanSubMenu;
@@ -37,6 +37,23 @@ namespace crisis
         public SubMenu()
         {
             booleanSubMenu = true;
+        }
+
+
+        internal void GenericMenuSelectCharset()
+        {
+            Command run = new Command(true);
+            while (Charset.BooleanType)
+            {
+                Console.Write(" Write the name corresponding to your choice : ");
+                
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Charset.CharsetName = Console.ReadLine().ToLower();
+                Console.ResetColor();
+
+                string[] args = new string[] { Charset.CharsetName };
+                run.FunctionPattern(args);
+            }
         }
 
         internal void MenuLeetSpeak()
@@ -75,248 +92,7 @@ namespace crisis
                      Charset.BooleanType = true;
                 }
             }
-        }
-                
-        // SubMenu Special
-        internal void MenuHexa()
-        {           
-            while (Charset.BooleanType)
-            {                
-                DisplayCharset.MenuHexaPrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor();
-                Charset.Hexa();
-            }            
-        }
-
-        
-
-        internal void MenuNumeric()
-        {            
-            while (Charset.BooleanType)
-            {
-                DisplayCharset.MenuNumericPrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor();                
-                Charset.Numeric();
-            }            
-        }
-
-        internal void MenuSpecialCharacteres()
-        {            
-            while (Charset.BooleanType)
-            {               
-                DisplayCharset.MenuSpecialCharacteresPrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor(); 
-                Charset.Symbols();
-            }            
-        }
-
-        //Sub Menu Latin
-
-        internal void LatinCharacterLowercase()
-        {           
-            while (Charset.BooleanType)
-            {                
-                DisplayCharset.LatinCharacterLowercasePrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor(); 
-                Charset.Lalpha();
-            }           
-        }
-
-        internal void LatinCharacteUppercase()
-        {            
-            while (Charset.BooleanType)
-            {                
-                DisplayCharset.LatinCharacteUppercasePrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor(); 
-                Charset.Ualpha();
-            }
-            
-        }
-
-        internal void LatinCharacterUppercaseLowercase()
-        {            
-            while (Charset.BooleanType)
-            {                
-                DisplayCharset.LatinCharacterUppercaseLowercasePrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor(); 
-                Charset.MixAlpha();
-            }
-            
-        }
-
+        } 
        
-
-        internal void CyrillicCharacterLowercase()
-        {
-            while (Charset.BooleanType)
-            {
-                DisplayCharset.CyrillicCharacterLowercasePrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor();
-                Charset.Lcyrillic();
-            }
-        }
-
-        internal void CyrillicCharacteUppercase()
-        {
-            while (Charset.BooleanType)
-            {
-                DisplayCharset.CyrillicCharacterUppercasePrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor();
-                Charset.Ucyrillic();
-            }
-
-        }
-
-        internal void CyrillicCharacterUppercaseLowercase()
-        {
-            while (Charset.BooleanType)
-            {
-                DisplayCharset.CyrillicCharacterUppercaseLowercasePrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor();
-                Charset.MixCyrillic();
-            }
-
-        }
-
-
-        // Sub Menu Swddish
-
-        internal void SwddishCharacterUppercase()
-        {            
-            while (Charset.BooleanType)
-            {                
-                DisplayCharset.SwddishCharacterUppercasePrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor(); 
-                Charset.Ualpha_sv();
-            }            
-        }
-
-        internal void SwddishCharacterLowercase()
-        {            
-            while (Charset.BooleanType)
-            {                
-                DisplayCharset.SwddishCharacterLowercasePrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor(); 
-                Charset.Lalpha_sv();
-            }            
-        }
-
-
-        internal void SwddishCharacterLowercaseUppercase()
-        {
-            while (Charset.BooleanType)
-            {                
-                DisplayCharset.SwddishCharacterLowercaseUppercasePrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor(); 
-
-                Charset.MixAlpha_sv();
-            }           
-        }
-
-        // Sub Menu Syllable
-
-        internal void SyllableCharacterLowercase()
-        {           
-            while (Charset.BooleanType)
-            {                
-                DisplayCharset.SyllableCharacterLowercasePrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor(); 
-                Charset.Lsyllable_fr();
-            }
-            
-        }
-
-
-        internal void SyllableCharacteUppercase()
-        {            
-            while (Charset.BooleanType)
-            {                
-                DisplayCharset.SyllableCharacteUppercasePrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Charset.CharsetName = Console.ReadLine().ToLower();
-
-                Charset.Usyllable_fr();
-            }            
-        }
-
-        
-
-        internal void SyllableCharacterUppercaseLowercase()
-        {            
-            while (Charset.BooleanType)
-            {                
-                DisplayCharset.SyllableCharacterUppercaseLowercasePrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor();                 
-                Charset.mixsyllable_fr();
-            }            
-        }
-
-        internal void BoxAdslSfr()
-        {            
-            while (Charset.BooleanType)
-            {
-                DisplayCharset.SfrPrint();                
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor(); 
-                Charset.WifiCharset();                
-            }
-        }
-
-        internal void BoxAdslLivebox()
-        {
-            while (Charset.BooleanType)
-            {
-                DisplayCharset.LiveboxPrint();
-                Console.Write(" Write the name corresponding to your choice : ");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Charset.CharsetName = Console.ReadLine().ToLower();
-                Console.ResetColor();
-                Charset.WifiCharset();
-            }
-        }
     }
 }

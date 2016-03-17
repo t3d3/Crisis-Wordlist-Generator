@@ -23,7 +23,7 @@ using System.Text;
 
 namespace crisis
 {
-    public class LeetSpeak  
+    public class LeetSpeak : Property 
     {
 
         public LeetSpeak()
@@ -95,7 +95,7 @@ namespace crisis
             Console.WriteLine("This work, please wait !\n");
             Console.ResetColor();
 
-            if (Parameter.SaveFile == true)
+            if ( SaveFile == true)
             {
                 make.Setting_UpFile();
 

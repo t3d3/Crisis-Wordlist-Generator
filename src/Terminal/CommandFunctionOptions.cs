@@ -24,8 +24,8 @@ namespace crisis
     public partial class Command
     {
         public int FunctionInverts(string[] args)
-        {           
-            Command options = new Command();
+        {
+            Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
 
@@ -46,10 +46,9 @@ namespace crisis
 
         public int FunctionLenght(string[] args)
         {
-            Command options = new Command();
+            Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
-
 
             if (options.Lenght)
             {
@@ -68,7 +67,7 @@ namespace crisis
                         }
                         else
                         {
-                            Parameter.NumberOfChar = l;
+                            Property.NumberOfChar = l;
                         }
                     } // End For               
                 }
@@ -87,7 +86,7 @@ namespace crisis
 
         public int FunctionByte(string[] args)
         {
-            Command options = new Command();
+            Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();            
 
@@ -142,13 +141,13 @@ namespace crisis
 
         public int FunctionSaveFiles(string[] args)
         {            
-            Command options = new Command();
+            Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
 
-            if (options.FileName)
+            if (options.SaveFile)
             {
-                Parameter.SaveFile = true;                
+                options.SaveFile = true;                
             }
             else if (parser.HasErrors)
             {
@@ -163,14 +162,13 @@ namespace crisis
 
         public int FunctionZip(string[] args)
         {            
-            Command options = new Command();
+            Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
 
             if (options.Zip)
             {
-                Parameter.IExtension = 1;
-                Parameter.BooleanZip = true;
+                MenuParameter.IExtension = 1;                
             }
             else if (parser.HasErrors)
             {
@@ -185,7 +183,7 @@ namespace crisis
 
         public int FunctionLine(string[] args)
         {
-            Command options = new Command();
+            Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
 
@@ -206,7 +204,7 @@ namespace crisis
                         }
                         else
                         {
-                            Parameter.NumberLine = c;
+                            MenuParameter.NumberLine = c;
                         }
                     }
                 }
@@ -222,44 +220,11 @@ namespace crisis
             return 0;
         }
 
-        public int FunctionRepeat(string[] args)
-        {
-
-            Command options = new Command();
-            CommandLineParser parser = new CommandLineParser(options);
-            parser.Parse();
-
-            if (options.Repeat)
-            {
-                for (int i = 0; i < args.Length; i++)
-                {
-                    if (args[i].ToString().ToLower() == "-r" | args[i].ToString().ToLower() == "--repeat")
-                    {
-                        string r = args[i + 1].ToString();
-
-                        if (r == "TRUE".ToLower())
-                        {
-                            Parameter.WithoutOrWithRepetition = true;
-                        }
-
-                    }
-                }
-            }
-            else if (parser.HasErrors)
-            {
-                Console.WriteLine(parser.UsageInfo.ToString(78, true));
-                return -1;
-            }  
-
-            // No errors present and all arguments correct
-            // Do work according to arguments
-            return 0;
-        }
 
         public int FunctionStartblock(string[] args)
         {
             Tools obj2 = new Tools();
-            Command options = new Command();
+            Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
 
@@ -298,11 +263,11 @@ namespace crisis
         public int FunctionEndblock(string[] args)
         {
             Tools obj2 = new Tools();
-            Command options = new Command();
+            Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
 
-            if (options.End)
+            if (options.EndBlock)
             {
                 string e = null;
                 for (int i = 0; i < args.Length; i++)

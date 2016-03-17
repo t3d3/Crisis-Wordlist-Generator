@@ -364,25 +364,26 @@ namespace crisis {
         #endregion
     }
 
-    public class CombinationPattern
+    public class CombinationPattern 
     {
+        
 
         public CombinationPattern()
         {
 
         }
 
-        public static Combinations<string> CaclulCombination()
+        public static Combinations<string> CaclulCombination(bool _repeat)
         {
             Combinations<string> obj = null;
-            
-            if (Parameter.WithoutOrWithRepetition == false)
+
+            if (_repeat == false)
             {
-                obj = new Combinations<string>(Charset.CharsetSelecting, Parameter.NumberOfChar, GenerateOption.WithoutRepetition);
+                obj = new Combinations<string>(Charset.CharsetSelecting, Property.NumberOfChar, GenerateOption.WithoutRepetition);
             }
-            else if (Parameter.WithoutOrWithRepetition == true)
+            else if (_repeat == true)
             {
-                obj = new Combinations<string>(Charset.CharsetSelecting, Parameter.NumberOfChar, GenerateOption.WithRepetition);               
+                obj = new Combinations<string>(Charset.CharsetSelecting, Property.NumberOfChar, GenerateOption.WithRepetition);
             }
             return obj;
         }
@@ -391,17 +392,17 @@ namespace crisis {
 
         #region In Memory or Write a Files
 
-        public void CombinationPrintF()
+        public void CombinationPrintF(bool _saveFile, bool _zip, bool _repeat)
         {
-            var obj = CaclulCombination();
-
+            var obj = CaclulCombination(_repeat);            
+            
             FilesNameDirectory make = new FilesNameDirectory();
             Tools tool = new Tools();
             BigInteger cpt = 0;
 
             string s = null;
 
-            if (Parameter.SaveFile == true)
+            if (_saveFile)
             {
                 BigInteger iMakeFile = 0;
                 
@@ -412,13 +413,13 @@ namespace crisis {
                         make.Setting_UpFile();
                     }
 
-                    for (int y = 0; y < Parameter.NumberOfChar; y++)
+                    for (int y = 0; y < Property.NumberOfChar; y++)
                     {
                         s += c[y];
                     }
 
 
-                    if (Parameter.TypesOfGeneration == 1)
+                    if (Property.TypesOfGeneration == 1)
                     {
                         make.WorkFile.WriteLine("charset" + cpt + " = [" + s.ToString() + "]");
                         
@@ -432,11 +433,11 @@ namespace crisis {
                     iMakeFile++;
                     cpt++; 
 
-                    if (iMakeFile >= Parameter.NumberLine | cpt >= Statistical.NumberOfAllCombination)
+                    if (iMakeFile >= Property.NumberLine | cpt >= Statistical.NumberOfAllCombination)
                     {
                        make.WorkFile.Flush();
                        make.WorkFile.Close();
-                       tool.Zipper();
+                       tool.Zipper(_zip);
                        tool.GenerateOut();
                        iMakeFile = 0;
                     }                                                  
@@ -446,14 +447,14 @@ namespace crisis {
             {
                 foreach (IList<string> c in obj)
                 {
-                    for (int i = 0; i < Parameter.NumberOfChar; i++)
+                    for (int y = 0; y < Property.NumberOfChar; y++)
                     {
-                        s += c[i];
+                        s += c[y];
                     }
 
-                    if (Parameter.TypesOfGeneration == 1)
-                    {                        
-                        Console.WriteLine("charset"+ obj.Count + " = [" + s.ToString() + "]");
+                    if (Property.TypesOfGeneration == 1)
+                    {
+                        Console.WriteLine("charset" + cpt++ + " = [" + s.ToString() + "]");
                     }
                     else
                     {
