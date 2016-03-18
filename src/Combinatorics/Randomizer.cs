@@ -66,7 +66,7 @@ namespace crisis
 
 
             FilesNameDirectory make = new FilesNameDirectory();
-            Tools tool = new Tools();
+            Utility tool = new Utility();
             BigInteger cpt = 0;
 
             
@@ -78,7 +78,7 @@ namespace crisis
                 {
                     if (iMakeFile == 0)
                     {
-                        make.Setting_UpFile();
+                        make.Setting_UpFile(Property.TypesOfGeneration);
                     }
 
                     make.WorkFile.WriteLine(this.Aleatory());
