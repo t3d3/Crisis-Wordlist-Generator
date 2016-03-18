@@ -581,7 +581,7 @@ namespace crisis
         {
             FilesNameDirectory make = new FilesNameDirectory();
             BigInteger cpt = 0;
-            Tools tool = new Tools();
+            Utility tool = new Utility();
                         
             foreach (IList<string> charset in obj)
             {
@@ -615,7 +615,7 @@ namespace crisis
                     {                  
                         if (makeFile == 0)
                         {
-                            make.Setting_UpFile();
+                            make.Setting_UpFile(Property.TypesOfGeneration);
                         }
 
                         for (int c = 0; c < Property.NumberOfChar; c++)
