@@ -223,7 +223,7 @@ namespace crisis
 
         public int FunctionStartblock(string[] args)
         {
-            Tools obj2 = new Tools();
+            Utility obj2 = new Utility();
             Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
@@ -262,7 +262,7 @@ namespace crisis
 
         public int FunctionEndblock(string[] args)
         {
-            Tools obj2 = new Tools();
+            Utility obj2 = new Utility();
             Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();

@@ -25,8 +25,32 @@ namespace crisis
         
         public static void MenuLeetSpeakPrint()
         {
-            Console.WriteLine(" leet speak\t\t\t 1337 5p34k\n");
-            Console.Write(" Enter the name and path of your file : ");
+            Console.WriteLine(" leet speak\t\t\t 1337 5p34k\n");            
+        }
+
+        public static void MenuLowercaseToUppercasePrint()
+        {
+            Console.WriteLine(" hello world\t\t\t HELLO WORLD\n");
+        }
+
+        public static void MenuUppercaseToLowercasePrint()
+        {
+            Console.WriteLine(" HELLO WORLD\t\t\t hello world\n");
+        }
+
+        public static void MenuCharLowercaseToUppercasePrint()
+        {
+            Console.WriteLine(" Hello World\t\t\t hELLO wORLD\n");
+        }
+
+        public static void MenuCharUppercaseToLowercasePrint()
+        {
+            Console.WriteLine(" Hello World\t\t\t hello world\n");
+        }
+
+        public static void MenuAutoUppercaseLowercasePrint()
+        {
+            Console.WriteLine(" HellO WorlD\t\t\t hELLo wORLd \n");
         }
 
         public static void SfrPrint()

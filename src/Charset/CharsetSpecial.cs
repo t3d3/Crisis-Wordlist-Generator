@@ -17,7 +17,7 @@ namespace crisis
                     charsetSelecting.Add(System.IO.File.ReadAllText(CharsetName.ToString()));
                     booleanType = false;
                     MainMenu.BooleanCategoryMenu = false;
-                    MenuParameter.TypesOfGeneration = 8;
+                    
                 }
                 catch (OutOfMemoryException e)
                 {

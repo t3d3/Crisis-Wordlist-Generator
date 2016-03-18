@@ -186,7 +186,7 @@ namespace crisis
 
         internal void ChangeStartblockPattern()
         {
-            Tools obj = new Tools();
+            Utility obj = new Utility();
             b = true;
 
             while (b)
@@ -242,7 +242,7 @@ namespace crisis
 
         internal void ChangeEndblockPattern()
         {
-            Tools obj = new Tools();
+            Utility obj = new Utility();
             b = true;
 
             while (b)
@@ -469,7 +469,24 @@ namespace crisis
             }
         } // End Fonction       
 
+        public static void CrisisServer()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n[+]");
+            Console.ResetColor();
+            Console.Write(" Please enter the LHOST : ");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Property.Lhost = Console.ReadLine();
+            Console.ResetColor();
 
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("[+]");
+            Console.ResetColor();
+            Console.Write(" Please enter the LPORT : ");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Property.Lport = int.Parse(Console.ReadLine());
+            Console.ResetColor();
+        }
         
     }// End class
 } // End Namespace

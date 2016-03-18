@@ -17,110 +17,26 @@ namespace crisis
             MainMenu runMenu = new MainMenu();
             runMenu.Start();
             runMenu.Menu();
+            
+            FilesNameDirectory os = new FilesNameDirectory();
+            os.FilesPathDirectory();
 
-            Statistical info = new Statistical();
-            MenuParameter config = new MenuParameter();
-
-            if (Property.TypesOfGeneration == 1)
+            if (Property.TypeOfProcess == 1)
             {
-                CombinationPattern obj = new CombinationPattern();
 
-                config.SizeOfWorld();
-                config.ChangeStartblockPattern();
-                config.ChangeEndblockPattern();
-                config.ReversePaterne();
-
-                info.CalculOfAllCombinaison(Repeat);
-                config.SaveCharsetInFilesTxt(ref saveFile, ref zip);
-
-                info.StatiscalInfoSize();
-
-                obj.CombinationPrintF(SaveFile,Zip,Repeat);
-                MenuParameter.TypesOfGeneration = 0;
             }
-            if (Property.TypesOfGeneration == 2)
+            else if (Property.TypeOfProcess == 2)
             {
-               CombinationPattern obj = new CombinationPattern();
-
-                config.SizeOfWorld();
-                config.Repetition(ref repeat);
-                config.ChangeStartblockPattern();
-                config.ChangeEndblockPattern();
-                config.ReversePaterne();
-                
-                
-                info.CalculOfAllCombinaison(Repeat);
-                config.SaveCharsetInFilesTxt(ref saveFile, ref zip);
-
-                info.StatiscalInfoSize();
-
-                obj.CombinationPrintF(SaveFile, Zip,Repeat);
-
-                MenuParameter.TypesOfGeneration = 0;
+                LocalBruteForcerWordlist(SaveFile, Repeat, Zip);
             }
-            else if (Property.TypesOfGeneration == 3 | Property.TypesOfGeneration == 6)
+            else if (Property.TypeOfProcess == 3)
             {
-                Randomizer obj = new Randomizer();
-
-                if (Property.TypesOfGeneration == 3)
-                {
-                    config.SizeOfWorld();
-                }
-
-                info.CalculOfAllCombinaison(Repeat);
-                config.SaveCharsetInFilesTxt(ref saveFile, ref zip);
-
-                info.StatiscalInfoSize();
-
-                obj.RamdonPrintF(SaveFile,Zip);
-
-                MenuParameter.TypesOfGeneration = 0;
+                TransformWordlist();
             }
-            else if (Property.TypesOfGeneration == 4)
+            else if (Property.TypeOfProcess == 4)
             {
-                VariationnPattern obj = new VariationnPattern();
 
-                config.SizeOfWorld();
-                config.Repetition(ref repeat);
-                config.ChangeStartblockPattern();
-                config.ChangeEndblockPattern();
-                config.ReversePaterne();
-
-                info.CalculOfAllCombinaison(Repeat);
-                config.SaveCharsetInFilesTxt(ref saveFile, ref zip);
-
-                info.StatiscalInfoSize();
-
-                obj.VariationPrintF(SaveFile,Zip,Repeat);
-
-                MenuParameter.TypesOfGeneration = 0;
-            }
-            else if (Property.TypesOfGeneration == 5)
-            {
-                PermutationPattern obj = new PermutationPattern();
-
-                config.SizeOfWorld();
-                config.Repetition(ref repeat);
-                config.ChangeStartblockPattern();
-                config.ChangeEndblockPattern();
-                config.ReversePaterne();
-
-                
-                info.CalculOfAllCombinaison(Repeat);
-                config.SaveCharsetInFilesTxt(ref saveFile, ref zip);
-                info.StatiscalInfoSize();
-
-                obj.PermutationPrintF(SaveFile,Zip,Repeat);
-
-                MenuParameter.TypesOfGeneration = 0;
-            }
-            else if (Property.TypesOfGeneration == 8)
-            {
-                LeetSpeak obj = new LeetSpeak();
-                obj.L33tSpeekPrintF();
-
-                MenuParameter.TypesOfGeneration = 0;
-            }
+            }           
         }
 
 
@@ -129,7 +45,8 @@ namespace crisis
         {
             Command run = new Command();
             Statistical info = new Statistical();
-
+            FilesNameDirectory os = new FilesNameDirectory();
+            os.FilesPathDirectory();
             Property options = new Property();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
@@ -372,7 +289,7 @@ namespace crisis
             }
             else if (options.LeetSpeak)
             {
-                LeetSpeak obj = new LeetSpeak();
+                TransformTextFiles obj = new TransformTextFiles();
                 MenuParameter.TypesOfGeneration = 8;
 
                 for (int i = 0; i < args.Length; i++)
@@ -398,7 +315,156 @@ namespace crisis
             }           
         }
 
+        internal static void LocalBruteForcerWordlist(bool _saveFile, bool _repeat, bool _zip)
+        {
+            Statistical info = new Statistical();
+            MenuParameter config = new MenuParameter();
 
+            if (Property.TypesOfGeneration == 1)
+            {
+                CombinationPattern obj = new CombinationPattern();
+
+                config.SizeOfWorld();
+                config.ChangeStartblockPattern();
+                config.ChangeEndblockPattern();
+                config.ReversePaterne();
+
+                info.CalculOfAllCombinaison(_repeat);
+                config.SaveCharsetInFilesTxt(ref _saveFile, ref _zip);
+
+                info.StatiscalInfoSize();
+
+                obj.CombinationPrintF(_saveFile, _zip, _repeat);
+                MenuParameter.TypesOfGeneration = 0;
+            }
+            if (Property.TypesOfGeneration == 2)
+            {
+                CombinationPattern obj = new CombinationPattern();
+
+                config.SizeOfWorld();
+                config.Repetition(ref _repeat);
+                config.ChangeStartblockPattern();
+                config.ChangeEndblockPattern();
+                config.ReversePaterne();
+
+
+                info.CalculOfAllCombinaison(_repeat);
+                config.SaveCharsetInFilesTxt(ref _saveFile, ref _zip);
+
+                info.StatiscalInfoSize();
+
+                obj.CombinationPrintF(_saveFile, _zip, _repeat);
+
+                MenuParameter.TypesOfGeneration = 0;
+            }
+            else if (Property.TypesOfGeneration == 3 | Property.TypesOfGeneration == 6)
+            {
+                Randomizer obj = new Randomizer();
+
+                if (Property.TypesOfGeneration == 3)
+                {
+                    config.SizeOfWorld();
+                }
+
+                info.CalculOfAllCombinaison(_repeat);
+                config.SaveCharsetInFilesTxt(ref _saveFile, ref _zip);
+
+                info.StatiscalInfoSize();
+
+                obj.RamdonPrintF(_saveFile, _zip);
+
+                MenuParameter.TypesOfGeneration = 0;
+            }
+            else if (Property.TypesOfGeneration == 4)
+            {
+                VariationnPattern obj = new VariationnPattern();
+
+                config.SizeOfWorld();
+                config.Repetition(ref _repeat);
+                config.ChangeStartblockPattern();
+                config.ChangeEndblockPattern();
+                config.ReversePaterne();
+
+                info.CalculOfAllCombinaison(_repeat);
+                config.SaveCharsetInFilesTxt(ref _saveFile, ref _zip);
+
+                info.StatiscalInfoSize();
+
+                obj.VariationPrintF(_saveFile, _zip, _repeat);
+
+                MenuParameter.TypesOfGeneration = 0;
+            }
+            else if (Property.TypesOfGeneration == 5)
+            {
+                PermutationPattern obj = new PermutationPattern();
+
+                config.SizeOfWorld();
+                config.Repetition(ref _repeat);
+                config.ChangeStartblockPattern();
+                config.ChangeEndblockPattern();
+                config.ReversePaterne();
+
+
+                info.CalculOfAllCombinaison(_repeat);
+                config.SaveCharsetInFilesTxt(ref _saveFile, ref _zip);
+                info.StatiscalInfoSize();
+
+                obj.PermutationPrintF(_saveFile, _zip, _repeat);
+
+                MenuParameter.TypesOfGeneration = 0;
+            }            
+            else if (Property.TypesOfGeneration == 9)
+            {
+                crisis.MenuParameter.CrisisServer();
+                new NetworkServer();
+            }
+        }
+
+        internal static void TransformWordlist()
+        {
+            SubMenu objSubMenu = new SubMenu();
+            objSubMenu.MenuReadFileTxt();
+
+            DateTime obj1 = DateTime.Now;
+            string input = obj1.ToString().Substring(10);
+
+            Console.Write("\n{0} : ", input);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("This work, please wait !\n");
+            Console.ResetColor();
+
+            TransformTextFiles objTransforming = new TransformTextFiles();
+
+            if (Property.TypesOfTransforming == 1)
+            {                
+                objTransforming.L33tSpeekPrintF();
+                Property.TypesOfTransforming = 0;
+            }
+            if (Property.TypesOfTransforming == 2)
+            {
+                objTransforming.LowercaseToUppercasePrintF();
+                Property.TypesOfTransforming = 0;
+            }
+            else if (Property.TypesOfTransforming == 3)
+            {
+                objTransforming.UppercaseToLowercasePrintF();
+                Property.TypesOfTransforming = 0;
+            }
+            else if (Property.TypesOfTransforming == 4)
+            {
+                objTransforming.AutoUppercaseLowercasekPrintF();
+                Property.TypesOfTransforming = 0;
+            }
+
+            Utility printfPathGenerateFile = new Utility();
+            printfPathGenerateFile.GenerateOut();
+
+            Console.Write("{0} : ", input);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Work finish !\n");
+            Console.ResetColor();
+            
+        }
 
 
     }

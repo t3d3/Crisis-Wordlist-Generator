@@ -119,11 +119,14 @@ namespace crisis
                     {
                         LocalBruteForcerWordlistMenu();
                         booleanCategorySubMainMenu = false;
+                        Property.TypeOfProcess = 2;
                     }
                     //TRANSFORMING WORDLIST NO JUTSU
                     if (dislayMainSubMain == ++i)
                     {
                         TransformWordlistMenu();
+                        booleanCategorySubMainMenu = false;
+                        Property.TypeOfProcess = 3;
                     } 
                     if (dislayMainSubMain == ++i)
                     {
@@ -392,19 +395,7 @@ namespace crisis
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n {0}) ", i++);
             Console.ResetColor();
-
-            Console.WriteLine(" \t CHARACTER LOWERCASE TO CHARACTER UPPERCASE ");
-            
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", i++);
-            Console.ResetColor();
-
-            Console.WriteLine(" \t CHARACTER UPPERCASE TO CHARACTER LOWERCASE");            
-
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write("\n {0}) ", i++);
-            Console.ResetColor();
-
+                       
             Console.WriteLine(" \t AUTOMATIC CHARACTER  LOWERCASE <=> UPPERCASE");
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -441,26 +432,31 @@ namespace crisis
                     //LEET SPEAK
                     if (dislayMainSubMain == i++)
                     {
-                        SubMenu objSubMenu = new SubMenu();
-                        objSubMenu.MenuLeetSpeak();
+                        DisplayCharset.MenuLeetSpeakPrint();
+                        Property.TypesOfTransforming = 1;
+                        booleanCategoryMenu = false;
                     }
                     // LOWERCASE TO UPPERCASE
                     if (dislayMainSubMain == i++)
-
+                    {
+                        DisplayCharset.MenuLowercaseToUppercasePrint();
+                        Property.TypesOfTransforming = 2;
+                        booleanCategoryMenu = false;
+                    }
                     // UPPERCASE TO LOWERCASE
                     if (dislayMainSubMain == i++)
                     {
-                        
-                    }
-                    // CHARACTER UPPERCASE TO CHARACTER LOWERCASE
-                    if (dislayMainSubMain == i++)
-
-                    //CHARACTER LOWERCASE TO CHARACTER UPPERCASE
-                    if (dislayMainSubMain == i++)
-
+                        DisplayCharset.MenuUppercaseToLowercasePrint();
+                        Property.TypesOfTransforming = 3;
+                        booleanCategoryMenu = false;
+                    }                    
                     // AUTOMATIC CHARACTER  LOWERCASE <=> UPPERCASE
                     if (dislayMainSubMain == i++)
-                                   
+                    {
+                        DisplayCharset.MenuAutoUppercaseLowercasePrint();
+                        Property.TypesOfTransforming = 4;
+                        booleanCategoryMenu = false;
+                    }                                   
                     if (dislayMainSubMain == 88)
                     {
                         MainMenu obj = new MainMenu();

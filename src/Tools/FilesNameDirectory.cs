@@ -104,50 +104,90 @@ namespace crisis
             if (OsDetect() == true)
             {
                 filePath[0] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/default";
-                filePath [1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/crunch";
-                filePath [2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/combination";
-                filePath [3] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/random";
-                filePath [4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/variation";
-                filePath [5] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/permutation";
-                filePath [6] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/wifi";
-                filePath [7] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/birthdate";                
-                filePath [8] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/leet_speak";
+                fileName[0] = @"/default_";
+
+                if (Property.TypeOfProcess == 2 )
+                {
+                    filePath[1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/crunch";
+                    filePath[2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/combination";
+                    filePath[3] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/random";
+                    filePath[4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/variation";
+                    filePath[5] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/permutation";
+                    filePath[6] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/wifi";
+                    filePath[7] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/birthdate";
+                    filePath[8] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/leet_speak";
+
+                    fileName [1] = @"/charset_";
+                    fileName [2] = @"/wordlist_";
+                    fileName [3] = @"/wordlist_";
+                    fileName [4] = @"/wordlist_";
+                    fileName [5] = @"/wordlist_";
+                    fileName [6] = @"/dico_wifi_"+ Charset.CharsetName + "_";
+                    fileName [7] = @"/birthdate_";
+                    fileName [8] = @"/dico1337_";
+                }
+                else if (Property.TypeOfProcess == 3)
+                {
+                    filePath[1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/transforming/leet_speak";
+                    filePath[2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/transforming/uppercase";
+                    filePath[3] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/transforming/lowercase";
+                    filePath[4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/transforming/mixChar";
+
+                    fileName[1] = @"/wordlist1337_";
+                    for (int i = 2; i < fileName.Length; i++)
+                    {
+                        fileName[i] = @"/wordlist_";
+                    }                    
+                }
+
                 
-                fileName [0] = @"/default_";
-                fileName [1] = @"/charset_";
-                fileName [2] = @"/wordlist_";
-                fileName [3] = @"/wordlist_";
-                fileName [4] = @"/wordlist_";
-                fileName [5] = @"/wordlist_";
-                fileName [6] = @"/dico_wifi_"+ Charset.CharsetName + "_";
-                fileName [7] = @"/birthdate_";
-                fileName [8] = @"/dico1337_";
             } 
             else
             {
-                filePath [0] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\default";
-                filePath [1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\charset";
-                filePath [2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\combination";
-                filePath [3] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\random";
-                filePath [4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\variation";
-                filePath [5] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\permutation";                
-                filePath [6] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\wifi";
-                filePath [7] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\birthdate";
-                filePath [8] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\leet_speak";
+                filePath[0] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\default";
+                fileName[0] = @"\default_";
 
-                fileName [0] = @"\default_"; ;
-                fileName [1] = @"\charset_";
-                fileName [2] = @"\wordlist_";
-                fileName [3] = @"\wordlist_";
-                fileName [4] = @"\wordlist_";
-                fileName [5] = @"\wordlist_";
-                fileName [6] = @"\dico_wifi_" + Charset.CharsetName + "_";
-                fileName [7] = @"\birthdate_";                
-                fileName [8] = @"\dico1337_";                
+                if (Property.TypeOfProcess == 2)
+                {
+                    filePath[1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\charset";
+                    filePath[2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\combination";
+                    filePath[3] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\random";
+                    filePath[4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\variation";
+                    filePath[5] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\permutation";
+                    filePath[6] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\wifi";
+                    filePath[7] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\birthdate";
+                    filePath[8] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\leet_speak";
+
+                    fileName[1] = @"\charset_";
+                    fileName[2] = @"\wordlist_";
+                    fileName[3] = @"\wordlist_";
+                    fileName[4] = @"\wordlist_";
+                    fileName[5] = @"\wordlist_";
+                    fileName[6] = @"\wordlist_" + Charset.CharsetName + "_";
+                    fileName[7] = @"\birthdate_";
+                    fileName[8] = @"\dico1337_";  
+                }
+                else if (Property.TypeOfProcess == 3)
+                {
+
+                    filePath[1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\transforming\leet_speak";
+                    filePath[2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\transforming\uppercase";
+                    filePath[3] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\transforming\lowercase";
+                    filePath[4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\transforming\mixChar";
+                    
+                    fileName[1] = @"\wordlist1337_";
+                    
+                    for (int i = 2; i < fileName.Length; i++)
+                    {
+                        fileName[i] = @"\wordlist_";
+                    }
+                }
+
+                              
             }
         }
 
-        public void Setting_UpFile()
+        public void Setting_UpFile(int _i)
         {
 
             bool b = true;            
@@ -156,17 +196,17 @@ namespace crisis
             {
                 try
                 {
-                    if (!Directory.Exists(filePath[MenuParameter.TypesOfGeneration]))
+                    if (!Directory.Exists(filePath[_i]))
                     {
-                        System.IO.Directory.CreateDirectory(filePath[MenuParameter.TypesOfGeneration]);
+                        System.IO.Directory.CreateDirectory(filePath[_i]);
                     }
-                    else if (File.Exists(filePath[MenuParameter.TypesOfGeneration] + fileName[MenuParameter.TypesOfGeneration] + numberFile + extension[MenuParameter.IExtension]))
+                    else if (File.Exists(filePath[_i] + fileName[_i] + numberFile + extension[MenuParameter.IExtension]))
                     {
                         numberFile++;
                     }
-                    else if (!Directory.Exists(filePath[MenuParameter.TypesOfGeneration] + fileName[MenuParameter.TypesOfGeneration] + numberFile + ".txt"))
+                    else if (!Directory.Exists(filePath[_i] + fileName[_i] + numberFile + ".txt"))
                     {
-                        workFile = new StreamWriter(filePath[MenuParameter.TypesOfGeneration] + fileName[MenuParameter.TypesOfGeneration] + numberFile + ".txt");
+                        workFile = new StreamWriter(filePath[_i] + fileName[_i] + numberFile + ".txt");
                         b = false;                      
                     }
                 }

@@ -28,9 +28,7 @@ namespace crisis
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Console.ForegroundColor = ConsoleColor.White;
-            FilesNameDirectory os = new FilesNameDirectory();
-            os.FilesPathDirectory();
+            Console.ForegroundColor = ConsoleColor.White;            
             Console.SetWindowSize(100, 25);
 
             if (args.Length == 0)

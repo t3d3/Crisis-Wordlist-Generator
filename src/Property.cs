@@ -29,6 +29,14 @@ namespace crisis
             set { Property.typesOfGeneration = value; }
         }
 
+        private static int typesOfTransforming;
+
+        public static int TypesOfTransforming
+        {
+            get { return Property.typesOfTransforming; }
+            set { Property.typesOfTransforming = value; }
+        }
+
         private static byte typeOfProcess;
 
         public static byte TypeOfProcess

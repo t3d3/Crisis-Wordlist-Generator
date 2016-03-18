@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace crisis
 {
@@ -56,11 +57,11 @@ namespace crisis
             }
         }
 
-        internal void MenuLeetSpeak()
+        internal void MenuReadFileTxt()
         {
             while (Charset.BooleanType)
             {
-                DisplayCharset.MenuLeetSpeakPrint();
+                Console.Write(" Enter the name and path of your file : ");
                 Charset.CharsetName = Console.ReadLine().ToLower();
                 Charset.ReadFileTxt();
             }
@@ -92,7 +93,132 @@ namespace crisis
                      Charset.BooleanType = true;
                 }
             }
-        } 
+        }
+
+        internal void DonwloadMenu()
+        {
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.1.2 \n");
+            Console.ResetColor();
+
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n N°");
+            Console.ResetColor();
+
+            Console.WriteLine(" \tDESCRIPTION \n");
+            int i = 0;
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine("\t 1337");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t LATIN\t");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t CUSTOM");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t SPECIAL");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t SWEDISH");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t CYRILLIC");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t SYLLABLE FR");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t ROUTER\\BOX WIFI");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n 88) ");
+            Console.ResetColor();
+
+            Console.WriteLine("\t RETURN");
+
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" 99)");
+            Console.ResetColor();
+
+            Console.WriteLine("\t EXIT ");
+
+            Console.ResetColor();
+
+            booleanSubMenu = true;
+            while (booleanSubMenu)
+            {
+                try
+                {
+                    //Charset.BooleanType = true;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("\n[+] ");
+                    Console.ResetColor();
+                    Console.Write(" Type a number to download a wordlist : ");
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    int dislayMainSubMain = int.Parse(Console.ReadLine());
+                    Console.ResetColor();
+                    Console.Write("\n");
+                    i = 0;
+
+                    if (dislayMainSubMain == i++)
+                    {
+                        
+                    }
+                    
+                    if (dislayMainSubMain == i++)
+                        
+                    
+                    
+                    // EXIT
+                    if (dislayMainSubMain == i++)
+                        Environment.Exit(0);
+                    if (dislayMainSubMain == 88)
+                    {
+                        MainMenu obj = new MainMenu();
+                        new Thread(obj.Menu).Start();
+                        break;
+                    }
+                    if (dislayMainSubMain == 99)
+                        Environment.Exit(0);
+
+                }
+                catch (FormatException e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n Enter the number corresponding !");
+                    Console.WriteLine(" {0} \n", e.Message);
+                    Console.ResetColor();
+                }
+            }
+        }
        
     }
 }
