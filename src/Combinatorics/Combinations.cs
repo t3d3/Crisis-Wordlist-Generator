@@ -397,7 +397,7 @@ namespace crisis {
             var obj = CaclulCombination(_repeat);            
             
             FilesNameDirectory make = new FilesNameDirectory();
-            Tools tool = new Tools();
+            Utility tool = new Utility();
             BigInteger cpt = 0;
 
             string s = null;
@@ -410,7 +410,7 @@ namespace crisis {
                 {
                     if (iMakeFile == 0)
                     {
-                        make.Setting_UpFile();
+                        make.Setting_UpFile(Property.TypesOfGeneration);
                     }
 
                     for (int y = 0; y < Property.NumberOfChar; y++)
