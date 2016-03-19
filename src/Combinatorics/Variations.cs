@@ -530,7 +530,7 @@ namespace crisis {
                         make.WorkFile.Flush();
                         make.WorkFile.Close();
                         tool.Zipper(_zip);
-                        tool.GenerateOut();
+                        tool.GenerateOut(Property.TypesOfGeneration,Property.IExtension);
                         iMakeFile = 0;
                     }
                 }

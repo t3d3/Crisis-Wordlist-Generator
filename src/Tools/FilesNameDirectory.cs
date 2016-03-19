@@ -122,16 +122,16 @@ namespace crisis
                     fileName [3] = @"/wordlist_";
                     fileName [4] = @"/wordlist_";
                     fileName [5] = @"/wordlist_";
-                    fileName [6] = @"/dico_wifi_"+ Charset.CharsetName + "_";
+                    fileName[6] =  @"/wordlist_" + Charset.CharsetName + "_";
                     fileName [7] = @"/birthdate_";
                     fileName [8] = @"/dico1337_";
                 }
                 else if (Property.TypeOfProcess == 3)
                 {
-                    filePath[1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/transforming/leet_speak";
-                    filePath[2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/transforming/uppercase";
-                    filePath[3] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/transforming/lowercase";
-                    filePath[4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/transforming/mixChar";
+                    filePath[1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/leet_speak";
+                    filePath[2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/uppercase";
+                    filePath[3] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/lowercase";
+                    filePath[4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/mixChar";
 
                     fileName[1] = @"/wordlist1337_";
                     for (int i = 2; i < fileName.Length; i++)
@@ -170,10 +170,10 @@ namespace crisis
                 else if (Property.TypeOfProcess == 3)
                 {
 
-                    filePath[1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\transforming\leet_speak";
-                    filePath[2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\transforming\uppercase";
-                    filePath[3] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\transforming\lowercase";
-                    filePath[4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\transforming\mixChar";
+                    filePath[1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\leet_speak";
+                    filePath[2] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\uppercase";
+                    filePath[3] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\lowercase";
+                    filePath[4] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\mixChar";
                     
                     fileName[1] = @"\wordlist1337_";
                     

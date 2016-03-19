@@ -425,10 +425,9 @@ namespace crisis
             SubMenu objSubMenu = new SubMenu();
             objSubMenu.MenuReadFileTxt();
 
-            DateTime obj1 = DateTime.Now;
-            string input = obj1.ToString().Substring(10);
+            Utility objHour = new Utility();
 
-            Console.Write("\n{0} : ", input);
+            Console.Write("\n{0} : ", objHour.Hour());
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("This work, please wait !\n");
             Console.ResetColor();
@@ -437,33 +436,24 @@ namespace crisis
 
             if (Property.TypesOfTransforming == 1)
             {                
-                objTransforming.L33tSpeekPrintF();
-                Property.TypesOfTransforming = 0;
+                objTransforming.L33tSpeekPrintF();               
             }
             if (Property.TypesOfTransforming == 2)
             {
-                objTransforming.LowercaseToUppercasePrintF();
-                Property.TypesOfTransforming = 0;
+                objTransforming.LowercaseToUppercasePrintF();                
             }
             else if (Property.TypesOfTransforming == 3)
             {
-                objTransforming.UppercaseToLowercasePrintF();
-                Property.TypesOfTransforming = 0;
+                objTransforming.UppercaseToLowercasePrintF();                
             }
             else if (Property.TypesOfTransforming == 4)
             {
-                objTransforming.AutoUppercaseLowercasekPrintF();
-                Property.TypesOfTransforming = 0;
+                objTransforming.AutoUppercaseLowercasekPrintF();                
             }
 
-            Utility printfPathGenerateFile = new Utility();
-            printfPathGenerateFile.GenerateOut();
-
-            Console.Write("{0} : ", input);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Work finish !\n");
-            Console.ResetColor();
-            
+            Utility objUtility2 = new Utility();
+            objUtility2.GenerateOut(Property.TypesOfTransforming,Property.IExtension);           
+            Property.TypesOfTransforming = 0;
         }
 
 

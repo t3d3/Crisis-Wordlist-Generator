@@ -105,6 +105,16 @@ namespace crisis
 
         } // End Function 
 
+        public string ConverterInUppercaseLowercase(string _word)
+        {
+            string wordLeet = null;
+            for (int i = 0; i < _word.Length; i++)
+            {
+                wordLeet += FoundLetterUppercaseLowercase(_word[i]);
+            }
+
+            return wordLeet;
+        }
 
         public char FoundLetterUppercaseLowercase(char _letter)
         {
@@ -125,16 +135,7 @@ namespace crisis
             return letter;
         }
 
-        public string ConverterInUppercaseLowercase(string _word)
-        {
-            string wordLeet = null;
-            for (int i = 0; i < _word.Length; i++)
-            {
-                wordLeet += FoundLetterUppercaseLowercase(_word[i]);
-            }
-
-            return wordLeet;
-        }
+       
 
         public void AutoUppercaseLowercasekPrintF()
         {

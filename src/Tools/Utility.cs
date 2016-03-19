@@ -91,9 +91,9 @@ namespace crisis
             }
         }
 
-        internal void GenerateOut()
+        internal void GenerateOut(int _i, int extention)
         {
-            string[] locate = new string[] { " Generating output at" + Hour() + " : " + FilesNameDirectory.FilePath[MenuParameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[MenuParameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + FilesNameDirectory.Extension[MenuParameter.IExtension] };
+            string[] locate = new string[] { " Generating output at" + Hour() + " : " + FilesNameDirectory.FilePath[_i].ToString() + FilesNameDirectory.FileName[_i] + FilesNameDirectory.NumberFile + FilesNameDirectory.Extension[MenuParameter.IExtension] };
             Console.WriteLine(locate[0].ToString());
         }
 
