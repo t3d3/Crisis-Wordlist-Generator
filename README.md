@@ -4,46 +4,42 @@ Work on Windows, Debian and Kali Linux. Please reading  <a href="https://github.
 
 # Run
 <pre style=" border: 1px solid black; padding:10px">
-# crisis
+root@kali:~# crisis 
 
-Hacking US   : hackforums.net 
+ Hacking US   : hackforums.net 
  Trouble US   : forums.kali.org
  Hacking FR   : hackademics.fr
  Trouble FR   : kali-linux.fr/forum
  Hacking Wifi : crack-wifi.com/forum
 
 
- Crisis Wordlist Generator  by Teeknofil, version : 1.1.0 
+ Crisis Wordlist Generator  by Teeknofil, version : 1.1.2 
 
 
- N° 	DESCRIPTION 
+ 1) 	 CREATE WORDLIST NO JUTSU 
 
- 0) 	 1337
- 1)  	 LATIN	
- 2)  	 CUSTOM
- 3)  	 SPECIAL
- 4)  	 SWEDISH
- 5)  	 CYRILLIC
- 6)  	 SYLLABLE FR
- 7)  	 ROUTER\BOX WIFI
- 8) 	 EXIT 
+ 2) 	 TRANSFORMING WORDLIST NO JUTSU
 
-[+]  With what category you want to work : 
+ 3) 	 DOWNLOAD WORDLIST NO JUTSU 	
+
+ 99)	 EXIT 
+
+[+]  With what category you want to work :  
 </pre>
 
 # Manual
 
 <pre style=" border: 1px solid black; padding:10px">
 
-crisis -h
+root@kali:~# crisis -h
 
 
-Crisis Wordlist Generator by Teeknofil,  version : 1.1.0
+Crisis Wordlist Generator by Teeknofil,  version : 1.1.2
 
 
 SYNOPSIS
 
-crisis <method> -l <len> -f [<charset string>] [options]
+crisis [method] -l [len] -f [charset string] [options]
 
 DESCRIPTION
 
@@ -57,38 +53,52 @@ Help:
    --help-wordlist      Displays the list of wordlist                           
 
 Method:                                                                         
-   -1, --crunch         Charset list customized to crunch wordlist generator    
-                        example : crisis -1 -l 10 -f ualpha -u                  
-   -2, --combination    Generate a character list combination                   
-                        example : crisis -2 -l 10 -f lalpha -u                  
-   -3, --random         Generate random character                               
-                        example : crisis -3 -l 15 -f mixalpha -u                
-   -4, --variation      Generate a character list variation                     
-                        example : crisis -4 -l 10 -f lalpha                     
-   -5, --permutation    Generate a character list permutation                   
-                        example : crisis -5 -l 10 -f lalpha                     
+   -1, --crunch         Charset list customized to crunch wordlist generator.   
+                        Example : crisis -1 -l 10 -f ualpha -u                  
+   -2, --combination    Generate a character list combination.                  
+                        Example : crisis -2 -l 5 -f MyWord -u                   
+   -3, --random         Generate random character.                              
+                        Example : crisis -3 -l 15 -f mixalpha -u                
+   -4, --variation      Generate a character list variation.                    
+                        Example : crisis -4 -l 10 -f lalpha                     
+   -5, --permutation    Generate a character list permutation.                  
+                        Example : crisis -5 -l 10 -f lalpha                     
    -6, --wifi           Generer des caractere specialement                      
                         pour un routeur ou une box                              
                         Exemple :                                               
-                        crisis -6 -f livebox-sagem  -o                          
+                        crisis -6 -f livebox-sagem                              
                         crisis -6 -f sfr -u | aircrack-ng                       
                         -e SFR_???? -w- out-01.cap                              
-   -7, --birthdate      Not available                                           
-   -8, --leetspeak      Convert a list of words in language Leet Speak          
-                        Example : crisis  -4 crisis\dico.txt -o                 
 
 Options:                                                                        
-   -e, --end            Specifies a ending string, eg: god77xD                  
+   -b, --byte           Specifies the size of the output file,                  
+                         only works if -o is used,  i.e.:  60 mib.              
+                        For example  is 500 mib correct 500mb  is NOT correct.  
+                        The three types are based on 1024.                      
+                        Example : crisis -2 -l 10 -f                            
+                        JohnDoe0123456789 -b 50 mib -o will generate 1          
+                        files  valid values for type  are   kib, mib, and gib.  
+                        NOTE  There is  space between the number and type.      
+   -c, --line           Specifies the number of lines to  write  to  output     
+                        file,  only works if -o is used.                        
+                        Example : crisis -4 -l 10 -f mixalpha -r -o -c 10000 -z 
+   -e, --endblock       Specifies a ending string, eg: god77xD.                 
+                        Example : crisis -2 -l 16 -f                            
+                         sv-mixalpha  -e "Do a barrel roll"                     
    -i, --invert         Inverts  the  output  so  instead  of  aaa,aab,aac,aad, 
                         etc you get aaa,baa,caa,daa,aba,bba, etc                
    -o, --output         Specify the save file in the                            
                         crisis folder on the desktop                            
-   -r, --repeat         Specify if you want a repetition of                     
-                        characters with "true" or "false", eg: -r true          
-   -s, --startblock     Specifies a starting string, eg: qwerty                 
+   -r, --repeat         Specify if you want a repetition of characters.         
+                        Example : crisis -5 -l 10 -f  sv-mixalpha  -r           
+   -s, --startblock     Specifies a starting string, eg: qwerty.                
+                        Example : crisis -2 -l 15 -f                            
+                         sv-mixalpha  -s "Hello World"                          
    -u, --disables       The -u option disables the print size .                 
                         This should be the last option.                         
-   -z, --zip            Not available                                           
+   -z, --zip            Compresses  the output from the -o option.              
+                        Example : crisis -2 -l 10 -f                            
+                        ualpha -r  -o  -b 1024 mib -z                           
 
 Parameter:                                                                      
    -f, --charset-name   Specifies a character set from crisis,                  
