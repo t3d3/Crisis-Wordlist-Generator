@@ -38,7 +38,7 @@ namespace crisis
             }
             else
             {
-                new Run(args);
+                new Run(args);                
             }           
         }
 

@@ -139,6 +139,10 @@ namespace crisis
                         fileName[i] = @"/wordlist_";
                     }                    
                 }
+                else if (Property.TypeOfProcess == 4)
+                {
+                    filePath[1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"/crisis/donwloads/";                    
+                }
 
                 
             } 
@@ -182,7 +186,10 @@ namespace crisis
                         fileName[i] = @"\wordlist_";
                     }
                 }
-
+                else if (Property.TypeOfProcess == 4)
+                {
+                    filePath[1] = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\crisis\donwloads\";                    
+                }
                               
             }
         }
@@ -204,10 +211,14 @@ namespace crisis
                     {
                         numberFile++;
                     }
-                    else if (!Directory.Exists(filePath[_i] + fileName[_i] + numberFile + ".txt"))
+                    else if (!Directory.Exists(filePath[_i] + fileName[_i] + numberFile + ".txt") & Property.TypeOfProcess != 4)
                     {
                         workFile = new StreamWriter(filePath[_i] + fileName[_i] + numberFile + ".txt");
                         b = false;                      
+                    }
+                    else if (Property.TypeOfProcess == 4)
+                    {
+                        b = false; 
                     }
                 }
                 catch (Exception e)

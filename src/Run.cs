@@ -35,14 +35,13 @@ namespace crisis
             }
             else if (Property.TypeOfProcess == 4)
             {
-
+                DownloadFunctions();
             }           
         }
-
-
-
+        
         public Run(string[] args)
         {
+            Property.TypeOfProcess = 2;
             Command run = new Command();
             Statistical info = new Statistical();
             FilesNameDirectory os = new FilesNameDirectory();
@@ -52,7 +51,7 @@ namespace crisis
             parser.Parse();
 
             //Help must be first
-            if (options.Help)
+            if (options.Help || options.WordlistHelp)
             {
                 run.HelpPrint(args);
             }
@@ -286,29 +285,7 @@ namespace crisis
                 }
 
                 obj.PermutationPrintF(options.SaveFile,options.Zip,options.Repeat);
-            }
-            else if (options.LeetSpeak)
-            {
-                TransformTextFiles obj = new TransformTextFiles();
-                MenuParameter.TypesOfGeneration = 8;
-
-                for (int i = 0; i < args.Length; i++)
-                {
-                    if (args[i].ToString().ToLower() == "-8" | args[i].ToString().ToLower() == "--leetspeak")
-                    {
-                        Charset.CharsetName = args[i + 1].ToString();
-                    }
-                }
-
-                if (options.Disables == false)
-                {
-                    MainMenu runMenu = new MainMenu();
-                    runMenu.Start();
-                }
-
-                Charset.ReadFileTxt();               
-                obj.L33tSpeekPrintF();
-            }
+            }           
             else if (parser.HasErrors)
             {
                 Console.WriteLine(parser.UsageInfo.ToString(78, true));
@@ -454,6 +431,27 @@ namespace crisis
             Utility objUtility2 = new Utility();
             objUtility2.GenerateOut(Property.TypesOfTransforming,Property.IExtension);           
             Property.TypesOfTransforming = 0;
+        }
+
+        private void DownloadFunctions()
+        {
+            Download obj = new Download();
+            List<string> files = obj.GetFileList();
+            files.RemoveAt(0);
+            files.RemoveAt(0);
+
+            FilesNameDirectory dir = new FilesNameDirectory();
+            dir.Setting_UpFile(1);
+            Utility time = new Utility();
+
+            foreach (string file in files)
+            {
+                obj.StartDownload(file);
+                string[] locate = new string[] { " Download output at" + time.Hour() + " : " + FilesNameDirectory.FilePath[1].ToString() + file };
+                Console.WriteLine(locate[0].ToString());
+            }
+
+            Console.WriteLine("\n Download finished\n");
         }
 
 

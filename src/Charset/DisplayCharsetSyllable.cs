@@ -21,7 +21,7 @@ namespace crisis
             Console.ResetColor();
             //lalpha-numeric
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" lalpha-numeric");
+            Console.Write(" lsyllable-numeric");
             Console.ResetColor();
             Console.WriteLine("\t\t\t\tpa,zo,ki,sa,ou,ail,te,zi,ba, ...");
             //lsyllable-numeric-space

@@ -191,6 +191,7 @@ namespace crisis
             Console.Write(" {0}) ", i++);
             Console.ResetColor();
             Console.WriteLine(" \t HEXA");
+
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", i++);
             Console.ResetColor();
@@ -198,6 +199,13 @@ namespace crisis
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", i++);
             Console.ResetColor();
+
+            Console.WriteLine(" \t CUSTOM");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", i++);
+            Console.ResetColor();
+
             Console.WriteLine(" \t SPECIAL CHARACTER");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n {0}) ", i++);
@@ -230,6 +238,12 @@ namespace crisis
                         DisplayCharset.MenuNumericPrint();
                         objSubMenu.GenericMenuSelectCharset();
                         config.TypesOfFileAtGenerate();
+                    }
+                    //CUSTOM    CHARACTER
+                    if (dislayMainSubMain == i++)
+                    {
+                        objSubMenu.MenuCustom();                        
+                        config.TypesOfFileAtGenerate();                        
                     }
                     else if (dislayMainSubMain == i++)
                     {
@@ -412,7 +426,7 @@ namespace crisis
                     else if (dislayMainSubMain == i++)
                     {
                         Console.Clear();
-                        new MainMenu();
+                        new Run();
                     }
 
                 }
@@ -492,7 +506,7 @@ namespace crisis
                     else if (dislayMainSubMain == i++)
                     {
                         Console.Clear();
-                        new MainMenu();
+                        new Run();
                     }
                 }
                 catch (FormatException e)
@@ -560,7 +574,7 @@ namespace crisis
                     else if (dislayMainSubMain == i++)
                     {
                         Console.Clear();
-                        new MainMenu();
+                        new Run();
                     }
                 }
                 catch (FormatException e)

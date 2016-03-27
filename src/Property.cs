@@ -118,10 +118,8 @@ namespace crisis
         private bool mCrunch;
         private bool mCombination;
         private bool mVariation;
-        private bool mPermutation;
-        private bool m1337;
-        private bool mRandom;
-        private bool mBirthDate;
+        private bool mPermutation;        
+        private bool mRandom;        
         private bool mWifi;
 
 
@@ -134,7 +132,7 @@ namespace crisis
           
 
         [CommandLineOption(Name = "2", Aliases = "combination",
-                           Description = "Generate a character list combination.\n Example : crisis -2 -l 10 -f lalpha -u", GroupId = "method")]
+                           Description = "Generate a character list combination.\n Example : crisis -2 -l 5 -f MyWord -u", GroupId = "method")]
 
         public bool Combination
         {
@@ -170,22 +168,7 @@ namespace crisis
             get { return mWifi; }
             set { mWifi = value; }
         }
-
-        [CommandLineOption(Name = "7", Aliases = "birthdate",
-                           Description = "Not available ", GroupId = "method")]
-        public bool BirthDate
-        {
-            get { return mBirthDate; }
-            set { mBirthDate = value; }
-        }
-
-        [CommandLineOption(Name = "8", Aliases = "leetspeak", Description = "Convert a list of words in language Leet Speak \n Example : crisis  -8 crisis\\dico.txt -o ", GroupId = "method")]
-        public bool LeetSpeak
-        {
-            get { return m1337; }
-            set { m1337 = value; }
-        }
-
+       
        
        
         /*
@@ -204,7 +187,7 @@ namespace crisis
 
 
         [CommandLineOption(Name = "b", Aliases = "byte",
-                           Description = "Specifies the size of the output file, \n only works if -o is used,  i.e.:  60 mib. \n For example  is 500 mib correct 500mb  is NOT correct. \n The three types are based on 1024. \n Example :   crisis -3 -l 10 -b 50 mib -o will generate 1 \n files  valid values for type  are   kib, mib, and gib. \n NOTE  There is  space between the number and type.", GroupId = "options")]
+                           Description = "Specifies the size of the output file,  only works if -o is used,  i.e.:  60 mib. \n For example  is 500 mib correct 500mb  is NOT correct. \n The three types are based on 1024. \n Example :   crisis -2 -f JohnDoe0123456789  -l 10 -b 50 mib -o will generate 1 \n files  valid values for type  are   kib, mib, and gib. \n NOTE  There is  space between the number and type.", GroupId = "options")]
         public bool Byte
         {
             get { return mByte; }

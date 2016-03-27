@@ -144,6 +144,21 @@ namespace crisis
                         Charset.CharsetName = args[i].ToString().ToLower();
                         Charset.MixCyrillic();
                     }
+                    else if (i > 1 & i < args.Length & args[i] == "-f") 
+                    {
+                        if (!hex.IsMatch(args[i + 1].ToString().ToLower()) || !numeric.IsMatch(args[i + 1].ToString().ToLower()) || !symbols.IsMatch(args[i + 1].ToString().ToLower()) || !usyllable.IsMatch(args[i + 1].ToString().ToLower()) || !lsyllable.IsMatch(args[i + 1].ToString().ToLower()) || !mixsyllable.IsMatch(args[i + 1].ToString().ToLower()) || !ualpha.IsMatch(args[i + 1].ToString().ToLower()) || !lalpha.IsMatch(args[i + 1].ToString().ToLower()) || !mixalpha.IsMatch(args[i + 1].ToString().ToLower()) || !ualpha_sv.IsMatch(args[i + 1].ToString()) || !lalpha_sv.IsMatch(args[i + 1].ToString().ToLower()) || !mixalpha_sv.IsMatch(args[i + 1].ToString().ToLower()) || !wifi.IsMatch(args[i + 1].ToString().ToLower()) || !lcyrillic.IsMatch(args[i + 1].ToString().ToLower()) || !ucyrillic.IsMatch(args[i + 1].ToString().ToLower()) || !mixcyrillic.IsMatch(args[i + 1].ToString().ToLower()))
+                        {
+                            string s = args[i + 1].ToString();
+                            if (s.Length > 1 & s != null)
+                            {
+                                for (int x = 0; x < s.Length; x++)
+                                {
+                                    Charset.CharsetSelecting.Add(s[x].ToString());
+                                }
+                            }
+                        }                   
+
+                    }
 
                 }
 

@@ -41,7 +41,7 @@ namespace crisis
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
 
-            if (options.Help)
+            if (options.Help )
             {
                 Console.Write(parser.UsageInfo.ToString(80, false));               
 

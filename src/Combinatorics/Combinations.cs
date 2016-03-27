@@ -402,68 +402,78 @@ namespace crisis {
 
             string s = null;
 
-            if (_saveFile)
+            try
             {
-                BigInteger iMakeFile = 0;
-                
-                foreach (IList<string> c in obj)
+                if (_saveFile)
                 {
-                    if (iMakeFile == 0)
+                    BigInteger iMakeFile = 0;
+
+                    foreach (IList<string> c in obj)
                     {
-                        make.Setting_UpFile(Property.TypesOfGeneration);
+                        if (iMakeFile == 0)
+                        {
+                            make.Setting_UpFile(Property.TypesOfGeneration);
+                        }
+
+                        for (int y = 0; y < Property.NumberOfChar; y++)
+                        {
+                            s += c[y];
+                        }
+
+
+                        if (Property.TypesOfGeneration == 1)
+                        {
+                            make.WorkFile.WriteLine("charset" + cpt + " = [" + s.ToString() + "]");
+
+                        }
+                        else
+                        {
+                            make.WorkFile.WriteLine(s);
+                        }
+                        s = null;
+
+                        iMakeFile++;
+                        cpt++;
+
+                        if (iMakeFile >= Property.NumberLine | cpt >= Statistical.NumberOfAllCombination)
+                        {
+                            make.WorkFile.Flush();
+                            make.WorkFile.Close();
+                            tool.Zipper(_zip);
+                            tool.GenerateOut(Property.TypesOfGeneration, Property.IExtension);
+                            iMakeFile = 0;
+                        }
+                    }
+                }
+                else
+                {
+
+                    foreach (IList<string> c in obj)
+                    {
+                        for (int y = 0; y < Property.NumberOfChar; y++)
+                        {
+                            s += c[y];
+                        }
+
+                        if (Property.TypesOfGeneration == 1)
+                        {
+                            Console.WriteLine("charset" + cpt++ + " = [" + s.ToString() + "]");
+                        }
+                        else
+                        {
+                            Console.WriteLine(s);
+                        }
+
+                        s = null;
                     }
 
-                    for (int y = 0; y < Property.NumberOfChar; y++)
-                    {
-                        s += c[y];
-                    }
-
-
-                    if (Property.TypesOfGeneration == 1)
-                    {
-                        make.WorkFile.WriteLine("charset" + cpt + " = [" + s.ToString() + "]");
-                        
-                    }
-                    else
-                    {
-                        make.WorkFile.WriteLine(s);
-                    }
-                    s = null; 
-                    
-                    iMakeFile++;
-                    cpt++; 
-
-                    if (iMakeFile >= Property.NumberLine | cpt >= Statistical.NumberOfAllCombination)
-                    {
-                       make.WorkFile.Flush();
-                       make.WorkFile.Close();
-                       tool.Zipper(_zip);
-                       tool.GenerateOut(Property.TypesOfGeneration,Property.IExtension);
-                       iMakeFile = 0;
-                    }                                                  
                 }
             }
-            else
+            catch (Exception e)
             {
-                foreach (IList<string> c in obj)
-                {
-                    for (int y = 0; y < Property.NumberOfChar; y++)
-                    {
-                        s += c[y];
-                    }
-
-                    if (Property.TypesOfGeneration == 1)
-                    {
-                        Console.WriteLine("charset" + cpt++ + " = [" + s.ToString() + "]");
-                    }
-                    else
-                    {
-                        Console.WriteLine(s);
-                    }
-                    
-                    s = null;
-                }
+                Console.WriteLine(e.Message);
             }
+
         } // End Function
 
         #endregion

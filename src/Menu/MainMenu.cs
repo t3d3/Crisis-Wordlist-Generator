@@ -71,15 +71,15 @@ namespace crisis
 
             int i = 0;
 
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", ++i);
-            Console.ResetColor();
-            Console.WriteLine("\t CRISIS CLIENT/SERVER BRUTE FORCER");            
+            //Console.ForegroundColor = ConsoleColor.DarkGreen;
+            //Console.Write(" {0}) ", ++i);
+            //Console.ResetColor();
+            //Console.WriteLine("\t CRISIS CLIENT/SERVER BRUTE FORCER");            
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n {0}) ", ++i);
             Console.ResetColor();
-            Console.WriteLine("\t CREATE WORDLIST BRUTE FORCER ");
+            Console.WriteLine("\t CREATE WORDLIST NO JUTSU ");
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n {0}) ", ++i);
@@ -102,25 +102,28 @@ namespace crisis
             Console.WriteLine("\t EXIT ");
 
             booleanMainMenu = true;
+            int dislayMainSubMain = 0;
 
             while (booleanMainMenu)
             {
                 try
                 {
-                    //Charset.BooleanType = true;
+                    
+                    i = 0;
+
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("\n[+] ");
                     Console.ResetColor();
                     Console.Write(" With what category you want to work : ");
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    int dislayMainSubMain = int.Parse(Console.ReadLine());
+                    dislayMainSubMain = int.Parse(Console.ReadLine());
                     Console.ResetColor();
                     Console.Write("\n");
-                    i = 0;
 
-                    if (dislayMainSubMain == ++i)
-                    {
-                    }
+
+                    //if (dislayMainSubMain == ++i)
+                    //{
+                    //}
                     if (dislayMainSubMain == ++i)
                     {
                         LocalBruteForcerWordlistMenu();
@@ -133,14 +136,15 @@ namespace crisis
                         Property.TypeOfProcess = 3;
                     } 
                     if (dislayMainSubMain == ++i)
-                    {
-                        //SubMenu obj = new SubMenu();
-                        //obj.DonwloadMenu();
+                    {                        
+                        Property.TypeOfProcess = 4;
+                        BooleanMainMenu = false;
                     }                        
                     // EXIT
                     if (dislayMainSubMain == 99)
                         Environment.Exit(0);
 
+                    
                 }
                 catch (FormatException e)
                 {
@@ -149,6 +153,7 @@ namespace crisis
                     Console.WriteLine(" {0} \n", e.Message);
                     Console.ResetColor();
                 }
+
             }
         }
 
@@ -252,11 +257,7 @@ namespace crisis
             Console.Write(" {0}) ", i++);
             Console.ResetColor();
            
-            Console.WriteLine(" \t CUSTOM");
-
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", i++);
-            Console.ResetColor();
+            
             
             Console.WriteLine(" \t SPECIAL");
 
@@ -316,37 +317,32 @@ namespace crisis
                                         
                     //LATIN    CHARACTER
                     if (dislayMainSubMain == i++)
-                       SubMenu.LatinMenu();
-                    //CUSTOM    CHARACTER
-                    if (dislayMainSubMain == i++)
-                    {
-                        SubMenu objSubMenu = new SubMenu();
-                        objSubMenu.MenuCustom();
-                        MenuParameter config = new MenuParameter();
-                        config.TypesOfFileAtGenerate();
-                    }
+                        SubMenu.LatinMenu();
+                        BooleanMainMenu = false;                    
                     //SPECIAL
                     if (dislayMainSubMain == i++)
                         SubMenu.SpecialMenu();
                     // SWEDISH    CHARACTER    
                     if (dislayMainSubMain == i++)
                         SubMenu.SwedishMenu();
+                        BooleanMainMenu = false;
                     // CYRILLIC    CHARACTER    
                     if (dislayMainSubMain == i++)
                         SubMenu.CyrillicMenu();
+                        BooleanMainMenu = false;
                     // SYLLABLE  CHARACTER
                     if (dislayMainSubMain == i++)
                         SubMenu.SyllableMenu();
+                        BooleanMainMenu = false;
                     if (dislayMainSubMain == i++)
-                        SubMenu.WifiMenu();   
+                        SubMenu.WifiMenu();
+                        BooleanMainMenu = false;
                     // EXIT
                     if (dislayMainSubMain == i++)                    
                         Environment.Exit(0);
                     if (dislayMainSubMain == 88)
                     {
-                        MainMenu obj = new MainMenu();
-                        new Thread(obj.Menu).Start();
-                        BooleanMainMenu = true;
+                        new Run();
                         break;
                     }
                     if (dislayMainSubMain == 99)
@@ -435,6 +431,7 @@ namespace crisis
                         DisplayCharset.MenuLeetSpeakPrint();
                         Property.TypesOfTransforming = 1;
                         booleanCategoryMenu = false;
+                        BooleanMainMenu = false;
                     }
                     // LOWERCASE TO UPPERCASE
                     if (dislayMainSubMain == i++)
@@ -442,6 +439,7 @@ namespace crisis
                         DisplayCharset.MenuLowercaseToUppercasePrint();
                         Property.TypesOfTransforming = 2;
                         booleanCategoryMenu = false;
+                        BooleanMainMenu = false;
                     }
                     // UPPERCASE TO LOWERCASE
                     if (dislayMainSubMain == i++)
@@ -449,6 +447,7 @@ namespace crisis
                         DisplayCharset.MenuUppercaseToLowercasePrint();
                         Property.TypesOfTransforming = 3;
                         booleanCategoryMenu = false;
+                        BooleanMainMenu = false;
                     }                    
                     // AUTOMATIC CHARACTER  LOWERCASE <=> UPPERCASE
                     if (dislayMainSubMain == i++)
@@ -456,135 +455,11 @@ namespace crisis
                         DisplayCharset.MenuAutoUppercaseLowercasePrint();
                         Property.TypesOfTransforming = 4;
                         booleanCategoryMenu = false;
+                        BooleanMainMenu = false;
                     }                                   
                     if (dislayMainSubMain == 88)
                     {
-                        MainMenu obj = new MainMenu();
-                        new Thread(obj.Menu).Start();
-                        BooleanMainMenu = true;
-                        break;
-                    }
-                    if (dislayMainSubMain == 99)
-                        Environment.Exit(0);
-
-                }
-                catch (FormatException e)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\n Enter the number corresponding !");
-                    Console.WriteLine(" {0} \n", e.Message);
-                    Console.ResetColor();
-                }
-            }
-        }
-
-        internal void DonwloadMenu()
-        {
-            Version();
-
-
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write("\n N°");
-            Console.ResetColor();
-
-            Console.WriteLine(" \tDESCRIPTION \n");
-            int i = 0;
-
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", i++);
-            Console.ResetColor();
-
-            Console.WriteLine("\t 1337");
-
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", i++);
-            Console.ResetColor();
-
-            Console.WriteLine(" \t LATIN\t");
-
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", i++);
-            Console.ResetColor();
-
-            Console.WriteLine(" \t CUSTOM");
-
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", i++);
-            Console.ResetColor();
-
-            Console.WriteLine(" \t SPECIAL");
-
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", i++);
-            Console.ResetColor();
-
-            Console.WriteLine(" \t SWEDISH");
-
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", i++);
-            Console.ResetColor();
-
-            Console.WriteLine(" \t CYRILLIC");
-
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", i++);
-            Console.ResetColor();
-
-            Console.WriteLine(" \t SYLLABLE FR");
-
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", i++);
-            Console.ResetColor();
-
-            Console.WriteLine(" \t ROUTER\\BOX WIFI");
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write("\n 88) ");
-            Console.ResetColor();
-
-            Console.WriteLine("\t RETURN");
-
-
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" 99)");
-            Console.ResetColor();
-
-            Console.WriteLine("\t EXIT ");
-
-            Console.ResetColor();
-
-            //booleanSubMenu = true;
-            while (SubMenu.BooleanSubMenu)
-            {
-                try
-                {
-                    //Charset.BooleanType = true;
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write("\n[+] ");
-                    Console.ResetColor();
-                    Console.Write(" Type a number to download a wordlist : ");
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    int dislayMainSubMain = int.Parse(Console.ReadLine());
-                    Console.ResetColor();
-                    Console.Write("\n");
-                    i = 0;
-
-                    if (dislayMainSubMain == i++)
-                    {
-
-                    }
-
-                    if (dislayMainSubMain == i++)
-
-
-
-                        // EXIT
-                        if (dislayMainSubMain == i++)
-                            Environment.Exit(0);
-                    if (dislayMainSubMain == 88)
-                    {
-                        MainMenu obj = new MainMenu();
-                        new Thread(obj.Menu).Start();
-                        break;
+                        new Run();                        
                     }
                     if (dislayMainSubMain == 99)
                         Environment.Exit(0);

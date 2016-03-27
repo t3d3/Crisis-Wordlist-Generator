@@ -94,13 +94,16 @@ FILES = \
 	Combinatorics/Combinations.cs \
 	Combinatorics/GenerateOption.cs \
 	Combinatorics/IMetaCollection.cs \
-	Combinatorics/LeetSpeak.cs \
+	Combinatorics/TransformTextFiles.cs \
 	Combinatorics/Permutations.cs \
 	Combinatorics/Randomizer.cs \
 	Combinatorics/SmallPrimeUtility.cs \
 	Combinatorics/Variations.cs \
 	CommonSrc/CRC32.cs \
 	CommonSrc/Iso8859Dash1Encoding.cs \
+	Tools/Download.cs \
+	Tools/NetworkClient.cs \
+	Tools/NetworkServer.cs \
 	Plossum/Alignment.cs \
 	Plossum/ColumnInfo.cs \
 	Plossum/CommandLine/AssignmentToken.cs \
@@ -147,7 +150,7 @@ FILES = \
 	Run.cs \
 	Terminal/CommandFunctionOptions.cs \
 	Terminal/CommandFunctionPattern.cs \
-	Tools/Tools.cs \
+	Tools/Utility.cs \
 	Properties/AssemblyInfo.cs \
 	Charset/Charset.cs \
 	Terminal/CommandFunctionHelp.cs \
