@@ -41,255 +41,262 @@ namespace crisis
         
         public Run(string[] args)
         {
-            Property.TypeOfProcess = 2;
-            Command run = new Command();
-            Statistical info = new Statistical();
-            FilesNameDirectory os = new FilesNameDirectory();
-            os.FilesPathDirectory();
-            Property options = new Property();
-            CommandLineParser parser = new CommandLineParser(options);
-            parser.Parse();
-
-            //Help must be first
-            if (options.Help || options.WordlistHelp)
+            try
             {
-                run.HelpPrint(args);
-            }
-
-            run.FunctionPattern(args);
-
-            if (options.Crunch)
-            {
-                MenuParameter.TypesOfGeneration = 1;
-                CombinationPattern obj = new CombinationPattern();
-
-                run.FunctionLenght(args);
-
-                if (options.Invert)
+                Property.TypeOfProcess = 2;
+                Command run = new Command();
+                Statistical info = new Statistical();
+                FilesNameDirectory os = new FilesNameDirectory();
+                os.FilesPathDirectory();
+                Property options = new Property();
+                CommandLineParser parser = new CommandLineParser(options);
+                parser.Parse();
+    
+                //Help must be first
+                if (options.Help || options.WordlistHelp)
                 {
-                    run.FunctionInverts(args);
+                    run.HelpPrint(args);
                 }
-
-                if (options.Startblock)
+    
+                run.FunctionPattern(args);
+    
+                if (options.Crunch)
                 {
-                    run.FunctionStartblock(args);
-                }
-
-                if (options.EndBlock)
-                {
-                    run.FunctionEndblock(args);
-                } 
-                
-                run.FunctionByte(args);
-
-                info.CalculOfAllCombinaison(options.Repeat);
-
-                run.FunctionLine(args);
-                if (options.Line == false)
-                {
-                    run.FunctionByte(args);
-                }
-
-                run.FunctionSaveFiles(args);
-
-                if (options.SaveFile)
-                {
-                    run.FunctionZip(args);
-                }
-
-                if (options.Disables == false)
-                {
-                    MainMenu runMenu = new MainMenu();
-                    runMenu.Start();
-                    info.StatiscalInfoSize();
-                }
-
-                obj.CombinationPrintF(options.SaveFile, options.Zip, options.Repeat);
-            }
-            else if (options.Combination)
-            {
-                MenuParameter.TypesOfGeneration = 2;
-                CombinationPattern obj = new CombinationPattern();
-
-                run.FunctionLenght(args);
-                
-                if (options.Invert)
-                {
-                    run.FunctionInverts(args);
-                }
-
-                if (options.Startblock)
-                {
-                    run.FunctionStartblock(args);
-                }
-
-                if (options.EndBlock)
-                {
-                    run.FunctionEndblock(args);
-                }
-                
-
-                info.CalculOfAllCombinaison(options.Repeat);
-
-                if (options.Line)
-                {
-                    run.FunctionLine(args);
-                }
-
-                if (options.Line == false)
-                {
-                    run.FunctionByte(args);
-                }
-
-                
-
-                if (options.SaveFile)
-                {
-                    run.FunctionSaveFiles(args);
-                    run.FunctionZip(args);
-                }
-
-                if (options.Disables == false)
-                {
-                    MainMenu runMenu = new MainMenu();
-                    runMenu.Start();
-                    info.StatiscalInfoSize();
-                }
-
-
-                obj.CombinationPrintF(options.SaveFile,options.Zip,options.Repeat);
-            }
-            else if (options.Random || options.Wifi)
-            {
-                MenuParameter.TypesOfGeneration = 6;
-                Randomizer obj = new Randomizer();
-
-                if (options.Random)
-                {
-                    MenuParameter.TypesOfGeneration = 3;
+                    MenuParameter.TypesOfGeneration = 1;
+                    CombinationPattern obj = new CombinationPattern();
+    
                     run.FunctionLenght(args);
-                }
-
-                info.CalculOfAllCombinaison(options.Repeat);
-                run.FunctionLine(args);
-                if (options.Line == false)
-                {
+    
+                    if (options.Invert)
+                    {
+                        run.FunctionInverts(args);
+                    }
+    
+                    if (options.Startblock)
+                    {
+                        run.FunctionStartblock(args);
+                    }
+    
+                    if (options.EndBlock)
+                    {
+                        run.FunctionEndblock(args);
+                    } 
+                    
                     run.FunctionByte(args);
-                }
-
-                if (options.SaveFile)
-                {
-                  run.FunctionSaveFiles(args);  
-                }
-                
-
-                if (options.SaveFile)
-                {
-                    run.FunctionZip(args);
-                }
-
-                if (options.Disables == false)
-                {
-                    MainMenu runMenu = new MainMenu();
-                    runMenu.Start();
-                    info.StatiscalInfoSize();
-                }
-
-                obj.RamdonPrintF(options.SaveFile,options.Zip);
-            }
-            else if (options.Variation)
-            {
-                MenuParameter.TypesOfGeneration = 4;
-                VariationnPattern obj = new VariationnPattern();
-
-                run.FunctionLenght(args);
-
-                if (options.Invert)
-                {
-                    run.FunctionInverts(args);
-                }
-
-                if (options.Startblock)
-                {
-                    run.FunctionStartblock(args);
-                }
-
-                if (options.EndBlock)
-                {
-                    run.FunctionEndblock(args);
-                }                
-
-                info.CalculOfAllCombinaison(options.Repeat);
-                run.FunctionLine(args);
-                if (options.Line == false)
-                {
-                    run.FunctionByte(args);
-                }                        
-
-                if (options.SaveFile)
-                {
+    
+                    info.CalculOfAllCombinaison(options.Repeat);
+    
+                    run.FunctionLine(args);
+                    if (options.Line == false)
+                    {
+                        run.FunctionByte(args);
+                    }
+    
                     run.FunctionSaveFiles(args);
-                    run.FunctionZip(args);
+    
+                    if (options.SaveFile)
+                    {
+                        run.FunctionZip(args);
+                    }
+    
+                    if (options.Disables == false)
+                    {
+                        MainMenu runMenu = new MainMenu();
+                        runMenu.Start();
+                        info.StatiscalInfoSize();
+                    }
+    
+                    obj.CombinationPrintF(options.SaveFile, options.Zip, options.Repeat);
                 }
-
-                if (options.Disables == false)
+                else if (options.Combination)
                 {
-                    MainMenu runMenu = new MainMenu();
-                    runMenu.Start();
-                    info.StatiscalInfoSize();
+                    MenuParameter.TypesOfGeneration = 2;
+                    CombinationPattern obj = new CombinationPattern();
+    
+                    run.FunctionLenght(args);
+                    
+                    if (options.Invert)
+                    {
+                        run.FunctionInverts(args);
+                    }
+    
+                    if (options.Startblock)
+                    {
+                        run.FunctionStartblock(args);
+                    }
+    
+                    if (options.EndBlock)
+                    {
+                        run.FunctionEndblock(args);
+                    }
+                    
+    
+                    info.CalculOfAllCombinaison(options.Repeat);
+    
+                    if (options.Line)
+                    {
+                        run.FunctionLine(args);
+                    }
+    
+                    if (options.Line == false)
+                    {
+                        run.FunctionByte(args);
+                    }
+    
+                    
+    
+                    if (options.SaveFile)
+                    {
+                        run.FunctionSaveFiles(args);
+                        run.FunctionZip(args);
+                    }
+    
+                    if (options.Disables == false)
+                    {
+                        MainMenu runMenu = new MainMenu();
+                        runMenu.Start();
+                        info.StatiscalInfoSize();
+                    }
+    
+    
+                    obj.CombinationPrintF(options.SaveFile,options.Zip,options.Repeat);
                 }
-
-                obj.VariationPrintF(options.SaveFile,options.Zip, options.Repeat);
+                else if (options.Random || options.Wifi)
+                {
+                    MenuParameter.TypesOfGeneration = 6;
+                    Randomizer obj = new Randomizer();
+    
+                    if (options.Random)
+                    {
+                        MenuParameter.TypesOfGeneration = 3;
+                        run.FunctionLenght(args);
+                    }
+    
+                    info.CalculOfAllCombinaison(options.Repeat);
+                    run.FunctionLine(args);
+                    if (options.Line == false)
+                    {
+                        run.FunctionByte(args);
+                    }
+    
+                    if (options.SaveFile)
+                    {
+                      run.FunctionSaveFiles(args);  
+                    }
+                    
+    
+                    if (options.SaveFile)
+                    {
+                        run.FunctionZip(args);
+                    }
+    
+                    if (options.Disables == false)
+                    {
+                        MainMenu runMenu = new MainMenu();
+                        runMenu.Start();
+                        info.StatiscalInfoSize();
+                    }
+    
+                    obj.RamdonPrintF(options.SaveFile,options.Zip);
+                }
+                else if (options.Variation)
+                {
+                    MenuParameter.TypesOfGeneration = 4;
+                    VariationnPattern obj = new VariationnPattern();
+    
+                    run.FunctionLenght(args);
+    
+                    if (options.Invert)
+                    {
+                        run.FunctionInverts(args);
+                    }
+    
+                    if (options.Startblock)
+                    {
+                        run.FunctionStartblock(args);
+                    }
+    
+                    if (options.EndBlock)
+                    {
+                        run.FunctionEndblock(args);
+                    }                
+    
+                    info.CalculOfAllCombinaison(options.Repeat);
+                    run.FunctionLine(args);
+                    if (options.Line == false)
+                    {
+                        run.FunctionByte(args);
+                    }                        
+    
+                    if (options.SaveFile)
+                    {
+                        run.FunctionSaveFiles(args);
+                        run.FunctionZip(args);
+                    }
+    
+                    if (options.Disables == false)
+                    {
+                        MainMenu runMenu = new MainMenu();
+                        runMenu.Start();
+                        info.StatiscalInfoSize();
+                    }
+    
+                    obj.VariationPrintF(options.SaveFile,options.Zip, options.Repeat);
+                }
+                else if (options.Permutation)
+                {
+                    MenuParameter.TypesOfGeneration = 5;
+                    PermutationPattern obj = new PermutationPattern();
+    
+                    run.FunctionLenght(args);
+                    
+                    if (options.Invert)
+                    {
+                        run.FunctionInverts(args);
+                    }
+    
+                    if (options.Startblock)
+                    {
+                        run.FunctionStartblock(args);
+                    }
+    
+                    if (options.EndBlock)
+                    {
+                        run.FunctionEndblock(args);
+                    }
+    
+                    info.CalculOfAllCombinaison(options.Repeat);
+                    run.FunctionLine(args);
+                    if (options.Line == false)
+                    {
+                        run.FunctionByte(args);
+                    }
+    
+                    run.FunctionSaveFiles(args);
+    
+                    if (options.SaveFile)
+                    {
+                        run.FunctionZip(args);
+                    }
+    
+                    if (options.Disables == false)
+                    {
+                        MainMenu runMenu = new MainMenu();
+                        runMenu.Start();
+                        info.StatiscalInfoSize();
+                    }
+    
+                    obj.PermutationPrintF(options.SaveFile,options.Zip,options.Repeat);
+                }           
+                else if (parser.HasErrors)
+                {
+                    Console.WriteLine(parser.UsageInfo.ToString(78, true));
+                }    
             }
-            else if (options.Permutation)
+            catch (Exception e)
             {
-                MenuParameter.TypesOfGeneration = 5;
-                PermutationPattern obj = new PermutationPattern();
-
-                run.FunctionLenght(args);
-                
-                if (options.Invert)
-                {
-                    run.FunctionInverts(args);
-                }
-
-                if (options.Startblock)
-                {
-                    run.FunctionStartblock(args);
-                }
-
-                if (options.EndBlock)
-                {
-                    run.FunctionEndblock(args);
-                }
-
-                info.CalculOfAllCombinaison(options.Repeat);
-                run.FunctionLine(args);
-                if (options.Line == false)
-                {
-                    run.FunctionByte(args);
-                }
-
-                run.FunctionSaveFiles(args);
-
-                if (options.SaveFile)
-                {
-                    run.FunctionZip(args);
-                }
-
-                if (options.Disables == false)
-                {
-                    MainMenu runMenu = new MainMenu();
-                    runMenu.Start();
-                    info.StatiscalInfoSize();
-                }
-
-                obj.PermutationPrintF(options.SaveFile,options.Zip,options.Repeat);
-            }           
-            else if (parser.HasErrors)
-            {
-                Console.WriteLine(parser.UsageInfo.ToString(78, true));
-            }           
+                Console.WriteLine(e.Message);
+            }                   
         }
 
         internal static void LocalBruteForcerWordlist(bool _saveFile, bool _repeat, bool _zip)

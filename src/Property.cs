@@ -187,7 +187,7 @@ namespace crisis
 
 
         [CommandLineOption(Name = "b", Aliases = "byte",
-                           Description = "Specifies the size of the output file,  only works if -o is used,  i.e.:  60 mib. \n For example  is 500 mib correct 500mb  is NOT correct. \n The three types are based on 1024. \n Example :   crisis -2 -f JohnDoe0123456789  -l 10 -b 50 mib -o will generate 1 \n files  valid values for type  are   kib, mib, and gib. \n NOTE  There is  space between the number and type.", GroupId = "options")]
+                           Description = "Specifies the size of the output file,  only works if -o is used,  i.e.:  60 mib. \n For example  is 500 mib correct 500mb  is NOT correct. \n The three types are based on 1024. \n Example : crisis -2 -l 10 -f JohnDoe0123456789 -b 50 mib -o will generate 1 \n files  valid values for type  are   kib, mib, and gib. \n NOTE  There is  space between the number and type.", GroupId = "options")]
         public bool Byte
         {
             get { return mByte; }
@@ -196,7 +196,7 @@ namespace crisis
 
 
         [CommandLineOption(Name = "c", Aliases = "line",
-                           Description = "Specifies the number of lines to  write  to  output \n file,  only works if -o is used.\n Example : crisis -4 -l 10 -f mixalpha -r true -o -c 10000 -z", GroupId = "options")]
+                           Description = "Specifies the number of lines to  write  to  output \n file,  only works if -o is used.\n Example : crisis -4 -l 10 -f mixalpha -r -o -c 10000 -z", GroupId = "options")]
         public bool Line
         {
             get { return mLine; }
@@ -252,7 +252,7 @@ namespace crisis
             set { mDisables = value; }
         }
 
-        [CommandLineOption(Name = "z", Aliases = "zip", Description = "Compresses  the output from the -o option. \n  Example : crisis -2 -l 10 -f ualpha -r true -o  -b 1024 mib -z", GroupId = "options")]
+        [CommandLineOption(Name = "z", Aliases = "zip", Description = "Compresses  the output from the -o option. \n  Example : crisis -2 -l 10 -f ualpha -r  -o  -b 1024 mib -z", GroupId = "options")]
 
         
         public bool Zip
