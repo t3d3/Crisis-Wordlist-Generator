@@ -2,6 +2,12 @@
 
 Work on Windows, Debian and Kali Linux. Please reading  <a href="https://github.com/teeknofil/Crisis-Wordlist-Generator/wiki"> Wiki</a>
 
+# Install in Linux
+
+Warning, insall mon before.
+
+https://youtu.be/88RBHHNkgE0
+
 # Run
 <pre style=" border: 1px solid black; padding:10px">
 root@kali:~# crisis 
