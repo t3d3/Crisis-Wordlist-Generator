@@ -4,7 +4,7 @@ Work on Windows, Debian and Kali Linux. Please reading  <a href="https://github.
 
 # Install in Linux
 
-Warning, insall mon before.
+Warning, install mono before.
 
 https://youtu.be/88RBHHNkgE0
 
