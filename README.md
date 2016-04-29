@@ -12,6 +12,8 @@ Work on Windows, Debian and Kali Linux. Please reading  <a href="https://github.
 
 If you like this project, you can contribute by a donation :smile:
 
+Need a new option, donate and make your request.
+
 Bitcoin : 1NmgotukmYRoBxx3BFHPxVZGdPhDwoerRh
 
 # Run
