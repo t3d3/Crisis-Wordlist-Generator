@@ -11,6 +11,7 @@ Work on Windows, Debian and Kali Linux. Please reading  <a href="https://github.
 # Donations : Crisis Wordlist Generator
 
 If you like this project, you can contribute by a donation :smile:
+
 Bitcoin : 1NmgotukmYRoBxx3BFHPxVZGdPhDwoerRh
 
 # Run
