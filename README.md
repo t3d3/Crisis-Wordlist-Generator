@@ -4,9 +4,9 @@ Work on Windows, Debian and Kali Linux. Please reading  <a href="https://github.
 
 # Install in Linux
 
-Warning, install mono before.
+* [Warning, install mono before.](https://youtu.be/9TqwB1mj9_0)
 
-https://youtu.be/88RBHHNkgE0
+* [Install Crisis Wordlist Generator in Linux](https://youtu.be/88RBHHNkgE0)
 
 # Run
 <pre style=" border: 1px solid black; padding:10px">
