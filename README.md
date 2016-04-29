@@ -8,6 +8,11 @@ Work on Windows, Debian and Kali Linux. Please reading  <a href="https://github.
 
 * [Install Crisis Wordlist Generator in Linux](https://youtu.be/88RBHHNkgE0)
 
+# Donations : Crisis Wordlist Generator
+
+If you like this project, you can contribute by a donation :smile:
+Bitcoin : 1NmgotukmYRoBxx3BFHPxVZGdPhDwoerRh
+
 # Run
 <pre style=" border: 1px solid black; padding:10px">
 root@kali:~# crisis 
