@@ -34,7 +34,6 @@ namespace crisis
         }
 
         private static string charsetName;
-
         public static string CharsetName
         {
             get
@@ -69,9 +68,9 @@ namespace crisis
         private static List<string> hex_lower   = new List<string>() { "a", "b", "c", "d", "e", "f" };
         private static List<string> hex_upper   = new List<string>() { "A", "B", "C", "D", "E", "F" };
         private static List<string> symbols14   = new List<string>() { "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=" };
-        private static List<string> symbols_all = new List<string>() { "~", "`", "[", "]", "{", "}", "|", "\\", ":", ";", "\"", "<", ">", ",", ".", "?", "/" };
+        private static List<string> symbols_all = new List<string>() { "~", "`", "[", "]", "{", "}", "|", "\\", ":", ";", "\"", "<", ">", ",", ".", "?", "/" };                
+        
         private static List<string> ualpha = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-
         public static List<string> UalphaList
         {
             get { return Charset.ualpha; }

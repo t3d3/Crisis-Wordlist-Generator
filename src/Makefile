@@ -92,6 +92,7 @@ FILES = \
 	Charset/DisplayCharsetCyrillic.cs \
 	Charset/DisplayCharsetLatin.cs \
 	Combinatorics/Combinations.cs \
+	Charset/CharsetUserPasswordProfiler.cs \
 	Combinatorics/GenerateOption.cs \
 	Combinatorics/IMetaCollection.cs \
 	Combinatorics/TransformTextFiles.cs \

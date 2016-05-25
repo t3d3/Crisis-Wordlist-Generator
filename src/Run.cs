@@ -32,7 +32,7 @@ namespace crisis
             else if (Property.TypeOfProcess == 3)
             {
                 TransformWordlist();
-            }
+            }            
             else if (Property.TypeOfProcess == 4)
             {
                 DownloadFunctions();
@@ -461,6 +461,10 @@ namespace crisis
             Console.WriteLine("\n Download finished\n");
         }
 
+        internal static void UserPassewordProfilerWordlist()
+        {
+
+        }
 
     }
 }

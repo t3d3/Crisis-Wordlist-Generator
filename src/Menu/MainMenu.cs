@@ -61,7 +61,7 @@ namespace crisis
         {
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.1.2 \n");
+            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.1.3 Beta \n");
             Console.ResetColor();
         }
 
@@ -85,6 +85,11 @@ namespace crisis
             Console.Write("\n {0}) ", ++i);
             Console.ResetColor();
             Console.WriteLine("\t TRANSFORMING WORDLIST NO JUTSU");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n {0}) ", ++i);
+            Console.ResetColor();
+            Console.WriteLine("\t USER PASSWORD PROFILER NO JUTSU");
         
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n {0}) ", ++i);
@@ -134,7 +139,16 @@ namespace crisis
                     {
                         TransformWordlistMenu();                        
                         Property.TypeOfProcess = 3;
-                    } 
+                    }
+                    //USER PASSWORD PROFILER
+                    if (dislayMainSubMain == ++i)
+                    {
+                        UserPasswordProfilerWordlistMenu();
+                        MenuParameter config = new MenuParameter();
+                        config.TypesOfFileAtGenerate();
+                        BooleanMainMenu = false;
+                        Property.TypeOfProcess = 2;
+                    }
                     if (dislayMainSubMain == ++i)
                     {                        
                         Property.TypeOfProcess = 4;
@@ -155,6 +169,137 @@ namespace crisis
                 }
 
             }
+        }
+
+        private void UserPasswordProfilerWordlistMenu()
+        {
+            Version();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n[+] ");
+            Console.ResetColor();
+            Console.Write(" Insert the informations about the victim to make a dictionary ");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n[+] ");
+            Console.ResetColor();
+            Console.Write(" If you don't know all the info, just hit enter when asked! ;)");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n\n > ");
+            Console.ResetColor();
+            Console.Write(" First Name : ");
+
+            string name = Charset.CustomCharsetWord();
+
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(" > ");
+            Console.ResetColor();
+            Console.Write(" Surname : ");
+
+            string surname = Charset.CustomCharsetWord();
+            Charset.initialPersonne(name, surname);
+
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(" > ");
+            Console.ResetColor();
+            Console.Write(" Nickname : ");
+            Charset.CustomCharsetWord();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(" > ");
+            Console.ResetColor();
+            Console.Write(" Birthdate (DDMMYYYY): ");
+            Charset.BirthdatePerson();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n\n > ");
+            Console.ResetColor();
+            Console.Write(" Partners name: ");
+            Charset.CustomCharsetWord();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(" > ");
+            Console.ResetColor();
+            Console.Write(" Partners nickname: ");
+            Charset.CustomCharsetWord();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(" > ");
+            Console.ResetColor();
+            Console.Write(" Pather birthdate (DDMMYYYY): ");
+            Charset.BirthdatePerson();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n[+] ");
+            Console.ResetColor();
+            Console.Write(" Child's name  ");
+            SubMenu.CustomWordMenu();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n[+] ");
+            Console.ResetColor();
+            Console.Write(" Child's nickname");
+            SubMenu.CustomWordMenu();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n[+] ");
+            Console.ResetColor();
+            Console.Write(" Child's birthdate (DDMMYYYY): ");
+            SubMenu.BirthdateMenu();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n[+] ");
+            Console.ResetColor();
+            Console.Write(" Pet's name : ");
+            SubMenu.CustomWordMenu();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n > ");
+            Console.ResetColor();
+            Console.Write(" Company name : ");
+            Charset.CustomCharsetWord();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n\n > ");
+            Console.ResetColor();
+            Console.Write(" Do you want to add some key words about the victim [i.e. actor,religion,color] ?");
+            SubMenu.CustomWordMenu();            
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n > ");
+            Console.ResetColor();
+            Console.Write(" Do you want to add your wordlist ? Y/[N]: ");
+
+            ConsoleKeyInfo yes = Console.ReadKey();
+
+            if (yes.Key == ConsoleKey.Y)
+            {
+                SubMenu obj = new SubMenu();
+                obj.MenuReadFileTxt();
+            }
+            SubMenu.RemoveDuplicate();
+
+            SubMenu.CustomCharsetLowerMenu();
+            SubMenu.RemoveDuplicate();
+            SubMenu.CustomCharsetUpperMenu();
+            SubMenu.RemoveDuplicate();
+            SubMenu.CustomChartsetL33tSpeekMenu();
+            SubMenu.RemoveDuplicate();
+            SubMenu.CustomCharsetSpecialMenu();
+            SubMenu.DisplayCustomCharset();  
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n > ");
+            Console.ResetColor();
+            Console.Write(" Do you want to add Number [i.e. 0 to 9] Y/[N]: ");
+            SubMenu.CustomCharsetNumberMenu();
+            SubMenu.RemoveDuplicate();
+            
+                      
+           
         }
 
         internal static void CrisisMenuNetwork()
