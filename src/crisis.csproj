@@ -107,6 +107,7 @@ The output from crisis can be sent to the screen, file, or to another program. <
     <Compile Include="Charset\DisplayCharsetCyrillic.cs" />
     <Compile Include="Charset\DisplayCharsetLatin.cs" />
     <Compile Include="Combinatorics\Combinations.cs" />
+    <Compile Include="Charset\CharsetUserPasswordProfiler.cs" />
     <Compile Include="Combinatorics\GenerateOption.cs" />
     <Compile Include="Combinatorics\IMetaCollection.cs" />
     <Compile Include="Combinatorics\TransformTextFiles.cs" />

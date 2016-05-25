@@ -146,7 +146,7 @@ namespace crisis
             }
         }
 
-        internal void MenuCustom()
+        internal void MenuCustomLetter()
         {
             while (Charset.BooleanType)
             {
@@ -173,6 +173,8 @@ namespace crisis
                 }
             }
         }
+
+        
 
         internal static void SpecialMenu()
         {
@@ -242,7 +244,7 @@ namespace crisis
                     //CUSTOM    CHARACTER
                     if (dislayMainSubMain == i++)
                     {
-                        objSubMenu.MenuCustom();                        
+                        objSubMenu.MenuCustomLetter();                        
                         config.TypesOfFileAtGenerate();                        
                     }
                     else if (dislayMainSubMain == i++)
@@ -587,7 +589,187 @@ namespace crisis
             }
         }
 
-       
-       
+        public static void CustomWordMenu()
+        {
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n[+] ");
+            Console.ResetColor();
+            Console.WriteLine(" Press the Escape (Esc) key to quit or press Enter for continue:");
+                     
+            ConsoleKeyInfo quit;
+            quit = Console.ReadKey();
+
+           
+
+            while (quit.Key != ConsoleKey.Escape)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("\n\n[+] ");
+                Console.ResetColor();
+                Console.WriteLine(" Please enter the words  ");
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(" > ");
+                Console.ResetColor();
+
+                Charset.CustomCharsetWord();
+
+                Console.WriteLine("\n Press Enter or Escape");
+                quit = Console.ReadKey();
+            }            
+        }
+
+
+        public static void BirthdateMenu()
+        {          
+            
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n[+] ");
+            Console.ResetColor();
+            Console.WriteLine(" Press the Escape (Esc) key to quit or press Enter for continue:");
+            
+            ConsoleKeyInfo quit;                       
+            quit = Console.ReadKey();
+            
+            while (quit.Key != ConsoleKey.Escape)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("\n\n[+] ");
+                Console.ResetColor();
+                Console.WriteLine(" Please enter the Birthdate ");
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(" > ");
+                Console.ResetColor();
+
+                Charset.BirthdatePerson();
+
+                Console.WriteLine("\n Press Enter or Escape");
+                quit = Console.ReadKey();
+            }     
+            
+        }
+
+        internal static void CustomCharsetSpecialMenu()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n > ");
+            Console.ResetColor();
+            Console.Write(" Do you want to add special chars ? Y/[N]: ");
+
+            ConsoleKeyInfo yes = Console.ReadKey();
+
+            if (yes.Key == ConsoleKey.Y)
+            {
+                Charset.CustomCharsetSpecial();
+            }           
+        }
+
+        internal static void CustomCharsetNumberMenu()
+        {
+            ConsoleKeyInfo yes = Console.ReadKey();
+            try
+            {
+                if (yes.Key == ConsoleKey.Y)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("\n > ");
+                    Console.ResetColor();
+                    Console.Write("Start : ");
+                    int startYear = int.Parse(Console.ReadLine());
+
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("\n > ");
+                    Console.ResetColor();
+                    Console.Write("End : ");
+                    int endYear = int.Parse(Console.ReadLine());
+
+                    Charset.CustomCharsetNumber(startYear, endYear);
+
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(" {0} \n", e.Message);
+                Console.ResetColor();
+            }           
+        }
+
+        internal static void CustomChartsetL33tSpeekMenu()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n > ");
+            Console.ResetColor();
+            Console.Write(" Leet mode ? (i.e. leet = 1337) Y/[N]: ");
+
+            ConsoleKeyInfo yes = Console.ReadKey();
+
+            if (yes.Key == ConsoleKey.Y)
+            {
+                TransformTextFiles obj = new TransformTextFiles();
+                obj.CustomChartsetL33tSpeek();
+            }
+        }
+
+
+        internal static void CustomCharsetUpperMenu()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n > ");
+            Console.ResetColor();
+            Console.Write(" LOWERCASE TO UPPERCASE Y/[N]: ");
+
+            ConsoleKeyInfo yes = Console.ReadKey();
+
+            if (yes.Key == ConsoleKey.Y)
+            {
+                Charset.CustumCHarsetUpperCase();
+            }
+        }
+
+        internal static void CustomCharsetLowerMenu()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n > ");
+            Console.ResetColor();
+            Console.Write(" UPPERCASE TO LOWERCASE Y/[N]: ");
+
+            ConsoleKeyInfo yes = Console.ReadKey();
+
+            if (yes.Key == ConsoleKey.Y)
+            {
+                Charset.CustumCHarsetLowerCase();
+            }
+        }
+
+        internal static void DisplayCustomCharset()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\n > ");
+            Console.ResetColor();
+            Console.Write(" Do you want display custom charset ? Y/[N]: ");
+
+            ConsoleKeyInfo yes = Console.ReadKey();
+
+            if (yes.Key == ConsoleKey.Y)
+            {
+                foreach (var item in Charset.CharsetSelecting)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+        }
+
+        internal static void RemoveDuplicate()
+        {
+            // Get distinct elements and convert into a list again.
+            List<string> distinct = Charset.CharsetSelecting.Distinct().ToList();
+            Charset.CharsetSelecting.Clear();
+            Charset.CharsetSelecting = distinct.Distinct().ToList();
+        }
+
     }
 }
