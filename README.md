@@ -14,7 +14,7 @@ If you like this project, you can contribute by a donation :smile:
 
 Need a new option, donate and make your request.
 
-Bitcoin : 1NmgotukmYRoBxx3BFHPxVZGdPhDwoerRh
+Bitcoin : 1FKVkfLajBLCzNxskKLg5y9aeTe26AEyxr
 
 # Run
 <pre style=" border: 1px solid black; padding:10px">
