@@ -27,7 +27,7 @@ using System;
 using System.IO;
 using System.Security.Permissions;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     /// <summary>
     /// Collects general purpose utility methods.
@@ -871,7 +871,7 @@ namespace crisis.Ionic.Zip
             {
                 _s.Seek(value, System.IO.SeekOrigin.Begin);
                 // workitem 10178
-                crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(_s);
+                Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(_s);
             }
         }
 

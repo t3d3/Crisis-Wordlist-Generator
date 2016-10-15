@@ -25,7 +25,7 @@
 // ------------------------------------------------------------------
 
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
 
     /// <summary>

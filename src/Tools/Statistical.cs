@@ -1,85 +1,50 @@
-//  Author:
-//       Teeknofil <teeknofil@gmail.com>
-//
-//  Copyright (c) 2015 Teeknofil
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-using System;
+﻿using System;
 using System.Numerics;
-using crisis.CommandLine;
 using System.Collections.Generic;
+using Crisis.Combinatorics;
+using crisis;
+using Plossum.CommandLine;
 
-namespace crisis
+namespace Crisis.Tools
 {
-    
-
-    public class Statistical : Property
+    class Statistical
     {
-        private BigInteger dataSizeOctet;
 
-        private static BigInteger numberOfAllCombination;
-        public static BigInteger NumberOfAllCombination
-        {
-            get { return Statistical.numberOfAllCombination; }
-            set { Statistical.numberOfAllCombination = value; }
-        }
-
-        private static double defaultSizeFileInOctet;
-        public static double DefaultSizeFileInOctet
-        {
-            get
-            {
-                return defaultSizeFileInOctet;
-            }
-            set
-            {
-                defaultSizeFileInOctet = value;
-            }
-        }
-                
         public Statistical()
         {
-            
+
         }
 
-       
-        internal BigInteger CalculOfAllCombinaison(bool _repeat)
+        internal BigInteger CalculOfAllCombinaison(bool _repeat, int typesAtGenerate, int numberOfChar, List<string> charsetSelecting)
         {
-           try
-            {
-                numberOfAllCombination = new BigInteger();
 
-                if (MenuParameter.TypesOfGeneration == 1 | MenuParameter.TypesOfGeneration == 2)
+            BigInteger numberOfAllCombination = new BigInteger();
+
+            try
+            {
+                
+                if (typesAtGenerate == 1 | typesAtGenerate == 2)
                 {
-                    numberOfAllCombination = CombinationPattern.CaclulCombination(_repeat).Count; 
+                    CombinationPattern obj = new CombinationPattern();
+                    numberOfAllCombination = obj.CaclulCombination(_repeat,charsetSelecting,numberOfChar).Count;
                 }
-                else if (MenuParameter.TypesOfGeneration == 3 | MenuParameter.TypesOfGeneration == 6)
+                else if (typesAtGenerate == 3 | typesAtGenerate == 6)
                 {
-                    numberOfAllCombination = (BigInteger)Math.Pow((double)NumberOfChar, (double)Charset.CharsetSelecting.Count);
+                    numberOfAllCombination = (BigInteger)Math.Pow((double)numberOfChar, (double)charsetSelecting.Count);
                 }
-                else if (MenuParameter.TypesOfGeneration == 4)
+                else if (typesAtGenerate == 4)
                 {
-                    numberOfAllCombination = VariationnPattern.CalculVariation(_repeat).Count;
+                    VariationnPattern obj = new VariationnPattern();
+                    numberOfAllCombination = obj.CalculVariation(_repeat , charsetSelecting, numberOfChar).Count;
                 }
-                else if (MenuParameter.TypesOfGeneration == 5)
+                else if (typesAtGenerate == 5)
                 {
-                    numberOfAllCombination = PermutationPattern.CaclulPermut(_repeat);
+                    PermutationPattern obj = new PermutationPattern();
+                    numberOfAllCombination = PermutationPattern.CaclulPermut(_repeat,charsetSelecting,numberOfChar);
                 }
 
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 numberOfAllCombination = 9999999999999999999;
             }
@@ -87,85 +52,25 @@ namespace crisis
             return numberOfAllCombination;
         }
 
-        /// <summary>
-        /// Calculating the number of line to create the file. If the size is too large the function returns a number by default.
-        /// </summary>
-        /// <returns>BigInteger NumberLine</returns>
 
-        internal BigInteger CalculSizeFile()
+        internal void StatiscalInfoSize(BigInteger numberOfAllCombination, int typesOfGeneration, int numberOfChar)
         {
-            Property options = new Property();
-            CommandLineParser parser = new CommandLineParser(options);
-            parser.Parse();
+            BigInteger dataSizeOctet = 0;
 
-            if (options.Line == false)
+            for (int i = 2; i <= 6 ; i++)
             {
-                double nbLine = 0;
-
-                nbLine = (defaultSizeFileInOctet / 1.4) / (MenuParameter.NumberOfChar * 0.9);
-
-                if (MenuParameter.TypesOfGeneration == 1)
+                if (typesOfGeneration == 1)
                 {
-                    nbLine = (defaultSizeFileInOctet / 1.4) / (MenuParameter.NumberOfChar + 12);
-                    if (numberOfAllCombination - 1 < (BigInteger)nbLine)
-                    {
-                        MenuParameter.NumberLine = numberOfAllCombination;
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\n File size too large, the number of line by default.\n");
-                        Console.ResetColor();
-                    }
-                    else
-                    {
-                        MenuParameter.NumberLine = (BigInteger)nbLine;
-                    }
+                    dataSizeOctet = (BigInteger)(numberOfChar + 20) * numberOfAllCombination;
+                    break;
                 }
-                else if (MenuParameter.TypesOfGeneration == 5)
+                else if (typesOfGeneration == i )
                 {
-                    if (PermutationPattern.Permut.Count < nbLine)
-                    {
-                        MenuParameter.NumberLine = PermutationPattern.Permut.Count;
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\n File size too large, the number of line by default.\n");
-                        Console.ResetColor();
-                    }
-                    else
-                    {
-                        MenuParameter.NumberLine = (BigInteger)nbLine;
-                    }
-                }
-                else
-                {
-                    if (numberOfAllCombination - 1 < (BigInteger)nbLine)
-                    {
-                        MenuParameter.NumberLine = numberOfAllCombination;
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\n File size too large, the number of line by default.\n");
-                        Console.ResetColor();
-                    }
-                    else
-                    {
-                        MenuParameter.NumberLine = (BigInteger)nbLine;
-                    }
+                    dataSizeOctet = (numberOfChar + 2) * numberOfAllCombination;
+                    break;
                 }
             }
-
-            return MenuParameter.NumberLine;
-        }
-        
-        /// <summary>
-        /// Calcul the size total of data in the terminal
-        /// </summary>
-
-        internal void StatiscalInfoSize()
-        {
-            if (MenuParameter.TypesOfGeneration == 1)
-            {
-                dataSizeOctet = (BigInteger)(NumberOfChar + 14) * NumberOfAllCombination;
-            }            
-            else if (MenuParameter.TypesOfGeneration == 2 | MenuParameter.TypesOfGeneration == 3 | MenuParameter.TypesOfGeneration == 4 | MenuParameter.TypesOfGeneration == 5 |MenuParameter.TypesOfGeneration == 6)
-            {
-                dataSizeOctet = (NumberOfChar + 2) * NumberOfAllCombination;
-            }
+            
 
             BigInteger dataSizeKo = 4096;
             if (dataSizeOctet <= 4096)
@@ -183,15 +88,61 @@ namespace crisis
             BigInteger dataSizePo = dataSizeTo / 1024;
 
             Console.WriteLine("\n Crisis will now generate the following amount of data: {0} ", dataSizeOctet);
-            Console.WriteLine("\n {0} KB", dataSizeKo);
-            Console.WriteLine(" {0} MB", dataSizeMo);
-            Console.WriteLine(" {0} GB", dataSizeGo);
-            Console.WriteLine(" {0} TB", dataSizeTo);
-            Console.WriteLine(" {0} PB", dataSizePo);
-            Console.WriteLine("\n Crisis will now generate the following number of lines: {0}\n ", NumberOfAllCombination);
+            Console.WriteLine("\n {0} KB\n", dataSizeKo);
+            Console.WriteLine(" {0} MB\n", dataSizeMo);
+            Console.WriteLine(" {0} GB\n", dataSizeGo);
+            Console.WriteLine(" {0} TB\n", dataSizeTo);
+            Console.WriteLine(" {0} PB\n", dataSizePo);
+            Console.WriteLine("\n Crisis will now generate the following number of lines: {0}\n ", numberOfAllCombination);
 
             System.Threading.Thread.Sleep(5000);
         }
 
-    }
-}
+        internal BigInteger CalculSizeFile(int sizeFile, int numberOfChar, int typesOfGeneration, BigInteger numberOfAllCombination)
+        {
+            CLI options = new CLI();
+            CommandLineParser parser = new CommandLineParser(options);
+            parser.Parse();
+            BigInteger numberLine = 0;
+
+            if (options.Line == false)
+            {
+                 numberLine = sizeFile / (numberOfChar + 2);
+                
+                if (typesOfGeneration == 1)
+                {
+                    numberLine = sizeFile / (numberOfChar + 20);
+                    if (numberOfAllCombination - 1 < numberLine)
+                    {
+                        numberLine = numberOfAllCombination;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n File size too large, the number of line by default.\n");
+                        Console.ResetColor();
+                    }
+                    
+                }
+                else if (typesOfGeneration == 5)
+                {
+                    if (numberOfAllCombination - 1 < numberLine)
+                    {
+                        numberLine = PermutationPattern.Permut.Count;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n File size too large, the number of line by default.\n");
+                        Console.ResetColor();
+                    }                   
+                }
+                else if (numberOfAllCombination - 1 < numberLine)
+                {
+                    numberLine = numberOfAllCombination;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n File size too large, the number of line by default.\n");
+                    Console.ResetColor();
+                }
+            }
+
+            return numberLine;
+        }
+
+
+    } // End Class
+}// End Name space

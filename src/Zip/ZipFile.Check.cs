@@ -31,7 +31,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     public partial class ZipFile
     {
@@ -290,7 +290,7 @@ namespace crisis.Ionic.Zip
                 }
                 success = true;
             }
-            catch(crisis.Ionic.Zip.BadPasswordException) { }
+            catch(Crisis.Ionic.Zip.BadPasswordException) { }
             return success;
         }
 

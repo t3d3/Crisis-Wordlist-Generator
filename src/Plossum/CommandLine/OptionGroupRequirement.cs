@@ -33,7 +33,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace crisis.CommandLine
+namespace Plossum.CommandLine
 {
     /// <summary>
     /// Specifies the requirements on an option group.

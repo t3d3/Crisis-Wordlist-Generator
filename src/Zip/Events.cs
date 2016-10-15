@@ -27,7 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     /// <summary>
     ///   Delegate in which the application writes the <c>ZipEntry</c> content for the named entry.
@@ -38,7 +38,7 @@ namespace crisis.Ionic.Zip
     ///
     /// <remarks>
     ///   When you add an entry and specify a <c>WriteDelegate</c>, via <see
-    ///   cref="crisis.Ionic.Zip.ZipFile.AddEntry(string, WriteDelegate)"/>, the application
+    ///   cref="Crisis.Ionic.Zip.ZipFile.AddEntry(string, WriteDelegate)"/>, the application
     ///   code provides the logic that writes the entry data directly into the zip file.
     /// </remarks>
     ///
@@ -79,7 +79,7 @@ namespace crisis.Ionic.Zip
     /// End Sub
     /// </code>
     /// </example>
-    /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddEntry(string, WriteDelegate)"/>
+    /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddEntry(string, WriteDelegate)"/>
     public delegate void WriteDelegate(string entryName, System.IO.Stream stream);
 
 
@@ -92,12 +92,12 @@ namespace crisis.Ionic.Zip
     /// </param>
     ///
     /// <remarks>
-    ///   When you add an entry via <see cref="crisis.Ionic.Zip.ZipFile.AddEntry(string,
+    ///   When you add an entry via <see cref="Crisis.Ionic.Zip.ZipFile.AddEntry(string,
     ///   OpenDelegate, CloseDelegate)"/>, the application code provides the logic that
     ///   opens and closes the stream for the given ZipEntry.
     /// </remarks>
     ///
-    /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddEntry(string, OpenDelegate, CloseDelegate)"/>
+    /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddEntry(string, OpenDelegate, CloseDelegate)"/>
     public delegate System.IO.Stream OpenDelegate(string entryName);
 
     /// <summary>
@@ -111,12 +111,12 @@ namespace crisis.Ionic.Zip
     /// <param name="stream">The stream to be closed.</param>
     ///
     /// <remarks>
-    ///   When you add an entry via <see cref="crisis.Ionic.Zip.ZipFile.AddEntry(string,
+    ///   When you add an entry via <see cref="Crisis.Ionic.Zip.ZipFile.AddEntry(string,
     ///   OpenDelegate, CloseDelegate)"/>, the application code provides the logic that
     ///   opens and closes the stream for the given ZipEntry.
     /// </remarks>
     ///
-    /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddEntry(string, OpenDelegate, CloseDelegate)"/>
+    /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddEntry(string, OpenDelegate, CloseDelegate)"/>
     public delegate void CloseDelegate(string entryName, System.IO.Stream stream);
 
     /// <summary>
@@ -132,8 +132,8 @@ namespace crisis.Ionic.Zip
     ///   on any other factor.
     /// </para>
     /// </remarks>
-    /// <seealso cref="crisis.Ionic.Zip.ZipFile.SetCompression"/>
-    public delegate crisis.Ionic.Zlib.CompressionLevel SetCompressionCallback(string localFileName, string fileNameInArchive);
+    /// <seealso cref="Crisis.Ionic.Zip.ZipFile.SetCompression"/>
+    public delegate Crisis.Ionic.Zlib.CompressionLevel SetCompressionCallback(string localFileName, string fileNameInArchive);
 
     /// <summary>
     ///   In an EventArgs type, indicates which sort of progress event is being

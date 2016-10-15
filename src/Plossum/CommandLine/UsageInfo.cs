@@ -32,12 +32,12 @@
 using System;
 using SCG = System.Collections.Generic;
 using System.Text;
-using crisis.C5;
+using C5;
 using System.Diagnostics;
-using crisis.Resources;
+using Plossum.Resources;
 using System.Globalization;
 
-namespace crisis.CommandLine
+namespace Plossum.CommandLine
 {
     /// <summary>
     /// Represents the properties of a <see cref="CommandLineManagerAttribute"/> (or rather the object to which its 

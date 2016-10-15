@@ -33,7 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace crisis
+namespace Plossum
 {
     /// <summary>
     /// Represents the word wrapping method to use for various operations performed by <see cref="StringFormatter"/>.

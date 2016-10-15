@@ -58,7 +58,7 @@ using System.Collections.Generic;
 using System.Linq;
 #endif
 
-namespace crisis.Ionic
+namespace Crisis.Ionic
 {
 
     /// <summary>
@@ -557,9 +557,9 @@ namespace crisis.Ionic
     /// <para>
     ///   The FileSelector class is used internally by the ZipFile class for selecting
     ///   files for inclusion into the ZipFile, when the <see
-    ///   cref="crisis.Ionic.Zip.ZipFile.AddSelectedFiles(String,String)"/> method, or one of
+    ///   cref="Crisis.Ionic.Zip.ZipFile.AddSelectedFiles(String,String)"/> method, or one of
     ///   its overloads, is called.  It's also used for the <see
-    ///   cref="crisis.Ionic.Zip.ZipFile.ExtractSelectedEntries(String)"/> methods.  Typically, an
+    ///   cref="Crisis.Ionic.Zip.ZipFile.ExtractSelectedEntries(String)"/> methods.  Typically, an
     ///   application that creates or manipulates Zip archives will not directly
     ///   interact with the FileSelector class.
     /// </para>

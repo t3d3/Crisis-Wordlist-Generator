@@ -26,7 +26,7 @@
 
 using Interop=System.Runtime.InteropServices;
 //Ionic.Zip
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     /// <summary>
     /// This class exposes a set of COM-accessible wrappers for static

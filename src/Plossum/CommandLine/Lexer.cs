@@ -35,13 +35,13 @@
 using System;
 using SCG = System.Collections.Generic;
 using System.Text;
-using crisis.C5;
+using C5;
 using System.IO;
 using System.Diagnostics;
 using System.Globalization;
-using crisis.Resources;
+using Plossum.Resources;
 
-namespace crisis.CommandLine
+namespace Plossum.CommandLine
 {
     /// <summary>
     /// Provides tokenization of command lines. Used by the <see cref="CommandLineParser" />.

@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
 
     partial class ZipEntry
@@ -97,7 +97,7 @@ namespace crisis.Ionic.Zip
                     .Append(string.Format("         Bit Field: 0x{0:X4}\n", this._BitField))
                     .Append(string.Format("        Encrypted?: {0}\n", this._sourceIsEncrypted))
                     .Append(string.Format("          Timeblob: 0x{0:X8}\n", this._TimeBlob))
-                        .Append(string.Format("              Time: {0}\n", crisis.Ionic.Zip.SharedUtilities.PackedToDateTime(this._TimeBlob)));
+                        .Append(string.Format("              Time: {0}\n", Crisis.Ionic.Zip.SharedUtilities.PackedToDateTime(this._TimeBlob)));
 
                 builder.Append(string.Format("         Is Zip64?: {0}\n", this._InputUsesZip64));
                 if (!string.IsNullOrEmpty(this._Comment))
@@ -191,13 +191,13 @@ namespace crisis.Ionic.Zip
                 ? zf.AlternateEncoding
                 : ZipFile.DefaultEncoding;
 
-            int signature = crisis.Ionic.Zip.SharedUtilities.ReadSignature(s);
+            int signature = Crisis.Ionic.Zip.SharedUtilities.ReadSignature(s);
             // return null if this is not a local file header signature
             if (IsNotValidZipDirEntrySig(signature))
             {
                 s.Seek(-4, System.IO.SeekOrigin.Current);
                 // workitem 10178
-                crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(s);
+                Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(s);
 
                 // Getting "not a ZipDirEntry signature" here is not always wrong or an
                 // error.  This can happen when walking through a zipfile.  After the
@@ -232,7 +232,7 @@ namespace crisis.Ionic.Zip
                 zde._BitField = (short)(block[i++] + block[i++] * 256);
                 zde._CompressionMethod = (Int16)(block[i++] + block[i++] * 256);
                 zde._TimeBlob = block[i++] + block[i++] * 256 + block[i++] * 256 * 256 + block[i++] * 256 * 256 * 256;
-                zde._LastModified = crisis.Ionic.Zip.SharedUtilities.PackedToDateTime(zde._TimeBlob);
+                zde._LastModified = Crisis.Ionic.Zip.SharedUtilities.PackedToDateTime(zde._TimeBlob);
                 zde._timestamp |= ZipEntryTimestamp.DOS;
 
                 zde._Crc32 = block[i++] + block[i++] * 256 + block[i++] * 256 * 256 + block[i++] * 256 * 256 * 256;
@@ -262,11 +262,11 @@ namespace crisis.Ionic.Zip
             if ((zde._BitField & 0x0800) == 0x0800)
             {
                 // UTF-8 is in use
-                zde._FileNameInArchive = crisis.Ionic.Zip.SharedUtilities.Utf8StringFromBuffer(block);
+                zde._FileNameInArchive = Crisis.Ionic.Zip.SharedUtilities.Utf8StringFromBuffer(block);
             }
             else
             {
-                zde._FileNameInArchive = crisis.Ionic.Zip.SharedUtilities.StringFromBuffer(block, expectedEncoding);
+                zde._FileNameInArchive = Crisis.Ionic.Zip.SharedUtilities.StringFromBuffer(block, expectedEncoding);
             }
 
             // workitem 10330
@@ -344,11 +344,11 @@ namespace crisis.Ionic.Zip
                 if ((zde._BitField & 0x0800) == 0x0800)
                 {
                     // UTF-8 is in use
-                    zde._Comment = crisis.Ionic.Zip.SharedUtilities.Utf8StringFromBuffer(block);
+                    zde._Comment = Crisis.Ionic.Zip.SharedUtilities.Utf8StringFromBuffer(block);
                 }
                 else
                 {
-                    zde._Comment = crisis.Ionic.Zip.SharedUtilities.StringFromBuffer(block, expectedEncoding);
+                    zde._Comment = Crisis.Ionic.Zip.SharedUtilities.StringFromBuffer(block, expectedEncoding);
                 }
             }
             //zde._LengthOfDirEntry = bytesRead;

@@ -33,7 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace crisis.CommandLine
+namespace Plossum.CommandLine
 {
     /// <summary>
     /// Attribute used to specify an option group in a command line option manager object.

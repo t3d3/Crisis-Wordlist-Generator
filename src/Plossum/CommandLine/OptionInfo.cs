@@ -32,10 +32,10 @@
 using System;
 using SCG = System.Collections.Generic;
 using System.Text;
-using crisis.C5;
+using C5;
 using System.Globalization;
 
-namespace crisis.CommandLine
+namespace Plossum.CommandLine
 {
     /// <summary>
     /// Represents the descriptive properties of a command line option.
@@ -133,13 +133,13 @@ namespace crisis.CommandLine
         public string ToString(int indent, int nameColumnWidth, int descriptionColumnWidth)
         {
             if (nameColumnWidth < 1)
-                throw new ArgumentException(String.Format(CultureInfo.CurrentUICulture, crisis.Resources.CommandLineStrings.ArgMustBeGreaterThanZero, "nameColumnWidth"), "nameColumnWidth");
+                throw new ArgumentException(String.Format(CultureInfo.CurrentUICulture, Plossum.Resources.CommandLineStrings.ArgMustBeGreaterThanZero, "nameColumnWidth"), "nameColumnWidth");
 
             if (descriptionColumnWidth < 1)
-                throw new ArgumentException(String.Format(CultureInfo.CurrentUICulture, crisis.Resources.CommandLineStrings.ArgMustBeGreaterThanZero, "descriptionColumnWidth"), "descriptionColumnWidth");
+                throw new ArgumentException(String.Format(CultureInfo.CurrentUICulture, Plossum.Resources.CommandLineStrings.ArgMustBeGreaterThanZero, "descriptionColumnWidth"), "descriptionColumnWidth");
 
             if (indent < 0)
-                throw new ArgumentException(String.Format(CultureInfo.CurrentUICulture, crisis.Resources.CommandLineStrings.ArgMustBeNonNegative, "indent"), "indent");
+                throw new ArgumentException(String.Format(CultureInfo.CurrentUICulture, Plossum.Resources.CommandLineStrings.ArgMustBeNonNegative, "indent"), "indent");
 
             StringBuilder names = new StringBuilder();
 

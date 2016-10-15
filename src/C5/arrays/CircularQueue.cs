@@ -22,7 +22,7 @@
 using System;
 using System.Diagnostics;
 using SCG = System.Collections.Generic;
-namespace crisis.C5
+namespace C5
 {
   /// <summary>
   /// 

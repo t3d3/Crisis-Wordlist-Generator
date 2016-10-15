@@ -23,7 +23,7 @@ using System;
 using System.Text;
 using System.Diagnostics;
 using SCG = System.Collections.Generic;
-namespace crisis.C5
+namespace C5
 {
   /// <summary>
   /// An advanced interface to operations on an array. The array is viewed as an 

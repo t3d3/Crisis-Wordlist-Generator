@@ -21,7 +21,7 @@
 
 using System;
 using SCG = System.Collections.Generic;
-namespace crisis.C5
+namespace C5
 {
   /// <summary>
   /// A generic collection, that can be enumerated backwards.

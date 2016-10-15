@@ -24,7 +24,7 @@
 using System;
 using System.Diagnostics;
 using SCG = System.Collections.Generic;
-namespace crisis.C5
+namespace C5
 {
   /// <summary>
   /// A base class for implementing an IEnumerable&lt;T&gt;
@@ -1486,7 +1486,7 @@ namespace crisis.C5
       }
 
 
-      IDirectedEnumerable<T> crisis.C5.IDirectedEnumerable<T>.Backwards()
+      IDirectedEnumerable<T> C5.IDirectedEnumerable<T>.Backwards()
       {
         return Backwards();
       }

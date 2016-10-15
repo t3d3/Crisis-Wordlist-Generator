@@ -34,7 +34,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Runtime.Serialization;
 
-namespace crisis.CommandLine
+namespace Plossum.CommandLine
 {
     [Serializable]
     internal class InvalidEnumerationValueException : ParseException

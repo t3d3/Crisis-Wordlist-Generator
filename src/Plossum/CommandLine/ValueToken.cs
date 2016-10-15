@@ -34,7 +34,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 
-namespace crisis.CommandLine
+namespace Plossum.CommandLine
 {
     /// <summary>
     /// A <see cref="Token"/> representing a value on the command line. A value is basically anything that 

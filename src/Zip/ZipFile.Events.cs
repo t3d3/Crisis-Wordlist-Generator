@@ -27,7 +27,7 @@
 using System;
 using System.IO;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     public partial class ZipFile
     {
@@ -512,9 +512,9 @@ namespace crisis.Ionic.Zip
         ///
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ReadProgress"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddProgress"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ExtractProgress"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ReadProgress"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddProgress"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ExtractProgress"/>
         public event EventHandler<SaveProgressEventArgs> SaveProgress;
 
 
@@ -634,9 +634,9 @@ namespace crisis.Ionic.Zip
         /// </list>
         /// </remarks>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.SaveProgress"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddProgress"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ExtractProgress"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.SaveProgress"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddProgress"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ExtractProgress"/>
         public event EventHandler<ReadProgressEventArgs> ReadProgress;
 
         private void OnReadStarted()
@@ -848,9 +848,9 @@ namespace crisis.Ionic.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.SaveProgress"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ReadProgress"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddProgress"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.SaveProgress"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ReadProgress"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddProgress"/>
         public event EventHandler<ExtractProgressEventArgs> ExtractProgress;
 
 
@@ -1018,9 +1018,9 @@ namespace crisis.Ionic.Zip
         ///
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.SaveProgress"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ReadProgress"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ExtractProgress"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.SaveProgress"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ReadProgress"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ExtractProgress"/>
         public event EventHandler<AddProgressEventArgs> AddProgress;
 
         private void OnAddStarted()
@@ -1196,7 +1196,7 @@ namespace crisis.Ionic.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ZipErrorAction"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ZipErrorAction"/>
         public event EventHandler<ZipErrorEventArgs> ZipError;
 
         internal bool OnZipErrorSaving(ZipEntry entry, Exception exc)

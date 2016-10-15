@@ -33,9 +33,9 @@ using System;
 using SCG = System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
-using crisis.C5;
+using C5;
 
-namespace crisis.CommandLine
+namespace Plossum.CommandLine
 {
     internal class OptionGroup
     {

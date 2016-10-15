@@ -25,7 +25,7 @@
 
 using System;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
   static class ZipConstants
   {      

@@ -32,9 +32,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using crisis.Resources;
+using Plossum.Resources;
 
-namespace crisis.CommandLine
+namespace Plossum.CommandLine
 {
     /// <summary>
     /// <see cref="Token"/> representing the special symbol used to stop the parsing of options, normally "--".

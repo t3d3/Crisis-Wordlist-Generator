@@ -63,7 +63,7 @@
 
 using System;
 
-namespace crisis.Ionic.Zlib
+namespace Crisis.Ionic.Zlib
 {
     /// <summary>
     /// A bunch of constants used in the Zlib interface.

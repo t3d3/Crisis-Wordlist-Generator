@@ -33,7 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace crisis.CommandLine
+namespace Plossum.CommandLine
 {
     internal class OptionAlias : IOption
     {

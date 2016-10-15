@@ -91,7 +91,7 @@
 using System;
 using Interop=System.Runtime.InteropServices;
 
-namespace crisis.Ionic.Zlib
+namespace Crisis.Ionic.Zlib
 {
 
     /// <summary>

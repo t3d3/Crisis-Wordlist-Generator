@@ -31,9 +31,9 @@
  */
 using System;
 using System.Runtime.Serialization;
-using crisis.Resources;
+using Plossum.Resources;
 
-namespace crisis.CommandLine
+namespace Plossum.CommandLine
 {
     /// <summary>
     /// Exception indicating that an option switch character was specified on the command line, but the name

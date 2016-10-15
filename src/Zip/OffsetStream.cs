@@ -29,7 +29,7 @@
 using System;
 using System.IO;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     internal class OffsetStream : System.IO.Stream, System.IDisposable
     {

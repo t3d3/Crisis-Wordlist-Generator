@@ -29,7 +29,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
 
     public partial class ZipFile
@@ -111,9 +111,9 @@ namespace crisis.Ionic.Zip
         ///
         /// </remarks>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddEntry(String, System.IO.Stream)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddEntry(String, System.IO.Stream)"/>
         ///
-        /// <exception cref="crisis.Ionic.Zip.BadStateException">
+        /// <exception cref="Crisis.Ionic.Zip.BadStateException">
         ///   Thrown if you haven't specified a location or stream for saving the zip,
         ///   either in the constructor or by setting the Name property, or if you try
         ///   to save a regular zip archive to a filename with a .exe extension.

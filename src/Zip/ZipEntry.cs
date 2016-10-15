@@ -30,7 +30,7 @@ using System;
 using System.IO;
 using Interop = System.Runtime.InteropServices;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     /// <summary>
     /// Represents a single entry in a ZipFile. Typically, applications get a ZipEntry
@@ -54,7 +54,7 @@ namespace crisis.Ionic.Zip
         public ZipEntry()
         {
             _CompressionMethod = (Int16)CompressionMethod.Deflate;
-            _CompressionLevel = crisis.Ionic.Zlib.CompressionLevel.Default;
+            _CompressionLevel = Crisis.Ionic.Zlib.CompressionLevel.Default;
             _Encryption = EncryptionAlgorithm.None;
             _Source = ZipEntrySource.None;
             AlternateEncoding = System.Text.Encoding.GetEncoding("IBM437");
@@ -211,7 +211,7 @@ namespace crisis.Ionic.Zip
                 _LastModified = (value.Kind == DateTimeKind.Unspecified)
                     ? DateTime.SpecifyKind(value, DateTimeKind.Local)
                     : value.ToLocalTime();
-                _Mtime = crisis.Ionic.Zip.SharedUtilities.AdjustTime_Reverse(_LastModified).ToUniversalTime();
+                _Mtime = Crisis.Ionic.Zip.SharedUtilities.AdjustTime_Reverse(_LastModified).ToUniversalTime();
                 _metadataChanged = true;
             }
         }
@@ -372,7 +372,7 @@ namespace crisis.Ionic.Zip
         ///
         /// <seealso cref="AccessedTime"/>
         /// <seealso cref="CreationTime"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.LastModified"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.LastModified"/>
         /// <seealso cref="SetEntryTimes"/>
         public DateTime ModifiedTime
         {
@@ -1388,10 +1388,10 @@ namespace crisis.Ionic.Zip
 
                 _CompressionMethod = (Int16)value;
 
-                if (_CompressionMethod == (Int16)crisis.Ionic.Zip.CompressionMethod.None)
-                    _CompressionLevel = crisis.Ionic.Zlib.CompressionLevel.None;
-                else if (CompressionLevel == crisis.Ionic.Zlib.CompressionLevel.None)
-                    _CompressionLevel = crisis.Ionic.Zlib.CompressionLevel.Default;
+                if (_CompressionMethod == (Int16)Crisis.Ionic.Zip.CompressionMethod.None)
+                    _CompressionLevel = Crisis.Ionic.Zlib.CompressionLevel.None;
+                else if (CompressionLevel == Crisis.Ionic.Zlib.CompressionLevel.None)
+                    _CompressionLevel = Crisis.Ionic.Zlib.CompressionLevel.Default;
 
                 if (_container.ZipFile != null) _container.ZipFile.NotifyEntryChanged();
                 _restreamRequiredOnSave = true;
@@ -1441,7 +1441,7 @@ namespace crisis.Ionic.Zip
         /// </remarks>
         ///
         /// <seealso cref="CompressionMethod"/>
-        public crisis.Ionic.Zlib.CompressionLevel CompressionLevel
+        public Crisis.Ionic.Zlib.CompressionLevel CompressionLevel
         {
             get
             {
@@ -1453,18 +1453,18 @@ namespace crisis.Ionic.Zip
                     _CompressionMethod != (short)CompressionMethod.None)
                     return ; // no effect
 
-                if (value == crisis.Ionic.Zlib.CompressionLevel.Default &&
+                if (value == Crisis.Ionic.Zlib.CompressionLevel.Default &&
                     _CompressionMethod == (short)CompressionMethod.Deflate) return; // nothing to do
                 _CompressionLevel = value;
 
-                if (value == crisis.Ionic.Zlib.CompressionLevel.None &&
+                if (value == Crisis.Ionic.Zlib.CompressionLevel.None &&
                     _CompressionMethod == (short)CompressionMethod.None)
                     return; // nothing more to do
 
-                if (_CompressionLevel == crisis.Ionic.Zlib.CompressionLevel.None)
-                    _CompressionMethod = (short) crisis.Ionic.Zip.CompressionMethod.None;
+                if (_CompressionLevel == Crisis.Ionic.Zlib.CompressionLevel.None)
+                    _CompressionMethod = (short) Crisis.Ionic.Zip.CompressionMethod.None;
                 else
-                    _CompressionMethod = (short) crisis.Ionic.Zip.CompressionMethod.Deflate;
+                    _CompressionMethod = (short) Crisis.Ionic.Zip.CompressionMethod.Deflate;
 
                 if (_container.ZipFile != null) _container.ZipFile.NotifyEntryChanged();
                 _restreamRequiredOnSave = true;
@@ -1485,7 +1485,7 @@ namespace crisis.Ionic.Zip
         ///   overloads) in that case.
         /// </remarks>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.UncompressedSize"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.UncompressedSize"/>
         public Int64 CompressedSize
         {
             get { return _CompressedSize; }
@@ -1503,7 +1503,7 @@ namespace crisis.Ionic.Zip
         ///   overloads) in that case.
         /// </remarks>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.CompressedSize"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.CompressedSize"/>
         public Int64 UncompressedSize
         {
             get { return _UncompressedSize; }
@@ -1748,8 +1748,8 @@ namespace crisis.Ionic.Zip
         /// Thrown in the setter if EncryptionAlgorithm.Unsupported is specified.
         /// </exception>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.Password">ZipEntry.Password</seealso>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.Encryption">ZipFile.Encryption</seealso>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.Password">ZipEntry.Password</seealso>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.Encryption">ZipFile.Encryption</seealso>
         public EncryptionAlgorithm Encryption
         {
             get
@@ -1910,8 +1910,8 @@ namespace crisis.Ionic.Zip
         ///
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.Encryption"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.Password">ZipFile.Password</seealso>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.Encryption"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.Password">ZipFile.Password</seealso>
         public string Password
         {
             set
@@ -1978,7 +1978,7 @@ namespace crisis.Ionic.Zip
         ///   </para>
         ///
         /// </remarks>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ExtractExistingFile"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ExtractExistingFile"/>
         ///
         /// <example>
         ///   This example shows how to set the <c>ExtractExistingFile</c> property in
@@ -2057,8 +2057,8 @@ namespace crisis.Ionic.Zip
         ///  </para>
         ///
         /// </remarks>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ZipErrorAction"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ZipError"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ZipErrorAction"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ZipError"/>
         public ZipErrorAction ZipErrorAction
         {
             get;
@@ -2145,7 +2145,7 @@ namespace crisis.Ionic.Zip
                 }
                 else
                 {
-                    AlternateEncoding = crisis.Ionic.Zip.ZipFile.DefaultEncoding;
+                    AlternateEncoding = Crisis.Ionic.Zip.ZipFile.DefaultEncoding;
                     AlternateEncodingUsage = ZipOption.Never;
                 }
             }
@@ -2337,7 +2337,7 @@ namespace crisis.Ionic.Zip
         private static ZipEntry Create(string nameInArchive, ZipEntrySource source, Object arg1, Object arg2)
         {
             if (String.IsNullOrEmpty(nameInArchive))
-                throw new crisis.Ionic.Zip.ZipException("The entry name must be non-null and non-empty.");
+                throw new Crisis.Ionic.Zip.ZipException("The entry name must be non-null and non-empty.");
 
             ZipEntry entry = new ZipEntry();
 
@@ -2374,7 +2374,7 @@ namespace crisis.Ionic.Zip
                 String filename = (arg1 as String);   // must not be null
 
                 if (String.IsNullOrEmpty(filename))
-                    throw new crisis.Ionic.Zip.ZipException("The filename must be non-null and non-empty.");
+                    throw new Crisis.Ionic.Zip.ZipException("The filename must be non-null and non-empty.");
 
                 try
                 {
@@ -2582,7 +2582,7 @@ namespace crisis.Ionic.Zip
                 this.ArchiveStream.Seek(this._RelativeOffsetOfLocalHeader, SeekOrigin.Begin);
 
                 // workitem 10178
-                crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+                Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
             }
             catch (System.IO.IOException exc1)
             {
@@ -2607,7 +2607,7 @@ namespace crisis.Ionic.Zip
 
             this.ArchiveStream.Seek(filenameLength + extraFieldLength, SeekOrigin.Current);
             // workitem 10178
-            crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+            Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
 
             this._LengthOfHeader = 30 + extraFieldLength + filenameLength +
                 GetLengthOfCryptoHeaderBytes(_Encryption_FromZipFile);
@@ -2622,7 +2622,7 @@ namespace crisis.Ionic.Zip
             // workitem 8098: ok (restore)
             this.ArchiveStream.Seek(origPosition, SeekOrigin.Begin);
             // workitem 10178
-            crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+            Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
         }
 
 
@@ -2700,7 +2700,7 @@ namespace crisis.Ionic.Zip
         internal Int16 _BitField;
         internal Int16 _CompressionMethod;
         private Int16 _CompressionMethod_FromZipFile;
-        private crisis.Ionic.Zlib.CompressionLevel _CompressionLevel;
+        private Crisis.Ionic.Zlib.CompressionLevel _CompressionLevel;
         internal string _Comment;
         private bool _IsDirectory;
         private byte[] _CommentBytes;

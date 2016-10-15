@@ -20,8 +20,11 @@ using System;
 using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
+using Crisis.Tools;
+using crisis;
 
-namespace crisis
+
+namespace Crisis.Combinatorics
 {
     /// <summary>
     /// Permutations defines a meta-collection, typically a list of lists, of all
@@ -528,7 +531,7 @@ namespace crisis
 
     }
 
-    public class PermutationPattern : Property
+    public class PermutationPattern : Parameter
     {
         private static string s = null;
         private static List<string> permutCharset = new List<string>() { };
@@ -546,9 +549,9 @@ namespace crisis
             
         }
 
-        public static BigInteger CaclulPermut(bool _repeat)
+        public static BigInteger CaclulPermut(bool _repeat, List<string> charsetSelecting, int numberOfChar)
         {
-            obj = new Combinations<string>(Charset.CharsetSelecting, Property.NumberOfChar);
+            obj = new Combinations<string>(charsetSelecting, numberOfChar);
 
             foreach (IList<string> charset in obj)
             {
@@ -577,12 +580,12 @@ namespace crisis
         }
 
 
-        public void PermutationPrintF(bool _saveFile, bool _zip, bool _repeat)
+        public void GeneratePermutationString(List<string> charsetSelecting, BigInteger numberLine, BigInteger numberOfAllCombination, bool saveFile, bool _zip, bool _repeat, int typesAtGenerate, int numberOfChar, string filePath, string extension)
         {
-            FilesNameDirectory make = new FilesNameDirectory();
+            
             BigInteger cpt = 0;
-            Utility tool = new Utility();
-                        
+            Utility make = new Utility();
+
             foreach (IList<string> charset in obj)
             {
                 s = null;
@@ -607,18 +610,18 @@ namespace crisis
                     permut = new Permutations<string>(permutCharset, GenerateOption.WithRepetition);
                 }
 
-                if (_saveFile)
+                if (saveFile)
                 {
                     BigInteger makeFile = 0;
 
                     foreach (IList<string> str in permut)
-                    {                  
+                    {
                         if (makeFile == 0)
                         {
-                            make.Setting_UpFile(Property.TypesOfGeneration);
+                            make.Setting_UpFile(filePath,extension);
                         }
 
-                        for (int c = 0; c < Property.NumberOfChar; c++)
+                        for (int c = 0; c < numberOfChar; c++)
                         {
                             s += str[c];
                         }
@@ -629,12 +632,12 @@ namespace crisis
                         makeFile++;
                         cpt++;
 
-                        if (makeFile >= Property.NumberLine | cpt >= Statistical.NumberOfAllCombination)
-                        {                            
+                        if (makeFile >= numberLine | cpt >= numberOfAllCombination)
+                        {
                             make.WorkFile.Flush();
                             make.WorkFile.Close();
-                            tool.Zipper(_zip);
-                            tool.GenerateOut(Property.TypesOfGeneration,Property.IExtension);
+                            make.Zipper(_zip);
+                            make.GenerateOut(extension);
                             makeFile = 0;
                         }
                     }
@@ -651,12 +654,12 @@ namespace crisis
 
                         Console.WriteLine(s);
                     }
-                }            
+                }
 
             }//End foreach
 
         } //End function
-   
+
 
     }
 }

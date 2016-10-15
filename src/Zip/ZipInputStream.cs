@@ -33,9 +33,9 @@ using System;
 using System.Threading;
 using System.Collections.Generic;
 using System.IO;
-using crisis.Ionic.Zip;
+using Crisis.Ionic.Zip;
 
-namespace  crisis.Ionic.Zip
+namespace  Crisis.Ionic.Zip
 {
     /// <summary>
     ///   Provides a stream metaphor for reading zip files.
@@ -579,7 +579,7 @@ namespace  crisis.Ionic.Zip
                 _currentEntry.VerifyCrcAfterExtract(CrcResult);
                 _inputStream.Seek(_endOfEntry, SeekOrigin.Begin);
                 // workitem 10178
-                crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
+                Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
             }
 
             return n;
@@ -631,7 +631,7 @@ namespace  crisis.Ionic.Zip
                 // back up 4 bytes: ReadEntry assumes the file pointer is positioned before the entry signature
                 _inputStream.Seek(-4, SeekOrigin.Current);
                 // workitem 10178
-                crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
+                Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
             }
             // workitem 10923
             else if (_firstEntry)
@@ -639,7 +639,7 @@ namespace  crisis.Ionic.Zip
                 // we've already read one entry.
                 // Seek to the end of it.
                 _inputStream.Seek(_endOfEntry, SeekOrigin.Begin);
-                crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
+                Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
             }
 
             _currentEntry = ZipEntry.ReadEntry(_container, !_firstEntry);
@@ -790,7 +790,7 @@ namespace  crisis.Ionic.Zip
             _findRequired= true;
             var x = _inputStream.Seek(offset, origin);
             // workitem 10178
-            crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
+            Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
             return x;
         }
 
@@ -810,7 +810,7 @@ namespace  crisis.Ionic.Zip
         private bool _firstEntry;
         private bool _needSetup;
         private ZipContainer _container;
-        private crisis.Ionic.Crc.CrcCalculatorStream _crcStream;
+        private Crisis.Ionic.Crc.CrcCalculatorStream _crcStream;
         private Int64 _LeftToRead;
         internal String _Password;
         private Int64 _endOfEntry;

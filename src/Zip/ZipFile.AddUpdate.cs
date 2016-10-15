@@ -30,7 +30,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     public partial class ZipFile
     {
@@ -71,9 +71,9 @@ namespace crisis.Ionic.Zip
         ///
         /// </remarks>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddFile(string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddDirectory(string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateItem(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddFile(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddDirectory(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateItem(string)"/>
         ///
         /// <overloads>This method has two overloads.</overloads>
         /// <param name="fileOrDirectoryName">
@@ -141,9 +141,9 @@ namespace crisis.Ionic.Zip
         ///   insert the item at the root path within the archive.
         /// </param>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddFile(string, string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddDirectory(string, string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateItem(string, string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddFile(string, string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddDirectory(string, string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateItem(string, string)"/>
         ///
         /// <example>
         ///   This example shows how to zip up a set of files into a flat hierarchy,
@@ -282,9 +282,9 @@ namespace crisis.Ionic.Zip
         ///
         /// <overloads>This method has two overloads.</overloads>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddItem(string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddDirectory(string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateFile(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddItem(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddDirectory(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateFile(string)"/>
         ///
         /// <param name="fileName">
         ///   The name of the file to add. It should refer to a file in the filesystem.
@@ -381,9 +381,9 @@ namespace crisis.Ionic.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddItem(string,string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddDirectory(string, string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateFile(string,string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddItem(string,string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddDirectory(string, string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateFile(string,string)"/>
         ///
         /// <param name="fileName">
         ///   The name of the file to add.  The name of the file may be a relative path
@@ -421,8 +421,8 @@ namespace crisis.Ionic.Zip
         ///   that ICollection to this method.
         /// </param>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.SelectEntries(String)" />
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.RemoveSelectedEntries(String)" />
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.SelectEntries(String)" />
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.RemoveSelectedEntries(String)" />
         public void RemoveEntries(System.Collections.Generic.ICollection<ZipEntry> entriesToRemove)
         {
             if (entriesToRemove == null)
@@ -445,8 +445,8 @@ namespace crisis.Ionic.Zip
         ///   List of Strings that provide the names of entries to be removed.
         /// </param>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.SelectEntries(String)" />
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.RemoveSelectedEntries(String)" />
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.SelectEntries(String)" />
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.RemoveSelectedEntries(String)" />
         public void RemoveEntries(System.Collections.Generic.ICollection<String> entriesToRemove)
         {
             if (entriesToRemove == null)
@@ -513,7 +513,7 @@ namespace crisis.Ionic.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddSelectedFiles(String, String)" />
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddSelectedFiles(String, String)" />
         public void AddFiles(System.Collections.Generic.IEnumerable<String> fileNames)
         {
             this.AddFiles(fileNames, null);
@@ -592,7 +592,7 @@ namespace crisis.Ionic.Zip
         ///   archive.
         /// </param>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddSelectedFiles(String, String)" />
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddSelectedFiles(String, String)" />
         public void AddFiles(System.Collections.Generic.IEnumerable<String> fileNames, String directoryPathInArchive)
         {
             AddFiles(fileNames, false, directoryPathInArchive);
@@ -658,7 +658,7 @@ namespace crisis.Ionic.Zip
         ///   <c>true</c> will result in the full direcory paths being included in
         ///   the entries added to the ZipFile.
         /// </param>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddSelectedFiles(String, String)" />
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddSelectedFiles(String, String)" />
         public void AddFiles(System.Collections.Generic.IEnumerable<String> fileNames,
                              bool preserveDirHierarchy,
                              String directoryPathInArchive)
@@ -734,7 +734,7 @@ namespace crisis.Ionic.Zip
         ///   archive.
         /// </param>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddSelectedFiles(String, String)" />
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddSelectedFiles(String, String)" />
         public void UpdateFiles(System.Collections.Generic.IEnumerable<String> fileNames, String directoryPathInArchive)
         {
             if (fileNames == null)
@@ -818,9 +818,9 @@ namespace crisis.Ionic.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddFile(string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateDirectory(string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateItem(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddFile(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateDirectory(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateItem(string)"/>
         ///
         /// <param name="fileName">
         ///   The name of the file to add or update. It should refer to a file in the
@@ -871,9 +871,9 @@ namespace crisis.Ionic.Zip
         /// </para>
         /// </remarks>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddFile(string,string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateDirectory(string,string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateItem(string,string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddFile(string,string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateDirectory(string,string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateItem(string,string)"/>
         ///
         /// <param name="fileName">
         ///   The name of the file to add or update. It should refer to a file in the
@@ -921,9 +921,9 @@ namespace crisis.Ionic.Zip
         ///   contents and the new files.
         /// </remarks>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateFile(string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddDirectory(string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateItem(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateFile(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddDirectory(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateItem(string)"/>
         ///
         /// <param name="directoryName">
         ///   The path to the directory to be added to the zip archive, or updated in
@@ -954,9 +954,9 @@ namespace crisis.Ionic.Zip
         ///   contents and the new files.
         /// </remarks>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateFile(string,string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddDirectory(string,string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateItem(string,string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateFile(string,string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddDirectory(string,string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateItem(string,string)"/>
         ///
         /// <param name="directoryName">
         ///   The path to the directory to be added to the zip archive, or updated
@@ -1008,9 +1008,9 @@ namespace crisis.Ionic.Zip
         /// </para>
         /// </remarks>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddItem(string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateFile(string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateDirectory(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddItem(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateFile(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateDirectory(string)"/>
         ///
         /// <param name="itemName">
         ///  the path to the file or directory to be added or updated.
@@ -1052,9 +1052,9 @@ namespace crisis.Ionic.Zip
         /// </para>
         /// </remarks>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddItem(string, string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateFile(string, string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateDirectory(string, string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddItem(string, string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateFile(string, string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateDirectory(string, string)"/>
         ///
         /// <param name="itemName">
         ///   The path for the File or Directory to be added or updated.
@@ -1281,7 +1281,7 @@ namespace crisis.Ionic.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateEntry(string, System.IO.Stream)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateEntry(string, System.IO.Stream)"/>
         ///
         /// <param name="entryName">
         ///   The name, including any path, which is shown in the zip file for the added
@@ -1795,8 +1795,8 @@ namespace crisis.Ionic.Zip
         ///
         /// </remarks>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddEntry(string, System.IO.Stream)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.InputStream"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddEntry(string, System.IO.Stream)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.InputStream"/>
         ///
         /// <param name="entryName">
         ///   The name, including any path, to use within the archive for the entry.
@@ -1921,10 +1921,10 @@ namespace crisis.Ionic.Zip
         ///
         /// </remarks>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddItem(string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddFile(string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateDirectory(string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddDirectory(string, string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddItem(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddFile(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateDirectory(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddDirectory(string, string)"/>
         ///
         /// <overloads>This method has 2 overloads.</overloads>
         ///
@@ -1984,9 +1984,9 @@ namespace crisis.Ionic.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddItem(string, string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.AddFile(string, string)"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.UpdateDirectory(string, string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddItem(string, string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.AddFile(string, string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.UpdateDirectory(string, string)"/>
         ///
         /// <param name="directoryName">The name of the directory to add.</param>
         ///

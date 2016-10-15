@@ -23,7 +23,7 @@ using System;
 using System.Diagnostics;
 using SCG = System.Collections.Generic;
 
-namespace crisis.C5
+namespace C5
 {
   /// <summary>
   /// A bag collection based on a hash table of (item,count) pairs. 
@@ -294,7 +294,7 @@ namespace crisis.C5
     [Tested]
     public virtual void RemoveAll<U>(SCG.IEnumerable<U> items) where U : T
     {
-//#warning Improve if items is a counting bag
+#warning Improve if items is a counting bag
       updatecheck();
       bool mustRaise = (ActiveEvents & (EventTypeEnum.Changed | EventTypeEnum.Removed)) != 0;
       RaiseForRemoveAllHandler raiseHandler = mustRaise ? new RaiseForRemoveAllHandler(this) : null;
@@ -386,7 +386,7 @@ namespace crisis.C5
         {
           int removed = p.Value - res.ContainsCount(p.Key);
           if (removed > 0)
-//#warning We could send bag events here easily using a CircularQueue of (should?)
+#warning We could send bag events here easily using a CircularQueue of (should?)
             for (int i = 0; i < removed; i++)
               wasRemoved.Enqueue(p.Key);
         }
@@ -582,7 +582,7 @@ namespace crisis.C5
     public virtual void AddAll<U>(SCG.IEnumerable<U> items) where U : T
     {
       updatecheck();
-//#warning We could easily raise bag events
+#warning We could easily raise bag events
       bool mustRaiseAdded = (ActiveEvents & EventTypeEnum.Added) != 0;
       CircularQueue<T> wasAdded = mustRaiseAdded ? new CircularQueue<T>() : null;
       bool wasChanged = false;

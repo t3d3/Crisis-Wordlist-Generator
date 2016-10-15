@@ -69,7 +69,7 @@
 
 using System;
 
-namespace crisis.Ionic.Zlib
+namespace Crisis.Ionic.Zlib
 {
 
     internal enum BlockState

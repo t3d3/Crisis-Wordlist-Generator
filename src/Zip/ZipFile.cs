@@ -44,7 +44,7 @@ using System.Collections.Generic;
 using Interop = System.Runtime.InteropServices;
 
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     /// <summary>
     ///   The ZipFile type represents a zip archive file.
@@ -398,9 +398,9 @@ namespace crisis.Ionic.Zip
         ///   parameter can affect the compression ratio and the speed of
         ///   compression but not the correctness of the compresssion.  For more
         ///   information see <see
-        ///   cref="crisis.Ionic.Zlib.CompressionStrategy">Ionic.Zlib.CompressionStrategy</see>.
+        ///   cref="Crisis.Ionic.Zlib.CompressionStrategy">Ionic.Zlib.CompressionStrategy</see>.
         /// </remarks>
-        public crisis.Ionic.Zlib.CompressionStrategy Strategy
+        public Crisis.Ionic.Zlib.CompressionStrategy Strategy
         {
             get { return _Strategy; }
             set { _Strategy = value; }
@@ -471,7 +471,7 @@ namespace crisis.Ionic.Zip
         ///    alone, and accept the default.
         ///  </para>
         /// </remarks>
-        public crisis.Ionic.Zlib.CompressionLevel CompressionLevel
+        public Crisis.Ionic.Zlib.CompressionLevel CompressionLevel
         {
             get;
             set;
@@ -485,8 +485,8 @@ namespace crisis.Ionic.Zip
         ///     By default, the compression method is <c>CompressionMethod.Deflate.</c>
         ///   </para>
         /// </remarks>
-        /// <seealso cref="crisis.Ionic.Zip.CompressionMethod" />
-        public crisis.Ionic.Zip.CompressionMethod CompressionMethod
+        /// <seealso cref="Crisis.Ionic.Zip.CompressionMethod" />
+        public Crisis.Ionic.Zip.CompressionMethod CompressionMethod
         {
             get
             {
@@ -972,7 +972,7 @@ namespace crisis.Ionic.Zip
                 }
                 else
                 {
-                    _alternateEncoding = crisis.Ionic.Zip.ZipFile.DefaultEncoding;
+                    _alternateEncoding = Crisis.Ionic.Zip.ZipFile.DefaultEncoding;
                     _alternateEncodingUsage = ZipOption.Never;
                 }
             }
@@ -1316,7 +1316,7 @@ namespace crisis.Ionic.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.DefaultEncoding">DefaultEncoding</seealso>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.DefaultEncoding">DefaultEncoding</seealso>
         [Obsolete("use AlternateEncoding instead.")]
         public System.Text.Encoding ProvisionalAlternateEncoding
         {
@@ -1379,7 +1379,7 @@ namespace crisis.Ionic.Zip
         /// The default text encoding used in zip archives.  It is numeric 437, also
         /// known as IBM437.
         /// </summary>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ProvisionalAlternateEncoding"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ProvisionalAlternateEncoding"/>
         public static System.Text.Encoding DefaultEncoding
         {
             get
@@ -1667,8 +1667,8 @@ namespace crisis.Ionic.Zip
         ///
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.Encryption">ZipFile.Encryption</seealso>
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.Password">ZipEntry.Password</seealso>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.Encryption">ZipFile.Encryption</seealso>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.Password">ZipEntry.Password</seealso>
         public String Password
         {
             set
@@ -1712,7 +1712,7 @@ namespace crisis.Ionic.Zip
         ///   to be extracted does not already exist.
         /// </para>
         /// </remarks>
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>
         public ExtractExistingFileAction ExtractExistingFile
         {
             get;
@@ -1809,8 +1809,8 @@ namespace crisis.Ionic.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.ZipErrorAction"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ZipError"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.ZipErrorAction"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ZipError"/>
 
         public ZipErrorAction ZipErrorAction
         {
@@ -1944,8 +1944,8 @@ namespace crisis.Ionic.Zip
         ///
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.Password">ZipFile.Password</seealso>
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.Encryption">ZipEntry.Encryption</seealso>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.Password">ZipFile.Password</seealso>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.Encryption">ZipEntry.Encryption</seealso>
         public EncryptionAlgorithm Encryption
         {
             get
@@ -2182,7 +2182,7 @@ namespace crisis.Ionic.Zip
         ///     using Encryption. This is primarily because encryption tends to slow
         ///     down the entire pipeline. Also, multi-threaded compression gives less
         ///     of an advantage when using lower compression levels, for example <see
-        ///     cref="crisis.Ionic.Zlib.CompressionLevel.BestSpeed"/>.  You may have to
+        ///     cref="Crisis.Ionic.Zlib.CompressionLevel.BestSpeed"/>.  You may have to
         ///     perform some tests to determine the best approach for your situation.
         ///   </para>
         ///
@@ -2447,7 +2447,7 @@ namespace crisis.Ionic.Zip
         ///
         /// </remarks>
         ///
-        /// <exception cref="crisis.Ionic.Zip.ZipException">
+        /// <exception cref="Crisis.Ionic.Zip.ZipException">
         /// Thrown if name refers to an existing file that is not a valid zip file.
         /// </exception>
         ///
@@ -2520,7 +2520,7 @@ namespace crisis.Ionic.Zip
         ///
         /// </remarks>
         ///
-        /// <exception cref="crisis.Ionic.Zip.ZipException">
+        /// <exception cref="Crisis.Ionic.Zip.ZipException">
         /// Thrown if name refers to an existing file that is not a valid zip file.
         /// </exception>
         ///
@@ -2666,7 +2666,7 @@ namespace crisis.Ionic.Zip
         ///
         /// </remarks>
         ///
-        /// <exception cref="crisis.Ionic.Zip.ZipException">
+        /// <exception cref="Crisis.Ionic.Zip.ZipException">
         /// Thrown if name refers to an existing file that is not a valid zip file.
         /// </exception>
         ///
@@ -2758,7 +2758,7 @@ namespace crisis.Ionic.Zip
         ///
         /// </remarks>
         ///
-        /// <exception cref="crisis.Ionic.Zip.ZipException">
+        /// <exception cref="Crisis.Ionic.Zip.ZipException">
         /// Thrown if <c>fileName</c> refers to an existing file that is not a valid zip file.
         /// </exception>
         ///
@@ -2840,7 +2840,7 @@ namespace crisis.Ionic.Zip
             _StatusMessageTextWriter = statusMessageWriter;
             _contentsChanged = true;
             AddDirectoryWillTraverseReparsePoints = true;  // workitem 8617
-            CompressionLevel = crisis.Ionic.Zlib.CompressionLevel.Default;
+            CompressionLevel = Crisis.Ionic.Zlib.CompressionLevel.Default;
 #if !NETCF
             ParallelDeflateThreshold = 512 * 1024;
 #endif
@@ -2982,7 +2982,7 @@ namespace crisis.Ionic.Zip
         ///   End Using
         /// </code>
         /// </example>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.RemoveEntry(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.RemoveEntry(string)"/>
         ///
         /// <exception cref="System.ArgumentException">
         ///   Thrown if the caller attempts to assign a non-null value to the indexer.
@@ -3076,7 +3076,7 @@ namespace crisis.Ionic.Zip
         ///   to swap forward slashes for backslashes.
         /// </remarks>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.this[string]"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.this[string]"/>
         ///
         /// <example>
         ///   This example shows one way to test if a filename is already contained
@@ -3309,7 +3309,7 @@ namespace crisis.Ionic.Zip
         /// The <c>ZipEntry</c> to remove from the zip.
         /// </param>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.RemoveSelectedEntries(string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.RemoveSelectedEntries(string)"/>
         ///
         public void RemoveEntry(ZipEntry entry)
         {
@@ -3614,8 +3614,8 @@ namespace crisis.Ionic.Zip
         internal string _Password;
         private bool _emitNtfsTimes = true;
         private bool _emitUnixTimes;
-        private crisis.Ionic.Zlib.CompressionStrategy _Strategy = crisis.Ionic.Zlib.CompressionStrategy.Default;
-        private crisis.Ionic.Zip.CompressionMethod _compressionMethod = crisis.Ionic.Zip.CompressionMethod.Deflate;
+        private Crisis.Ionic.Zlib.CompressionStrategy _Strategy = Crisis.Ionic.Zlib.CompressionStrategy.Default;
+        private Crisis.Ionic.Zip.CompressionMethod _compressionMethod = Crisis.Ionic.Zip.CompressionMethod.Deflate;
         private bool _fileAlreadyExists;
         private string _temporaryFileName;
         private bool _contentsChanged;
@@ -3640,7 +3640,7 @@ namespace crisis.Ionic.Zip
         private int _BufferSize = BufferSizeDefault;
 
 #if !NETCF
-        internal crisis.Ionic.Zlib.ParallelDeflateOutputStream ParallelDeflater;
+        internal Crisis.Ionic.Zlib.ParallelDeflateOutputStream ParallelDeflater;
         private long _ParallelDeflateThreshold;
         private int _maxBufferPairs = 16;
 #endif

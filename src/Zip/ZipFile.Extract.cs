@@ -29,7 +29,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
 
     public partial class ZipFile
@@ -55,7 +55,7 @@ namespace crisis.Ionic.Zip
         ///   be extracted, the existing file will not be overwritten and an
         ///   exception will be thrown. To change this, set the property, or use the
         ///   <see cref="ZipFile.ExtractAll(string,
-        ///   Ionic.Zip.Extrcrisis.IonicistingFileAction)" /> overload that allows you to
+        ///   Ionic.Zip.ExtrCrisis.IonicistingFileAction)" /> overload that allows you to
         ///   specify an ExtractExistingFileAction parameter.
         /// </para>
         ///
@@ -139,8 +139,8 @@ namespace crisis.Ionic.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ExtractProgress"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ExtractExistingFile"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ExtractProgress"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ExtractExistingFile"/>
         ///
         /// <param name="path">
         ///   The path to which the contents of the zipfile will be extracted.

@@ -33,13 +33,13 @@ using System;
 using SCG = System.Collections.Generic;
 using System.Text;
 using System.IO;
-using crisis.C5;
+using C5;
 using System.Reflection;
 using System.Globalization;
 using System.Diagnostics;
-using crisis.Resources;
+using Plossum.Resources;
 
-namespace crisis.CommandLine
+namespace Plossum.CommandLine
 {
     /// <summary>
     /// Performs the actual parsing of a command line and provides methods for retrieving descriptive information

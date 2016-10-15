@@ -20,9 +20,11 @@ using System;
 using System.Text;
 using System.Numerics;
 using System.Collections.Generic;
+using crisis;
+using Crisis.Tools;
 
-
-namespace crisis {
+namespace Crisis.Combinatorics
+{
     /// <summary>
     /// Variations defines a meta-collection, typically a list of lists, of all possible 
     /// ordered subsets of a particular size from the set of values.  
@@ -469,52 +471,50 @@ namespace crisis {
         #endregion
     }
 
-    public class VariationnPattern : Property
+    public class VariationnPattern : Parameter
     {
         
         public VariationnPattern()
         {
         }
 
-        public static Variations<string> CalculVariation(bool _repeat)
+        public  Variations<string> CalculVariation(bool _repeat, List <string> charsetSelecting, int numberOfChar)
         {
             Variations<string> obj = null;
 
             if (_repeat == false)
             {
-                obj = new Variations<string>(Charset.CharsetSelecting, Property.NumberOfChar, GenerateOption.WithoutRepetition);
+                obj = new Variations<string>(charsetSelecting, numberOfChar, GenerateOption.WithoutRepetition);
             }
             else if (_repeat == true)
             {
-                obj = new Variations<string>(Charset.CharsetSelecting, Property.NumberOfChar, GenerateOption.WithRepetition);
+                obj = new Variations<string>(charsetSelecting, numberOfChar, GenerateOption.WithRepetition);
             }
 
             return obj;
         }
 
-        public void VariationPrintF(bool _saveFile, bool _zip, bool _repeat)
+        public void GenerateVariationString(List<string> charsetSelecting, BigInteger numberLine, bool saveFile, bool zip, bool repeat, int numberOfChar, string filePath, string extension)
         {
-            var obj = CalculVariation(_repeat);
-            SaveFile = _saveFile;
-
-            FilesNameDirectory make = new FilesNameDirectory();
-            Utility tool = new Utility();
+            var obj = CalculVariation(repeat, charsetSelecting,numberOfChar);
+                                               
+            Utility make = new Utility();
             BigInteger cpt = 0;
 
             string s = null;
 
-            if (SaveFile)
-            {                
+            if (saveFile)
+            {
                 BigInteger iMakeFile = 0;
-                
+
                 foreach (IList<string> c in obj)
                 {
                     if (iMakeFile == 0)
                     {
-                       make.Setting_UpFile(Property.TypesOfGeneration); 
+                        make.Setting_UpFile(filePath,extension);
                     }
 
-                    for (int i = 0; i < NumberOfChar; i++)
+                    for (int i = 0; i < numberOfChar; i++)
                     {
                         s += c[i];
                     }
@@ -525,12 +525,12 @@ namespace crisis {
                     iMakeFile++;
                     cpt++;
 
-                    if (iMakeFile >= NumberLine | cpt >= Statistical.NumberOfAllCombination)
-                    {  
+                    if (iMakeFile >= numberLine | cpt >= obj.Count)
+                    {
                         make.WorkFile.Flush();
                         make.WorkFile.Close();
-                        tool.Zipper(_zip);
-                        tool.GenerateOut(Property.TypesOfGeneration,Property.IExtension);
+                        make.Zipper(zip);
+                        make.GenerateOut(extension);
                         iMakeFile = 0;
                     }
                 }
@@ -539,7 +539,7 @@ namespace crisis {
             {
                 foreach (IList<string> c in obj)
                 {
-                    for (int i = 0; i < NumberOfChar; i++)
+                    for (int i = 0; i < numberOfChar; i++)
                     {
                         s += c[i];
                     }
@@ -548,7 +548,7 @@ namespace crisis {
                 }
             }
         } // End Function      
-        
+
     }
 
 }
