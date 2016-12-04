@@ -1,5 +1,5 @@
 //  Author:
-//       Teeknofil <teeknofil@gmail.com>
+//       Teeknofil <teeknofil.dev@gmail.com>
 //
 //  Copyright (c) 2015 Teeknofil
 //
@@ -17,11 +17,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Text;
 using System.Numerics;
 using System.Collections.Generic;
 using Crisis.Tools;
-using crisis;
+using Crisis;
 
 
 namespace Crisis.Combinatorics
@@ -376,17 +375,17 @@ namespace Crisis.Combinatorics
 
         }
 
-        public  Combinations<string> CaclulCombination(bool _repeat, List<string> charsetSelecting, int numberOfChar)
+        public  Combinations<string> CaclulCombination(bool repeat, List<string> charsetSelecting, int numberOfChar)
         {
             Combinations<string> obj = null;
-
-            if (_repeat == false)
+            Utility make = new Utility();
+            if (repeat == false)
             {
-                obj = new Combinations<string>(charsetSelecting, numberOfChar, GenerateOption.WithoutRepetition);
+                obj = new Combinations<string>(make.DoubleCapacityList(charsetSelecting, numberOfChar), numberOfChar, GenerateOption.WithoutRepetition);
             }
-            else if (_repeat == true)
+            else if (repeat == true)
             {
-                obj = new Combinations<string>(charsetSelecting, numberOfChar, GenerateOption.WithRepetition);
+                obj = new Combinations<string>(make.DoubleCapacityList(charsetSelecting, numberOfChar), numberOfChar, GenerateOption.WithRepetition);
             }
             return obj;
         }
@@ -395,7 +394,7 @@ namespace Crisis.Combinatorics
 
         #region In Memory or Write a Files
 
-        public void GenerateIncrementing(List<string> charsetSelecting, BigInteger numberLine, bool saveFile, bool _zip, bool _repeat, int typesOfGeneration, int numberOfChar, string filePath, string extension)
+        public void GenerateIncrementing(List<string> charsetSelecting, BigInteger numberLine, bool saveFile, bool zip, bool _repeat, int typesOfGeneration, int numberOfChar, string pathBackUpFiles, string extension)
         {
             var obj = CaclulCombination(_repeat, charsetSelecting, numberOfChar);
 
@@ -415,7 +414,7 @@ namespace Crisis.Combinatorics
                     {
                         if (iMakeFile == 0)
                         {
-                            make.Setting_UpFile(filePath,extension);
+                            make.Setting_UpFile(pathBackUpFiles,extension);
                         }
 
                         for (int y = 0; y < numberOfChar; y++)
@@ -442,8 +441,8 @@ namespace Crisis.Combinatorics
                         {
                             make.WorkFile.Flush();
                             make.WorkFile.Close();
-                            make.Zipper(_zip);
-                            make.GenerateOut(extension);
+                            extension = make.Zipper(zip, pathBackUpFiles);
+                            make.GenerateOut(pathBackUpFiles,extension);
                             iMakeFile = 0;
                         }
                     }
@@ -453,6 +452,9 @@ namespace Crisis.Combinatorics
 
                     foreach (IList<string> c in obj)
                     {
+                        if (cpt >= numberLine & numberLine != 0)
+                            Environment.Exit(0);
+
                         for (int y = 0; y < numberOfChar; y++)
                         {
                             s += c[y];
@@ -465,9 +467,10 @@ namespace Crisis.Combinatorics
                         else
                         {
                             Console.WriteLine(s);
-                        }
+                        }                                              
 
                         s = null;
+                        cpt++;
                     }
 
                 }

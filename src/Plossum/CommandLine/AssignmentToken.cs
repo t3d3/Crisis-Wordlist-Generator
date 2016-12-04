@@ -33,7 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// <see cref="Token"/> representing an assignment character.

@@ -31,9 +31,9 @@
  */
 using System;
 using System.Runtime.Serialization;
-using Plossum.Resources;
+using Crisis.Resources;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Base class for any exceptions specific to the command line parser. Indicates an error during the

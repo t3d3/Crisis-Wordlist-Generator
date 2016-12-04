@@ -34,7 +34,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Attribute describing the command line manager class that will be used for storing the values

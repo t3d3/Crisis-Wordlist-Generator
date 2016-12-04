@@ -33,7 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Specifies how a boolean command line option should be evaluated.

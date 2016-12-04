@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -10,6 +10,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <ReleaseVersion>1.1.3</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,10 +22,8 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -38,6 +37,38 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Crisis.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>password-attacks-trans.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Crisis|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Crisis\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Crisis|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Crisis\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -95,26 +126,11 @@
     <Compile Include="Combinatorics\Permutations.cs" />
     <Compile Include="Combinatorics\Randomizer.cs" />
     <Compile Include="Combinatorics\SmallPrimeUtility.cs" />
+    <Compile Include="Combinatorics\TransformTextFiles.cs" />
+    <Compile Include="Combinatorics\UserPasswordProfiler.cs" />
     <Compile Include="Combinatorics\Variations.cs" />
     <Compile Include="CommunSrc\CRC32.cs" />
     <Compile Include="CommunSrc\Iso8859Dash1Encoding.cs" />
-    <Compile Include="Tools\CLI.cs" />
-    <Compile Include="Graphic\Interface.cs" />
-    <Compile Include="Graphic\Wordlist.cs" />
-    <Compile Include="Core\Lang\en-US.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>en-US.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Lang\fr-Fr.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>fr-Fr.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Graphic\Menu\Main.cs" />
-    <Compile Include="Graphic\Menu\Pattern.cs" />
-    <Compile Include="Graphic\Menu\Character.cs" />
-    <Compile Include="Core\Parameter.cs" />
     <Compile Include="Plossum\Alignment.cs" />
     <Compile Include="Plossum\ColumnInfo.cs" />
     <Compile Include="Plossum\CommandLine\AssignmentToken.cs" />
@@ -151,11 +167,28 @@
     <Compile Include="Plossum\CommandLine\ValueToken.cs" />
     <Compile Include="Plossum\Cropping.cs" />
     <Compile Include="Plossum\GlobalSuppressions.cs" />
-    <Compile Include="Plossum\Resources\CommandLineStrings.Designer.cs" />
-    <Compile Include="Plossum\Resources\PlossumStrings.Designer.cs" />
     <Compile Include="Plossum\StringFormatter.cs" />
     <Compile Include="Plossum\VerticalAlignment.cs" />
     <Compile Include="Plossum\WordWrappingMethod.cs" />
+    <Compile Include="Resources\CommandLineStrings.Designer.cs" />
+    <Compile Include="Resources\PlossumStrings.Designer.cs" />
+    <Compile Include="Tools\CLI.cs" />
+    <Compile Include="Graphic\Interface.cs" />
+    <Compile Include="Graphic\Wordlist.cs" />
+    <Compile Include="Core\Lang\en-US.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Lang\fr-Fr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fr-Fr.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graphic\Menu\Main.cs" />
+    <Compile Include="Graphic\Menu\Pattern.cs" />
+    <Compile Include="Graphic\Menu\Character.cs" />
+    <Compile Include="Core\Parameter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Core\Run.cs" />
     <Compile Include="Tools\Statistical.cs" />
@@ -208,7 +241,9 @@
     <None Include="app.config" />
     <None Include="C5\trees\RedBlackTreeBag.cs.bak" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="password-attacks-trans.ico" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Core\Lang\en-US.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -218,8 +253,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>fr-Fr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Plossum\Resources\CommandLineStrings.resx" />
-    <EmbeddedResource Include="Plossum\Resources\PlossumStrings.resx" />
+    <EmbeddedResource Include="Resources\CommandLineStrings.resx" />
+    <EmbeddedResource Include="Resources\PlossumStrings.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>

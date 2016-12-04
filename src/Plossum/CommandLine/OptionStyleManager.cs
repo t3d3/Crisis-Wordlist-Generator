@@ -35,7 +35,7 @@ using System.Text;
 using System.Globalization;
 using System.Diagnostics;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Utility class for manipulating <see cref="OptionStyles"/>.

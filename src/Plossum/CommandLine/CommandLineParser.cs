@@ -37,9 +37,9 @@ using C5;
 using System.Reflection;
 using System.Globalization;
 using System.Diagnostics;
-using Plossum.Resources;
+using Crisis.Resources;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Performs the actual parsing of a command line and provides methods for retrieving descriptive information

@@ -33,7 +33,7 @@ using System;
 using SCG = System.Collections.Generic;
 using C5;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Represents information about the escapable characters within a quoted value.

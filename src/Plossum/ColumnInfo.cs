@@ -33,7 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Plossum
+namespace Crisis
 {
     /// <summary>
     /// Represents a column to be used with <see cref="StringFormatter.FormatInColumns"/>.
@@ -77,7 +77,7 @@ namespace Plossum
         /// <param name="width">The width of the column in (fixed-width) characters.</param>
         /// <param name="content">The content of this column.</param>
         /// <param name="alignment">The alignment to use for this column.</param>
-        /// <remarks>The word wrapping method used will be the one described by <see cref="Plossum.WordWrappingMethod.Optimal"/>.</remarks>
+        /// <remarks>The word wrapping method used will be the one described by <see cref="Crisis.WordWrappingMethod.Optimal"/>.</remarks>
         public ColumnInfo(int width, string content, Alignment alignment)
             : this(width, content, alignment, VerticalAlignment.Top)
         {
@@ -88,7 +88,7 @@ namespace Plossum
         /// </summary>
         /// <param name="width">The width of the column in (fixed-width) characters.</param>
         /// <param name="content">The content of this column.</param>
-        /// <remarks>The word wrapping method used will be the one described by <see cref="Plossum.WordWrappingMethod.Optimal"/>, and 
+        /// <remarks>The word wrapping method used will be the one described by <see cref="Crisis.WordWrappingMethod.Optimal"/>, and 
         /// each line in this column will be left aligned.</remarks>
         public ColumnInfo(int width, string content)
             : this(width, content, Alignment.Left)

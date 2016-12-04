@@ -33,7 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Plossum
+namespace Crisis
 {
     /// <summary>
     /// Represents the vertical alignment to use for methods in <see cref="StringFormatter"/>.

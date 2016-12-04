@@ -39,9 +39,9 @@ using C5;
 using System.IO;
 using System.Diagnostics;
 using System.Globalization;
-using Plossum.Resources;
+using Crisis.Resources;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Provides tokenization of command lines. Used by the <see cref="CommandLineParser" />.

@@ -34,7 +34,7 @@ using SCG = System.Collections.Generic;
 using System.Text;
 using C5;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     internal interface IOption
     {

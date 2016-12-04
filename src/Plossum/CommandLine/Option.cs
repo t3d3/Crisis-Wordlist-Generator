@@ -33,13 +33,13 @@ using System;
 using SCG = System.Collections.Generic;
 using System.Text;
 using System.Reflection;
-using Plossum.CommandLine;
+using Crisis.CommandLine;
 using C5;
 using System.Globalization;
 using System.Diagnostics;
-using Plossum.Resources;
+using Crisis.Resources;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Representation of a command line option. 

@@ -1,7 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿//  Author:
+//       Teeknofil <teeknofil.dev@gmail.com>
+//
+//  Copyright (c) 2015 Teeknofil
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+using System;
 using System.Resources;
 
 namespace Crisis.Graphic.Menu
@@ -21,7 +36,7 @@ namespace Crisis.Graphic.Menu
         }
                            
 
-        internal static void LatinMenu()
+        internal  void LatinMenu()
         {
             Interface.HeaderMenu();
             int i = 0;
@@ -29,44 +44,44 @@ namespace Crisis.Graphic.Menu
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-            Console.WriteLine(" \t LATIN\t    CHARACTER LOWERCASE");
+            Console.WriteLine(" \t LATIN\t    "+ lang.GetString("CHARACTERLOWERCASE"));
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-            Console.WriteLine(" \t LATIN\t    CHARACTER UPPERCASE");
+            Console.WriteLine(" \t LATIN\t    " + lang.GetString("CHARACTERUPPERCASE"));
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-            Console.WriteLine(" \t LATIN\t    CHARACTER UPPERCASE & LOWERCASE");
+            Console.WriteLine(" \t LATIN\t    " + lang.GetString("CHARACTERUPPERCASELOWERCASE"));
             Interface.Navigation();
 
         }
 
-        internal static void SpecialMenu()
+        internal  void SpecialMenu()
         {
             Interface.HeaderMenu();
             int i = 0;
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-            Console.WriteLine(" \t HEXA");
+            Console.WriteLine("\tHEXA");
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", ++i);
+            Console.Write(" {0})", ++i);
             Console.ResetColor();
-            Console.WriteLine(" \t NUMBER");           
+            Console.WriteLine("\t"+ lang.GetString("NUMBER"));           
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" {0}) ", ++i);
-            Console.ResetColor();
-            Console.WriteLine(" \t SPECIAL CHARACTER");
+            Console.Write(" {0})", ++i);
+            Console.ResetColor(); 
+            Console.WriteLine("\t" + lang.GetString("SPECIAL"));
 
-            Interface.Navigation();
+            
         }
 
-        internal static  void SwedishMenu()
+        internal   void SwedishMenu()
         {
             Interface.HeaderMenu();
             int i = 0;
@@ -74,22 +89,22 @@ namespace Crisis.Graphic.Menu
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-            Console.WriteLine(" \t SWEDISH    CHARACTER LOWERCASE");
+            Console.WriteLine(" \t" + lang.GetString("swedish") + "    " + lang.GetString("CHARACTERLOWERCASE"));
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-            Console.WriteLine(" \t SWEDISH    CHARACTER UPPERCASE");
+            Console.WriteLine(" \t" + lang.GetString("swedish") + "    " + lang.GetString("CHARACTERUPPERCASE"));
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-            Console.WriteLine(" \t SWEDISH    CHARACTER UPPERCASE & LOWERCASE");
+            Console.WriteLine(" \t" + lang.GetString("swedish") + "    "+ lang.GetString("CHARACTERUPPERCASELOWERCASE"));
 
-            Interface.Navigation();
+            
         }
 
-        internal static void CyrillicMenu()
+        internal  void CyrillicMenu()
         {
 
             Interface.HeaderMenu();
@@ -100,26 +115,26 @@ namespace Crisis.Graphic.Menu
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
 
-            Console.WriteLine(" \t CYRILLIC    CHARACTER LOWERCASE");
+            Console.WriteLine(" \t " + lang.GetString("CYRILLIC") + "    " + lang.GetString("CHARACTERLOWERCASE"));
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
 
-            Console.WriteLine(" \t CYRILLIC    CHARACTER UPPERCASE");
+            Console.WriteLine(" \t " + lang.GetString("CYRILLIC") + "    " + lang.GetString("CHARACTERUPPERCASE"));
 
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
 
-            Console.WriteLine(" \t CYRILLIC    CHARACTER UPPERCASE & LOWERCASE");
+            Console.WriteLine(" \t " + lang.GetString("CYRILLIC") + "    " + lang.GetString("CHARACTERUPPERCASELOWERCASE"));
 
-            Interface.Navigation();
+            
 
         }
 
-        internal static void SyllableMenu()
+        internal  void SyllableMenu()
         {
 
             Interface.HeaderMenu();
@@ -128,20 +143,19 @@ namespace Crisis.Graphic.Menu
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-            Console.WriteLine(" \t SYLLABLE   CHARACTER LOWERCASE");
+            Console.WriteLine(" \t " + lang.GetString("syllable_fr") + "    " + lang.GetString("CHARACTERLOWERCASE"));
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-            Console.WriteLine(" \t SYLLABLE   CHARACTER UPPERCASE");
+            Console.WriteLine(" \t " + lang.GetString("syllable_fr") + "    " + lang.GetString("CHARACTERUPPERCASE"));
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-            Console.WriteLine(" \t SYLLABLE   CHARACTER UPPERCASE & LOWERCASE");
+            Console.WriteLine(" \t " + lang.GetString("syllable_fr") + "    " + lang.GetString("CHARACTERUPPERCASELOWERCASE"));
 
-            Interface.Navigation();
-
+           
         }
 
         internal static void WifiMenu(ResourceManager lang)
@@ -172,6 +186,34 @@ namespace Crisis.Graphic.Menu
             Console.ResetColor();
            
         }
-        
+
+        public static void MenuLeetSpeakPrint()
+        {
+            Console.WriteLine("\n leet speak\t\t\t 1337 5p34k\n");
+        }
+        public static void MenuLowercaseToUppercasePrint()
+        {
+            Console.WriteLine(" hello world\t\t\t HELLO WORLD\n");
+        }
+
+        public static void MenuUppercaseToLowercasePrint()
+        {
+            Console.WriteLine(" HELLO WORLD\t\t\t hello world\n");
+        }
+
+        public static void MenuCharLowercaseToUppercasePrint()
+        {
+            Console.WriteLine(" Hello World\t\t\t hELLO wORLD\n");
+        }
+
+        public static void MenuCharUppercaseToLowercasePrint()
+        {
+            Console.WriteLine(" Hello World\t\t\t hello world\n");
+        }
+
+        public static void MenuAutoUppercaseLowercasePrint()
+        {
+            Console.WriteLine(" HellO WorlD\t\t\t hELLo wORLd \n");
+        }
     }
 }

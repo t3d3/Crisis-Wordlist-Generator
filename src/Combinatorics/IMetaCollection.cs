@@ -1,5 +1,5 @@
 //  Author:
-//       Teeknofil <teeknofil@gmail.com>
+//       Teeknofil <teeknofil.dev@gmail.com>
 //
 //  Copyright (c) 2015 Teeknofil
 //
@@ -16,11 +16,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace crisis {
+namespace Crisis
+{
     /// <summary>
     /// Interface for Permutations, Combinations and any other classes that present
     /// a collection of collections based on an input collection.  The enumerators that 

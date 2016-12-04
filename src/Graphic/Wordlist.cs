@@ -1,10 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿//  Author:
+//       Teeknofil <teeknofil.dev@gmail.com>
+//
+//  Copyright (c) 2015 Teeknofil
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+using System;
 using Crisis.Graphic.Menu;
-using System.Reflection;
 using System.Resources;
+using System.Threading;
 
 namespace Crisis.Graphic
 {
@@ -36,7 +51,7 @@ namespace Crisis.Graphic
 
             while (b)
             {
-                int i = category.SelectOption();
+                int i = category.SelectOption(6);
 
                 if (i == 1)
                 {
@@ -94,7 +109,7 @@ namespace Crisis.Graphic
 
             while (b)
             {
-                i = category.SelectOption();
+                i = category.SelectOption(2);
                
                 if (i == 1)
                 {
@@ -128,8 +143,8 @@ namespace Crisis.Graphic
         {
             if (i == 77)
             {
-                Wordlist back = new Wordlist();
-                back.MainCharacter();
+                Wordlist back = new Wordlist();                
+                Thread workerThread = new Thread(back.MainCharacter);
             }
             else if (i == 88)
             {
@@ -148,7 +163,9 @@ namespace Crisis.Graphic
         /// </summary>
         internal void LatinCharactere()
         {
-            Character.LatinMenu();
+            Character chars = new Character(lang);
+            chars.LatinMenu();
+
             Interface selection = new Interface(lang);            
 
             bool b = true;
@@ -156,7 +173,7 @@ namespace Crisis.Graphic
 
             while (b)
             {
-                i = selection.SelectOption();
+                i = selection.SelectOption(3);
                 if (i == 1)
                 {
                     Pattern.LatinCharacterLowercasePrint();
@@ -172,8 +189,7 @@ namespace Crisis.Graphic
                     Pattern.LatinCharacterUppercaseLowercasePrint();
                     b = false;
                 }
-                
-                Return(i);
+              
             }
            
         }
@@ -183,14 +199,15 @@ namespace Crisis.Graphic
         /// </summary>
         internal void SpecialCharacter()
         {
-            Character.SpecialMenu();
+            Character chars = new Character(lang);
+            chars.SpecialMenu();
             Interface selection = new Interface(lang);            
 
             bool b = true;
 
             while (b)
             {
-                int i = selection.SelectOption();
+                int i = selection.SelectOption(3);
 
                 if (i == 1)
                 {
@@ -201,18 +218,13 @@ namespace Crisis.Graphic
                 {
                     Pattern.MenuNumericPrint();
                     b = false;
-                }
+                }                
                 else if (i == 3)
-                {
-                    b = false;
-                }
-                else if (i == 4)
                 {
                     Pattern.MenuSpecialCharacteresPrint();
                     b = false;
                 }
-
-                Return(i);
+                                
             }
             
         }
@@ -223,14 +235,15 @@ namespace Crisis.Graphic
         
         internal void SwedishCharacter()
         {
-            Character.SwedishMenu();
+            Character chars = new Character(lang);
+            chars.SwedishMenu();
             Interface selection = new Interface(lang);            
 
             bool b = true;
 
             while (b)
             {
-                int i = selection.SelectOption();
+                int i = selection.SelectOption(3);
 
                 if (i == 1)
                 {
@@ -247,23 +260,23 @@ namespace Crisis.Graphic
                     Pattern.SwddishCharacterLowercaseUppercasePrint();
                     b = false;
                 }                
-
-                Return(i);
+                                
             }
            
         }
 
         internal void  CyrillicCharacter()
-        {          
+        {
 
-            Character.CyrillicMenu();
+            Character chars = new Character(lang);
+            chars.CyrillicMenu();
             Interface selection = new Interface(lang);
 
             bool b = true;
 
             while (b)
             {
-                int i = selection.SelectOption();
+                int i = selection.SelectOption(3);
 
                 if (i == 1)
                 {
@@ -280,7 +293,7 @@ namespace Crisis.Graphic
                     Pattern.CyrillicCharacterUppercaseLowercasePrint();
                     b = false;
                 }
-                Return(i);
+
             }            
         }
         /// <summary>
@@ -288,14 +301,15 @@ namespace Crisis.Graphic
         /// </summary>
         internal void  Syllable_FrCharacter()
         {
-            Character.SyllableMenu();
+            Character chars = new Character(lang);
+            chars.SyllableMenu();
             Interface selection = new Interface(lang);           
 
             bool b = true;
 
             while (b)
             {
-                int i = selection.SelectOption();
+                int i = selection.SelectOption(3);
 
                 if (i == 1)
                 {
@@ -312,8 +326,7 @@ namespace Crisis.Graphic
                     Pattern.SwddishCharacterLowercaseUppercasePrint();
                     b = false;
                 }
-                
-                Return(i);
+                                
             }           
         }
 

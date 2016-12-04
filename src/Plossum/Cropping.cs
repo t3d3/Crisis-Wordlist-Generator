@@ -33,7 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Plossum
+namespace Crisis
 {
     /// <summary>
     /// Specifies how strings will be cropped in case they are too long for the specified field. Used by <see cref="StringFormatter"/>.

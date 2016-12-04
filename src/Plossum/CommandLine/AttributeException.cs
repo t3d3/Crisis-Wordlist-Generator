@@ -34,7 +34,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Globalization;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     // Indicates programming error
     /// <summary>

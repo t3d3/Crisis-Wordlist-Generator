@@ -70,11 +70,92 @@ namespace Crisis.Core.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Après.
+        /// </summary>
+        internal static string After {
+            get {
+                return ResourceManager.GetString("After", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Avant.
+        /// </summary>
+        internal static string Before {
+            get {
+                return ResourceManager.GetString("Before", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Avec quel category voulez-vous travailler : .
         /// </summary>
         internal static string category {
             get {
                 return ResourceManager.GetString("category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Voulez-vous spécifier une chaîne de fin ?.
+        /// </summary>
+        internal static string ChangeEndblockPattern {
+            get {
+                return ResourceManager.GetString("ChangeEndblockPattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ecrire la chaîne de fin :.
+        /// </summary>
+        internal static string ChangeEndblockPattern1 {
+            get {
+                return ResourceManager.GetString("ChangeEndblockPattern1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Voulez-vous spécifier une chaîne de départ ?.
+        /// </summary>
+        internal static string ChangeStartblockPattern {
+            get {
+                return ResourceManager.GetString("ChangeStartblockPattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ecrire la chaîne de départ :.
+        /// </summary>
+        internal static string ChangeStartblockPattern1 {
+            get {
+                return ResourceManager.GetString("ChangeStartblockPattern1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à CARACTERE MINUSCULES.
+        /// </summary>
+        internal static string CHARACTERLOWERCASE {
+            get {
+                return ResourceManager.GetString("CHARACTERLOWERCASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à CARACTERE MAJUSCULES.
+        /// </summary>
+        internal static string CHARACTERUPPERCASE {
+            get {
+                return ResourceManager.GetString("CHARACTERUPPERCASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à CARACTERE MAJUSCULES &amp; MINUSCULES.
+        /// </summary>
+        internal static string CHARACTERUPPERCASELOWERCASE {
+            get {
+                return ResourceManager.GetString("CHARACTERUPPERCASELOWERCASE", resourceCulture);
             }
         }
         
@@ -93,6 +174,15 @@ namespace Crisis.Core.Lang {
         internal static string createWordlist {
             get {
                 return ResourceManager.GetString("createWordlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à PERSONNALISER.
+        /// </summary>
+        internal static string CUSTOM {
+            get {
+                return ResourceManager.GetString("CUSTOM", resourceCulture);
             }
         }
         
@@ -124,6 +214,42 @@ namespace Crisis.Core.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Vous voulez mélanger le modèle ?.
+        /// </summary>
+        internal static string MixPatern {
+            get {
+                return ResourceManager.GetString("MixPatern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à NOMBRE.
+        /// </summary>
+        internal static string NUMBER {
+            get {
+                return ResourceManager.GetString("NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Dans quel dossier vous voulez sauvegarder les fichiers ? : .
+        /// </summary>
+        internal static string PathOfBuckupFiles {
+            get {
+                return ResourceManager.GetString("PathOfBuckupFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Etes-vous sûr de vouloir confirmer l&apos;enregistrement à l&apos;intérieur de.
+        /// </summary>
+        internal static string PathOfBuckupFiles1 {
+            get {
+                return ResourceManager.GetString("PathOfBuckupFiles1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Modéle pour Crunch.
         /// </summary>
         internal static string PatternforCrunch {
@@ -151,6 +277,15 @@ namespace Crisis.Core.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Souhaitez-vous une répétition de caractère ? .
+        /// </summary>
+        internal static string Repetition {
+            get {
+                return ResourceManager.GetString("Repetition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à RETOUR AU MENU PRINCIPAL.
         /// </summary>
         internal static string ReturnMainMenu {
@@ -160,11 +295,65 @@ namespace Crisis.Core.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Vous voulez inverser le  modèle ? .
+        /// </summary>
+        internal static string ReversePatern {
+            get {
+                return ResourceManager.GetString("ReversePatern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Voulez-vous enregistrer la sortie vers un fichier .
+        /// </summary>
+        internal static string SaveCharsetInFilesTxt {
+            get {
+                return ResourceManager.GetString("SaveCharsetInFilesTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Vous voulez les compresser dans un fichier zip .
+        /// </summary>
+        internal static string SaveCharsetInFilesZip {
+            get {
+                return ResourceManager.GetString("SaveCharsetInFilesZip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à CLIENT CRISIS / SERVEUR CRISIS BRUTE FORCEUR.
         /// </summary>
         internal static string serverMenu {
             get {
                 return ResourceManager.GetString("serverMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Quelle est la taille d&apos;un fichier de sauvegarde en Mo : .
+        /// </summary>
+        internal static string SizeFile {
+            get {
+                return ResourceManager.GetString("SizeFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Quelle est la taille des mots de passe à générer  : .
+        /// </summary>
+        internal static string SizeOfWorld {
+            get {
+                return ResourceManager.GetString("SizeOfWorld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à CARACTÈRES SPÉCIAUX.
+        /// </summary>
+        internal static string SPECIAL {
+            get {
+                return ResourceManager.GetString("SPECIAL", resourceCulture);
             }
         }
         
@@ -192,6 +381,15 @@ namespace Crisis.Core.Lang {
         internal static string transformWordlist {
             get {
                 return ResourceManager.GetString("transformWordlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à ROUTEUR / BOX WIFI.
+        /// </summary>
+        internal static string WIFI {
+            get {
+                return ResourceManager.GetString("WIFI", resourceCulture);
             }
         }
     }

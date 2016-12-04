@@ -1,5 +1,5 @@
 //  Author:
-//       Teeknofil <teeknofil@gmail.com>
+//       Teeknofil <teeknofil.dev@gmail.com>
 //
 //  Copyright (c) 2015 Teeknofil
 //
@@ -21,7 +21,7 @@ using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
 using Crisis.Tools;
-using crisis;
+using Crisis;
 
 
 namespace Crisis.Combinatorics
@@ -551,7 +551,8 @@ namespace Crisis.Combinatorics
 
         public static BigInteger CaclulPermut(bool _repeat, List<string> charsetSelecting, int numberOfChar)
         {
-            obj = new Combinations<string>(charsetSelecting, numberOfChar);
+            Utility make = new Utility();            
+            obj = new Combinations<string>(make.DoubleCapacityList(charsetSelecting, numberOfChar), numberOfChar);
 
             foreach (IList<string> charset in obj)
             {
@@ -580,12 +581,12 @@ namespace Crisis.Combinatorics
         }
 
 
-        public void GeneratePermutationString(List<string> charsetSelecting, BigInteger numberLine, BigInteger numberOfAllCombination, bool saveFile, bool _zip, bool _repeat, int typesAtGenerate, int numberOfChar, string filePath, string extension)
+        public void GeneratePermutationString(List<string> charsetSelecting, BigInteger numberOfAllCombination, BigInteger numberLine, int numberOfChar, bool saveFile, bool zip, bool repeat, int typesAtGenerate,  string pathBackUpFiles, string extension)
         {
             
             BigInteger cpt = 0;
             Utility make = new Utility();
-
+           
             foreach (IList<string> charset in obj)
             {
                 s = null;
@@ -601,11 +602,11 @@ namespace Crisis.Combinatorics
                     permutCharset.Add(s[c].ToString());
                 }
 
-                if (_repeat == false)
+                if (repeat == false)
                 {
                     permut = new Permutations<string>(permutCharset, GenerateOption.WithoutRepetition);
                 }
-                else if (_repeat == true)
+                else if (repeat == true)
                 {
                     permut = new Permutations<string>(permutCharset, GenerateOption.WithRepetition);
                 }
@@ -618,7 +619,7 @@ namespace Crisis.Combinatorics
                     {
                         if (makeFile == 0)
                         {
-                            make.Setting_UpFile(filePath,extension);
+                            make.Setting_UpFile(pathBackUpFiles,extension);
                         }
 
                         for (int c = 0; c < numberOfChar; c++)
@@ -636,8 +637,8 @@ namespace Crisis.Combinatorics
                         {
                             make.WorkFile.Flush();
                             make.WorkFile.Close();
-                            make.Zipper(_zip);
-                            make.GenerateOut(extension);
+                            extension = make.Zipper(zip, pathBackUpFiles);
+                            make.GenerateOut(pathBackUpFiles,extension);
                             makeFile = 0;
                         }
                     }
@@ -646,6 +647,9 @@ namespace Crisis.Combinatorics
                 {
                     foreach (IList<string> str in permut)
                     {
+                        if (cpt >= numberLine & numberLine != 0)
+                            Environment.Exit(0);
+
                         s = null;
                         for (int c = 0; c < str.Count; c++)
                         {
@@ -653,6 +657,7 @@ namespace Crisis.Combinatorics
                         }
 
                         Console.WriteLine(s);
+                        cpt++;
                     }
                 }
 

@@ -121,7 +121,7 @@
     <value>With what category you want to work : </value>
   </data>
   <data name="charset" xml:space="preserve">
-    <value>Write the pattern to your choice :</value>
+    <value>Write the pattern to your choice : </value>
   </data>
   <data name="createWordlist" xml:space="preserve">
     <value>CREATE WORDLIST</value>
@@ -161,5 +161,62 @@
   </data>
   <data name="ReturnMainMenu" xml:space="preserve">
     <value>RETURN    MAIN MENU</value>
+  </data>
+  <data name="SizeOfWorld" xml:space="preserve">
+    <value>What is the size the passwords : </value>
+  </data>
+  <data name="WIFI" xml:space="preserve">
+    <value>ROUTER / BOX WIFI</value>
+  </data>
+  <data name="After" xml:space="preserve">
+    <value>After</value>
+  </data>
+  <data name="Before" xml:space="preserve">
+    <value> Before</value>
+  </data>
+  <data name="ChangeEndblockPattern" xml:space="preserve">
+    <value>Do you want to specify a ending chain ?</value>
+  </data>
+  <data name="ChangeEndblockPattern1" xml:space="preserve">
+    <value>Write the end string :</value>
+  </data>
+  <data name="ChangeStartblockPattern" xml:space="preserve">
+    <value>Do you want to specify a starting chain ?</value>
+  </data>
+  <data name="ChangeStartblockPattern1" xml:space="preserve">
+    <value>Write the starting string :</value>
+  </data>
+  <data name="MixPatern" xml:space="preserve">
+    <value>Want to mix the pattern ?</value>
+  </data>
+  <data name="PathOfBuckupFiles" xml:space="preserve">
+    <value>In  what  folder do you want the backup files?</value>
+  </data>
+  <data name="PathOfBuckupFiles1" xml:space="preserve">
+    <value>Are you sure you want to confirm backup in</value>
+  </data>
+  <data name="Repetition" xml:space="preserve">
+    <value>Would you a repeating of character ?</value>
+  </data>
+  <data name="ReversePatern" xml:space="preserve">
+    <value>Want to reverse the pattern ?</value>
+  </data>
+  <data name="SaveCharsetInFilesTxt" xml:space="preserve">
+    <value>Do you want to save the output to a file</value>
+  </data>
+  <data name="SaveCharsetInFilesZip" xml:space="preserve">
+    <value>You want to compress them into zip file</value>
+  </data>
+  <data name="SizeFile" xml:space="preserve">
+    <value>What is the size of a backup file in MB :</value>
+  </data>
+  <data name="CHARACTERLOWERCASE" xml:space="preserve">
+    <value>CHARACTER LOWERCASE</value>
+  </data>
+  <data name="CHARACTERUPPERCASE" xml:space="preserve">
+    <value>CHARACTER UPPERCASE</value>
+  </data>
+  <data name="CHARACTERUPPERCASELOWERCASE" xml:space="preserve">
+    <value>CARACTERE MAJUSCULES &amp; MINUSCULES</value>
   </data>
 </root>

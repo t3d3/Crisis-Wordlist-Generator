@@ -1,5 +1,5 @@
 //  Author:
-//       Teeknofil <teeknofil@gmail.com>
+//       Teeknofil <teeknofil.dev@gmail.com>
 //
 //  Copyright (c) 2015 Teeknofil
 //
@@ -16,12 +16,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
-using System.Text;
-using System.Numerics;
-using System.Collections.Generic;
-using crisis;
+using Crisis;
 using Crisis.Tools;
+using System;
+using System.Collections.Generic;
+using System.Numerics;
 
 namespace Crisis.Combinatorics
 {
@@ -481,20 +480,21 @@ namespace Crisis.Combinatorics
         public  Variations<string> CalculVariation(bool _repeat, List <string> charsetSelecting, int numberOfChar)
         {
             Variations<string> obj = null;
+            Utility make = new Utility();
 
             if (_repeat == false)
             {
-                obj = new Variations<string>(charsetSelecting, numberOfChar, GenerateOption.WithoutRepetition);
+                obj = new Variations<string>(make.DoubleCapacityList(charsetSelecting, numberOfChar), numberOfChar, GenerateOption.WithoutRepetition);
             }
             else if (_repeat == true)
             {
-                obj = new Variations<string>(charsetSelecting, numberOfChar, GenerateOption.WithRepetition);
+                obj = new Variations<string>(make.DoubleCapacityList(charsetSelecting, numberOfChar), numberOfChar, GenerateOption.WithRepetition);
             }
 
             return obj;
         }
 
-        public void GenerateVariationString(List<string> charsetSelecting, BigInteger numberLine, bool saveFile, bool zip, bool repeat, int numberOfChar, string filePath, string extension)
+        public void GenerateVariationString(List<string> charsetSelecting, BigInteger numberOfAllCombination, BigInteger numberLine, bool saveFile, bool zip, bool repeat, int numberOfChar, string pathBackUpFiles, string extension)
         {
             var obj = CalculVariation(repeat, charsetSelecting,numberOfChar);
                                                
@@ -511,7 +511,7 @@ namespace Crisis.Combinatorics
                 {
                     if (iMakeFile == 0)
                     {
-                        make.Setting_UpFile(filePath,extension);
+                        make.Setting_UpFile(pathBackUpFiles,extension);
                     }
 
                     for (int i = 0; i < numberOfChar; i++)
@@ -525,12 +525,12 @@ namespace Crisis.Combinatorics
                     iMakeFile++;
                     cpt++;
 
-                    if (iMakeFile >= numberLine | cpt >= obj.Count)
+                    if (iMakeFile >= numberLine | cpt >= numberOfAllCombination)
                     {
                         make.WorkFile.Flush();
                         make.WorkFile.Close();
-                        make.Zipper(zip);
-                        make.GenerateOut(extension);
+                        extension = make.Zipper(zip, pathBackUpFiles);
+                        make.GenerateOut(pathBackUpFiles,extension);
                         iMakeFile = 0;
                     }
                 }
@@ -539,12 +539,16 @@ namespace Crisis.Combinatorics
             {
                 foreach (IList<string> c in obj)
                 {
+                    if (cpt >= numberLine & numberLine != 0)
+                        Environment.Exit(0);
+
                     for (int i = 0; i < numberOfChar; i++)
                     {
                         s += c[i];
                     }
                     Console.WriteLine(s);
                     s = null;
+                    cpt++;                   
                 }
             }
         } // End Function      

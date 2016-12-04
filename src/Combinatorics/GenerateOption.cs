@@ -1,5 +1,5 @@
 //  Author:
-//       Teeknofil <teeknofil@gmail.com>
+//       Teeknofil <teeknofil.dev@gmail.com>
 //
 //  Copyright (c) 2015 Teeknofil
 //
@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace crisis {
+namespace Crisis {
     /// <summary>
     /// Indicates whether a Permutation, Combination or Variation meta-collections
     /// generate repetition sets.  

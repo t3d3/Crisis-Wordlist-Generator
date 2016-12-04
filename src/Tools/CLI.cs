@@ -1,15 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿//  Author:
+//       Teeknofil <teeknofil.dev@gmail.com>
+//
+//  Copyright (c) 2015 Teeknofil
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+using System;
 using Crisis.Graphic.Menu;
-using Plossum.CommandLine;
-using System.Text.RegularExpressions;
-using Crisis.Charset;
+using Crisis.CommandLine;
+using System.IO;
 
 namespace Crisis.Tools
 {
-    [CommandLineManager(ApplicationName = "\n\n Crisis Wordlist Generator by Teeknofil,", Version = ": 1.1.3 Beta\n\n", Copyright = "SYNOPSIS\n\n crisis [method] -l [len] -f [charset string] [options] \n\nDESCRIPTION \n\n  Crisis can create a wordlist based on criteria you specify. The output  from crisis can be sent to the screen, file, or  to  another  program.  The required parameters are: ", EnabledOptionStyles = OptionStyles.Group | OptionStyles.LongUnix)]
+    [CommandLineManager(ApplicationName = "\n\n Crisis Wordlist Generator by Teeknofil,", Version = ": 1.1.3 \n\n", Copyright = "SYNOPSIS\n\n crisis [method] -l [len] -f [charset string] [options] \n\nDESCRIPTION \n\n  Crisis can create a wordlist based on criteria you specify. The output  from crisis can be sent to the screen, file, or  to  another  program.  The required parameters are: ", EnabledOptionStyles = OptionStyles.Group | OptionStyles.LongUnix)]
 
     [CommandLineOptionGroup("method", Name = "Method", Require = OptionGroupRequirement.None)]
 
@@ -32,7 +46,7 @@ namespace Crisis.Tools
         private bool mWordlistHelp;
 
         [CommandLineOption(Name = "h", Aliases = "help",
-                           Description = "Shows this help text", GroupId = "help")]
+                           Description = "Shows this help text\n", GroupId = "help")]
         public bool Help
         {
             get { return mHelp; }
@@ -40,7 +54,7 @@ namespace Crisis.Tools
         }
 
         [CommandLineOption(Name = "w", Aliases = "help-wordlist",
-                           Description = "Displays the list of wordlist", GroupId = "help")]
+                           Description = "Displays the list of wordlist\n", GroupId = "help")]
         public bool WordlistHelp
         {
             get { return mWordlistHelp; }
@@ -61,7 +75,7 @@ namespace Crisis.Tools
         private bool mWifi;
 
 
-        [CommandLineOption(Name = "1", Aliases = "crunch", Description = "Charset list customized to crunch wordlist generator.\n Example : crisis -1 -l 10 -f ualpha -u", GroupId = "method")]
+        [CommandLineOption(Name = "1", Aliases = "crunch", Description = "Charset list customized to crunch wordlist generator.\n\nExample : crisis -1 -l 10 -f ualpha -u\n\n", GroupId = "method")]
         public bool Crunch
         {
             get { return mCrunch; }
@@ -69,8 +83,8 @@ namespace Crisis.Tools
         }
 
 
-        [CommandLineOption(Name = "2", Aliases = "combination",
-                           Description = "Generate a character list combination.\n Example : crisis -2 -l 5 -f MyWord -u", GroupId = "method")]
+        [CommandLineOption(Name = "2", Aliases = "increment",
+                           Description = "Generate a character list in increment.\n\nExample : crisis -2 -l 5 -f MyWord -u\n\n", GroupId = "method")]
 
         public bool Combination
         {
@@ -78,21 +92,21 @@ namespace Crisis.Tools
             set { mCombination = value; }
         }
         [CommandLineOption(Name = "3", Aliases = "random",
-                           Description = "Generate random character. \n Example : crisis -3 -l 15 -f mixalpha -u", GroupId = "method")]
+                           Description = "Generate random character.\n\nExample : crisis -3 -l 15 -f mixalpha -u\n\n", GroupId = "method")]
         public bool Random
         {
             get { return mRandom; }
             set { mRandom = value; }
         }
 
-        [CommandLineOption(Name = "4", Aliases = "variation", Description = " Generate a character list variation.\n Example : crisis -4 -l 10 -f lalpha  ", GroupId = "method")]
+        [CommandLineOption(Name = "4", Aliases = "variation", Description = " Generate a character list variation.\n\nExample : crisis -4 -l 10 -f lalpha\n\n", GroupId = "method")]
         public bool Variation
         {
             get { return mVariation; }
             set { mVariation = value; }
         }
 
-        [CommandLineOption(Name = "5", Aliases = "permutation", Description = " Generate a character list permutation.\n Example : crisis -5 -l 10 -f lalpha  ", GroupId = "method")]
+        [CommandLineOption(Name = "5", Aliases = "permutation", Description = " Generate a character list permutation.\n\nExample : crisis -5 -l 10 -f lalpha\n\n", GroupId = "method")]
         public bool Permutation
         {
             get { return mPermutation; }
@@ -100,7 +114,7 @@ namespace Crisis.Tools
         }
 
         [CommandLineOption(Name = "6", Aliases = "wifi",
-                           Description = "Generer des caractere specialement pour un routeur ou une box \n Exemple :\n crisis -6 -f livebox-sagem  \n crisis -6 -f sfr -u | aircrack-ng -e SFR_???? -w- out-01.cap", GroupId = "method")]
+                           Description = "Generer des caractere specialement pour un routeur ou une box.\n\nExemple : crisis -6 -f livebox-sagem\n\nExemple : crisis -6 -f sfr -u | aircrack-ng -e SFR_???? -w- out-01.cap \n\n", GroupId = "method")]
         public bool Wifi
         {
             get { return mWifi; }
@@ -125,7 +139,7 @@ namespace Crisis.Tools
 
 
         [CommandLineOption(Name = "b", Aliases = "byte",
-                           Description = "Specifies the size of the output file,  only works if -o is used,  i.e.:  60 mib. \n For example  is 500 mib correct 500mb  is NOT correct. \n The three types are based on 1024. \n Example : crisis -2 -l 10 -f JohnDoe0123456789 -b 50 mib -o will generate 1 \n files  valid values for type  are   kib, mib, and gib. \n NOTE  There is  space between the number and type.", GroupId = "options")]
+                           Description = "Specifies the size of the output file, only works if -o is used,  i.e.:  60 mib. \n For example  is 500 mib correct 500mb  is NOT correct. \n The three types are based on 1024.\n\nExample :\n crisis -2 -l 10 -f JohnDoe0123456789 -b 50 mib -o \n\n Will generate 1  files  valid values for type  are   kib, mib, and gib. \n\n NOTE  There is  space between the number and type.\n\n", GroupId = "options")]
         public bool Byte
         {
             get { return mByte; }
@@ -134,14 +148,14 @@ namespace Crisis.Tools
 
 
         [CommandLineOption(Name = "c", Aliases = "line",
-                           Description = "Specifies the number of lines to  write  to  output \n file,  only works if -o is used.\n Example : crisis -4 -l 10 -f mixalpha -r -o -c 10000 -z", GroupId = "options")]
+                           Description = "Specifies the number of lines to  write  to  output \n file,  only works if -o is used.\n\n Example : crisis -4 -l 10 -f mixalpha -r -o /root -c 10000 -z\n\n", GroupId = "options")]
         public bool Line
         {
             get { return mLine; }
             set { mLine = value; }
         }
 
-        [CommandLineOption(Name = "e", Aliases = "endblock", Description = "Specifies a ending string, eg: god77xD. \n  Example : crisis -2 -l 16 -f  sv-mixalpha  -e \"Do a barrel roll\"", GroupId = "options")]
+        [CommandLineOption(Name = "e", Aliases = "endblock", Description = "Specifies a ending string, eg: god77xD.\n\nExample : crisis -2 -l 16 -f  sv-mixalpha  -e \"Do a barrel roll\"\n\n", GroupId = "options")]
 
         public bool EndBlock
         {
@@ -149,7 +163,7 @@ namespace Crisis.Tools
             set { mEndBlock = value; }
         }
 
-        [CommandLineOption(Name = "o", Aliases = "output", Description = "Specify the save file in the crisis folder on the desktop", GroupId = "options")]
+        [CommandLineOption(Name = "o", Aliases = "output", Description = "Specify the save file in the crisis folder on the desktop\n\nExample : crisis -2 -l 16 -f  alpha-numeric -o /root", GroupId = "options")]
 
         public bool SaveFile
         {
@@ -158,7 +172,7 @@ namespace Crisis.Tools
         }
 
 
-        [CommandLineOption(Name = "i", Aliases = "invert", Description = "Inverts  the  output  so  instead  of  aaa,aab,aac,aad, \n etc you get aaa,baa,caa,daa,aba,bba, etc", GroupId = "options")]
+        [CommandLineOption(Name = "i", Aliases = "invert", Description = "Inverts  the  output  so  instead  of  aaa,aab,aac,aad, \n etc you get aaa,baa,caa,daa,aba,bba, etc\n\n", GroupId = "options")]
 
         public bool Invert
         {
@@ -166,7 +180,7 @@ namespace Crisis.Tools
             set { mInvert = value; }
         }
 
-        [CommandLineOption(Name = "r", Aliases = "repeat", Description = " Specify if you want a repetition of characters.  \n  Example : crisis -5 -l 10 -f  sv-mixalpha  -r", GroupId = "options")]
+        [CommandLineOption(Name = "r", Aliases = "repeat", Description = " Specify if you want a repetition of characters.\n\nExample : crisis -5 -l 10 -f  sv-mixalpha  -r\n\n", GroupId = "options")]
 
         public bool Repeat
         {
@@ -174,7 +188,7 @@ namespace Crisis.Tools
             set { repeat = value; }
         }
 
-        [CommandLineOption(Name = "s", Aliases = "startblock", Description = "  Specifies a starting string, eg: qwerty. \n  Example : crisis -2 -l 15 -f  sv-mixalpha  -s \"Hello World\"", GroupId = "options")]
+        [CommandLineOption(Name = "s", Aliases = "startblock", Description = "  Specifies a starting string, eg: qwerty.\n\nExample : crisis -2 -l 15 -f  sv-mixalpha  -s \"Hello World\"\n\n", GroupId = "options")]
         public bool Startblock
         {
             get { return mStartblock; }
@@ -182,7 +196,7 @@ namespace Crisis.Tools
         }
 
 
-        [CommandLineOption(Name = "u", Aliases = "disables", Description = "The -u option disables the print size . \n This should be the last option.", GroupId = "options")]
+        [CommandLineOption(Name = "u", Aliases = "disables", Description = "The -u option disables the print size . \n This should be the last option.\n\n", GroupId = "options")]
 
         public bool Disables
         {
@@ -190,7 +204,7 @@ namespace Crisis.Tools
             set { mDisables = value; }
         }
 
-        [CommandLineOption(Name = "z", Aliases = "zip", Description = "Compresses  the output from the -o option. \n  Example : crisis -2 -l 10 -f ualpha -r  -o  -b 1024 mib -z", GroupId = "options")]
+        [CommandLineOption(Name = "z", Aliases = "zip", Description = "Compresses  the output from the -o option.\n\nExample : crisis -2 -l 10 -f ualpha -r  -o /root  -b 1024 mib -z\n\n", GroupId = "options")]
 
 
         public bool Zip
@@ -207,7 +221,7 @@ namespace Crisis.Tools
         private bool lenght;
         private bool mDictionnary;
 
-        [CommandLineOption(Name = "f", Aliases = "charset-name", Description = "Specifies a character set from crisis, \n type --help-wordlist for more info", GroupId = "parameter")]
+        [CommandLineOption(Name = "f", Aliases = "charset-name", Description = "Specifies a character set from crisis, \n type --help-wordlist for more info\n\n", GroupId = "parameter")]
 
         public bool Dictionnary
         {
@@ -270,7 +284,6 @@ namespace Crisis.Tools
                 Pattern.SyllableCharacterUppercaseLowercasePrint();
 
             }
-
             else if (parser.HasErrors)
             {
                 Console.WriteLine(parser.UsageInfo.ToString(78, true));
@@ -282,89 +295,69 @@ namespace Crisis.Tools
             return 0;
         }
 
-        //public bool PatternSelect(string[] args, bool graphic)
-        //{
-        //    CLI options = new CLI();
-
-        //    CommandLineParser parser = new CommandLineParser(options);
-        //    parser.Parse();
-
-        //    if (options.Dictionnary)
-        //    {
-        //        pattern.SelectPattern(args, graphic);
-        //    }
-        //    else if (parser.HasErrors)
-        //    {
-        //        Console.WriteLine(parser.UsageInfo.ToString(78, true));
-        //        return true;
-        //    }
-
-        //    return graphic;
-        //}
-
-        /*   public int FunctionInverts(string[] args)
-           {
-               CLI options = new CLI();
-               CommandLineParser parser = new CommandLineParser(options);
-               parser.Parse();
-
-               if (options.Invert)
-               {
-                   Charset.CharsetSelecting.Reverse();
-               }
-               else if (parser.HasErrors)
-               {
-                   Console.WriteLine(parser.UsageInfo.ToString(78, true));
-                   return -1;
-               }
-
-               // No errors present and all arguments correct
-               // Do work according to arguments
-               return 0;
-           }
-   */
-
-            
-       /* public int FunctionLenght(string[] args)
+        public int SelectPattern(string[] args)
         {
             CLI options = new CLI();
+
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
 
-            if (options.Lenght)
+            if (options.Dictionnary)
             {
-                for (int i = 0; i < args.Length; i++)
-                {
-                    if (args[i].ToLower() == "-l" | args[i].ToLower() == "--lenght")
-                    {
-                        byte l;
-
-                        bool b = byte.TryParse(args[i + 1], out l);
-
-                        if (b == false)
-                        {
-                            Console.WriteLine("\nThe value entered with the -l option is incorrect\n");
-                            Environment.Exit(0);
-                        }
-                        else
-                        {
-                            Property.NumberOfChar = l;
-                        }
-                    } // End For               
-                }
+                Parameter.SelectPattern(args);
             }
             else if (parser.HasErrors)
             {
-                Console.WriteLine(parser.UsageInfo.ToString(78, true));
-                return -1;
+                Console.WriteLine(parser.UsageInfo.ToString(78, true));                
             }
-
             // No errors present and all arguments correct
             // Do work according to arguments
             return 0;
         }
-        */
-        /*public int FunctionByte(string[] args)
+
+        
+
+
+         public int FunctionLenght(string[] args)
+         {
+             CLI options = new CLI();
+             CommandLineParser parser = new CommandLineParser(options);
+             parser.Parse();
+
+             if (options.Lenght)
+             {
+                 for (int i = 0; i < args.Length; i++)
+                 {
+                     if (args[i].ToLower() == "-l" | args[i].ToLower() == "--lenght")
+                     {
+                         byte l;
+
+                         bool b = byte.TryParse(args[i + 1], out l);
+
+                         if (b == false)
+                         {
+                             Console.WriteLine("\nThe value entered with the -l option is incorrect\n");
+                             Environment.Exit(0);
+                         }
+                         else
+                         {
+                             Parameter.NumberOfChar = l;
+                         }
+                     } // End For               
+                 }
+             }
+             else if (parser.HasErrors)
+             {
+                 Console.WriteLine(parser.UsageInfo.ToString(78, true));
+                 return -1;
+             }
+
+             // No errors present and all arguments correct
+             // Do work according to arguments
+             return 0;
+         }
+
+        public int FunctionByte(string[] args)
         {
             CLI options = new CLI();
             CommandLineParser parser = new CommandLineParser(options);
@@ -402,8 +395,8 @@ namespace Crisis.Tools
                             }
 
                             //Statistical.DefaultSizeFileInOctet = iByte;
-                            //Statistical obj = new Statistical();
-                            obj.CalculSizeFile();
+                            Statistical obj = new Statistical();
+                            Parameter.NumberLine = obj.CalculSizeFile(iByte,Parameter.NumberOfChar,Parameter.TypesAtGenerate,Parameter.NumberOfAllCombination);
                         }
                     }
 
@@ -418,7 +411,7 @@ namespace Crisis.Tools
             // Do work according to arguments
             return 0;
         }
-        */
+
         public int FunctionSaveFiles(string[] args)
         {
             CLI options = new CLI();
@@ -427,7 +420,20 @@ namespace Crisis.Tools
 
             if (options.SaveFile)
             {
-                options.SaveFile = true;
+                for (int i = 0; i < args.Length; i++)
+                {
+                    if (args[i].ToLower() == "-o")
+                    {
+                        string pathBackupFile = args[i + 1];
+
+                        if (pathBackupFile[0].ToString() == @"/" || pathBackupFile[1].ToString() == ":")
+                        {
+                            Parameter.PathBackUpFiles = pathBackupFile;
+                        }
+
+                    }
+                }                
+                
             }
             else if (parser.HasErrors)
             {
@@ -440,27 +446,7 @@ namespace Crisis.Tools
             return 0;
         }
 
-     /*   public int FunctionZip(string[] args)
-        {
-            CLI options = new CLI();
-            CommandLineParser parser = new CommandLineParser(options);
-            parser.Parse();
-
-            if (options.Zip)
-            {
-                MenuParameter.IExtension = 1;
-            }
-            else if (parser.HasErrors)
-            {
-                Console.WriteLine(parser.UsageInfo.ToString(78, true));
-                return -1;
-            }
-
-            // No errors present and all arguments correct
-            // Do work according to arguments
-            return 0;
-        }
-        */
+        
         public int FunctionLine(string[] args)
         {
             CLI options = new CLI();
@@ -484,7 +470,7 @@ namespace Crisis.Tools
                         }
                         else
                         {
-                           // MenuParameter.NumberLine = c;
+                           Parameter.NumberLine = c;
                         }
                     }
                 }
@@ -499,8 +485,8 @@ namespace Crisis.Tools
             // Do work according to arguments
             return 0;
         }
-        
-       /* public int FunctionStartblock(string[] args)
+
+        public int StartblockPattern(string[] args)
         {
             Utility obj2 = new Utility();
             CLI options = new CLI();
@@ -515,15 +501,13 @@ namespace Crisis.Tools
                     {
                         string s = args[i + 1].ToString();
 
-                        if (s.Length > Charset.CharsetSelecting.Count)
+                        if (s.Length > Parameter.CharsetSelecting.Count)
                         {
-                            Console.WriteLine("\nThe string entered with the -s option is too big\n");
-                            Console.WriteLine("example : crisis -2 -l 10 -f lalpha -s qwerty");
-                            Environment.Exit(0);
+                            obj2.DoubleCapacityList(Parameter.CharsetSelecting, Parameter.NumberOfChar);
                         }
                         else
                         {
-                            obj2.StartblockPattern(s);
+                            obj2.StartblockPattern(s, Parameter.CharsetSelecting);
                         }
                     }
                 }
@@ -538,35 +522,28 @@ namespace Crisis.Tools
             // Do work according to arguments
             return 0;
         }
-        */
-        /*public int FunctionEndblock(string[] args)
+
+
+        public int EndPattern(string[] args)
         {
-            Utility obj2 = new Utility();
+            Utility tools = new Utility();
             CLI options = new CLI();
             CommandLineParser parser = new CommandLineParser(options);
             parser.Parse();
 
             if (options.EndBlock)
             {
-                string e = null;
+                string s = null;
                 for (int i = 0; i < args.Length; i++)
                 {
+                    
                     if (args[i].ToString().ToLower() == "-e" | args[i].ToString().ToLower() == "--end")
                     {
-                        e = args[i + 1];
-                    }
+                        s = args[i + 1];
+                    }                    
                 }
 
-                if (e.Length > Charset.CharsetSelecting.Count)
-                {
-                    Console.WriteLine("\nThe string entered with the -s option is too big\n");
-                    Console.WriteLine("example : crisis -2 -l 10 -f lalpha -e qwerty");
-                    Environment.Exit(0);
-                }
-                else
-                {
-                    obj2.EndPattern(e);
-                }
+                tools.EndPattern(s, Parameter.NumberOfChar, Parameter.CharsetSelecting);
             }
             else if (parser.HasErrors)
             {
@@ -578,7 +555,7 @@ namespace Crisis.Tools
             // Do work according to arguments
             return 0;
         }
-        */
+        
     } // End class
 }
 

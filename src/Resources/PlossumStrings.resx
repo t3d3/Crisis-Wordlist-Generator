@@ -112,120 +112,15 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="category" xml:space="preserve">
-    <value>Avec quel category voulez-vous travailler : </value>
+  <data name="CannotStartAsynchronousReadWhenSynchronousReadOperationIsInProgress" xml:space="preserve">
+    <value>Cannot start asynchronous read when synchronous read operation is in progress</value>
   </data>
-  <data name="charset" xml:space="preserve">
-    <value>Écrivez le modèle de votre choix : </value>
-  </data>
-  <data name="createWordlist" xml:space="preserve">
-    <value>CREER UNE WORDLIST</value>
-  </data>
-  <data name="cyrillic" xml:space="preserve">
-    <value>CYRILLIQUE</value>
-  </data>
-  <data name="exit" xml:space="preserve">
-    <value>QUITTER</value>
-  </data>
-  <data name="profiler" xml:space="preserve">
-    <value>PROFIL DE MOT DE PASSE D'UN UTILSATEUR</value>
-  </data>
-  <data name="serverMenu" xml:space="preserve">
-    <value>CLIENT CRISIS / SERVEUR CRISIS BRUTE FORCEUR</value>
-  </data>
-  <data name="swedish" xml:space="preserve">
-    <value>SUÉDOIS</value>
-  </data>
-  <data name="syllable_fr" xml:space="preserve">
-    <value>SYLLABE</value>
-  </data>
-  <data name="transformWordlist" xml:space="preserve">
-    <value>TRANSFORMER DES FICHIERS DE WORDLIST</value>
-  </data>
-  <data name="_return" xml:space="preserve">
-    <value>PRECEDENT</value>
-  </data>
-  <data name="Increment" xml:space="preserve">
-    <value>Incrémentation</value>
-  </data>
-  <data name="PatternforCrunch" xml:space="preserve">
-    <value>Modéle pour Crunch</value>
-  </data>
-  <data name="Random" xml:space="preserve">
-    <value>Aléatoire</value>
-  </data>
-  <data name="ReturnMainMenu" xml:space="preserve">
-    <value>RETOUR AU MENU PRINCIPAL</value>
-  </data>
-  <data name="SizeOfWorld" xml:space="preserve">
-    <value>Quelle est la taille des mots de passe à générer  : </value>
-  </data>
-  <data name="WIFI" xml:space="preserve">
-    <value>ROUTEUR / BOX WIFI</value>
-  </data>
-  <data name="After" xml:space="preserve">
-    <value>Après</value>
-  </data>
-  <data name="Before" xml:space="preserve">
-    <value>Avant</value>
-  </data>
-  <data name="ChangeEndblockPattern" xml:space="preserve">
-    <value>Voulez-vous spécifier une chaîne de fin ?</value>
-  </data>
-  <data name="ChangeEndblockPattern1" xml:space="preserve">
-    <value>Ecrire la chaîne de fin :</value>
-  </data>
-  <data name="ChangeStartblockPattern" xml:space="preserve">
-    <value>Voulez-vous spécifier une chaîne de départ ?</value>
-  </data>
-  <data name="ChangeStartblockPattern1" xml:space="preserve">
-    <value>Ecrire la chaîne de départ :</value>
-  </data>
-  <data name="CHARACTERLOWERCASE" xml:space="preserve">
-    <value>CARACTERE MINUSCULES</value>
-  </data>
-  <data name="CHARACTERUPPERCASE" xml:space="preserve">
-    <value>CARACTERE MAJUSCULES</value>
-  </data>
-  <data name="CHARACTERUPPERCASELOWERCASE" xml:space="preserve">
-    <value>CARACTERE MAJUSCULES &amp; MINUSCULES</value>
-  </data>
-  <data name="CUSTOM" xml:space="preserve">
-    <value>PERSONNALISER</value>
-  </data>
-  <data name="MixPatern" xml:space="preserve">
-    <value>Vous voulez mélanger le modèle ?</value>
-  </data>
-  <data name="NUMBER" xml:space="preserve">
-    <value>NOMBRE</value>
-  </data>
-  <data name="PathOfBuckupFiles" xml:space="preserve">
-    <value>Dans quel dossier vous voulez sauvegarder les fichiers ? : </value>
-  </data>
-  <data name="PathOfBuckupFiles1" xml:space="preserve">
-    <value>Etes-vous sûr de vouloir confirmer l'enregistrement à l'intérieur de</value>
-  </data>
-  <data name="Repetition" xml:space="preserve">
-    <value>Souhaitez-vous une répétition de caractère ? </value>
-  </data>
-  <data name="ReversePatern" xml:space="preserve">
-    <value>Vous voulez inverser le  modèle ? </value>
-  </data>
-  <data name="SaveCharsetInFilesTxt" xml:space="preserve">
-    <value>Voulez-vous enregistrer la sortie vers un fichier </value>
-  </data>
-  <data name="SaveCharsetInFilesZip" xml:space="preserve">
-    <value>Vous voulez les compresser dans un fichier zip </value>
-  </data>
-  <data name="SizeFile" xml:space="preserve">
-    <value>Quelle est la taille d'un fichier de sauvegarde en Mo : </value>
-  </data>
-  <data name="SPECIAL" xml:space="preserve">
-    <value>CARACTÈRES SPÉCIAUX</value>
+  <data name="SeekingNotSupportedOnAnonymousPipes" xml:space="preserve">
+    <value>Seeking not supported on Anonymous Pipes</value>
   </data>
 </root>

@@ -35,7 +35,7 @@ using System.Text;
 using System.Diagnostics;
 using C5;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     internal class OptionGroup
     {

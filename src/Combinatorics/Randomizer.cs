@@ -1,5 +1,5 @@
 ﻿//  Author:
-//       Teeknofil <teeknofil@gmail.com>
+//       Teeknofil <teeknofil.dev@gmail.com>
 //
 //  Copyright (c) 2015 Teeknofil
 //
@@ -17,7 +17,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using crisis;
+using Crisis;
 using System.Linq;
 using System.Text;
 using System.Numerics;
@@ -41,7 +41,7 @@ namespace Crisis.Combinatorics
         /// </summary>
         /// <returns>string</returns>
 
-        public string Aleatory(List<string> charsetSelecting, int numberOfChar)
+        public static string Aleatory(List<string> charsetSelecting, int numberOfChar)
         {            
             byte[] data = new byte[1];
             
@@ -70,7 +70,7 @@ namespace Crisis.Combinatorics
         /// <param name="numberOfChar"></param>
         /// <param name="filePath"></param>
         /// <param name="extension"></param>
-        public void GenerateRandomString(List<string> charsetSelecting, BigInteger numberLine, BigInteger numberOfAllCombination, bool saveFile, bool zip,  int numberOfChar, string filePath, string extension)
+        public void GenerateRandomString(List<string> charsetSelecting, BigInteger numberLine, bool saveFile, BigInteger numberOfAllCombination,  bool zip,  int numberOfChar, string pathBackUpFiles, string extension)
         {
             Utility make = new Utility();
             BigInteger cpt = 0;
@@ -83,10 +83,10 @@ namespace Crisis.Combinatorics
                 {
                     if (iMakeFile == 0)
                     {
-                        make.Setting_UpFile(filePath,extension);
+                        make.Setting_UpFile(pathBackUpFiles,extension);
                     }
 
-                    make.WorkFile.WriteLine(this.Aleatory(charsetSelecting, numberOfChar));
+                    make.WorkFile.WriteLine(Aleatory(charsetSelecting, numberOfChar));
                     ++iMakeFile;
                     ++cpt;
 
@@ -94,8 +94,8 @@ namespace Crisis.Combinatorics
                     {
                         make.WorkFile.Flush();
                         make.WorkFile.Close();
-                        make.Zipper(zip);
-                        make.GenerateOut(extension);
+                        extension=make.Zipper(zip, pathBackUpFiles);
+                         make.GenerateOut(pathBackUpFiles,extension);
                         iMakeFile = 0;
                     }
                 }
@@ -104,7 +104,10 @@ namespace Crisis.Combinatorics
             {
                 while (cpt <= numberOfAllCombination)
                 {
-                    Console.WriteLine(this.Aleatory(charsetSelecting, numberOfChar));
+                    if (cpt >= numberLine & numberLine != 0)
+                        Environment.Exit(0);
+
+                    Console.WriteLine(Aleatory(charsetSelecting, numberOfChar));
                     cpt++;
                 }
             }

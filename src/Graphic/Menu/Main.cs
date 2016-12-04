@@ -1,5 +1,5 @@
 ﻿//  Author:
-//       Teeknofil <teeknofil@gmail.com>
+//       Teeknofil <teeknofil.dev@gmail.com>
 //
 //  Copyright (c) 2015 Teeknofil
 //
@@ -17,10 +17,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Reflection;
 using System.Resources;
 
 namespace Crisis.Graphic.Menu
@@ -38,7 +34,7 @@ namespace Crisis.Graphic.Menu
         {
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.9.9 Beta \n");
+            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.1.3 \n");
             Console.ResetColor();
         }        
 
@@ -58,7 +54,8 @@ namespace Crisis.Graphic.Menu
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-            Console.WriteLine(" \t ROUTER\\BOX WIFI");
+            
+            Console.WriteLine("\t "+ lang.GetString("WIFI"));
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n {0}) ", ++i);
@@ -77,11 +74,7 @@ namespace Crisis.Graphic.Menu
             Console.ResetColor();
             Console.WriteLine("\t "+lang.GetString("profiler"));
 
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write("\n {0}) ", ++i);
-            Console.ResetColor();
-            Console.WriteLine("\t "+lang.GetString("serverMenu"));
-
+          
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n 99)");
             Console.ResetColor();
@@ -105,39 +98,32 @@ namespace Crisis.Graphic.Menu
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-
             Console.WriteLine(" \t LATIN\t");
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-
-
-
             Console.WriteLine(" \t SPECIAL");
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-
             Console.WriteLine(" \t "+lang.GetString("swedish"));
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-
             Console.WriteLine(" \t "+lang.GetString("cyrillic"));
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-
             Console.WriteLine(" \t "+lang.GetString("syllable_fr"));
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" {0}) ", ++i);
             Console.ResetColor();
-            Console.WriteLine(" \t CUSTOM");
+            Console.WriteLine(" \t "+ lang.GetString("CUSTOM"));
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("\n 88) ");
@@ -151,7 +137,53 @@ namespace Crisis.Graphic.Menu
             Console.WriteLine("\t " + lang.GetString("exit"));
             Console.ResetColor();
             
-        }       
+        }  // End Function
+
+        internal void TransformWordlist()
+        {
+            Version();
+            Interface.HeaderMenu();
+
+            int i = 0;
+                      
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", ++i);
+            Console.ResetColor();
+
+            Console.WriteLine("\t Leet Speak");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n {0}) ", ++i);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t Lowercase To Uppercase\t");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" {0}) ", ++i);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t Uppercase To Lowercase");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n {0}) ", ++i);
+            Console.ResetColor();
+
+            Console.WriteLine(" \t Automatic Character  Lowercase <=> Uppercase");
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("\n 88) ");
+            Console.ResetColor();
+            Console.WriteLine("\t " + lang.GetString("_return"));
+
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" 99)");
+            Console.ResetColor();
+            Console.WriteLine("\t " + lang.GetString("exit"));
+            Console.ResetColor();
+
+
+        }
 
     }
 

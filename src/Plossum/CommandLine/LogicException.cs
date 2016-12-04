@@ -32,7 +32,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     // Indicates programming error
     /// <summary>

@@ -35,7 +35,7 @@ using System.Text;
 using C5;
 using System.Globalization;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Represents the descriptive properties of an option group.
@@ -118,13 +118,13 @@ namespace Plossum.CommandLine
         public string ToString(int indent, int nameColumnWidth, int descriptionColumnWidth)
         {
             if (nameColumnWidth < 1)
-                throw new ArgumentException(String.Format(CultureInfo.CurrentUICulture, Plossum.Resources.CommandLineStrings.ArgMustBeGreaterThanZero, "nameColumnWidth"), "nameColumnWidth");
+                throw new ArgumentException(String.Format(CultureInfo.CurrentUICulture, Crisis.Resources.CommandLineStrings.ArgMustBeGreaterThanZero, "nameColumnWidth"), "nameColumnWidth");
 
             if (nameColumnWidth < 1)
-                throw new ArgumentException(String.Format(CultureInfo.CurrentUICulture, Plossum.Resources.CommandLineStrings.ArgMustBeGreaterThanZero, "descriptionColumnWidth"), "descriptionColumnWidth");
+                throw new ArgumentException(String.Format(CultureInfo.CurrentUICulture, Crisis.Resources.CommandLineStrings.ArgMustBeGreaterThanZero, "descriptionColumnWidth"), "descriptionColumnWidth");
 
             if (indent < 0)
-                throw new ArgumentException(String.Format(CultureInfo.CurrentUICulture, Plossum.Resources.CommandLineStrings.ArgMustBeNonNegative, "indent"), "indent");
+                throw new ArgumentException(String.Format(CultureInfo.CurrentUICulture, Crisis.Resources.CommandLineStrings.ArgMustBeNonNegative, "indent"), "indent");
 
             StringBuilder result = new StringBuilder();
             result.Append(StringFormatter.FormatInColumns(indent, 0, new ColumnInfo(nameColumnWidth + descriptionColumnWidth + mUsageInfo.ColumnSpacing, Name + ":")));

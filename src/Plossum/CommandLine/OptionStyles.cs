@@ -34,7 +34,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Globalization;
 
-namespace Plossum.CommandLine
+namespace Crisis.CommandLine
 {
     
     /// <summary>

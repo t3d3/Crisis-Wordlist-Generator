@@ -1,9 +1,26 @@
-﻿using System;
+﻿//  Author:
+//       Teeknofil <teeknofil.dev@gmail.com>
+//
+//  Copyright (c) 2015 Teeknofil
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+using System;
 using System.Numerics;
 using System.Collections.Generic;
 using Crisis.Combinatorics;
-using crisis;
-using Plossum.CommandLine;
+using Crisis.CommandLine;
 
 namespace Crisis.Tools
 {
@@ -41,6 +58,11 @@ namespace Crisis.Tools
                 {
                     PermutationPattern obj = new PermutationPattern();
                     numberOfAllCombination = PermutationPattern.CaclulPermut(_repeat,charsetSelecting,numberOfChar);
+                }
+
+                if (0 > numberOfAllCombination)
+                {
+                    numberOfAllCombination = -1 * numberOfAllCombination;
                 }
 
             }
@@ -108,36 +130,6 @@ namespace Crisis.Tools
             if (options.Line == false)
             {
                  numberLine = sizeFile / (numberOfChar + 2);
-                
-                if (typesOfGeneration == 1)
-                {
-                    numberLine = sizeFile / (numberOfChar + 20);
-                    if (numberOfAllCombination - 1 < numberLine)
-                    {
-                        numberLine = numberOfAllCombination;
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\n File size too large, the number of line by default.\n");
-                        Console.ResetColor();
-                    }
-                    
-                }
-                else if (typesOfGeneration == 5)
-                {
-                    if (numberOfAllCombination - 1 < numberLine)
-                    {
-                        numberLine = PermutationPattern.Permut.Count;
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\n File size too large, the number of line by default.\n");
-                        Console.ResetColor();
-                    }                   
-                }
-                else if (numberOfAllCombination - 1 < numberLine)
-                {
-                    numberLine = numberOfAllCombination;
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\n File size too large, the number of line by default.\n");
-                    Console.ResetColor();
-                }
             }
 
             return numberLine;

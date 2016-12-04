@@ -36,7 +36,7 @@ using System.IO;
 using System.Diagnostics;
 using C5;
 
-namespace Plossum
+namespace Crisis
 {
     /// <summary>
     /// Class performing various formatting operations on strings based on fixed width characters.
@@ -62,9 +62,9 @@ namespace Plossum
         /// </remarks>
         /// <exception cref="ArgumentNullException"><paramref name="str"/> was a null reference (<b>Nothing</b> in Visual Basic)</exception>
         /// <exception cref="ArgumentOutOfRangeException">The specified <paramref name="width"/> was less than, or equal to zero.</exception>
-        /// <exception cref="ArgumentException"><paramref name="width"/> is less than the length of the specified <paramref name="ellipsis"/>, or, 
+        /// <exception cref="ArgumentException"><paramref name="width"/> is less than the length of the specified , or, 
         /// the cropping specified is <see cref="Cropping.Both"/> and <paramref name="width"/> was less than <i>twice</i> the 
-        /// length of the <paramref name="ellipsis"/></exception>
+        /// length of the </exception>
         public static string Align(string str, int width, Alignment alignment)
         {
             return Align(str, width, alignment, Cropping.Right, "...");
@@ -88,9 +88,9 @@ namespace Plossum
         /// </remarks>
         /// <exception cref="ArgumentNullException"><paramref name="str"/> was a null reference (<b>Nothing</b> in Visual Basic)</exception>
         /// <exception cref="ArgumentOutOfRangeException">The specified <paramref name="width"/> was less than, or equal to zero.</exception>
-        /// <exception cref="ArgumentException"><paramref name="width"/> is less than the length of the specified <paramref name="ellipsis"/>, or, 
+        /// <exception cref="ArgumentException"><paramref name="width"/> is less than the length of the specified, or, 
         /// the cropping specified is <see cref="Cropping.Both"/> and <paramref name="width"/> was less than <i>twice</i> the 
-        /// length of the <paramref name="ellipsis"/></exception>
+        /// length of the </exception>
         public static string Align(string str, int width, Alignment alignment, Cropping cropping)
         {
             return Align(str, width, alignment, cropping, "...");
