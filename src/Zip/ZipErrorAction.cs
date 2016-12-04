@@ -26,7 +26,7 @@
 // ------------------------------------------------------------------
 
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     /// <summary>
     /// An enum providing the options when an error occurs during opening or reading

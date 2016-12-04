@@ -35,7 +35,7 @@ using System.Text;
 using System.Globalization;
 using System.Diagnostics;
 
-namespace crisis.CommandLine
+namespace Crisis.CommandLine
 {
 
     /// <summary>

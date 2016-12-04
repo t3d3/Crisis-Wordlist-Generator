@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace crisis.Resources {
+namespace Crisis.Resources {
     using System;
     
     

@@ -1,5 +1,5 @@
-//  Author:
-//       Teeknofil <teeknofil@gmail.com>
+﻿//  Author:
+//       Teeknofil <teeknofil.dev@gmail.com>
 //
 //  Copyright (c) 2015 Teeknofil
 //
@@ -17,31 +17,32 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Text.RegularExpressions;
+using Crisis.Tools;
+using Crisis.Graphic;
+using System.Resources;
 
-namespace crisis
+namespace Crisis
 {
-
     class Program
     {
-
         static void Main(string[] args)
-        {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Console.ForegroundColor = ConsoleColor.White;            
-            Console.SetWindowSize(100, 25);
+        {          
+            Console.InputEncoding = System.Text.Encoding.UTF8;            
+            Console.SetWindowSize(120, 25);
+
+            Utility os = new Utility();
+            os.Root();
 
             if (args.Length == 0)
             {
-                new Run();
-                Console.ReadKey();
+                Interface category = new Interface();
+                ResourceManager lang = category.Lang_Text();
+                new Run(lang);                
             }
             else
             {
-                new Run(args);                
-            }           
+                new Run(args);
+            }
         }
-
-
     }
 }

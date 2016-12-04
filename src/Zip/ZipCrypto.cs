@@ -27,7 +27,7 @@
 
 using System;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     /// <summary>
     ///   This class implements the "traditional" or "classic" PKZip encryption,
@@ -336,7 +336,7 @@ namespace crisis.Ionic.Zip
 
         // private fields for the crypto stuff:
         private UInt32[] _Keys = { 0x12345678, 0x23456789, 0x34567890 };
-        private crisis.Ionic.Crc.CRC32 crc32 = new crisis.Ionic.Crc.CRC32();
+        private Crisis.Ionic.Crc.CRC32 crc32 = new Crisis.Ionic.Crc.CRC32();
 
     }
 

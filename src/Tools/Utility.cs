@@ -1,5 +1,5 @@
-//  Author:
-//       Teeknofil <teeknofil@gmail.com>
+﻿//  Author:
+//       Teeknofil <teeknofil.dev@gmail.com>
 //
 //  Copyright (c) 2015 Teeknofil
 //
@@ -17,29 +17,52 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using crisis.Ionic.Zip;
+using Crisis.Ionic.Zip;
 using System.IO;
 using System.Collections.Generic;
+using System.Numerics;
+using System.Linq;
 
-
-
-
-namespace crisis
+namespace Crisis.Tools
 {
-    public class Utility : Property
+    public class Utility
     {
+
+        private static BigInteger numberFile;
+        private static string root;
+
+
+        StreamWriter workFile;
+
+        public StreamWriter WorkFile
+        {
+            get { return workFile; }
+            set { workFile = value; }
+        }
+
         public Utility()
         {
 
         }
-        
-        internal void StartblockPattern(string _s)
+
+        internal List<string> StartblockPattern(string _s, List<string> charsetSelecting)
         {
             try
             {
+                for (int i = 0; i < charsetSelecting.Count; i++)
+                {
+                    for (int x = 0; x < _s.Length; x++)
+                    {
+                        if (charsetSelecting[i] == _s[x].ToString())
+                        {
+                            charsetSelecting.RemoveAt(i);
+                        }
+                    }
+                }
+
                 for (int i = 0; i < _s.Length; i++)
                 {
-                    Charset.CharsetSelecting.Insert(i, _s[i].ToString());
+                    charsetSelecting.Insert(i, _s[i].ToString());
                 }
             }
             catch (Exception e)
@@ -48,17 +71,29 @@ namespace crisis
                 Console.WriteLine("\n {0} \n", e.Message);
                 Console.ResetColor();
             }
-                       
+
+            return charsetSelecting;
         }
-        
-        internal void EndPattern(string _e)
+
+        internal List<string> EndPattern(string _e, byte numberOfChar, List<string> charsetSelecting)
         {
             try
             {
+                for (int i = 0; i < charsetSelecting.Count; i++)
+                {
+                    for (int x = 0; x < _e.Length; x++)
+                    {
+                        if (charsetSelecting[i] == _e[x].ToString())
+                        {
+                            charsetSelecting.RemoveAt(i);
+                        }
+                    }
+                }
+
                 for (int i = 0; i < _e.Length; i++)
                 {
-                    Charset.CharsetSelecting.Insert((NumberOfChar - _e.Length) + i, _e[i].ToString());
-                } 
+                    charsetSelecting.Insert((numberOfChar - _e.Length) + i, _e[i].ToString());
+                }
 
             }
             catch (Exception e)
@@ -67,7 +102,7 @@ namespace crisis
                 Console.WriteLine("\n {0} \n", e.Message);
                 Console.ResetColor();
             }
-             
+            return charsetSelecting;
         }
 
         internal string Hour()
@@ -78,30 +113,210 @@ namespace crisis
             return input;
         }
 
-        internal void Zipper(bool _Zip)
+        public bool OsDetect()
         {
+            bool system = true;
 
-            if (_Zip)
+            OperatingSystem os = Environment.OSVersion;
+            PlatformID pid = os.Platform;
+            switch (pid)
             {
-                string[] compress = new string[] { FilesNameDirectory.FilePath[MenuParameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[MenuParameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + ".txt" };
+                case PlatformID.Win32NT:
+                case PlatformID.Win32S:
+                case PlatformID.Win32Windows:
+                case PlatformID.WinCE:
 
-                using (ZipFile zipFile = new ZipFile())
-                {
-                    zipFile.AddFiles(compress, FilesNameDirectory.FileName[MenuParameter.TypesOfGeneration] + FilesNameDirectory.NumberFile);
-                    zipFile.Save(FilesNameDirectory.FilePath[MenuParameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[MenuParameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + ".zip");
-                }
+                    system = false;
+                    break;
 
-                System.IO.File.Delete(FilesNameDirectory.FilePath[MenuParameter.TypesOfGeneration].ToString() + FilesNameDirectory.FileName[MenuParameter.TypesOfGeneration] + FilesNameDirectory.NumberFile + ".txt");
+                case PlatformID.Unix:
+
+                    system = true;
+                    break;
+                default:
+                    Console.WriteLine("ERROR: This platform identifier is invalid.");
+                    break;
+            }
+            return system;
+        }
+
+        public void Root() // rename  function in root
+        {
+            if (OsDetect() == true)
+            {
+                root = "/";
+            }
+            else
+            {
+                root = @"\";
             }
         }
 
-        internal void GenerateOut(int _i, int extention)
+        /// <summary>
+        /// Create the files on computer
+        /// </summary>
+        /// <param name="extension"></param>
+
+        public void Setting_UpFile(string pathBackUpFiles, string extension)
         {
-            string[] locate = new string[] { " Generating output at" + Hour() + " : " + FilesNameDirectory.FilePath[_i].ToString() + FilesNameDirectory.FileName[_i] + FilesNameDirectory.NumberFile + FilesNameDirectory.Extension[MenuParameter.IExtension] };
+
+            bool b = true;
+
+
+            while (b)
+            {
+                try
+                {
+                    if (!Directory.Exists(pathBackUpFiles))
+                    {
+                        pathBackUpFiles = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + root + "crisis";
+                        System.IO.Directory.CreateDirectory(pathBackUpFiles);
+                    }
+                    else if (File.Exists(pathBackUpFiles + root + "wordlist_" + numberFile + ".txt") | File.Exists(pathBackUpFiles + root + "wordlist_" + numberFile + ".zip"))
+                    {
+                        numberFile++;
+                    }
+                    else if (!Directory.Exists(pathBackUpFiles + root + "wordlist_" + numberFile + ".txt"))
+                    {
+                        workFile = new StreamWriter(pathBackUpFiles + root + "wordlist_" + numberFile + ".txt");
+                        b = false;
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(" {0} \n", e.Message);
+                    Console.ResetColor();
+                }
+
+            } //End while
+        }  //End Fonction
+
+        internal static List<string> RemoveDuplicate(List<string> charsetSelecting)
+        {
+            // Get distinct elements and convert into a list again.
+            try
+            {
+                List<string> distinct = charsetSelecting.Distinct().ToList();
+                charsetSelecting.Clear();
+                charsetSelecting = distinct.Distinct().ToList();
+
+            }
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(" {0} \n", e.Message);
+                Console.ResetColor();
+            }
+
+            return charsetSelecting;
+        }
+
+        internal string Zipper(bool zip, string pathBackUpFiles)
+        {
+            try
+            {
+                if (zip)
+                {
+                    string[] compress = new string[] { pathBackUpFiles + root + "wordlist_" + numberFile + ".txt" };
+
+                    using (ZipFile zipFile = new ZipFile())
+                    {
+                        zipFile.AddFiles(compress, pathBackUpFiles + root + "wordlist_" + numberFile);
+                        zipFile.Save(pathBackUpFiles + root + "wordlist_" + numberFile + ".zip");
+                    }
+
+                    System.IO.File.Delete(pathBackUpFiles + root + "wordlist_" + numberFile + ".txt");
+
+                    return ".zip";
+                }
+            }
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(" {0} \n", e.Message);
+                Console.ResetColor();
+            }
+
+
+            return ".txt";
+        }
+
+        internal void GenerateOut(string pathBackUpFiles, string extension)
+        {
+            string[] locate = new string[] { " Generating output at" + Hour() + " : " + pathBackUpFiles + root + "wordlist_" + numberFile + extension };
             Console.WriteLine(locate[0].ToString());
         }
 
-       
+        internal List<string> DoubleCapacityList(List<string> charsetSelecting, int numberOfChar)
+        {
+            try
+            {
+                if (numberOfChar > charsetSelecting.Count)
+                {
+                    while (numberOfChar > charsetSelecting.Count)
+                    {
+                        int x = charsetSelecting.Count;
+
+                        for (int i = 0; i < x; i++)
+                        {
+                            charsetSelecting.Add(charsetSelecting[i]);
+                        }
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(" {0} \n", e.Message);
+                Console.ResetColor();
+            }
+
+            return charsetSelecting;
+        }
+
+        internal static List<string> MixOrderList(List<string> charsetSelecting)
+        {            
+            List<string> shuffled_list = new List<string>();
+            List<string> tmp = new List<string>();
+
+            for (int i = 0; i < charsetSelecting.Count; i++)
+            {
+                tmp.Add(Combinatorics.Randomizer.Aleatory(charsetSelecting, 1));
+                shuffled_list = tmp.Distinct().ToList();
+
+                if (charsetSelecting.Count > shuffled_list.Count)
+                {
+                    i--;
+                }
+            }
+
+            tmp = null;
+            return shuffled_list;
+        }
+
+        public static List<string> ReadFileTxt(string charsetName, List<string> charsetSelecting)
+        {
+            try
+            {
+                if (File.Exists(charsetName.ToString()))
+                {
+                    charsetSelecting.Add(System.IO.File.ReadAllText(charsetName.ToString()));
+
+                }
+            }
+            catch (OutOfMemoryException e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\n The file is too large to be stored in RAM !");
+                Console.WriteLine(" {0} \n", e.Message);
+                Console.ResetColor();
+            }
+
+            return charsetSelecting;
+        }
 
     } //End class
 }// End namespace

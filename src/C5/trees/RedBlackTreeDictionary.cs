@@ -22,7 +22,7 @@
 using System;
 using SCG = System.Collections.Generic;
 
-namespace crisis.C5
+namespace C5
 {
   /// <summary>
   /// A sorted generic dictionary based on a red-black tree set.

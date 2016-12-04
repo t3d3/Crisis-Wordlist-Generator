@@ -31,9 +31,9 @@
  */
 using System;
 using SCG = System.Collections.Generic;
-using crisis.C5;
+using C5;
 
-namespace crisis.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Represents information about the escapable characters within a quoted value.

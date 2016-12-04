@@ -34,7 +34,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 
-namespace crisis.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Represents a command line token.

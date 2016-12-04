@@ -25,7 +25,7 @@ using System;
 using System.Diagnostics;
 using SCG = System.Collections.Generic;
 
-namespace crisis.C5
+namespace C5
 {
   /// <summary>
   /// A list collection class based on a doubly linked list data structure.
@@ -1449,7 +1449,7 @@ namespace crisis.C5
       updatecheck();
       if ((pointer == null) || ((pointer.Underlying ?? pointer) != (underlying ?? this)))
         throw new IncompatibleViewException();
-//#warning INEFFICIENT
+#warning INEFFICIENT
       //TODO: make this efficient (the whole point of the method:
       //Do NOT use Insert, but insert the node at pointer.endsentinel, checking
       //via the ordering that this is a valid insertion point
@@ -1550,7 +1550,7 @@ namespace crisis.C5
         if ((ActiveEvents & (EventTypeEnum.Added | EventTypeEnum.Inserted)) != 0)
           for (int j = index; j < index + added; j++)
           {
-//#warning must we check stamps here?
+#warning must we check stamps here?
             node = node.next;
             T item = node.item;
             if (insertion) raiseItemInserted(item, j);

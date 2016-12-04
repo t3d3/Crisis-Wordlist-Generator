@@ -33,13 +33,13 @@ using System;
 using SCG = System.Collections.Generic;
 using System.Text;
 using System.Reflection;
-using crisis.CommandLine;
-using crisis.C5;
+using Crisis.CommandLine;
+using C5;
 using System.Globalization;
 using System.Diagnostics;
-using crisis.Resources;
+using Crisis.Resources;
 
-namespace crisis.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Representation of a command line option. 

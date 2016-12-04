@@ -28,7 +28,7 @@
 using System;
 using System.IO;
 
-namespace crisis.Ionic.Zlib
+namespace Crisis.Ionic.Zlib
 {
 
     /// <summary>
@@ -500,9 +500,9 @@ namespace crisis.Ionic.Zlib
         {
             get
             {
-                if (this._baseStream._streamMode == crisis.Ionic.Zlib.ZlibBaseStream.StreamMode.Writer)
+                if (this._baseStream._streamMode == Crisis.Ionic.Zlib.ZlibBaseStream.StreamMode.Writer)
                     return this._baseStream._z.TotalBytesOut;
-                if (this._baseStream._streamMode == crisis.Ionic.Zlib.ZlibBaseStream.StreamMode.Reader)
+                if (this._baseStream._streamMode == Crisis.Ionic.Zlib.ZlibBaseStream.StreamMode.Reader)
                     return this._baseStream._z.TotalBytesIn;
                 return 0;
             }

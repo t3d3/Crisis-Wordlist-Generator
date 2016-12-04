@@ -1,5 +1,5 @@
 //  Author:
-//       Teeknofil <teeknofil@gmail.com>
+//       Teeknofil <teeknofil.dev@gmail.com>
 //
 //  Copyright (c) 2015 Teeknofil
 //
@@ -20,8 +20,11 @@ using System;
 using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
+using Crisis.Tools;
+using Crisis;
 
-namespace crisis
+
+namespace Crisis.Combinatorics
 {
     /// <summary>
     /// Permutations defines a meta-collection, typically a list of lists, of all
@@ -528,7 +531,7 @@ namespace crisis
 
     }
 
-    public class PermutationPattern : Property
+    public class PermutationPattern : Parameter
     {
         private static string s = null;
         private static List<string> permutCharset = new List<string>() { };
@@ -546,9 +549,10 @@ namespace crisis
             
         }
 
-        public static BigInteger CaclulPermut(bool _repeat)
+        public static BigInteger CaclulPermut(bool _repeat, List<string> charsetSelecting, int numberOfChar)
         {
-            obj = new Combinations<string>(Charset.CharsetSelecting, Property.NumberOfChar);
+            Utility make = new Utility();            
+            obj = new Combinations<string>(make.DoubleCapacityList(charsetSelecting, numberOfChar), numberOfChar);
 
             foreach (IList<string> charset in obj)
             {
@@ -577,12 +581,12 @@ namespace crisis
         }
 
 
-        public void PermutationPrintF(bool _saveFile, bool _zip, bool _repeat)
+        public void GeneratePermutationString(List<string> charsetSelecting, BigInteger numberOfAllCombination, BigInteger numberLine, int numberOfChar, bool saveFile, bool zip, bool repeat, int typesAtGenerate,  string pathBackUpFiles, string extension)
         {
-            FilesNameDirectory make = new FilesNameDirectory();
+            
             BigInteger cpt = 0;
-            Utility tool = new Utility();
-                        
+            Utility make = new Utility();
+           
             foreach (IList<string> charset in obj)
             {
                 s = null;
@@ -598,27 +602,27 @@ namespace crisis
                     permutCharset.Add(s[c].ToString());
                 }
 
-                if (_repeat == false)
+                if (repeat == false)
                 {
                     permut = new Permutations<string>(permutCharset, GenerateOption.WithoutRepetition);
                 }
-                else if (_repeat == true)
+                else if (repeat == true)
                 {
                     permut = new Permutations<string>(permutCharset, GenerateOption.WithRepetition);
                 }
 
-                if (_saveFile)
+                if (saveFile)
                 {
                     BigInteger makeFile = 0;
 
                     foreach (IList<string> str in permut)
-                    {                  
+                    {
                         if (makeFile == 0)
                         {
-                            make.Setting_UpFile(Property.TypesOfGeneration);
+                            make.Setting_UpFile(pathBackUpFiles,extension);
                         }
 
-                        for (int c = 0; c < Property.NumberOfChar; c++)
+                        for (int c = 0; c < numberOfChar; c++)
                         {
                             s += str[c];
                         }
@@ -629,12 +633,12 @@ namespace crisis
                         makeFile++;
                         cpt++;
 
-                        if (makeFile >= Property.NumberLine | cpt >= Statistical.NumberOfAllCombination)
-                        {                            
+                        if (makeFile >= numberLine | cpt >= numberOfAllCombination)
+                        {
                             make.WorkFile.Flush();
                             make.WorkFile.Close();
-                            tool.Zipper(_zip);
-                            tool.GenerateOut(Property.TypesOfGeneration,Property.IExtension);
+                            extension = make.Zipper(zip, pathBackUpFiles);
+                            make.GenerateOut(pathBackUpFiles,extension);
                             makeFile = 0;
                         }
                     }
@@ -643,6 +647,9 @@ namespace crisis
                 {
                     foreach (IList<string> str in permut)
                     {
+                        if (cpt >= numberLine & numberLine != 0)
+                            Environment.Exit(0);
+
                         s = null;
                         for (int c = 0; c < str.Count; c++)
                         {
@@ -650,13 +657,14 @@ namespace crisis
                         }
 
                         Console.WriteLine(s);
+                        cpt++;
                     }
-                }            
+                }
 
             }//End foreach
 
         } //End function
-   
+
 
     }
 }

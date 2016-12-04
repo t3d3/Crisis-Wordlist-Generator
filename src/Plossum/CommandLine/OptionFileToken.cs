@@ -33,7 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace crisis.CommandLine
+namespace Crisis.CommandLine
 {
     internal class OptionFileToken : Token
     {

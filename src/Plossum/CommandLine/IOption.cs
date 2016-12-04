@@ -32,9 +32,9 @@
 using System;
 using SCG = System.Collections.Generic;
 using System.Text;
-using crisis.C5;
+using C5;
 
-namespace crisis.CommandLine
+namespace Crisis.CommandLine
 {
     internal interface IOption
     {

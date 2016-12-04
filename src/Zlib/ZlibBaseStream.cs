@@ -27,7 +27,7 @@
 using System;
 using System.IO;
 
-namespace crisis.Ionic.Zlib
+namespace Crisis.Ionic.Zlib
 {
 
     internal enum ZlibStreamFlavor { ZLIB = 1950, DEFLATE = 1951, GZIP = 1952 }
@@ -50,7 +50,7 @@ namespace crisis.Ionic.Zlib
         protected internal CompressionStrategy Strategy = CompressionStrategy.Default;
 
         // workitem 7159
-        crisis.Ionic.Crc.CRC32 crc;
+        Crisis.Ionic.Crc.CRC32 crc;
         protected internal string _GzipFileName;
         protected internal string _GzipComment;
         protected internal DateTime _GzipMtime;
@@ -75,7 +75,7 @@ namespace crisis.Ionic.Zlib
             // workitem 7159
             if (flavor == ZlibStreamFlavor.GZIP)
             {
-                this.crc = new crisis.Ionic.Crc.CRC32();
+                this.crc = new Crisis.Ionic.Crc.CRC32();
             }
         }
 

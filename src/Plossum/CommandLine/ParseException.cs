@@ -31,9 +31,9 @@
  */
 using System;
 using System.Runtime.Serialization;
-using crisis.Resources;
+using Crisis.Resources;
 
-namespace crisis.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Base class for any exceptions specific to the command line parser. Indicates an error during the

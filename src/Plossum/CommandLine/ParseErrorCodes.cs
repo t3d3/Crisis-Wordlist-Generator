@@ -30,7 +30,7 @@
  *  $Id: ParseErrorCodes.cs 5 2007-07-31 08:46:02Z palotas $
  */
 
-namespace crisis.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Indicates the type of the error of a <see cref="ErrorInfo"/>.

@@ -1,5 +1,5 @@
 //  Author:
-//       Teeknofil <teeknofil@gmail.com>
+//       Teeknofil <teeknofil.dev@gmail.com>
 //
 //  Copyright (c) 2015 Teeknofil
 //
@@ -15,12 +15,12 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-using System;
+
 using System.Collections.Generic;
-using System.Text;
 using System.Collections;
 
-namespace crisis {
+namespace Crisis
+{
     /// <summary>
     /// Utility class that maintains a small table of prime numbers and provides
     /// simple implementations of Prime Factorization algorithms.  

@@ -35,7 +35,7 @@ using System.Text;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
 
-namespace crisis.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Exception that may be thrown by the setter method of a property or a method attributed with the <see cref="CommandLineOptionAttribute"/>.

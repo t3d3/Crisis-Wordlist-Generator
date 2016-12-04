@@ -20,7 +20,7 @@
 // ------------------------------------------------------------------
 //
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     /// <summary>
     /// An enum that specifies the source of the ZipEntry. 
@@ -39,8 +39,8 @@ namespace crisis.Ionic.Zip
         FileSystem,
 
         /// <summary>
-        /// The entry was instantiated via <see cref="crisis.Ionic.Zip.ZipFile.AddEntry(string,string)"/> or
-        /// <see cref="crisis.Ionic.Zip.ZipFile.AddEntry(string,System.IO.Stream)"/> .
+        /// The entry was instantiated via <see cref="Crisis.Ionic.Zip.ZipFile.AddEntry(string,string)"/> or
+        /// <see cref="Crisis.Ionic.Zip.ZipFile.AddEntry(string,System.IO.Stream)"/> .
         /// </summary>
         Stream,
 
@@ -56,7 +56,7 @@ namespace crisis.Ionic.Zip
         
         /// <summary>
         /// The content for the ZipEntry will be obtained from the stream dispensed by the <c>OpenDelegate</c>.
-        /// The entry was instantiated via <see cref="crisis.Ionic.Zip.ZipFile.AddEntry(string,OpenDelegate,CloseDelegate)"/>.
+        /// The entry was instantiated via <see cref="Crisis.Ionic.Zip.ZipFile.AddEntry(string,OpenDelegate,CloseDelegate)"/>.
         /// </summary>
         JitStream,
         

@@ -19,14 +19,14 @@
  SOFTWARE.
 */
 
-using crisis.C5;
+using C5;
 using System;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Diagnostics;
 
 #pragma warning disable 1711
-namespace crisis.C5
+namespace C5
 {
   /// <summary>
   /// 

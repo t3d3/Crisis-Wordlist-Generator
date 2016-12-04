@@ -34,9 +34,9 @@ using SCG = System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Diagnostics;
-using crisis.C5;
+using C5;
 
-namespace crisis
+namespace Crisis
 {
     /// <summary>
     /// Class performing various formatting operations on strings based on fixed width characters.

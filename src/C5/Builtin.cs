@@ -21,7 +21,7 @@
 using System;
 using System.Diagnostics;
 using SCG = System.Collections.Generic;
-namespace crisis.C5
+namespace C5
 {
   #region char comparer and equality comparer
   class CharComparer : SCG.IComparer<char>

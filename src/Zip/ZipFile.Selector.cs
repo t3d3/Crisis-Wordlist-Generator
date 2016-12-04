@@ -36,7 +36,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
 
     partial class ZipFile
@@ -662,7 +662,7 @@ namespace crisis.Ionic.Zip
             while (directoryOnDisk.EndsWith("\\")) directoryOnDisk = directoryOnDisk.Substring(0, directoryOnDisk.Length - 1);
             if (Verbose) StatusMessageTextWriter.WriteLine("adding selection '{0}' from dir '{1}'...",
                                                                selectionCriteria, directoryOnDisk);
-            crisis.Ionic.FileSelector ff = new crisis.Ionic.FileSelector(selectionCriteria,
+            Crisis.Ionic.FileSelector ff = new Crisis.Ionic.FileSelector(selectionCriteria,
                                                            AddDirectoryWillTraverseReparsePoints);
             var itemsToAdd = ff.SelectFiles(directoryOnDisk, recurseDirectories);
 
@@ -798,7 +798,7 @@ namespace crisis.Ionic.Zip
         /// <returns>a collection of ZipEntry objects that conform to the inclusion spec</returns>
         public ICollection<ZipEntry> SelectEntries(String selectionCriteria)
         {
-            crisis.Ionic.FileSelector ff = new crisis.Ionic.FileSelector(selectionCriteria,
+            Crisis.Ionic.FileSelector ff = new Crisis.Ionic.FileSelector(selectionCriteria,
                                                            AddDirectoryWillTraverseReparsePoints);
             return ff.SelectEntries(this);
         }
@@ -871,7 +871,7 @@ namespace crisis.Ionic.Zip
         /// <returns>a collection of ZipEntry objects that conform to the inclusion spec</returns>
         public ICollection<ZipEntry> SelectEntries(String selectionCriteria, string directoryPathInArchive)
         {
-            crisis.Ionic.FileSelector ff = new crisis.Ionic.FileSelector(selectionCriteria,
+            Crisis.Ionic.FileSelector ff = new Crisis.Ionic.FileSelector(selectionCriteria,
                                                            AddDirectoryWillTraverseReparsePoints);
             return ff.SelectEntries(this, directoryPathInArchive);
         }
@@ -1243,17 +1243,17 @@ namespace crisis.Ionic.Zip
 
 
 
-namespace crisis.Ionic
+namespace Crisis.Ionic
 {
     internal abstract partial class SelectionCriterion
     {
-        internal abstract bool Evaluate(crisis.Ionic.Zip.ZipEntry entry);
+        internal abstract bool Evaluate(Crisis.Ionic.Zip.ZipEntry entry);
     }
 
 
     internal partial class NameCriterion : SelectionCriterion
     {
-        internal override bool Evaluate(crisis.Ionic.Zip.ZipEntry entry)
+        internal override bool Evaluate(Crisis.Ionic.Zip.ZipEntry entry)
         {
             // swap forward slashes in the entry.FileName for backslashes
             string transformedFileName = entry.FileName.Replace("/", "\\");
@@ -1265,7 +1265,7 @@ namespace crisis.Ionic
 
     internal partial class SizeCriterion : SelectionCriterion
     {
-        internal override bool Evaluate(crisis.Ionic.Zip.ZipEntry entry)
+        internal override bool Evaluate(Crisis.Ionic.Zip.ZipEntry entry)
         {
             return _Evaluate(entry.UncompressedSize);
         }
@@ -1273,7 +1273,7 @@ namespace crisis.Ionic
 
     internal partial class TimeCriterion : SelectionCriterion
     {
-        internal override bool Evaluate(crisis.Ionic.Zip.ZipEntry entry)
+        internal override bool Evaluate(Crisis.Ionic.Zip.ZipEntry entry)
         {
             DateTime x;
             switch (Which)
@@ -1296,7 +1296,7 @@ namespace crisis.Ionic
 
     internal partial class TypeCriterion : SelectionCriterion
     {
-        internal override bool Evaluate(crisis.Ionic.Zip.ZipEntry entry)
+        internal override bool Evaluate(Crisis.Ionic.Zip.ZipEntry entry)
         {
             bool result = (ObjectType == 'D')
                 ? entry.IsDirectory
@@ -1311,7 +1311,7 @@ namespace crisis.Ionic
 #if !SILVERLIGHT
     internal partial class AttributesCriterion : SelectionCriterion
     {
-        internal override bool Evaluate(crisis.Ionic.Zip.ZipEntry entry)
+        internal override bool Evaluate(Crisis.Ionic.Zip.ZipEntry entry)
         {
             FileAttributes fileAttrs = entry.Attributes;
             return _Evaluate(fileAttrs);
@@ -1321,7 +1321,7 @@ namespace crisis.Ionic
 
     internal partial class CompoundCriterion : SelectionCriterion
     {
-        internal override bool Evaluate(crisis.Ionic.Zip.ZipEntry entry)
+        internal override bool Evaluate(Crisis.Ionic.Zip.ZipEntry entry)
         {
             bool result = Left.Evaluate(entry);
             switch (Conjunction)
@@ -1346,7 +1346,7 @@ namespace crisis.Ionic
 
     public partial class FileSelector
     {
-        private bool Evaluate(crisis.Ionic.Zip.ZipEntry entry)
+        private bool Evaluate(Crisis.Ionic.Zip.ZipEntry entry)
         {
             bool result = _Criterion.Evaluate(entry);
             return result;
@@ -1380,14 +1380,14 @@ namespace crisis.Ionic
         /// <param name="zip">The ZipFile from which to retrieve entries.</param>
         ///
         /// <returns>a collection of ZipEntry objects that conform to the criteria.</returns>
-        public ICollection<crisis.Ionic.Zip.ZipEntry> SelectEntries(crisis.Ionic.Zip.ZipFile zip)
+        public ICollection<Crisis.Ionic.Zip.ZipEntry> SelectEntries(Crisis.Ionic.Zip.ZipFile zip)
         {
             if (zip == null)
                 throw new ArgumentNullException("zip");
 
-            var list = new List<crisis.Ionic.Zip.ZipEntry>();
+            var list = new List<Crisis.Ionic.Zip.ZipEntry>();
 
-            foreach (crisis.Ionic.Zip.ZipEntry e in zip)
+            foreach (Crisis.Ionic.Zip.ZipEntry e in zip)
             {
                 if (this.Evaluate(e))
                     list.Add(e);
@@ -1435,12 +1435,12 @@ namespace crisis.Ionic
         /// </param>
         ///
         /// <returns>a collection of ZipEntry objects that conform to the criteria.</returns>
-        public ICollection<crisis.Ionic.Zip.ZipEntry> SelectEntries(crisis.Ionic.Zip.ZipFile zip, string directoryPathInArchive)
+        public ICollection<Crisis.Ionic.Zip.ZipEntry> SelectEntries(Crisis.Ionic.Zip.ZipFile zip, string directoryPathInArchive)
         {
             if (zip == null)
                 throw new ArgumentNullException("zip");
 
-            var list = new List<crisis.Ionic.Zip.ZipEntry>();
+            var list = new List<Crisis.Ionic.Zip.ZipEntry>();
             // workitem 8559
             string slashSwapped = (directoryPathInArchive == null) ? null : directoryPathInArchive.Replace("/", "\\");
             // workitem 9174
@@ -1449,7 +1449,7 @@ namespace crisis.Ionic
                 while (slashSwapped.EndsWith("\\"))
                     slashSwapped = slashSwapped.Substring(0, slashSwapped.Length - 1);
             }
-            foreach (crisis.Ionic.Zip.ZipEntry e in zip)
+            foreach (Crisis.Ionic.Zip.ZipEntry e in zip)
             {
                 if (directoryPathInArchive == null || (Path.GetDirectoryName(e.FileName) == directoryPathInArchive)
                     || (Path.GetDirectoryName(e.FileName) == slashSwapped)) // workitem 8559

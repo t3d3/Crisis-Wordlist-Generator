@@ -33,7 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace crisis
+namespace Crisis
 {
     /// <summary>
     /// Represents the alignment of text for use with <see cref="StringFormatter"/>

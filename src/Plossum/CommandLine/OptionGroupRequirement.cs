@@ -33,7 +33,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace crisis.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// Specifies the requirements on an option group.

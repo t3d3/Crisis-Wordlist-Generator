@@ -27,7 +27,7 @@
 
 using System;
 
-namespace crisis.Ionic.Zlib
+namespace Crisis.Ionic.Zlib
 {
     /// <summary>
     /// A class for compressing and decompressing streams using the Deflate algorithm.
@@ -520,9 +520,9 @@ namespace crisis.Ionic.Zlib
         {
             get
             {
-                if (this._baseStream._streamMode == crisis.Ionic.Zlib.ZlibBaseStream.StreamMode.Writer)
+                if (this._baseStream._streamMode == Crisis.Ionic.Zlib.ZlibBaseStream.StreamMode.Writer)
                     return this._baseStream._z.TotalBytesOut;
-                if (this._baseStream._streamMode == crisis.Ionic.Zlib.ZlibBaseStream.StreamMode.Reader)
+                if (this._baseStream._streamMode == Crisis.Ionic.Zlib.ZlibBaseStream.StreamMode.Reader)
                     return this._baseStream._z.TotalBytesIn;
                 return 0;
             }

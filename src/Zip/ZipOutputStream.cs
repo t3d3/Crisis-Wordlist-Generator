@@ -46,9 +46,9 @@ using System;
 using System.Threading;
 using System.Collections.Generic;
 using System.IO;
-using crisis.Ionic.Zip;
+using Crisis.Ionic.Zip;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     /// <summary>
     ///   Provides a stream metaphor for generating zip files.
@@ -345,13 +345,13 @@ namespace crisis.Ionic.Zip
         {
             // workitem 9307
             _outputStream = stream.CanRead ? stream : new CountingStream(stream);
-            CompressionLevel = crisis.Ionic.Zlib.CompressionLevel.Default;
-            CompressionMethod = crisis.Ionic.Zip.CompressionMethod.Deflate;
+            CompressionLevel = Crisis.Ionic.Zlib.CompressionLevel.Default;
+            CompressionMethod = Crisis.Ionic.Zip.CompressionMethod.Deflate;
             _encryption = EncryptionAlgorithm.None;
             _entriesWritten = new Dictionary<String, ZipEntry>(StringComparer.Ordinal);
             _zip64 = Zip64Option.Never;
             _leaveUnderlyingStreamOpen = leaveOpen;
-            Strategy = crisis.Ionic.Zlib.CompressionStrategy.Default;
+            Strategy = Crisis.Ionic.Zlib.CompressionStrategy.Default;
             _name = name ?? "(stream)";
 #if !NETCF
             ParallelDeflateThreshold = -1L;
@@ -463,7 +463,7 @@ namespace crisis.Ionic.Zip
         /// </remarks>
         ///
         /// <seealso cref="Password">ZipOutputStream.Password</seealso>
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.Encryption">ZipEntry.Encryption</seealso>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.Encryption">ZipEntry.Encryption</seealso>
         public EncryptionAlgorithm Encryption
         {
             get
@@ -514,9 +514,9 @@ namespace crisis.Ionic.Zip
         ///   work better on different sorts of data. The strategy parameter can affect
         ///   the compression ratio and the speed of compression but not the correctness
         ///   of the compresssion.  For more information see <see
-        ///   cref="crisis.Ionic.Zlib.CompressionStrategy "/>.
+        ///   cref="Crisis.Ionic.Zlib.CompressionStrategy "/>.
         /// </remarks>
-        public crisis.Ionic.Zlib.CompressionStrategy Strategy
+        public Crisis.Ionic.Zlib.CompressionStrategy Strategy
         {
             get;
             set;
@@ -580,7 +580,7 @@ namespace crisis.Ionic.Zip
         ///    alone, and accept the default.
         ///  </para>
         /// </remarks>
-        public crisis.Ionic.Zlib.CompressionLevel CompressionLevel
+        public Crisis.Ionic.Zlib.CompressionLevel CompressionLevel
         {
             get;
             set;
@@ -589,7 +589,7 @@ namespace crisis.Ionic.Zip
         /// <summary>
         ///   The compression method used on each entry added to the ZipOutputStream.
         /// </summary>
-        public crisis.Ionic.Zip.CompressionMethod CompressionMethod
+        public Crisis.Ionic.Zip.CompressionMethod CompressionMethod
         {
             get;
             set;
@@ -869,7 +869,7 @@ namespace crisis.Ionic.Zip
                 }
                 else
                 {
-                    _alternateEncoding = crisis.Ionic.Zip.ZipOutputStream.DefaultEncoding;
+                    _alternateEncoding = Crisis.Ionic.Zip.ZipOutputStream.DefaultEncoding;
                     _alternateEncodingUsage = ZipOption.Never;
                 }
             }
@@ -1016,7 +1016,7 @@ namespace crisis.Ionic.Zip
         /// The default text encoding used in zip archives.  It is numeric 437, also
         /// known as IBM437.
         /// </summary>
-        /// <seealso cref="crisis.Ionic.Zip.ZipFile.ProvisionalAlternateEncoding"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipFile.ProvisionalAlternateEncoding"/>
         public static System.Text.Encoding DefaultEncoding
         {
             get
@@ -1075,7 +1075,7 @@ namespace crisis.Ionic.Zip
         ///     Encryption. This is primarily because encryption tends to slow down
         ///     the entire pipeline. Also, multi-threaded compression gives less of an
         ///     advantage when using lower compression levels, for example <see
-        ///     cref="crisis.Ionic.Zlib.CompressionLevel.BestSpeed"/>.  You may have to perform
+        ///     cref="Crisis.Ionic.Zlib.CompressionLevel.BestSpeed"/>.  You may have to perform
         ///     some tests to determine the best approach for your situation.
         ///   </para>
         ///
@@ -1624,12 +1624,12 @@ namespace crisis.Ionic.Zip
         private CountingStream _outputCounter;
         private Stream _encryptor;
         private Stream _deflater;
-        private crisis.Ionic.Crc.CrcCalculatorStream _entryOutputStream;
+        private Crisis.Ionic.Crc.CrcCalculatorStream _entryOutputStream;
         private bool _needToWriteEntryHeader;
         private string _name;
         private bool _DontIgnoreCase;
 #if !NETCF
-        internal crisis.Ionic.Zlib.ParallelDeflateOutputStream ParallelDeflater;
+        internal Crisis.Ionic.Zlib.ParallelDeflateOutputStream ParallelDeflater;
         private long _ParallelDeflateThreshold;
         private int _maxBufferPairs = 16;
 #endif
@@ -1715,7 +1715,7 @@ namespace crisis.Ionic.Zip
         }
 
 #if !NETCF
-        public crisis.Ionic.Zlib.ParallelDeflateOutputStream ParallelDeflater
+        public Crisis.Ionic.Zlib.ParallelDeflateOutputStream ParallelDeflater
         {
             get
             {
@@ -1758,7 +1758,7 @@ namespace crisis.Ionic.Zip
             }
         }
 
-        public crisis.Ionic.Zlib.CompressionStrategy Strategy
+        public Crisis.Ionic.Zlib.CompressionStrategy Strategy
         {
             get
             {

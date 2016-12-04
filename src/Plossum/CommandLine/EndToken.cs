@@ -32,9 +32,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using crisis.Resources;
+using Crisis.Resources;
 
-namespace crisis.CommandLine
+namespace Crisis.CommandLine
 {
     /// <summary>
     /// <see cref="Token"/> representing the special symbol used to stop the parsing of options, normally "--".

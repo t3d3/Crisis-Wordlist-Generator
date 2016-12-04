@@ -1,5 +1,5 @@
 ﻿//  Author:
-//       Teeknofil <teeknofil@gmail.com>
+//       Teeknofil <teeknofil.dev@gmail.com>
 //
 //  Copyright (c) 2015 Teeknofil
 //
@@ -17,94 +17,102 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using Crisis;
 using System.Linq;
 using System.Text;
 using System.Numerics;
 using System.IO.Compression;
 using System.Collections.Generic;
-using crisis.Ionic.Zip;
+using System.Security.Cryptography;
+using Crisis.Tools;
+//using crisis.Ionic.Zip;
 
-namespace crisis
+namespace Crisis.Combinatorics
 {
-    public class Randomizer : Property
-    {
-        private Random random = null;
+    public class Randomizer 
+    {        
         
         public Randomizer()
-        {
-            random = new Random();
+        {            
         }
-
+                
         /// <summary>
         /// Return At string Ramdom
         /// </summary>
         /// <returns>string</returns>
-         
-        public string Aleatory()
-        {
-            string randonString = null;
 
-            try
+        public static string Aleatory(List<string> charsetSelecting, int numberOfChar)
+        {            
+            byte[] data = new byte[1];
+            
+            using (RNGCryptoServiceProvider cryptoServiceProvider = new RNGCryptoServiceProvider())
             {
-                for (int i = 0; i < NumberOfChar; i++)
-                {
-                    randonString += Charset.CharsetSelecting[random.Next(Charset.CharsetSelecting.Count)].ToString();
-                }
-            }
-            catch (OutOfMemoryException e)
-            {
-                Console.WriteLine("{0}", e.Message);
+                cryptoServiceProvider.GetNonZeroBytes(data);
+                data = new byte[numberOfChar];
+                cryptoServiceProvider.GetNonZeroBytes(data);
             }
 
-            return randonString;
+            StringBuilder stringBuilder = new StringBuilder(numberOfChar);
+            foreach (byte num in data)
+                stringBuilder.Append(charsetSelecting[(int)num % charsetSelecting.Count]);
+
+            return stringBuilder.ToString();
         }
 
-
-        public void RamdonPrintF(bool _saveFile, bool _zip)
+        /// <summary>
+        /// retun a list random of string
+        /// </summary>
+        /// <param name="charsetSelecting"></param>
+        /// <param name="numberLine"></param>
+        /// <param name="numberOfAllCombination"></param>
+        /// <param name="saveFile"></param>
+        /// <param name="zip"></param>       
+        /// <param name="numberOfChar"></param>
+        /// <param name="filePath"></param>
+        /// <param name="extension"></param>
+        public void GenerateRandomString(List<string> charsetSelecting, BigInteger numberLine, bool saveFile, BigInteger numberOfAllCombination,  bool zip,  int numberOfChar, string pathBackUpFiles, string extension)
         {
-            SaveFile = _saveFile;
-
-
-            FilesNameDirectory make = new FilesNameDirectory();
-            Utility tool = new Utility();
+            Utility make = new Utility();
             BigInteger cpt = 0;
 
-            
-            if (SaveFile)
+            if (saveFile)
             {
                 BigInteger iMakeFile = 0;
 
-                while ( Statistical.NumberOfAllCombination >= cpt )
+                while  (numberOfAllCombination >= cpt)
                 {
                     if (iMakeFile == 0)
                     {
-                        make.Setting_UpFile(Property.TypesOfGeneration);
+                        make.Setting_UpFile(pathBackUpFiles,extension);
                     }
 
-                    make.WorkFile.WriteLine(this.Aleatory());
+                    make.WorkFile.WriteLine(Aleatory(charsetSelecting, numberOfChar));
                     ++iMakeFile;
                     ++cpt;
-                    
-                    if (iMakeFile >= MenuParameter.NumberLine - 1 || cpt >= Statistical.NumberOfAllCombination)
-                    {                        
+
+                    if (iMakeFile >= numberLine || cpt >= numberOfAllCombination)
+                    {
                         make.WorkFile.Flush();
                         make.WorkFile.Close();
-                        tool.Zipper(_zip);
-                        tool.GenerateOut(Property.TypesOfGeneration, Property.IExtension);
+                        extension=make.Zipper(zip, pathBackUpFiles);
+                         make.GenerateOut(pathBackUpFiles,extension);
                         iMakeFile = 0;
-                    }           
+                    }
                 }
             }
             else
             {
-                while (cpt <= Statistical.NumberOfAllCombination)
+                while (cpt <= numberOfAllCombination)
                 {
-                    Console.WriteLine(this.Aleatory());
+                    if (cpt >= numberLine & numberLine != 0)
+                        Environment.Exit(0);
+
+                    Console.WriteLine(Aleatory(charsetSelecting, numberOfChar));
                     cpt++;
                 }
             }
-        } // End Function
-        
+        }
 
+       
     }
 }

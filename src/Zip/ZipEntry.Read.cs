@@ -28,7 +28,7 @@
 using System;
 using System.IO;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
     public partial class ZipEntry
     {
@@ -40,7 +40,7 @@ namespace crisis.Ionic.Zip
             long posn = this.ArchiveStream.Position;
             this.ArchiveStream.Seek(this._RelativeOffsetOfLocalHeader, SeekOrigin.Begin);
             // workitem 10178
-            crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+            Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
 
             byte[] block = new byte[30];
             this.ArchiveStream.Read(block, 0, block.Length);
@@ -51,14 +51,14 @@ namespace crisis.Ionic.Zip
             // workitem 8098: ok (relative)
             this.ArchiveStream.Seek(filenameLength, SeekOrigin.Current);
             // workitem 10178
-            crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+            Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
 
             ProcessExtraField(this.ArchiveStream, extraFieldLength);
 
             // workitem 8098: ok (restore)
             this.ArchiveStream.Seek(posn, SeekOrigin.Begin);
             // workitem 10178
-            crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+            Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
             _readExtraDepth--;
         }
 
@@ -70,7 +70,7 @@ namespace crisis.Ionic.Zip
             // change for workitem 8098
             ze._RelativeOffsetOfLocalHeader = ze.ArchiveStream.Position;
 
-            int signature = crisis.Ionic.Zip.SharedUtilities.ReadEntrySignature(ze.ArchiveStream);
+            int signature = Crisis.Ionic.Zip.SharedUtilities.ReadEntrySignature(ze.ArchiveStream);
             bytesRead += 4;
 
             // Return false if this is not a local file header signature.
@@ -86,7 +86,7 @@ namespace crisis.Ionic.Zip
 
                 ze.ArchiveStream.Seek(-4, SeekOrigin.Current); // unread the signature
                 // workitem 10178
-                crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(ze.ArchiveStream);
+                Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(ze.ArchiveStream);
                 if (ZipEntry.IsNotValidZipDirEntrySig(signature) && (signature != ZipConstants.EndOfCentralDirectorySignature))
                 {
                     throw new BadReadException(String.Format("  Bad signature (0x{0:X8}) at position  0x{1:X8}", signature, ze.ArchiveStream.Position));
@@ -105,7 +105,7 @@ namespace crisis.Ionic.Zip
             ze._CompressionMethod_FromZipFile = ze._CompressionMethod = (Int16)(block[i++] + block[i++] * 256);
             ze._TimeBlob = block[i++] + block[i++] * 256 + block[i++] * 256 * 256 + block[i++] * 256 * 256 * 256;
             // transform the time data into something usable (a DateTime)
-            ze._LastModified = crisis.Ionic.Zip.SharedUtilities.PackedToDateTime(ze._TimeBlob);
+            ze._LastModified = Crisis.Ionic.Zip.SharedUtilities.PackedToDateTime(ze._TimeBlob);
             ze._timestamp |= ZipEntryTimestamp.DOS;
 
             if ((ze._BitField & 0x01) == 0x01)
@@ -193,7 +193,7 @@ namespace crisis.Ionic.Zip
                     if (ze._container.ZipFile != null)
                         ze._container.ZipFile.OnReadBytes(ze);
 
-                    long d = crisis.Ionic.Zip.SharedUtilities.FindSignature(ze.ArchiveStream, ZipConstants.ZipEntryDataDescriptorSignature);
+                    long d = Crisis.Ionic.Zip.SharedUtilities.FindSignature(ze.ArchiveStream, ZipConstants.ZipEntryDataDescriptorSignature);
                     if (d == -1) return false;
 
                     // total size of data read (through all loops of this).
@@ -248,7 +248,7 @@ namespace crisis.Ionic.Zip
                         // (12 bytes for the CRC, Comp and Uncomp size.)
                         ze.ArchiveStream.Seek(-12, SeekOrigin.Current);
                         // workitem 10178
-                        crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(ze.ArchiveStream);
+                        Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(ze.ArchiveStream);
 
                         // Adjust the size to account for the false signature read in
                         // FindSignature().
@@ -260,7 +260,7 @@ namespace crisis.Ionic.Zip
                 // workitem 8098: ok (restore)
                 ze.ArchiveStream.Seek(posn, SeekOrigin.Begin);
                 // workitem 10178
-                crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(ze.ArchiveStream);
+                Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(ze.ArchiveStream);
             }
 
             ze._CompressedFileDataSize = ze._CompressedSize;
@@ -374,7 +374,7 @@ namespace crisis.Ionic.Zip
             // seek past the data without reading it. We will read on Extract()
             s.Seek(entry._CompressedFileDataSize + entry._LengthOfTrailer, SeekOrigin.Current);
             // workitem 10178
-            crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(s);
+            Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(s);
 
             // ReadHeader moves the file pointer to the end of the entry header,
             // as well as any encryption header.
@@ -402,12 +402,12 @@ namespace crisis.Ionic.Zip
         {
             // in some cases, the zip file begins with "PK00".  This is a throwback and is rare,
             // but we handle it anyway. We do not change behavior based on it.
-            uint datum = (uint)crisis.Ionic.Zip.SharedUtilities.ReadInt(s);
+            uint datum = (uint)Crisis.Ionic.Zip.SharedUtilities.ReadInt(s);
             if (datum != ZipConstants.PackedToRemovableMedia)
             {
                 s.Seek(-4, SeekOrigin.Current); // unread the block
                 // workitem 10178
-                crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(s);
+                Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(s);
             }
         }
 
@@ -422,13 +422,13 @@ namespace crisis.Ionic.Zip
             //    by the compressed length and the uncompressed length (4 bytes for each
             //    of those three elements).  Need to check that here.
             //
-            uint datum = (uint)crisis.Ionic.Zip.SharedUtilities.ReadInt(s);
+            uint datum = (uint)Crisis.Ionic.Zip.SharedUtilities.ReadInt(s);
             if (datum == entry._Crc32)
             {
-                int sz = crisis.Ionic.Zip.SharedUtilities.ReadInt(s);
+                int sz = Crisis.Ionic.Zip.SharedUtilities.ReadInt(s);
                 if (sz == entry._CompressedSize)
                 {
-                    sz = crisis.Ionic.Zip.SharedUtilities.ReadInt(s);
+                    sz = Crisis.Ionic.Zip.SharedUtilities.ReadInt(s);
                     if (sz == entry._UncompressedSize)
                     {
                         // ignore everything and discard it.
@@ -438,7 +438,7 @@ namespace crisis.Ionic.Zip
                         s.Seek(-12, SeekOrigin.Current); // unread the three blocks
 
                         // workitem 10178
-                        crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(s);
+                        Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(s);
                     }
                 }
                 else
@@ -446,7 +446,7 @@ namespace crisis.Ionic.Zip
                     s.Seek(-8, SeekOrigin.Current); // unread the two blocks
 
                     // workitem 10178
-                    crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(s);
+                    Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(s);
                 }
             }
             else
@@ -454,7 +454,7 @@ namespace crisis.Ionic.Zip
                 s.Seek(-4, SeekOrigin.Current); // unread the block
 
                 // workitem 10178
-                crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(s);
+                Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(s);
             }
         }
 

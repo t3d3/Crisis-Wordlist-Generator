@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{BFE9BC64-4CDB-4D44-841E-323C08620FB9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>crisis</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ReleaseVersion>1.1.3</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Crisis</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Crisis.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>password-attacks-trans.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Crisis|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Crisis\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Crisis|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Crisis\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C5\arrays\ArrayList.cs" />
+    <Compile Include="C5\arrays\CircularQueue.cs" />
+    <Compile Include="C5\arrays\HashedArrayList.cs" />
+    <Compile Include="C5\arrays\SortedArray.cs" />
+    <Compile Include="C5\Attributes.cs" />
+    <Compile Include="C5\Builtin.cs" />
+    <Compile Include="C5\Collections.cs" />
+    <Compile Include="C5\Comparer.cs" />
+    <Compile Include="C5\Delegates.cs" />
+    <Compile Include="C5\Dictionaries.cs" />
+    <Compile Include="C5\Enums.cs" />
+    <Compile Include="C5\Events.cs" />
+    <Compile Include="C5\Exceptions.cs" />
+    <Compile Include="C5\Formatting.cs" />
+    <Compile Include="C5\Hashers.cs" />
+    <Compile Include="C5\hashing\HashBag.cs" />
+    <Compile Include="C5\hashing\HashDictionary.cs" />
+    <Compile Include="C5\hashing\HashTable.cs" />
+    <Compile Include="C5\heaps\IntervalHeap.cs" />
+    <Compile Include="C5\Interfaces.cs" />
+    <Compile Include="C5\linkedlists\HashedLinkedList.cs" />
+    <Compile Include="C5\linkedlists\LinkedList.cs" />
+    <Compile Include="C5\MappedEnumerators.cs" />
+    <Compile Include="C5\Random.cs" />
+    <Compile Include="C5\Records.cs" />
+    <Compile Include="C5\Sorting.cs" />
+    <Compile Include="C5\trees\RedBlackTreeBag.cs" />
+    <Compile Include="C5\trees\RedBlackTreeDictionary.cs" />
+    <Compile Include="C5\trees\RedBlackTreeSet.cs" />
+    <Compile Include="C5\ViewSupport.cs" />
+    <Compile Include="C5\WrappedArray.cs" />
+    <Compile Include="C5\Wrappers.cs" />
+<<<<<<< HEAD:src/crisis.csproj
+    <Compile Include="Charset\CharsetAlpha.cs" />
+    <Compile Include="Charset\CharsetCyrillic.cs" />
+    <Compile Include="Charset\CharsetAlpha_sv.cs" />
+    <Compile Include="Charset\CharsetSyllable.cs" />
+    <Compile Include="Charset\CharsetSpecial.cs" />
+    <Compile Include="Charset\DisplayCharsetSyllable.cs" />
+    <Compile Include="Charset\DisplayCharsetSwddish.cs" />
+    <Compile Include="Charset\DisplayCharsetCyrillic.cs" />
+    <Compile Include="Charset\DisplayCharsetLatin.cs" />
+    <Compile Include="Combinatorics\Combinations.cs" />
+    <Compile Include="Charset\CharsetUserPasswordProfiler.cs" />
+=======
+    <Compile Include="Charset\Alpha.cs" />
+    <Compile Include="Charset\Alpha_sv.cs" />
+    <Compile Include="Charset\Default.cs" />
+    <Compile Include="Charset\Cyrillic.cs" />
+    <Compile Include="Charset\Special.cs" />
+    <Compile Include="Charset\Syllable.cs" />
+    <Compile Include="Combinatorics\Incrementing.cs" />
+>>>>>>> dev:src/Crisis.csproj
+    <Compile Include="Combinatorics\GenerateOption.cs" />
+    <Compile Include="Combinatorics\IMetaCollection.cs" />
+    <Compile Include="Combinatorics\Permutations.cs" />
+    <Compile Include="Combinatorics\Randomizer.cs" />
+    <Compile Include="Combinatorics\SmallPrimeUtility.cs" />
+    <Compile Include="Combinatorics\TransformTextFiles.cs" />
+    <Compile Include="Combinatorics\UserPasswordProfiler.cs" />
+    <Compile Include="Combinatorics\Variations.cs" />
+    <Compile Include="CommunSrc\CRC32.cs" />
+    <Compile Include="CommunSrc\Iso8859Dash1Encoding.cs" />
+    <Compile Include="Plossum\Alignment.cs" />
+    <Compile Include="Plossum\ColumnInfo.cs" />
+    <Compile Include="Plossum\CommandLine\AssignmentToken.cs" />
+    <Compile Include="Plossum\CommandLine\AttributeException.cs" />
+    <Compile Include="Plossum\CommandLine\BoolFunction.cs" />
+    <Compile Include="Plossum\CommandLine\CommandLineManagerAttribute.cs" />
+    <Compile Include="Plossum\CommandLine\CommandLineOptionAttribute.cs" />
+    <Compile Include="Plossum\CommandLine\CommandLineOptionGroupAttribute.cs" />
+    <Compile Include="Plossum\CommandLine\CommandLineParser.cs" />
+    <Compile Include="Plossum\CommandLine\EndToken.cs" />
+    <Compile Include="Plossum\CommandLine\ErrorInfo.cs" />
+    <Compile Include="Plossum\CommandLine\InvalidEnumerationValueException.cs" />
+    <Compile Include="Plossum\CommandLine\InvalidOptionValueException.cs" />
+    <Compile Include="Plossum\CommandLine\IOption.cs" />
+    <Compile Include="Plossum\CommandLine\Lexer.cs" />
+    <Compile Include="Plossum\CommandLine\LogicException.cs" />
+    <Compile Include="Plossum\CommandLine\MissingClosingQuoteException.cs" />
+    <Compile Include="Plossum\CommandLine\MissingOptionNameException.cs" />
+    <Compile Include="Plossum\CommandLine\Option.cs" />
+    <Compile Include="Plossum\CommandLine\OptionAlias.cs" />
+    <Compile Include="Plossum\CommandLine\OptionFileToken.cs" />
+    <Compile Include="Plossum\CommandLine\OptionGroup.cs" />
+    <Compile Include="Plossum\CommandLine\OptionGroupInfo.cs" />
+    <Compile Include="Plossum\CommandLine\OptionGroupRequirement.cs" />
+    <Compile Include="Plossum\CommandLine\OptionInfo.cs" />
+    <Compile Include="Plossum\CommandLine\OptionNameToken.cs" />
+    <Compile Include="Plossum\CommandLine\OptionStyleManager.cs" />
+    <Compile Include="Plossum\CommandLine\OptionStyles.cs" />
+    <Compile Include="Plossum\CommandLine\ParseErrorCodes.cs" />
+    <Compile Include="Plossum\CommandLine\ParseException.cs" />
+    <Compile Include="Plossum\CommandLine\QuotationInfo.cs" />
+    <Compile Include="Plossum\CommandLine\Token.cs" />
+    <Compile Include="Plossum\CommandLine\UsageInfo.cs" />
+    <Compile Include="Plossum\CommandLine\ValueToken.cs" />
+    <Compile Include="Plossum\Cropping.cs" />
+    <Compile Include="Plossum\GlobalSuppressions.cs" />
+    <Compile Include="Plossum\StringFormatter.cs" />
+    <Compile Include="Plossum\VerticalAlignment.cs" />
+    <Compile Include="Plossum\WordWrappingMethod.cs" />
+    <Compile Include="Resources\CommandLineStrings.Designer.cs" />
+    <Compile Include="Resources\PlossumStrings.Designer.cs" />
+    <Compile Include="Tools\CLI.cs" />
+    <Compile Include="Graphic\Interface.cs" />
+    <Compile Include="Graphic\Wordlist.cs" />
+    <Compile Include="Core\Lang\en-US.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Lang\fr-Fr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fr-Fr.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Graphic\Menu\Main.cs" />
+    <Compile Include="Graphic\Menu\Pattern.cs" />
+    <Compile Include="Graphic\Menu\Character.cs" />
+    <Compile Include="Core\Parameter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Core\Run.cs" />
+    <Compile Include="Tools\Statistical.cs" />
+    <Compile Include="Tools\Utility.cs" />
+    <Compile Include="Zip\ComHelper.cs" />
+    <Compile Include="Zip\EncryptionAlgorithm.cs" />
+    <Compile Include="Zip\Events.cs" />
+    <Compile Include="Zip\Exceptions.cs" />
+    <Compile Include="Zip\ExtractExistingFileAction.cs" />
+    <Compile Include="Zip\FileSelector.cs" />
+    <Compile Include="Zip\OffsetStream.cs" />
+    <Compile Include="Zip\Shared.cs" />
+    <Compile Include="Zip\WinZipAes.cs" />
+    <Compile Include="Zip\ZipConstants.cs" />
+    <Compile Include="Zip\ZipCrypto.cs" />
+    <Compile Include="Zip\ZipDirEntry.cs" />
+    <Compile Include="Zip\ZipEntry.cs" />
+    <Compile Include="Zip\ZipEntry.Extract.cs" />
+    <Compile Include="Zip\ZipEntry.Read.cs" />
+    <Compile Include="Zip\ZipEntry.Write.cs" />
+    <Compile Include="Zip\ZipEntrySource.cs" />
+    <Compile Include="Zip\ZipErrorAction.cs" />
+    <Compile Include="Zip\ZipFile.AddUpdate.cs" />
+    <Compile Include="Zip\ZipFile.Check.cs" />
+    <Compile Include="Zip\ZipFile.cs" />
+    <Compile Include="Zip\ZipFile.Events.cs" />
+    <Compile Include="Zip\ZipFile.Extract.cs" />
+    <Compile Include="Zip\ZipFile.Read.cs" />
+    <Compile Include="Zip\ZipFile.Save.cs" />
+    <Compile Include="Zip\ZipFile.SaveSelfExtractor.cs" />
+    <Compile Include="Zip\ZipFile.Selector.cs" />
+    <Compile Include="Zip\ZipFile.x-IEnumerable.cs" />
+    <Compile Include="Zip\ZipInputStream.cs" />
+    <Compile Include="Zip\ZipOutputStream.cs" />
+    <Compile Include="Zip\ZipSegmentedStream.cs" />
+    <Compile Include="Zlib\Deflate.cs" />
+    <Compile Include="Zlib\DeflateStream.cs" />
+    <Compile Include="Zlib\GZipStream.cs" />
+    <Compile Include="Zlib\Inflate.cs" />
+    <Compile Include="Zlib\InfTree.cs" />
+    <Compile Include="Zlib\ParallelDeflateOutputStream.cs" />
+    <Compile Include="Zlib\Tree.cs" />
+    <Compile Include="Zlib\Zlib.cs" />
+    <Compile Include="Zlib\ZlibBaseStream.cs" />
+    <Compile Include="Zlib\ZlibCodec.cs" />
+    <Compile Include="Zlib\ZlibConstants.cs" />
+    <Compile Include="Zlib\ZlibStream.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="C5\trees\RedBlackTreeBag.cs.bak" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="password-attacks-trans.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Core\Lang\en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Lang\fr-Fr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>fr-Fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\CommandLineStrings.resx" />
+    <EmbeddedResource Include="Resources\PlossumStrings.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>

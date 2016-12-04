@@ -27,7 +27,7 @@
 using System;
 using System.IO;
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
 
     public partial class ZipEntry
@@ -43,7 +43,7 @@ namespace crisis.Ionic.Zip
         ///   out the <c>ExtractWithPassword()</c> methods.
         /// </overloads>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>
         /// <seealso cref="ZipEntry.Extract(ExtractExistingFileAction)"/>
         ///
         /// <remarks>
@@ -134,8 +134,8 @@ namespace crisis.Ionic.Zip
         ///
         /// <param name="baseDirectory">the pathname of the base directory</param>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.Extract(string, ExtractExistingFileAction)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.Extract(string, ExtractExistingFileAction)"/>
         ///
         /// <example>
         /// This example extracts only the entries in a zip file that are .txt files,
@@ -251,15 +251,15 @@ namespace crisis.Ionic.Zip
         ///   the right one for you...
         /// </overloads>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.ExtractWithPassword(ExtractExistingFileAction, string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.ExtractWithPassword(ExtractExistingFileAction, string)"/>
         ///
         /// <remarks>
         ///
         /// <para>
         ///   Existing entries in the filesystem will not be overwritten. If you
         ///   would like to force the overwrite of existing files, see the <see
-        ///   cref="crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>property, or call
+        ///   cref="Crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>property, or call
         ///   <see
         ///   cref="ExtractWithPassword(ExtractExistingFileAction,string)"/>.
         /// </para>
@@ -310,14 +310,14 @@ namespace crisis.Ionic.Zip
         ///   directory, and using the specified password.
         /// </summary>
         ///
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.ExtractWithPassword(string, ExtractExistingFileAction, string)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.ExtractWithPassword(string, ExtractExistingFileAction, string)"/>
         ///
         /// <remarks>
         /// <para>
         ///   Existing entries in the filesystem will not be overwritten. If you
         ///   would like to force the overwrite of existing files, see the <see
-        ///   cref="crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>property, or call
+        ///   cref="Crisis.Ionic.Zip.ZipEntry.ExtractExistingFile"/>property, or call
         ///   <see
         ///   cref="ExtractWithPassword(ExtractExistingFileAction,string)"/>.
         /// </para>
@@ -437,7 +437,7 @@ namespace crisis.Ionic.Zip
         ///
         /// <para>
         ///   The return value is of type <see
-        ///   cref="crisis.Ionic.Crc.CrcCalculatorStream"/>.  Use it as you would any
+        ///   cref="Crisis.Ionic.Crc.CrcCalculatorStream"/>.  Use it as you would any
         ///   stream for reading.  When an application calls <see
         ///   cref="Stream.Read(byte[], int, int)"/> on that stream, it will
         ///   receive data from the zip entry that is decrypted and decompressed
@@ -448,7 +448,7 @@ namespace crisis.Ionic.Zip
         ///   <c>CrcCalculatorStream</c> adds one additional feature: it keeps a
         ///   CRC32 checksum on the bytes of the stream as it is read.  The CRC
         ///   value is available in the <see
-        ///   cref="crisis.Ionic.Crc.CrcCalculatorStream.Crc"/> property on the
+        ///   cref="Crisis.Ionic.Crc.CrcCalculatorStream.Crc"/> property on the
         ///   <c>CrcCalculatorStream</c>.  When the read is complete, your
         ///   application
         ///   <em>should</em> check this CRC against the <see cref="ZipEntry.Crc"/>
@@ -539,9 +539,9 @@ namespace crisis.Ionic.Zip
         ///   End Using
         /// </code>
         /// </example>
-        /// <seealso cref="crisis.Ionic.Zip.ZipEntry.Extract(System.IO.Stream)"/>
+        /// <seealso cref="Crisis.Ionic.Zip.ZipEntry.Extract(System.IO.Stream)"/>
         /// <returns>The Stream for reading.</returns>
-        public crisis.Ionic.Crc.CrcCalculatorStream OpenReader()
+        public Crisis.Ionic.Crc.CrcCalculatorStream OpenReader()
         {
             // workitem 10923
             if (_container.ZipFile == null)
@@ -567,7 +567,7 @@ namespace crisis.Ionic.Zip
         ///
         /// <param name="password">The password to use for decrypting the entry.</param>
         /// <returns>The Stream for reading.</returns>
-        public crisis.Ionic.Crc.CrcCalculatorStream OpenReader(string password)
+        public Crisis.Ionic.Crc.CrcCalculatorStream OpenReader(string password)
         {
             // workitem 10923
             if (_container.ZipFile == null)
@@ -578,7 +578,7 @@ namespace crisis.Ionic.Zip
 
 
 
-        internal crisis.Ionic.Crc.CrcCalculatorStream InternalOpenReader(string password)
+        internal Crisis.Ionic.Crc.CrcCalculatorStream InternalOpenReader(string password)
         {
             ValidateCompression();
             ValidateEncryption();
@@ -600,12 +600,12 @@ namespace crisis.Ionic.Zip
 
             this.ArchiveStream.Seek(this.FileDataPosition, SeekOrigin.Begin);
             // workitem 10178
-            crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+            Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
 
             _inputDecryptorStream = GetExtractDecryptor(input);
             Stream input3 = GetExtractDecompressor(_inputDecryptorStream);
 
-            return new crisis.Ionic.Crc.CrcCalculatorStream(input3, LeftToRead);
+            return new Crisis.Ionic.Crc.CrcCalculatorStream(input3, LeftToRead);
         }
 
 
@@ -1019,7 +1019,7 @@ namespace crisis.Ionic.Zip
                 // change for workitem 8098
                 input.Seek(this.FileDataPosition, SeekOrigin.Begin);
                 // workitem 10178
-                crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(input);
+                Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(input);
 
                 byte[] bytes = new byte[BufferSize];
 
@@ -1040,7 +1040,7 @@ namespace crisis.Ionic.Zip
 
                 Int64 bytesWritten = 0;
                 // As we read, we maybe decrypt, and then we maybe decompress. Then we write.
-                using (var s1 = new crisis.Ionic.Crc.CrcCalculatorStream(input3))
+                using (var s1 = new Crisis.Ionic.Crc.CrcCalculatorStream(input3))
                 {
                     while (LeftToRead > 0)
                     {
@@ -1098,7 +1098,7 @@ namespace crisis.Ionic.Zip
                 case (short)CompressionMethod.None:
                     return input2;
                 case (short)CompressionMethod.Deflate:
-                    return new crisis.Ionic.Zlib.DeflateStream(input2, crisis.Ionic.Zlib.CompressionMode.Decompress, true);
+                    return new Crisis.Ionic.Zlib.DeflateStream(input2, Crisis.Ionic.Zlib.CompressionMode.Decompress, true);
 #if BZIP
                 case (short)CompressionMethod.BZip2:
                     return new Ionic.BZip2.BZip2InputStream(input2, true);
@@ -1182,7 +1182,7 @@ namespace crisis.Ionic.Zip
                 else
                 {
                     // workitem 6191
-                    DateTime AdjustedLastModified = crisis.Ionic.Zip.SharedUtilities.AdjustTime_Reverse(LastModified);
+                    DateTime AdjustedLastModified = Crisis.Ionic.Zip.SharedUtilities.AdjustTime_Reverse(LastModified);
 
 #if NETCF
                     int rc = NetCfFile.SetLastWriteTime(fileOrDirectory, AdjustedLastModified);
@@ -1350,7 +1350,7 @@ namespace crisis.Ionic.Zip
 
                 this.ArchiveStream.Seek(this.FileDataPosition - 12, SeekOrigin.Begin);
                 // workitem 10178
-                crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+                Crisis.Ionic.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
                 _zipCrypto_forExtract = ZipCrypto.ForRead(password, this);
             }
 

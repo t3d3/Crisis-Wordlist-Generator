@@ -64,7 +64,7 @@ using System.IO;
 using System.Collections.Generic;
 
 
-namespace crisis.Ionic.Zip
+namespace Crisis.Ionic.Zip
 {
 #if !NO_SFX
     /// <summary>
@@ -329,7 +329,7 @@ namespace crisis.Ionic.Zip
         ///   The default behavvior is to Throw.
         /// </para>
         /// </remarks>
-        public crisis.Ionic.Zip.ExtractExistingFileAction ExtractExistingFile
+        public Crisis.Ionic.Zip.ExtractExistingFileAction ExtractExistingFile
         {
             get;
             set;
