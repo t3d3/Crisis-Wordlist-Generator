@@ -70,31 +70,7 @@ namespace Crisis.Combinatorics
 
 
 
-<<<<<<< HEAD
-        public void CustomChartsetL33tSpeek()
-        {
-            try
-            {
-
-                for (int i = 0; i < Charset.CharsetSelecting.Count; i++)
-                {                    
-                    Charset.CharsetSelecting.Add(ConverterInLeetSpeak(Charset.CharsetSelecting[i].ToString()));
-                    SubMenu.RemoveDuplicate();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(" {0} \n", e.Message);
-                Console.ResetColor();
-            }            
-
-        } // End Function 
-
-        public string ConverterInUppercaseLowercase(string _word)
-=======
         private string ConverterInUppercaseLowercase(string _word)
->>>>>>> dev
         {
             string wordLeet = null;
             for (int i = 0; i < _word.Length; i++)

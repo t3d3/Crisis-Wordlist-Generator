@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Crisis.Core.Lang {
+namespace crisis.Core.Lang {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Crisis.Core.Lang {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Crisis.Core.Lang.fr-Fr", typeof(fr_Fr).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("crisis.Core.Lang.fr-Fr", typeof(fr_Fr).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
