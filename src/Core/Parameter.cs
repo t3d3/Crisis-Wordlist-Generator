@@ -44,19 +44,6 @@ namespace Crisis
             set { pathBackUpFiles = value; }
         }
 
-        private static string lhost;
-        public static string Lhost
-        {
-            get { return Parameter.lhost; }
-            set { Parameter.lhost = value; }
-        }
-
-        private static int lport;
-        public static int Lport
-        {
-            get { return Parameter.lport; }
-            set { Parameter.lport = value; }
-        }
 
         protected ResourceManager lang;
 

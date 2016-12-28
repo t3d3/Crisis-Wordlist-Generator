@@ -34,7 +34,7 @@ namespace Crisis.Graphic.Menu
         {
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.1.3 \n");
+            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.1.4 \n");
             Console.ResetColor();
         }        
 

@@ -23,7 +23,6 @@ using Crisis.Graphic.Menu;
 using Crisis.Tools;
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 using System.Resources;
 
 namespace Crisis
@@ -149,12 +148,13 @@ namespace Crisis
                 else if (i == 4)
                 {
                     Parameter.CharsetSelecting = option.UserPasswordProfilerCharset(Parameter.CharsetSelecting);
+                    Console.Write("\n");
+
                     int typesAtGenerate = option.TypesAtGenerate();
 
                     Parameter.NumberOfChar = option.SizeOfWorld(Parameter.CharsetSelecting, Parameter.NumberOfChar, typesAtGenerate);
                     Repeat = option.Repetition(Repeat);
-
-                    Parameter.CharsetSelecting = ChangeStartEndReverseMixPattern(Parameter.CharsetSelecting);
+                                
                     Parameter.NumberOfAllCombination = tools.CalculOfAllCombinaison(Repeat, typesAtGenerate, Parameter.NumberOfChar, Parameter.CharsetSelecting);
                     BackupFileWordlist();
                     tools.StatiscalInfoSize(Parameter.NumberOfAllCombination, typesAtGenerate, Parameter.NumberOfChar);

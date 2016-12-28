@@ -70,6 +70,24 @@ namespace crisis.Core.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Voulez-vous ajouter des chiffre [i.e. 0 à 9] Y/[N] :.
+        /// </summary>
+        internal static string AddNumber {
+            get {
+                return ResourceManager.GetString("AddNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à  Voulez-vous ajouter des caractère spéciaux ? Y/[N] :  .
+        /// </summary>
+        internal static string AddSpecialChar {
+            get {
+                return ResourceManager.GetString("AddSpecialChar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Après.
         /// </summary>
         internal static string After {
@@ -196,6 +214,24 @@ namespace crisis.Core.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à  Appuyer sur Entré ou Echap.
+        /// </summary>
+        internal static string EnterOrEchap {
+            get {
+                return ResourceManager.GetString("EnterOrEchap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à   S&apos;il vous plaît entrer le mot    .
+        /// </summary>
+        internal static string EnterWorld {
+            get {
+                return ResourceManager.GetString("EnterWorld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à QUITTER.
         /// </summary>
         internal static string exit {
@@ -214,6 +250,15 @@ namespace crisis.Core.Lang {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à  Appuyé sur la touche Echappe (Esc) pour quitter ou sur Entré pour continuer  :.
+        /// </summary>
+        internal static string Instruction {
+            get {
+                return ResourceManager.GetString("Instruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Vous voulez mélanger le modèle ?.
         /// </summary>
         internal static string MixPatern {
@@ -228,6 +273,15 @@ namespace crisis.Core.Lang {
         internal static string NUMBER {
             get {
                 return ResourceManager.GetString("NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à  Entrez le nom et le chemin de votre fichier : .
+        /// </summary>
+        internal static string Patch {
+            get {
+                return ResourceManager.GetString("Patch", resourceCulture);
             }
         }
         
@@ -390,6 +444,15 @@ namespace crisis.Core.Lang {
         internal static string WIFI {
             get {
                 return ResourceManager.GetString("WIFI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à  En cours d&apos;execution, patienté svp !.
+        /// </summary>
+        internal static string Working {
+            get {
+                return ResourceManager.GetString("Working", resourceCulture);
             }
         }
     }

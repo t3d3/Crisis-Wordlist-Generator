@@ -219,4 +219,25 @@
   <data name="CHARACTERUPPERCASELOWERCASE" xml:space="preserve">
     <value>CARACTERE MAJUSCULES &amp; MINUSCULES</value>
   </data>
+  <data name="AddNumber" xml:space="preserve">
+    <value>Do you want to add Number [i.e. 0 to 9] Y/[N] :</value>
+  </data>
+  <data name="AddSpecialChar" xml:space="preserve">
+    <value>Do you want to add special chars ? Y/[N]  :  </value>
+  </data>
+  <data name="EnterOrEchap" xml:space="preserve">
+    <value>  Press Enter or Escape</value>
+  </data>
+  <data name="EnterWorld" xml:space="preserve">
+    <value>    Please enter the words     </value>
+  </data>
+  <data name="Instruction" xml:space="preserve">
+    <value>  Press the Escape (Esc) key to quit or press Enter for continue :</value>
+  </data>
+  <data name="Patch" xml:space="preserve">
+    <value> Enter the name and path of your file : </value>
+  </data>
+  <data name="Working" xml:space="preserve">
+    <value>  This work, please wait !</value>
+  </data>
 </root>

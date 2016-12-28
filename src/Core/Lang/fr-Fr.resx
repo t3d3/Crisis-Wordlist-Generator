@@ -228,4 +228,25 @@
   <data name="SPECIAL" xml:space="preserve">
     <value>CARACTÈRES SPÉCIAUX</value>
   </data>
+  <data name="AddNumber" xml:space="preserve">
+    <value>Voulez-vous ajouter des chiffre [i.e. 0 à 9] Y/[N] :</value>
+  </data>
+  <data name="AddSpecialChar" xml:space="preserve">
+    <value> Voulez-vous ajouter des caractère spéciaux ? Y/[N] :  </value>
+  </data>
+  <data name="EnterOrEchap" xml:space="preserve">
+    <value> Appuyer sur Entré ou Echap</value>
+  </data>
+  <data name="EnterWorld" xml:space="preserve">
+    <value>  S'il vous plaît entrer le mot    </value>
+  </data>
+  <data name="Instruction" xml:space="preserve">
+    <value> Appuyé sur la touche Echappe (Esc) pour quitter ou sur Entré pour continuer  :</value>
+  </data>
+  <data name="Patch" xml:space="preserve">
+    <value> Entrez le nom et le chemin de votre fichier : </value>
+  </data>
+  <data name="Working" xml:space="preserve">
+    <value> En cours d'execution, patienté svp !</value>
+  </data>
 </root>

@@ -26,15 +26,11 @@ namespace Crisis.Combinatorics
     {
         internal static string CustomCharsetWord()
         {
-            string str = null;
+            string str = String.Empty;
             
             try
             {
                 str = Console.ReadLine();
-                
-                if (String.IsNullOrEmpty(str))
-                    return null;
-               
             }
             catch (Exception e)
             {
@@ -42,8 +38,7 @@ namespace Crisis.Combinatorics
                 Console.WriteLine(" {0} \n", e.Message);
                 Console.ResetColor();
             }
-
-            return str;
+                return str;
         }
 
         public static List<string> InitialPersonne(List<string> charsetSelecting, string name, string surname)
@@ -92,6 +87,12 @@ namespace Crisis.Combinatorics
             return charsetSelecting;
         }
 
+        /// <summary>
+        /// Function who add the date and split date by DDMMAAAAA
+        /// </summary>
+        /// <param name="charsetSelecting"></param>
+        /// <returns></returns>
+
         public static List<string> BirthdatePerson(List<string> charsetSelecting)
         {
             string str = Console.ReadLine();
@@ -127,14 +128,15 @@ namespace Crisis.Combinatorics
         }
         
 
-        internal static List<string> CustumCHarsetUpperCase(List<string> charsetSelecting)
+        internal static List<string> CustumCharsetUpperCase(List<string> charsetSelecting)
         {
             try
             {
-                for (int index = 0; index < charsetSelecting.Count; ++index)
+                int count = charsetSelecting.Count;
+
+                for (int index = 0; index < count; ++index)
                 {
                     charsetSelecting.Add(charsetSelecting[index].ToUpper().ToString());
-                    Tools.Utility.RemoveDuplicate(charsetSelecting);
                 }
             }
             catch (Exception ex)
@@ -150,10 +152,11 @@ namespace Crisis.Combinatorics
         {
             try
             {
-                for (int index = 0; index < charsetSelecting.Count; ++index)
+                int count = charsetSelecting.Count;
+
+                for (int index = 0; index < count; ++index)
                 {
                     charsetSelecting.Add(charsetSelecting[index].ToLower().ToString());
-                    Tools.Utility.RemoveDuplicate(charsetSelecting);
                 }
             }
             catch (Exception ex)

@@ -16,16 +16,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Resources;
+using Crisis.Combinatorics;
 using Crisis.Graphic.Menu;
 using Crisis.Tools;
-using System.Numerics;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using Crisis.Combinatorics;
+using System.Numerics;
+using System.Reflection;
+using System.Resources;
 
 namespace Crisis.Graphic
 {
@@ -220,7 +219,6 @@ namespace Crisis.Graphic
 
                 try
                 {
-                    //Set the name the charsets with auto completion methode.
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     string charsetName = Console.ReadLine();
                     Console.Write("\n");
@@ -629,8 +627,7 @@ namespace Crisis.Graphic
                     SetColorThemes();
                     Console.Write(lang.GetString("SaveCharsetInFilesTxt"));
 
-                    SetColorAsk();
-                                                           
+                    SetColorAsk();                                                           
 
                     ConsoleKeyInfo info = Console.ReadKey(true);
 
@@ -766,8 +763,9 @@ namespace Crisis.Graphic
             List<string> charsetSelecting = new List<string> ();
             while (b)
             {
+                
                 SetColorThemes();
-                Console.Write(" Enter the name and path of your file : ");
+                Console.Write(lang.GetString("Patch"));
 
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                 string charsetName = Console.ReadLine().ToLower();
@@ -785,10 +783,10 @@ namespace Crisis.Graphic
         internal static void PleaseWait()
         {
             Utility objHour = new Utility();
-
+            
             Console.Write("\n{0} : ", objHour.Hour());
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("This work, please wait !\n");
+            Console.WriteLine(lang.GetString("Working") +"\n");
             Console.ResetColor();            
         }
 
@@ -806,7 +804,8 @@ namespace Crisis.Graphic
         {
             Console.Write("\n");
             SetColorThemes();
-            Console.WriteLine("Press the Escape (Esc) key to quit or press Enter for continue:");
+            
+            Console.WriteLine(lang.GetString("Instruction"));
         }
 
         internal List<string> ProfilsPersonPassword(List<string> charsetSelecting)
@@ -841,6 +840,7 @@ namespace Crisis.Graphic
 
             return charsetSelecting;
         }
+
         private List<string> ProfilsPersonChildPassword(List<string> charsetSelecting)
         {           
             try
@@ -876,10 +876,13 @@ namespace Crisis.Graphic
                 SetColorThemes2();
                 Console.Write("Partners name: ");
                 charsetSelecting.Add(UserPasswordProfiler.CustomCharsetWord());
+                if (String.IsNullOrEmpty(charsetSelecting[charsetSelecting.Count - 1]))
+                    charsetSelecting.RemoveAt(charsetSelecting.Count - 1);
                 SetColorThemes2();
                 Console.Write("Partners nickname: ");
-                UserPasswordProfiler.CustomCharsetWord();
-                
+                charsetSelecting.Add(UserPasswordProfiler.CustomCharsetWord());
+                if (String.IsNullOrEmpty(charsetSelecting[charsetSelecting.Count - 1]))
+                    charsetSelecting.RemoveAt(charsetSelecting.Count - 1);
                 charsetSelecting = BirthdateMenu(charsetSelecting);
             }
             catch (Exception e)
@@ -925,13 +928,15 @@ namespace Crisis.Graphic
                     {
                         break;
                     }
-
+                    
                     SetColorThemes();
-                    Console.WriteLine(" Please enter the words  ");
+                    Console.WriteLine(lang.GetString("EnterWorld"));
                     Console.Write("\n");
                     SetColorThemes2();
                     charsetSelecting.Add(UserPasswordProfiler.CustomCharsetWord());
-                                       
+                    if (String.IsNullOrEmpty(charsetSelecting[charsetSelecting.Count - 1]))
+                        charsetSelecting.RemoveAt(charsetSelecting.Count - 1);
+
                 }
             }
             catch (Exception e)
@@ -964,8 +969,10 @@ namespace Crisis.Graphic
                     Console.Write("\n");
                     SetColorThemes2();
                     charsetSelecting = UserPasswordProfiler.BirthdatePerson(charsetSelecting);
+                    if (String.IsNullOrEmpty(charsetSelecting[charsetSelecting.Count - 1]))
+                        charsetSelecting.RemoveAt(charsetSelecting.Count - 1);
 
-                    Console.WriteLine("\n Press Enter or Escape");
+                    Console.WriteLine("\n"+ lang.GetString("EnterOrEchap"));
                     Console.Write("\n");
                     quit = Console.ReadKey();
                 }
@@ -985,7 +992,8 @@ namespace Crisis.Graphic
         {
             Console.Write("\n");
             SetColorThemes();
-            Console.Write(" Do you want to add special chars ? Y/[N]: ");
+            
+            Console.Write(lang.GetString("AddSpecialChar"));
                        
             try
             {
@@ -1009,7 +1017,8 @@ namespace Crisis.Graphic
         internal List<string> CustomCharsetNumberMenu(List <string> charsetSelecting)
         {
             SetColorThemes();
-            Console.Write("Do you want to add Number [i.e. 0 to 9] Y/[N]: ");            
+            
+            Console.Write(lang.GetString("AddNumber"));            
 
             try
             {
@@ -1041,9 +1050,11 @@ namespace Crisis.Graphic
                 {
                     TransformTextFiles obj = new TransformTextFiles();
 
-                    foreach (var item in charsetSelecting)
+                    int count = charsetSelecting.Count;
+
+                    for (int i = 0; i < count; i++)                    
                     {
-                        charsetSelecting.Add(obj.ConverterInLeetSpeak(item.ToString()));
+                        charsetSelecting.Add(obj.ConverterInLeetSpeak(charsetSelecting[i].ToString()));
                     }
                 }
             }
@@ -1069,7 +1080,7 @@ namespace Crisis.Graphic
                 ConsoleKeyInfo yes = Console.ReadKey();
 
                 if (yes.Key == ConsoleKey.Y)
-                    return charsetSelecting = UserPasswordProfiler.CustumCHarsetUpperCase(charsetSelecting);               
+                    return charsetSelecting = UserPasswordProfiler.CustumCharsetUpperCase(charsetSelecting);               
                     
             }
             catch (Exception e)
@@ -1094,7 +1105,7 @@ namespace Crisis.Graphic
 
                 if (yes.Key == ConsoleKey.Y)
                     return charsetSelecting = UserPasswordProfiler.CustumCHarsetLowerCase(charsetSelecting);
-
+               
             }
             catch (Exception e)
             {
@@ -1172,29 +1183,29 @@ namespace Crisis.Graphic
 
             charsetSelecting = ProfilsPersonPassword(charsetSelecting);           
             charsetSelecting = ProfilsPersonPartnePassword(charsetSelecting);
-            charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
+            // charsetSelecting = Utility.RemoveDuplicate(charsetSelecting); // Function bugger
             charsetSelecting = ProfilsPersonChildPassword(charsetSelecting);
-            charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
+           // charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);  // Function bugger
             charsetSelecting = PetNameAnimal(charsetSelecting);
-            charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
+            //charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
             charsetSelecting = PetNameAnimal(charsetSelecting);
-            charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
+            //charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
             charsetSelecting = Company(charsetSelecting);
-            charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
+            //charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
             charsetSelecting = AddWorldInList(charsetSelecting);
-            charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
+            //charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
             charsetSelecting = AddWordlist(charsetSelecting);
-            charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
+            //charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
             charsetSelecting = CustomCharsetLowerMenu(charsetSelecting);
-            charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
+            //charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
             charsetSelecting = CustomCharsetUpperMenu(charsetSelecting);
-            charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
+            //charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
             charsetSelecting = CustomChartsetL33tSpeekMenu(charsetSelecting);
-            charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
+            //charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
             charsetSelecting = CustomCharsetSpecialMenu(charsetSelecting);
-            charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);            
+            //charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);            
             charsetSelecting = CustomCharsetNumberMenu(charsetSelecting);
-            charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
+            //charsetSelecting = Utility.RemoveDuplicate(charsetSelecting);
 
             return charsetSelecting;
         }
