@@ -52,14 +52,13 @@ namespace Crisis.Charset
             if (charsetName == "sfr")
             {
                 charsetSelecting = Sfr_fr.Concat(Numeric).Concat(Ualpha).Concat(Lalpha).ToList();
-                //Property.NumberOfChar = 20;
+                Parameter.NumberOfChar = 20;
 
             }
             else if (charsetName == "livebox-sagem")
             {
                 charsetSelecting = Livebox_sagem.ToList();
-               // Property.NumberOfChar = 26;
-
+                Parameter.NumberOfChar = 26;
             }
             
 

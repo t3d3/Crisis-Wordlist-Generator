@@ -238,7 +238,11 @@ namespace Crisis
                     }
                     else if(cmd.Permutation)
                     {
-                        Parameter.TypesAtGenerate = 5;                        
+                        Parameter.TypesAtGenerate = 5;
+                    }
+                    else if (cmd.Wifi)
+                    {
+                        Parameter.TypesAtGenerate = 6;
                     }
 
                                         

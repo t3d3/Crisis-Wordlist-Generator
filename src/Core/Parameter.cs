@@ -182,7 +182,7 @@ namespace Crisis
                     else if (wifi.IsMatch(args[i].ToString().ToLower()))
                     {
                         Special charset = new Special();
-                        charsetSelecting = charset.ListWifiCharset(args[i].ToString().ToLower());
+                        charsetSelecting = charset.ListWifiCharset(args[i].ToString().ToLower());                                              
                         break;
                     }
                     else if (lcyrillic.IsMatch(args[i].ToString().ToLower()))
