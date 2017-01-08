@@ -112,7 +112,7 @@ namespace Crisis.Graphic.Menu
 
         public static void LatinCharacterUppercaseLowercasePrint()
         {
-            Console.WriteLine("\n #### Latin Uppercase \n");
+            Console.WriteLine("\n #### Latin Mixcase \n");
             //mixalpha
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write(" mixalpha");
