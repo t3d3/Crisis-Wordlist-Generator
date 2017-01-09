@@ -18,13 +18,13 @@ Bitcoin : 1FKVkfLajBLCzNxskKLg5y9aeTe26AEyxr
 
 # Run
 <pre style=" border: 1px solid black; padding:10px">
-root@kali:~# crisis 
+root@kali:~# mono crisis 
 </pre>
 
 # Manual
 
 <pre style=" border: 1px solid black; padding:10px">
-root@kali:~# crisis -h
+root@kali:~# mono crisis -h
 </pre>
 
 #Usage
@@ -32,7 +32,7 @@ root@kali:~# crisis -h
 <h2>Pipe with crisis and Aircrack-ng</h2>
 
 <pre style=" border: 1px solid black; padding:10px">
-./crisis.exe -3 -l 20  -f lalpha-numeric | aircrack-ng -w- -e BOX__XXXX output-01.cap 
+mono crisis.exe -3 -l 20  -f lalpha-numeric | aircrack-ng -w- -e BOX__XXXX output-01.cap 
 Opening output-01.cap
 Opening output-01.cap
 Reading packets, please wait...
@@ -60,7 +60,7 @@ Reading packets, please wait...
 <h2>Pipe with crisis and genpmk</h2>
 
 <pre style=" border: 1px solid black; padding:10px">
-crisis -3 -l 20 -f lalpha | genpmk -f- -d wordlistBOX -s BOX_XXXX
+mono crisis -3 -l 20 -f lalpha | genpmk -f- -d wordlistBOX -s BOX_XXXX
 genpmk 1.1 - WPA-PSK precomputation attack. <jwright@hasborg.com>
 Using STDIN for words.
 File wordlistSFR does not exist, creating.
@@ -81,7 +81,7 @@ key no. 10000: kgrzzjqshhbangsfqezm
 <h2>Pipe with crisis, pyrit and cowpatty</h2>
 
 <pre style=" border: 1px solid black; padding:10px">
-crisis -3 -l 26 -f hex-upper -u | pyrit -o- -i- -e Box-007  passthrough | cowpatty -d - -r wpa-01.cap -s Box-007
+mono crisis -3 -l 26 -f hex-upper -u | pyrit -o- -i- -e Box-007  passthrough | cowpatty -d - -r wpa-01.cap -s Box-007
 cowpatty 4.6 - WPA-PSK dictionary attack. <jwright@hasborg.com>
 
 Collected all necessary data to mount crack against WPA2/PSK passphrase.
