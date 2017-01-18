@@ -45,13 +45,13 @@ namespace Crisis
 
             commun = new Wordlist(lang);
 
-            Main principal = new Main(lang);
-            principal.Menu();                               
-                        
-            bool b = true;
+           bool b = true;
 
             while (b)
             {
+                Main principal = new Main(lang);
+                principal.Menu();                
+
                 int i = option.SelectOption(4); 
                 bool zip = false;
 
@@ -124,8 +124,20 @@ namespace Crisis
                 else if (i == 3)
                 {
 
-                    principal.TransformWordlist();                   
-                    int typesAtGenerate = option.SelectOption(4);
+                    principal.TransformWordlist();
+                    int typesAtGenerate = 0;
+
+                    bool booleanne = true;
+                    while (booleanne)
+                    {
+                        typesAtGenerate = option.SelectOption(4);
+
+                        if (typesAtGenerate == 1 | typesAtGenerate == 2 | typesAtGenerate == 3 | typesAtGenerate == 4 | typesAtGenerate == 88 | typesAtGenerate == 99)
+                        {
+                            booleanne = false;
+                        }                     
+                    }
+                                                        
 
                     if (typesAtGenerate == 88) new Run(lang);
                     if (typesAtGenerate == 99) Environment.Exit(0);
@@ -139,10 +151,10 @@ namespace Crisis
                     
                     TransformTextFiles toDoTransformFile = new TransformTextFiles();
                     if (typesAtGenerate == 1) toDoTransformFile.L33tSpeek(Parameter.CharsetSelecting,PathBackUpFiles,extension,zip);
-                    if (typesAtGenerate == 2) toDoTransformFile.LowercaseToUppercas(Parameter.CharsetSelecting, PathBackUpFiles, extension,zip);          
-                    if (typesAtGenerate == 3) toDoTransformFile.UppercaseToLowercase(Parameter.CharsetSelecting,PathBackUpFiles,extension,zip);
-                    if (typesAtGenerate == 4) toDoTransformFile.AutoUppercaseLowercase(Parameter.CharsetSelecting, PathBackUpFiles, extension, zip);                    
-
+                    else if (typesAtGenerate == 2) toDoTransformFile.LowercaseToUppercas(Parameter.CharsetSelecting, PathBackUpFiles, extension,zip);          
+                    else if (typesAtGenerate == 3) toDoTransformFile.UppercaseToLowercase(Parameter.CharsetSelecting,PathBackUpFiles,extension,zip);
+                    else if (typesAtGenerate == 4) toDoTransformFile.AutoUppercaseLowercase(Parameter.CharsetSelecting, PathBackUpFiles, extension, zip);                    
+                    else
                     b = false;
                 }
                 else if (i == 4)
@@ -169,6 +181,7 @@ namespace Crisis
                 {
                     b = true;
                 }
+                
             }
         }
 
