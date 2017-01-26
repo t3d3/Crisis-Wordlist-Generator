@@ -29,7 +29,9 @@ namespace Crisis
 {
     public class Run : Parameter
     { 
-
+		/// <summary>
+		/// The extension.
+		/// </summary>
         private string extension = ".txt";
         
         private Interface _option;
@@ -38,21 +40,26 @@ namespace Crisis
         private Wordlist commun;
         private Statistical tools = new Statistical();
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Crisis.Run"/> class.
+		/// </summary>
+		/// <param name="lang">Lang.</param>
         public Run(ResourceManager lang)
         {
-            Interface option = new Interface(lang);
-            _option = option;
+           Interface option = new Interface(lang);
+           _option = option;
 
-            commun = new Wordlist(lang);
+           commun = new Wordlist(lang);
 
            bool b = true;
 
             while (b)
             {
+				int i = 0;
                 Main principal = new Main(lang);
                 principal.Menu();                
 
-                int i = option.SelectOption(4); 
+                i = option.SelectOption(4); 
                 bool zip = false;
 
 
@@ -156,6 +163,8 @@ namespace Crisis
                     else if (typesAtGenerate == 4) toDoTransformFile.AutoUppercaseLowercase(Parameter.CharsetSelecting, PathBackUpFiles, extension, zip);                    
                     else
                     b = false;
+
+					i = 0;
                 }
                 else if (i == 4)
                 {
@@ -184,6 +193,11 @@ namespace Crisis
                 
             }
         }
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Crisis.Run"/> class.
+		/// </summary>
+		/// <param name="args">Arguments.</param>
 
         public Run(string[] args)
         {
@@ -286,7 +300,12 @@ namespace Crisis
             /// Debug pause, must commenting for release
             Console.ReadKey();
         }
-               
+            
+		/// <summary>
+		/// Changes the start end reverse mix pattern.
+		/// </summary>
+		/// <returns>The start end reverse mix pattern.</returns>
+		/// <param name="charsetSelecting">Charset selecting.</param>
         private List<string> ChangeStartEndReverseMixPattern(List<string> charsetSelecting)
         {
             
@@ -348,7 +367,11 @@ namespace Crisis
             return false;
         }
 
-
+		/// <summary>
+		/// Generates the wordlist.
+		/// </summary>
+		/// <returns><c>true</c>, if wordlist was generated, <c>false</c> otherwise.</returns>
+		/// <param name="cmd">Cmd.</param>
         private bool GenerateWordlist(CLI cmd)
         {
             CombinationPattern obj2 = new CombinationPattern();

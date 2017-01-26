@@ -31,6 +31,11 @@ namespace Crisis.Combinatorics
             
         }
 
+		/// <summary>
+		/// Converters the text in leet speak.
+		/// </summary>
+		/// <returns>The in leet speak.</returns>
+		/// <param name="_word">Word.</param>
         internal string ConverterInLeetSpeak(string _word)
         {
             string wordLeet = null;
@@ -41,6 +46,12 @@ namespace Crisis.Combinatorics
 
             return wordLeet;
         }
+
+		/// <summary>
+		/// Founds the letter leet.
+		/// </summary>
+		/// <returns>The letter leet.</returns>
+		/// <param name="_letter">Letter.</param>
 
         private char FoundLetterLeet(char _letter)
         {
@@ -82,10 +93,11 @@ namespace Crisis.Combinatorics
 
 
 
-       
-
-
-
+       /// <summary>
+       /// Converters the text in uppercase lowercase.
+       /// </summary>
+       /// <returns>The in uppercase lowercase.</returns>
+       /// <param name="_word">Word.</param>
         private string ConverterInUppercaseLowercase(string _word)
         {
             string wordLeet = null;
@@ -116,6 +128,13 @@ namespace Crisis.Combinatorics
             return _letter;
         }
 
+		/// <summary>
+		/// Write leet speak files
+		/// </summary>
+		/// <param name="charsetSelecting">Charset selecting.</param>
+		/// <param name="pathBackupFiles">Path backup files.</param>
+		/// <param name="extension">Extension.</param>
+		/// <param name="zip">If set to <c>true</c> zip.</param>
         public void L33tSpeek(List<string> charsetSelecting, string pathBackupFiles, string extension, bool zip)
         {
             Interface.PleaseWait();
@@ -135,7 +154,13 @@ namespace Crisis.Combinatorics
 
         } // End Function 
 
-        
+        /// <summary>
+        /// Lowercases to uppercas.
+        /// </summary>
+        /// <param name="charsetSelecting">Charset selecting.</param>
+        /// <param name="pathBackupFiles">Path backup files.</param>
+        /// <param name="extension">Extension.</param>
+        /// <param name="zip">If set to <c>true</c> zip.</param>
 
         public void LowercaseToUppercas(List<string> charsetSelecting, string pathBackupFiles, string extension, bool zip)
         {
@@ -154,6 +179,13 @@ namespace Crisis.Combinatorics
            
         } // End Function 
 
+		/// <summary>
+		/// Uppercases to lowercase.
+		/// </summary>
+		/// <param name="charsetSelecting">Charset selecting.</param>
+		/// <param name="pathBackupFiles">Path backup files.</param>
+		/// <param name="extension">Extension.</param>
+		/// <param name="zip">If set to <c>true</c> zip.</param>
         public void UppercaseToLowercase(List<string> charsetSelecting, string pathBackupFiles, string extension, bool zip)
         {
             Interface.PleaseWait();
@@ -173,6 +205,13 @@ namespace Crisis.Combinatorics
             
         } // End Function
 
+		/// <summary>
+		/// Autos the uppercase lowercase.
+		/// </summary>
+		/// <param name="charsetSelecting">Charset selecting.</param>
+		/// <param name="pathBackupFiles">Path backup files.</param>
+		/// <param name="extension">Extension.</param>
+		/// <param name="zip">If set to <c>true</c> zip.</param>
         public void AutoUppercaseLowercase(List<string> charsetSelecting, string pathBackupFiles, string extension, bool zip)
         {
             Interface.PleaseWait();

@@ -45,6 +45,12 @@ namespace Crisis.Tools
 
         }
 
+		/// <summary>
+		/// Startblocks the pattern.
+		/// </summary>
+		/// <returns>The pattern.</returns>
+		/// <param name="_s">S.</param>
+		/// <param name="charsetSelecting">Charset selecting.</param>
         internal List<string> StartblockPattern(string _s, List<string> charsetSelecting)
         {
             try
@@ -75,6 +81,13 @@ namespace Crisis.Tools
             return charsetSelecting;
         }
 
+		/// <summary>
+		/// Ends the pattern.
+		/// </summary>
+		/// <returns>The pattern.</returns>
+		/// <param name="_e">E.</param>
+		/// <param name="numberOfChar">Number of char.</param>
+		/// <param name="charsetSelecting">Charset selecting.</param>
         internal List<string> EndPattern(string _e, byte numberOfChar, List<string> charsetSelecting)
         {
             try
@@ -105,6 +118,9 @@ namespace Crisis.Tools
             return charsetSelecting;
         }
 
+		/// <summary>
+		/// Hour this instance.
+		/// </summary>
         internal string Hour()
         {
             DateTime obj = DateTime.Now;
@@ -112,6 +128,7 @@ namespace Crisis.Tools
 
             return input;
         }
+
 
         public bool OsDetect()
         {
@@ -153,10 +170,12 @@ namespace Crisis.Tools
         }
 
         /// <summary>
-        /// Create the files on computer
+        /// Settings up file.
         /// </summary>
-        /// <param name="extension"></param>
+        /// <param name="pathBackUpFiles">Path back up files.</param>
+        /// <param name="extension">Extension.</param>
 
+	
         public void Setting_UpFile(string pathBackUpFiles, string extension)
         {
 
@@ -193,6 +212,11 @@ namespace Crisis.Tools
             } //End while
         }  //End Fonction
 
+		/// <summary>
+		/// Removes the duplicate.
+		/// </summary>
+		/// <returns>The duplicate.</returns>
+		/// <param name="charsetSelecting">Charset selecting.</param>
         internal static List<string> RemoveDuplicate(List<string> charsetSelecting)
         {
             // Get distinct elements and convert into a list again.
@@ -213,6 +237,11 @@ namespace Crisis.Tools
             return charsetSelecting;
         }
 
+		/// <summary>
+		/// Zipper the specified zip and pathBackUpFiles.
+		/// </summary>
+		/// <param name="zip">If set to <c>true</c> zip.</param>
+		/// <param name="pathBackUpFiles">Path back up files.</param>
         internal string Zipper(bool zip, string pathBackUpFiles)
         {
             try
@@ -249,6 +278,12 @@ namespace Crisis.Tools
             Console.WriteLine(locate[0].ToString());
         }
 
+		/// <summary>
+		/// Doubles the capacity list.
+		/// </summary>
+		/// <returns>The capacity list.</returns>
+		/// <param name="charsetSelecting">Charset selecting.</param>
+		/// <param name="numberOfChar">Number of char.</param>
         internal List<string> DoubleCapacityList(List<string> charsetSelecting, int numberOfChar)
         {
             try
@@ -277,6 +312,11 @@ namespace Crisis.Tools
             return charsetSelecting;
         }
 
+		/// <summary>
+		/// Mixs the order list.
+		/// </summary>
+		/// <returns>The order list.</returns>
+		/// <param name="charsetSelecting">Charset selecting.</param>
         internal static List<string> MixOrderList(List<string> charsetSelecting)
         {            
             List<string> shuffled_list = new List<string>();
@@ -296,16 +336,24 @@ namespace Crisis.Tools
             tmp = null;
             return shuffled_list;
         }
+		/// <summary>
+		/// This function read file txt.
+		/// </summary>
+		/// <returns>The file text.</returns>
+		/// <param name="charsetName">Charset name.</param>
+		/// <param name="charsetSelecting">Charset selecting.</param>
 
         public static List<string> ReadFileTxt(string charsetName, List<string> charsetSelecting)
         {
             try
             {
-                if (File.Exists(charsetName.ToString()))
-                {
-                    charsetSelecting.Add(System.IO.File.ReadAllText(charsetName.ToString()));
-
-                }
+				Console.ForegroundColor = ConsoleColor.DarkGreen;
+				Console.Write("\n");
+				Console.Write(" [+] ");
+				Console.ResetColor();
+				Console.Write("Reading file text");
+				Console.Write("\n");
+				charsetSelecting.Add(System.IO.File.ReadAllText(charsetName.ToString()));
             }
             catch (OutOfMemoryException e)
             {
