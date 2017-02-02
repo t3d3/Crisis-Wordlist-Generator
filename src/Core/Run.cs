@@ -298,7 +298,7 @@ namespace Crisis
             }
 
             /// Debug pause, must commenting for release
-            Console.ReadKey();
+            //Console.ReadKey();
         }
             
 		/// <summary>

@@ -139,7 +139,7 @@ namespace Crisis.Tools
 
 
         [CommandLineOption(Name = "b", Aliases = "byte",
-                           Description = "Specifies the size of the output file, only works if -o is used,  i.e.:  60 mib. \n For example  is 500 mib correct 500mb  is NOT correct. \n The three types are based on 1024.\n\nExample :\n crisis -2 -l 10 -f JohnDoe0123456789 -b 50 mib -o \n\n Will generate 1  files  valid values for type  are   kib, mib, and gib. \n\n NOTE  There is  space between the number and type.\n\n", GroupId = "options")]
+                           Description = "Specifies the size of the output file, only works if -o is used,  i.e.:  60 mib. \n For example  is 500 mib correct 500mb  is NOT correct. \n The three types are based on 1024.\n\nExample :\n crisis -2 -l 10 -f JohnDoe0123456789 -b 50 mib -o /tmp/wordlist \n\n Will generate 1  files  valid values for type  are   kib, mib, and gib. \n\n NOTE  There is  space between the number and type.\n\n", GroupId = "options")]
         public bool Byte
         {
             get { return mByte; }
@@ -148,14 +148,14 @@ namespace Crisis.Tools
 
 
         [CommandLineOption(Name = "c", Aliases = "line",
-                           Description = "Specifies the number of lines to  write  to  output \n file,  only works if -o is used.\n\n Example : crisis -4 -l 10 -f mixalpha -r -o /root -c 10000 -z\n\n", GroupId = "options")]
+                           Description = "Specifies the number of lines to  write  to  output \n file,  only works if -o is used.\n\n Example :\n crisis -4 -l 10 -f mixalpha -r -o /tmp/wordlist -c 100 \n\n", GroupId = "options")]
         public bool Line
         {
             get { return mLine; }
             set { mLine = value; }
         }
 
-        [CommandLineOption(Name = "e", Aliases = "endblock", Description = "Specifies a ending string, eg: god77xD.\n\nExample : crisis -2 -l 16 -f  sv-mixalpha  -e \"Do a barrel roll\"\n\n", GroupId = "options")]
+        [CommandLineOption(Name = "e", Aliases = "endblock", Description = "Specifies a ending string, eg: god77xD.\n\nExample : \ncrisis \n\n", GroupId = "options")]
 
         public bool EndBlock
         {
@@ -163,7 +163,7 @@ namespace Crisis.Tools
             set { mEndBlock = value; }
         }
 
-        [CommandLineOption(Name = "o", Aliases = "output", Description = "Specify the save file in the crisis folder on the desktop\n\nExample : crisis -2 -l 16 -f  alpha-numeric -o /root", GroupId = "options")]
+        [CommandLineOption(Name = "o", Aliases = "output", Description = "Specify the save file in an folder \n\nExample :\ncrisis -2 -l 16 -f  alpha-numeric -o /root", GroupId = "options")]
 
         public bool SaveFile
         {
@@ -188,7 +188,7 @@ namespace Crisis.Tools
             set { repeat = value; }
         }
 
-        [CommandLineOption(Name = "s", Aliases = "startblock", Description = "  Specifies a starting string, eg: qwerty.\n\nExample : crisis -2 -l 15 -f  sv-mixalpha  -s \"Hello World\"\n\n", GroupId = "options")]
+        [CommandLineOption(Name = "s", Aliases = "startblock", Description = "  Specifies a starting string, eg: qwerty.\n\nExample :\n crisis -2 -l 15 -f  sv-mixalpha  -s \"Hello World\"\n\n", GroupId = "options")]
         public bool Startblock
         {
             get { return mStartblock; }
@@ -204,7 +204,7 @@ namespace Crisis.Tools
             set { mDisables = value; }
         }
 
-        [CommandLineOption(Name = "z", Aliases = "zip", Description = "Compresses  the output from the -o option.\n\nExample : crisis -2 -l 10 -f ualpha -r  -o /root  -b 1024 mib -z\n\n", GroupId = "options")]
+        [CommandLineOption(Name = "z", Aliases = "zip", Description = "Compresses  the output from the -o option.\n\nExample : \ncrisis -2 -l 10 -f ualpha -r  -o /root/tmp/wordlist  -b 1024 mib -z\n\n", GroupId = "options")]
 
 
         public bool Zip

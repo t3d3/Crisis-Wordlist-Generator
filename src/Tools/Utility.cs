@@ -103,11 +103,22 @@ namespace Crisis.Tools
                     }
                 }
 
-                for (int i = 0; i < _e.Length; i++)
-                {
-                    charsetSelecting.Insert((numberOfChar - _e.Length) + i, _e[i].ToString());
-                }
+				if (numberOfChar > _e.Length)
+				{
+					for (int i = 0; i < _e.Length; i++)
+					{
+						charsetSelecting.Insert((numberOfChar - _e.Length) + i, _e[i].ToString());
+					}
+				}
+				else
+				{
+					for (int i = 0; i < numberOfChar; i++)
+					{
+						charsetSelecting.Insert(i, _e[i].ToString());
+					}
+				}
 
+                
             }
             catch (Exception e)
             {
@@ -187,9 +198,9 @@ namespace Crisis.Tools
                 try
                 {
                     if (!Directory.Exists(pathBackUpFiles))
-                    {
-                        pathBackUpFiles = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + root + "crisis";
-                        System.IO.Directory.CreateDirectory(pathBackUpFiles);
+                    {                      
+
+						System.IO.Directory.CreateDirectory(pathBackUpFiles);
                     }
                     else if (File.Exists(pathBackUpFiles + root + "wordlist_" + numberFile + ".txt") | File.Exists(pathBackUpFiles + root + "wordlist_" + numberFile + ".zip"))
                     {

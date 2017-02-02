@@ -81,6 +81,8 @@ namespace Crisis
         {
             try
             {
+				bool no_pattern = true;
+
                 Regex wifi = new Regex(@"sfr|livebox-sagem");
                 Regex hex = new Regex(@"^hex.{6,6}$");
                 Regex numeric = new Regex(@"^numeric.{0,6}$");
@@ -107,43 +109,49 @@ namespace Crisis
                 {
                     if (hex.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Special charset = new Special();
+						no_pattern = false;
+						Special charset = new Special();
                         charsetSelecting = charset.ListHexa(args[i].ToString().ToLower());
                         break;
                     }
                     else if (numeric.IsMatch(args[i].ToString().ToLower()))
                     {
+						no_pattern = false;
                         Special charset = new Special();
                         charsetSelecting = charset.ListNumeric(args[i].ToString().ToLower());
                         break;
                     }
                     else if (symbols.IsMatch(args[i].ToString().ToLower()))
                     {
-                        Special charset = new Special();
+                        no_pattern = false;
+						Special charset = new Special();
                         charsetSelecting = charset.ListSymbols(args[i].ToString().ToLower());
                         break;
                     }
                     else if (usyllable.IsMatch(args[i].ToString().ToLower()))
                     {
-
+						no_pattern = false;
                         Syllable charset = new Syllable();
                         charsetSelecting = charset.ListSyllableUpperCase_fr(args[i].ToString().ToLower());
                         break;
                     }
                     else if (lsyllable.IsMatch(args[i].ToString().ToLower()))
                     {
+						no_pattern = false;
                         Syllable charset = new Syllable();
                         charsetSelecting = charset.ListSyllableLowerCase_fr(args[i].ToString().ToLower());
                         break;
                     }
                     else if (mixsyllable.IsMatch(args[i].ToString().ToLower()))
                     {
+						no_pattern = false;
                         Syllable charset = new Syllable();
                         charsetSelecting = charset.ListMixsyllable_fr(args[i].ToString().ToLower());
                         break;
                     }
                     else if (ualpha.IsMatch(args[i].ToString().ToLower()))
                     {
+						no_pattern = false;
                         Alpha charset = new Alpha();
                         charsetSelecting = charset.Ualpha_List(args[i].ToString().ToLower());
                         break;
@@ -151,54 +159,63 @@ namespace Crisis
                     }
                     else if (lalpha.IsMatch(args[i].ToString().ToLower()))
                     {
+						no_pattern = false;
                         Alpha charset = new Alpha();
                         charsetSelecting = charset.Lalpha_List(args[i].ToString().ToLower());
                         break;
                     }
                     else if (mixalpha.IsMatch(args[i].ToString().ToLower()))
                     {
+						no_pattern = false;
                         Alpha charset = new Alpha();
                         charsetSelecting = charset.MixAlphaList(args[i].ToString().ToLower());
                         break;
                     }
                     else if (ualpha_sv.IsMatch(args[i].ToString()))
                     {
+						no_pattern = false;
                         Alpha_sv charset = new Alpha_sv();
                         charsetSelecting = charset.Ualpha_svList(args[i].ToString().ToLower());
                         break;
                     }
                     else if (lalpha_sv.IsMatch(args[i].ToString().ToLower()))
                     {
+						no_pattern = false;
                         Alpha_sv charset = new Alpha_sv();
                         charsetSelecting = charset.Lalpha_svList(args[i].ToString().ToLower());
                         break;
                     }
                     else if (mixalpha_sv.IsMatch(args[i].ToString().ToLower()))
                     {
+						no_pattern = false;
                         Alpha_sv charset = new Alpha_sv();
                         charsetSelecting = charset.MixAlpha_svList(args[i].ToString().ToLower());
                         break;
                     }
                     else if (wifi.IsMatch(args[i].ToString().ToLower()))
                     {
+						no_pattern = false;
                         Special charset = new Special();
                         charsetSelecting = charset.ListWifiCharset(args[i].ToString().ToLower());                                              
                         break;
                     }
                     else if (lcyrillic.IsMatch(args[i].ToString().ToLower()))
                     {
+						no_pattern = false;
                         Cyrillic charset = new Cyrillic();
                         charsetSelecting = charset.ListcyrillicLowerCase(args[i].ToString().ToLower());
                         break;
                     }
                     else if (ucyrillic.IsMatch(args[i].ToString().ToLower()))
                     {
+						no_pattern = false;
                         Cyrillic charset = new Cyrillic();
                         charsetSelecting = charset.ListCyrillicUpperCase(args[i].ToString().ToLower());
                         break;
                     }
                     else if (mixcyrillic.IsMatch(args[i].ToString().ToLower()))
                     {
+						no_pattern = false;
                         Cyrillic charset = new Cyrillic();
                         charsetSelecting = charset.ListMixCyrillic(args[i].ToString().ToLower());
                         break;
@@ -215,20 +232,30 @@ namespace Crisis
                         {
                             charsetSelecting.Add(s[x].ToString());
                         }
+						break;
                     }
-                    else if (((i > 1 & i < args.Length & args[i] == "-f") & (!hex.IsMatch(args[i + 1].ToString().ToLower()) & !numeric.IsMatch(args[i + 1].ToString().ToLower()) & !symbols.IsMatch(args[i + 1].ToString().ToLower()) & !usyllable.IsMatch(args[i + 1].ToString().ToLower()) & !lsyllable.IsMatch(args[i + 1].ToString().ToLower()) & !mixsyllable.IsMatch(args[i + 1].ToString().ToLower()) & !ualpha.IsMatch(args[i + 1].ToString().ToLower()) & !lalpha.IsMatch(args[i + 1].ToString().ToLower()) & !mixalpha.IsMatch(args[i + 1].ToString().ToLower()) & !ualpha_sv.IsMatch(args[i + 1].ToString()) & !lalpha_sv.IsMatch(args[i + 1].ToString().ToLower()) & !wifi.IsMatch(args[i + 1].ToString().ToLower()) & !lcyrillic.IsMatch(args[i + 1].ToString().ToLower()) & !ucyrillic.IsMatch(args[i + 1].ToString().ToLower()) & !mixcyrillic.IsMatch(args[i + 1].ToString().ToLower()))) )
-                    {
-                        string s = args[i + 1].ToString();
-                        
-                        if (s.Length > 1 & s != null)
-                        {
-                            for (int x = 0; x < s.Length; x++)
-                            {
-                                charsetSelecting.Add(s[x].ToString());
-                            }
-                        }
-                    }
+					                    
                 }
+
+				if (no_pattern)
+				{
+					for (int i = 0; i < args.Length-1 ; i++)
+					{
+						if ((i > 1 & i < args.Length & args[i] == "-f"))
+						{
+							string s = args[i + 1].ToString();
+
+							if (s.Length > 1 & s != null)
+							{
+								for (int x = 0; x < s.Length; x++)
+								{
+									charsetSelecting.Add(s[x].ToString());
+								}
+							}
+
+						}
+					}
+				}
             }
             catch (Exception e)
             {

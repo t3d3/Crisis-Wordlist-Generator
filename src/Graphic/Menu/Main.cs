@@ -29,12 +29,18 @@ namespace Crisis.Graphic.Menu
         {
             lang = _lang;         
         }
-
+		/// <summary>
+		/// Version of software.
+		/// </summary>
         public static void Version()
         {
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("\n Crisis Wordlist Generator  by Teeknofil, version : 1.1.4 \n");
+			Console.WriteLine("======================================================================================");
+ 			Console.WriteLine(" Crisis Wordlist Generator  by Teeknofil | [Version]: 1.1.5");
+  			Console.WriteLine("======================================================================================");
+     		Console.WriteLine(" [Web]: https://github.com/teeknofil/Crisis-Wordlist-Generator | [Twitter]: @teeknofile");
+			Console.WriteLine("======================================================================================");
             Console.ResetColor();
         }        
 

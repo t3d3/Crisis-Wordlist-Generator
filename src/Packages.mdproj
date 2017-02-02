@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>PackagingProject</ItemType>
+    <ProjectGuid>{AE81DD7C-EF00-40E8-AD1A-AA5E0D1DB9C3}</ProjectGuid>
+    <Packages>
+      <Packages>
+        <Package>
+          <Builder>
+            <RootEntry>
+              <path>Crisis.csproj</path>
+            </RootEntry>
+            <targetFile>..\Download\crisis_linux_x86.tar.gz</targetFile>
+            <platform>Linux</platform>
+            <configuration>Crisis|x86</configuration>
+            <ctype>BinariesZipPackageBuilder</ctype>
+          </Builder>
+          <name>Linux Binaries</name>
+        </Package>
+      </Packages>
+    </Packages>
+  </PropertyGroup>
+</Project>
