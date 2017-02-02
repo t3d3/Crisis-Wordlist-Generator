@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crisis", "Crisis.csproj", "{BFE9BC64-4CDB-4D44-841E-323C08620FB9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crisis", "crisis.csproj", "{BFE9BC64-4CDB-4D44-841E-323C08620FB9}"
 EndProject
 Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Packages", "Packages.mdproj", "{AE81DD7C-EF00-40E8-AD1A-AA5E0D1DB9C3}"
 EndProject
