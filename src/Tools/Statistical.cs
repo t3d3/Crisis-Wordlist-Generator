@@ -55,8 +55,7 @@ namespace Crisis.Tools
                     numberOfAllCombination = obj.CalculVariation(_repeat , charsetSelecting, numberOfChar).Count;
                 }
                 else if (typesAtGenerate == 5)
-                {
-                    PermutationPattern obj = new PermutationPattern();
+                {                    
                     numberOfAllCombination = PermutationPattern.CaclulPermut(_repeat,charsetSelecting,numberOfChar);
                 }
 

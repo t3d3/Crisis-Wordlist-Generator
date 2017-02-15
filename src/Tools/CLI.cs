@@ -135,6 +135,7 @@ namespace Crisis.Tools
         protected bool saveFile;
         protected bool repeat;
         private bool mStartblock;
+        protected bool mix;
         protected bool zip;
 
 
@@ -196,7 +197,7 @@ namespace Crisis.Tools
         }
 
 
-        [CommandLineOption(Name = "u", Aliases = "disables", Description = "The -u option disables the print size . \n This should be the last option.\n\n", GroupId = "options")]
+        [CommandLineOption(Name = "u", Aliases = "disables", Description = "The -u option disables the print size . \n\n", GroupId = "options")]
 
         public bool Disables
         {
@@ -204,7 +205,16 @@ namespace Crisis.Tools
             set { mDisables = value; }
         }
 
-        [CommandLineOption(Name = "z", Aliases = "zip", Description = "Compresses  the output from the -o option.\n\nExample : \ncrisis -2 -l 10 -f ualpha -r  -o /root/tmp/wordlist  -b 1024 mib -z\n\n", GroupId = "options")]
+        [CommandLineOption(Name = "m", Aliases = "mix", Description = "Mix the charset \n\nExample : \ncrisis -2 -l 10 -f ualpha -r -m \n\n", GroupId = "options")]
+
+
+        public bool Mix
+        {
+            get { return mix; }
+            set { mix = value; }
+        }
+
+        [CommandLineOption(Name = "z", Aliases = "zip", Description = "Compresses  the output from the -o option.\n\nExample : \ncrisis -2 -l 10 -f ualpha -r  -o /tmp/wordlist  -b 1024 mib -z\n\n", GroupId = "options")]
 
 
         public bool Zip
@@ -555,7 +565,33 @@ namespace Crisis.Tools
             // Do work according to arguments
             return 0;
         }
-        
+
+        public int MixPattern(string[] args)
+        {
+            Utility tools = new Utility();
+            CLI options = new CLI();
+            CommandLineParser parser = new CommandLineParser(options);
+            parser.Parse();
+
+            if (options.Mix)
+            {
+                if (Parameter.CharsetSelecting != null)
+                {
+                    Parameter.CharsetSelecting = tools.MixOrderList(Parameter.CharsetSelecting);
+                }
+
+            }
+            else if (parser.HasErrors)
+            {
+                Console.WriteLine(parser.UsageInfo.ToString(78, true));
+                return -1;
+            }
+
+            // No errors present and all arguments correct
+            // Do work according to arguments
+            return 0;
+        }
+
     } // End class
 }
 

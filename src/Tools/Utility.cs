@@ -328,7 +328,7 @@ namespace Crisis.Tools
 		/// </summary>
 		/// <returns>The order list.</returns>
 		/// <param name="charsetSelecting">Charset selecting.</param>
-        internal static List<string> MixOrderList(List<string> charsetSelecting)
+        internal List<string> MixOrderList(List<string> charsetSelecting)
         {            
             List<string> shuffled_list = new List<string>();
             List<string> tmp = new List<string>();

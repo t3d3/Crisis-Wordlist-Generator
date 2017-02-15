@@ -57,7 +57,7 @@ namespace Crisis
             {
 				int i = 0;
                 Main principal = new Main(lang);
-                principal.Menu();                
+                principal.Menu(); /// Main menu               
 
                 i = option.SelectOption(4); 
                 bool zip = false;
@@ -216,7 +216,6 @@ namespace Crisis
                 {
                     cmd.SelectPattern(args);
                     cmd.FunctionLenght(args);
-
                     if (cmd.Invert)
                     {
                         CharsetSelecting.Reverse();
@@ -230,6 +229,11 @@ namespace Crisis
                     if (cmd.EndBlock)
                     {
                         cmd.EndPattern(args);
+                    }
+
+                    if (cmd.Mix) 
+                    {
+                        cmd.MixPattern(args);
                     }
 
                     if (cmd.Line)

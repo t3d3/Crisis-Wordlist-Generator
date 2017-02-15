@@ -36,13 +36,15 @@ namespace Crisis.Graphic.Menu
         {
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-			Console.WriteLine("================================================================");
+			Console.WriteLine("==============================================================");
  			Console.WriteLine(" Crisis Wordlist Generator  by Teeknofil | [Version]: 1.1.5");
-  			Console.WriteLine("================================================================");
+  			Console.WriteLine("==============================================================");
      		Console.WriteLine(" [Web]: https://github.com/teeknofil/Crisis-Wordlist-Generator");
-			Console.WriteLine("================================================================");
+			Console.WriteLine("==============================================================");
             Console.WriteLine(" [Twitter]: @teeknofile");
-			Console.WriteLine("================================================================");
+			Console.WriteLine("==============================================================");
+            Console.WriteLine(" Bitcoin : 1FKVkfLajBLCzNxskKLg5y9aeTe26AEyxr");
+            Console.WriteLine("==============================================================");
 			Console.ResetColor();
         }        
 
