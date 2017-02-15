@@ -23,7 +23,7 @@ using System.IO;
 
 namespace Crisis.Tools
 {
-    [CommandLineManager(ApplicationName = "\n\n Crisis Wordlist Generator by Teeknofil,", Version = ": 1.1.4 \n\n", Copyright = "SYNOPSIS\n\n crisis <method> -l <len> -f <charset string> [options] \n\nDESCRIPTION \n\n  Crisis can create a wordlist based on criteria you specify. The output  from crisis can be sent to the screen, file, or  to  another  program.  The required parameters are: ", EnabledOptionStyles = OptionStyles.Group | OptionStyles.LongUnix)]
+    [CommandLineManager(ApplicationName = "\n\n Crisis Wordlist Generator by Teeknofil,", Version = ": 1.1.5 \n\n", Copyright = "SYNOPSIS\n\n crisis <method> -l <len> -f <charset string> [options] \n\nDESCRIPTION \n\n  Crisis can create a wordlist based on criteria you specify. The output  from crisis can be sent to the screen, file, or  to  another  program.  The required parameters are: ", EnabledOptionStyles = OptionStyles.Group | OptionStyles.LongUnix)]
 
     [CommandLineOptionGroup("method", Name = "Method", Require = OptionGroupRequirement.None)]
 
@@ -205,7 +205,7 @@ namespace Crisis.Tools
             set { mDisables = value; }
         }
 
-        [CommandLineOption(Name = "m", Aliases = "mix", Description = "Mix the charset \n\nExample : \ncrisis -2 -l 10 -f ualpha -r -m \n\n", GroupId = "options")]
+        [CommandLineOption(Name = "m", Aliases = "mix", Description = "Mix the charset \n\nExample : \ncrisis -2 -l 10 -f ualpha -m \n\n", GroupId = "options")]
 
 
         public bool Mix
