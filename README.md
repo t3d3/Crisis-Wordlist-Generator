@@ -4,7 +4,7 @@ Work on Windows, Debian and Kali Linux. Please reading  <a href="https://github.
 
 # Install in Linux
 
-* [Warning, install mono before.](https://youtu.be/9TqwB1mj9_0)
+* [Warning, install mono before.](https://github.com/teeknofil/Crisis-Wordlist-Generator/wiki/Installer-Mono-dans-Linux)
 
 * [Install Crisis Wordlist Generator in Linux](https://youtu.be/88RBHHNkgE0)
 
