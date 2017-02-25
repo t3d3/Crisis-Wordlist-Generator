@@ -18,13 +18,13 @@ Bitcoin : 1FKVkfLajBLCzNxskKLg5y9aeTe26AEyxr
 
 # Run
 <pre style=" border: 1px solid black; padding:10px">
-root@kali:~# mono crisis 
+root@kali:~# mono crisis.exe 
 </pre>
 
 # Manual
 
 <pre style=" border: 1px solid black; padding:10px">
-root@kali:~# mono crisis -h
+root@kali:~# mono crisis.exe -h
 </pre>
 
 #Usage
