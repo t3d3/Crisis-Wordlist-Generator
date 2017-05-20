@@ -1,7 +1,7 @@
 clean-local:
 	make pre-clean-local-hook
 	make $(CONFIG)_BeforeClean
-	-rm -f $(call quote_each,$(CLEANFILES))
+	-rm -fr $(call quote_each,$(CLEANFILES))
 	make $(CONFIG)_AfterClean
 	make post-clean-local-hook
 
@@ -17,7 +17,7 @@ dist-local:
 		d=`dirname "$$f"`; \
 		test -d "$(distdir)/$$d" || \
 			mkdir -p "$(distdir)/$$d"; \
-		cp -p "$$f" "$(distdir)/$$d" || exit 1; \
+		cp -rf -p "$$f" "$(distdir)/$$d" || exit 1; \
 	done
 	make post-dist-local-hook "distdir=$$distdir"
 
