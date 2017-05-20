@@ -76,7 +76,7 @@ programfiles_DATA = $(PROGRAMFILES)
 define emit-deploy-target
 $($1): $($1_SOURCE)
 	mkdir -p '$$(shell dirname '$$@')'
-	cp '$$<' '$$@'
+	cp -fr '$$<' '$$@'
 endef
 
 # $(call emit-deploy-wrapper,wrapper-variable-name,wrapper-sourcefile,x)
@@ -85,7 +85,7 @@ endef
 define emit-deploy-wrapper
 $($1): $2 $(top_srcdir)/config.make
 	mkdir -p '$$(shell dirname '$$@')'
-	cp '$$<' '$$@'
+	cp -fr '$$<' '$$@'
 	$(if $3,chmod +x '$$@')
 
 $2: $2.in $(top_srcdir)/config.make
@@ -111,7 +111,7 @@ $(build_satellite_assembly_list): $(BUILD_DIR)/%/$(SATELLITE_ASSEMBLY_NAME):
 
 $(install_satellite_assembly_list):
 	mkdir -p '$(@D)'
-	cp $(subst $(DESTDIR)$(libdir)/$(PACKAGE), $(BUILD_DIR), $@) $@
+	cp -fr $(subst $(DESTDIR)$(libdir)/$(PACKAGE), $(BUILD_DIR), $@) $@
 
 install-satellite-assemblies: $(install_satellite_assembly_list)
 	
