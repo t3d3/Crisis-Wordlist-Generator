@@ -111,7 +111,7 @@ $(build_satellite_assembly_list): $(BUILD_DIR)/%/$(SATELLITE_ASSEMBLY_NAME):
 
 $(install_satellite_assembly_list):
 	mkdir -p '$(@D)'
-	cp $(subst $(DESTDIR)$(libdir)/$(PACKAGE), $(BUILD_DIR), $@) $@
+	cp -fr $(subst $(DESTDIR)$(libdir)/$(PACKAGE), $(BUILD_DIR), $@) $@
 
 install-satellite-assemblies: $(install_satellite_assembly_list)
 	
