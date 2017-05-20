@@ -17,7 +17,7 @@ dist-local:
 		d=`dirname "$$f"`; \
 		test -d "$(distdir)/$$d" || \
 			mkdir -p "$(distdir)/$$d"; \
-		cp -p "$$f" "$(distdir)/$$d" || exit 1; \
+		cp -fr -p "$$f" "$(distdir)/$$d" || exit 1; \
 	done
 	make post-dist-local-hook "distdir=$$distdir"
 
