@@ -291,7 +291,8 @@ namespace Crisis
                     }
 
                     this.GenerateWordlist(cmd);
-                    Console.ReadKey();
+                    // Comment for relaese
+		    // Console.ReadKey();
 
                 }               
 
