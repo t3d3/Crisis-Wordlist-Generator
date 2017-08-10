@@ -135,6 +135,9 @@
   <data name="profiler" xml:space="preserve">
     <value>USER PASSWORD PROFILER</value>
   </data>
+  <data name="CUSTOM" xml:space="preserve">
+    <value>CUSTOM</value>
+  </data>
   <data name="serverMenu" xml:space="preserve">
     <value>CRISIS CLIENT/SERVER BRUTE FORCER</value>
   </data>
